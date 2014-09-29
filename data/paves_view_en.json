@@ -1,0 +1,241 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"territories": [{
+                        "id":"t0",
+                        "name":"left",
+                        "geom":"undefined",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0",
+                        "y":"0.35*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"right",
+                        "geom":"undefined",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "name":"Chantiers de construction",
+                        "f_anchor_x":"0",
+                        "f_anchor_y":"0",
+                        "iw":"1",
+                        "ih":"1",
+                        "geom":"construction2.json",
+                        "x":"0.3*w",
+                        "y":"0.4*h",
+                        "scale":"0.2"
+                    },
+                    {
+                        "id":"t3",
+                        "name":"Chantiers de déconstruction",
+                        "f_anchor_x":"0",
+                        "f_anchor_y":"0",
+                        "iw":"1",
+                        "ih":"1",
+                        "geom":"deconstruction2.json",
+                        "x":"0.45*w",
+                        "y":"0.2*h",
+                        "scale":"0.2"
+                    },
+                    {
+                        "id":"t4",
+                        "name":"Centre de recyclage",
+                        "f_anchor_x":"0",
+                        "f_anchor_y":"0.2",
+                        "iw":"1",
+                        "ih":"1",
+                        "geom":"entrepot2.json",
+                        "x":"0.7*w",
+                        "y":"0.5*h",
+                        "scale":"0.2",
+                        "solution":true
+                    }],
+
+	"flows": 		[
+                        {
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Pose de granit",
+                            "type":"input",
+                            "from":"left",
+                            "to":"Chantiers de construction",
+                            "volume_o4":"15000",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a69ea9",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        },
+                        {
+                            "id":"1100",
+                            "index":"0",
+                            "name":"Pose de granit neuf",
+                            "type":"input",
+                            "from":"left",
+                            "to":"Chantiers de construction",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#fa9898",
+                            "color2":"#fbacac",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Matériaux déconstruits",
+                            "type":"input",
+                            "from":"Chantiers de déconstruction",
+                            "to":"right",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a69ea9",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        },
+                        {
+                            "id":"2001",
+                            "index":"0",
+                            "name":"Matériaux déconstruits",
+                            "type":"input",
+                            "from":"Chantiers de déconstruction",
+                            "to":"Centre de recyclage",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a69ea9",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Granit recyclé",
+                            "type":"recyclage",
+                            "from":"Centre de recyclage",
+                            "to":"Chantiers de construction",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a9bc94",
+                            "color2":"#bac9a9",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        }
+                    ],
+
+	"projects":		[],
+
+    "story":      {
+
+
+    "stories": {
+        "matter":[{
+            "title":"Recyclage des matériaux de voirie en pierre naturelle",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Entretien et aménagement de la voirie parisienne",
+                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un centre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !<strong>"},
+                    "flows": [{"vl":["1100", "2001", "500"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"Chantiers de construction", "action":"appear", "parms":{}, "time":0},
+                                    {"target":"Chantiers de déconstruction", "action":"appear", "parms":{}, "time":0},
+                                    {"target":"Centre de recyclage", "action":"appear", "parms":{}, "time":0}],
+                    "ui":{"show":["s_button.next"], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Le centre de recyclage des matériaux parisiens à Bonneuil-sur-Marne",
+                    "text": {"time":"200", "content":"La voirie parisienne totalise déjà 2,5 millions de tonnes de granit en place ! Lors de nouveaux aménagements ou de l'entretien, une partie de ce stock est déconstruite, et en l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
+                    
+                    "flows": [{"vl":[], "hl":["1100", "2001", "500"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
+                                {"vl":["1000", "2000"], "hl":[], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":500}],
+                    
+                    "territories":[{"target":"Centre de recyclage", "action":"disappear", "parms":{}, "time":0},
+                                    {"target":"Centre de recyclage", "action":"translate", "parms":{"x":"w*1.2","y":"h*0.45","time":"0"}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Recyclage des pavés et matériaux de voirie en pierre naturelle",
+                    "text": {"time":"200", "content":"Grâce au centre de recyclage, au lieu de recourir à du granit totalement «neuf» qui provient de Bretagne, du Tarn ou d’Espagne, <strong>la Ville de Paris peut utiliser 50% de matériaux recyclés !</strong> Ce dispositif permet d’économiser chaque année près d’un million d’euros sur l’achat des matériaux, 600 tonnes d'émissions de CO2, et 300 camions de 25 tonnes sur les routes.<br><br><em>Porteurs de projet : Direction de la Voirie et des Déplacements – <a href = \"http://www.paris.fr/\" target = \"_blank\">Mairie de Paris</a>.</em>"},
+                    "flows": [{"vl":["2001"], "hl":["2000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":1500},
+                                 {"vl":["500","1100"], "hl":["1000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":2500}],
+                    "territories":[{"target":"Centre de recyclage", "action":"appear", "parms":{}, "time":0},
+                                    {"target":"Centre de recyclage", "action":"translate", "parms":{"x":"w*0.7","y":"h*0.5","time":"1000"}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }
+                ],       
+            "b_steps" :
+                [{
+                    "subtitle":"Entretien et aménagement de la voirie parisienne",
+                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un centre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !<strong>"},
+                    "flows": [{"vl":["1100", "2001", "500"], "hl":["1000", "2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"Centre de recyclage", "action":"appear", "parms":{}, "time":0},
+                                    {"target":"Centre de recyclage", "action":"translate", "parms":{"x":"w*0.7","y":"h*0.45","time":"0"}, "time":0}],
+                    "ui":{"show":["s_button.next"], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Le centre de recyclage des matériaux parisiens à Bonneuil-sur-Marne",
+                    "text": {"time":"1000", "content":"La voirie parisienne totalise déjà 2,5 millions de tonnes de granit en place ! Lors de nouveaux aménagements ou de l'entretien, une partie de ce stock est déconstruite, et en l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
+                    
+                    "flows": [{"vl":["1000", "2000"], "hl":["500", "1100", "2001"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    
+                    "territories":[{"target":"Centre de recyclage", "action":"disappear", "parms":{}, "time":1000},
+                                    {"target":"Centre de recyclage", "action":"translate", "parms":{"x":"w*1.2","y":"h*0.45","time":"1000"}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Recyclage des pavés et matériaux de voirie en pierre naturelle",
+                    "text": {"time":"3500", "content":"Grâce au centre de recyclage, au lieu de recourir à du granit totalement «neuf» qui provient de Bretagne, du Tarn ou d’Espagne, <strong>la Ville de Paris peut utiliser 50% de matériaux recyclés !</strong> Ce dispositif permet d’économiser chaque année près d’un million d’euros sur l’achat des matériaux, 600 tonnes d'émissions de CO2, et 300 camions de 25 tonnes sur les routes.<br><br><em>Porteurs de projet : Direction de la Voirie et des Déplacements – <a href = \"http://www.paris.fr/\" target = \"_blank\">Mairie de Paris</a>.</em>"},
+                    "flows": [{"vl":["2001"], "hl":["2000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":1500},
+                                 {"vl":["500","1100"], "hl":["1000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":2500}],
+                    "territories":[{"target":"Centre de recyclage", "action":"appear", "parms":{}, "time":0},
+                                    {"target":"Centre de recyclage", "action":"translate", "parms":{"x":"w*0.7","y":"h*0.45","time":"1000"}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }
+                ]
+        }],
+        "energy":[],
+        "water":[]
+    }
+}
+}
+  

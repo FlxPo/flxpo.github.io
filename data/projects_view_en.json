@@ -1,0 +1,78 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"territories": [
+					{
+                        "id":"t0",
+						"name":"Paris",
+						"geom":"parisvolprojects.json",
+                        "f_anchor_x":"0",
+                        "f_anchor_y":"0",
+                        "iw":"1",
+                        "ih":"1",
+						"x":"0.5*w",
+						"y":"0.5*h",
+						"scale":"0.9"
+					}],
+	"flows": 		[],
+	"projects":		[{
+                        "id":"p0",
+                        "view":"paves",
+						"name":"Projet A",
+						"territory":"Paris",
+						"type":"local",
+						"x":"0.35",
+						"y":"0.35"
+					},
+                    {
+                        "id":"p1",
+                        "view":"paves",
+                        "name":"Projet B",
+                        "territory":"Paris",
+                        "type":"local",
+                        "x":"0.5",
+                        "y":"0.5"
+                    },
+                    {
+                        "id":"p2",
+                        "view":"paves",
+                        "name":"Projet C",
+                        "territory":"Paris",
+                        "type":"local",
+                        "x":"0.7",
+                        "y":"0.6"
+                    },
+                    {
+                        "id":"p3",
+                        "view":"paves",
+                        "name":"Recyclage des matériaux de voirie en pierre naturelle",
+                        "territory":"Paris",
+                        "type":"global",
+                        "x":"0.52",
+                        "y":"0"
+                    }],
+
+    "story":      {
+
+
+    "stories": {
+        "matter":[{
+            "title":"Projets innovants",
+            "subtitle":"Cliquez sur les projets pour accéder aux informations !",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "text": {"time":"0", "content":""},
+                    "flows": [],
+                    "territories":[{"target":"Paris", "action":"appear"}],
+                    "ui":{"show":[], "hide":["matter", "energy", "water", "time", "info", "like"]},
+                    "functions":""
+                }
+                ]
+        }],
+        "energy":[],
+        "water":[]
+    }
+}
+         }
+  

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<header>
+		<meta charset="utf-8"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Metabolisme Paris - Visualisation des flux de matières, d'énergie et d'eau</title>
+        <meta name="description" content="Metabolisme est une data visualisation des flux de matières, d'eau et d'énergie de la ville de Paris">
+        <meta name="author" content="Agence d'Ecologie Urbaine : Lise Dano, Thierry Mareschal - Equipe Data Design d'Elioth : Amandine Juston, Loubliana Petroff, Félix Pouchain" />
+
+		<link rel = "stylesheet" type = "text/css" href = "css/style.css" media = "screen">
+
+		<!--[if lt IE 8]>
+			<link rel="stylesheet" type="text/css" href="css/style-ie.css">
+		<![endif]-->
+
+		<script src="js/lib/jquery-min.js"></script>
+		<script src="js/lib/jquery.zoom-min.js"></script>
+		<script src="js/lib/raphael-min.js"></script>
+		<script src="js/lib/velocity.js"></script>
+		<script src="js/lib/underscore.js"></script>
+		
+		<script src="js/app/brain 0.1.js"></script>
+		<script src="js/app/stacks.js"></script>
+		<script src="js/app/ui 0.1.js"></script>
+		<script src="js/app/functions.js"></script>
+		<script src="js/app/territories 0.1.js"></script>
+        <script src="js/app/flows 0.2.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/app/projects.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/app/story.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/app/launch.js"></script>
+
+        <!-- Google Analytics --> 
+		<script>
+
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-53643897-1', 'auto');
+		ga('send', 'pageview');
+
+		</script>
+
+		
+	</header>
+
+	<body>
+
+		<!-- Flows, territories, popups--> 
+		<div id = "content_outer">
+		<div id = "content">
+
+			<div id = "back"></div>
+			<div id = "middle"></div>
+
+			<div id = "start"></div>
+			<div id = "backstart">
+				<div id = "rstart">
+				</div>
+				<div id = "tstart">
+				</div>
+			</div>
+
+		</div>
+		</div>
+
+		<div id = "next_content_outer">
+		<div id = "next_content">
+
+			<div id = "back"></div>
+			<div id = "middle"></div>
+
+		</div>
+		</div>
+
+		<div id = "ui_outer">
+		<div id = "ui">
+
+		<!-- Pop flows div-->
+		<!-- <div id = "popflows"> -->
+			<div id = "flows"></div>
+			<div id = "trends"></div>
+			<div id = "pins"></div>
+			<div id = "territories"></div>
+
+		<!-- Flows type tab buttons : matter, energy, water--> 
+		<div id = "f_type">
+			<ul>
+				<li id = "matter" class = "f_button"><span>Matières</span></li>
+				<li id = "energy" class = "f_button"><span>Energies</span></li>
+				<li id = "water" class = "f_button"><span>Eaux</span></li>
+			</ul>
+		</div>
+
+		<!-- Flows type tab buttons : matter, energy, water--> 
+		<div id = "zoom_trend">
+
+			<div id = "terri">
+				<ul>
+					<li id = "projects" class = "zt_button"><span>Projets Innovants</span></li>
+					<li id = "paris" class = "zt_button"><span>Données Paris</span></li>
+					<li id = "pc" class = "zt_button"><span>Données Petite Couronne</span></li>
+					<li id = "idf" class = "zt_button"><span>Données Île-de-France</span></li>
+				</ul>
+			</div>
+
+			<div id = "time">
+				<div class="toggle"><span>2004</span></div>
+			</div>
+
+			<div id = "exp_contr">
+				<ul>
+					<li id = "expand" class = "ce_button"><span>Afficher tous les sous flux</span></li>
+					<li id = "contract" class = "ce_button"><span>Revenir au niveau macro</span></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<!-- Story slider--> 
+		<div id = "footer">
+
+		<div id = "nav">
+			<ul>
+			</ul>
+		</div>
+
+		<!-- Title of the view--> 
+		<div id = "title">
+			<ul>
+				<li><h2></h2></li>
+				<li id = "go"><span></span></li>
+				<li id = "skip"><span></span></li>
+			</ul>
+			<p></p>
+		</div>
+
+		<div id = "story">
+			<ul>
+				<li id = "s_button" class = "previous"><span>Info précédente</span></li>
+				<li id = "s_button" class = "next"><span>Plus d'infos</span></li>
+				<li id = "s_text"></li>
+			</ul>
+		</div>
+
+		</div>
+
+		<!-- Title of the view--> 
+		<div id = "legend">
+			<table id = "flowscale">
+				<tr>
+					<td id = "fs_container"><div></div></td>
+					<td id = "fs_text"></td>
+				</tr>
+			</table>
+			<table id = "trend_legend">
+			</table>
+		</div>
+
+		<!-- Info page access-->
+		<div id = "bottom_right">
+			<ul>
+				<li id = "like" class = "br_button"></li>
+				<li id = "info" class = "br_button"><span>i</span></li>
+			</ul>
+		</div>
+
+		</div>
+		</div>
+
+		<!-- Info page access--> 
+		<div id = "foot_logos">
+			<ul>
+				<li><a href = "http://www.paris.fr/" target="_blank"><img src = "./data/graphics/logo-mdp.gif"/></a></li>
+			</ul>
+		</div>
+
+
+	</body>
+
+</html>
