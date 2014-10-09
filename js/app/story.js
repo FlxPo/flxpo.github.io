@@ -48,15 +48,9 @@ function Story(app, data, callback) {
 					$("#time .toggle span").html("Tendances");
 					var mat = app.story.narratives["matter"], len = mat.length;
 					mat[len-1].button.click();
-					// this.flows.hideBases();
-					// this.flows.animTrends();
-					console.log("animating")
 				} else if (this.tab === "matter" && year === "o4") {
 					this.flows.stopAnimTrends();
-					console.log("stop animating")
-					// this.flows.showBases();
 				} else {
-					console.log("stop animating")
 					this.flows.stopAnimTrends();
 					var title = ""
 					var story = [""]

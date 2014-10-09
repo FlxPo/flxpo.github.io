@@ -9,7 +9,7 @@
 		"width":"0",
 		"height":"0"
 	},
-	"text":"Trois types de flux : matières, énergies, eaux.",
+	"text":"Trois types de flux : matières, énergies, eaux",
 	"textbox":
 	{
 		"top":"7.5em",
@@ -19,8 +19,9 @@
 		"width":"",
 		"border-left":"none",
 		"border-right":"none",
-		"border-top":"1px dashed #aaa",
-		"border-bottom":"none"
+		"border-top":"1px solid #aaa",
+		"border-bottom":"none",
+		"arrow":"up"
 	},
 	"anim":[],
 	"functions":[]
@@ -36,7 +37,7 @@
 		"width":"0",
 		"height":"0"
 	},
-	"text":"Accès aux projets innovants.",
+	"text":"Accès aux projets innovants",
 	"textbox":
 	{
 		"top":"2em",
@@ -45,9 +46,10 @@
 		"right":"6em",
 		"width":"",
 		"border-left":"none",
-		"border-right":"1px dashed #aaa",
+		"border-right":"1px solid #aaa",
 		"border-top":"none",
-		"border-bottom":"none"
+		"border-bottom":"none",
+		"arrow":"right"
 	},
 	"anim":[],
 	"functions":[]
@@ -63,7 +65,7 @@
 		"width":"0",
 		"height":"0"
 	},
-	"text":"<br><br>Trois échelles : Paris, Île-de-France, Petite Couronne.",
+	"text":"<br><br>Trois échelles : Paris, Ile-de-France, Petite Couronne",
 	"textbox":
 	{
 		"top":"6.5em",
@@ -73,9 +75,10 @@
 		"width":"",
 		"height":"9.25em",
 		"border-left":"none",
-		"border-right":"1px dashed #aaa",
+		"border-right":"1px solid #aaa",
 		"border-top":"none",
-		"border-bottom":"none"
+		"border-bottom":"none",
+		"arrow":"right"
 	},
 	"anim":[],
 	"functions":[]
@@ -91,7 +94,7 @@
 		"width":"0",
 		"height":"0"
 	},
-	"text":"Les tendances d'évolution.",
+	"text":"Les tendances d'évolution",
 	"textbox":
 	{
 		"top":"17em",
@@ -101,9 +104,10 @@
 		"width":"",
 		"height":"",
 		"border-left":"none",
-		"border-right":"1px dashed #aaa",
+		"border-right":"1px solid #aaa",
 		"border-top":"none",
-		"border-bottom":"none"
+		"border-bottom":"none",
+		"arrow":"right"
 	},
 	"anim":[],
 	"functions":[]
@@ -119,7 +123,7 @@
 		"width":"0",
 		"height":"0"
 	},
-	"text":"Des informations complémentaires sur les flux.",
+	"text":"Les informations complémentaires sur les flux",
 	"textbox":
 	{
 		"top":"",
@@ -131,7 +135,8 @@
 		"border-left":"none",
 		"border-right":"none",
 		"border-top":"none",
-		"border-bottom":"1px dashed #aaa"
+		"border-bottom":"1px solid #aaa",
+		"arrow":"down"
 	},
 	"anim":[],
 	"functions":[]

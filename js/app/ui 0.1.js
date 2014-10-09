@@ -211,23 +211,24 @@ function UI(app) {
 
 		controls["#info"] = new Object();
 		controls["#info"].button = $("#info");
+		$("#info span").addClass("i-info")
 
 		controls["#like"] = new Object();
 		controls["#like"].button = $("#like");
 
 		function loadInfo() {
-			var html = '<div id = "info_back"></div><div><div id = "info_content"><h2 style = \"text-align:center\">Informations sur cette visualisation</h2>'
+			var html = '<div id = "info_back"></div><div><div id = "info_content"><h2 style = \"text-align:center\">Informations sur cette visualisation</h2><div id = \"info_buttons\"><div id = \"launch\"><p>Intro</p></div><div id = \"demo\"><p>Démo</p></div></div>'
 			+'<ul>'
 			+ '<li>Les données sur les flux d’énergies et d’eaux sont celles de la Ville de Paris.</li>'
 			+ '<br>'
-			+ "<li>Les données de 2003 sur les flux de matières représentées dans cette infographie sont extraites du rapport de Sabine Barles, professeure d'urbanisme à l’université Paris 1 Panthéon-Sorbonne (UMR Géographie-Cités) : <a href = \"./data/Barles-EI-Paris.pdf\" target = \"_blank\">« Mesurer la performance écologique des villes et des territoires : le métabolisme de Paris et de l’Île-de-France »</a>.</li>"
+			+ "<li>La nomenclature des flux et les données utilisées pour cette infographie sont adaptées du rapport de Sabine Barles, professeure d'urbanisme à l’université Paris 1 Panthéon-Sorbonne (UMR Géographie-Cités) : <a href = \"./data/Barles-EI-Paris.pdf\" target = \"_blank\">« Mesurer la performance écologique des villes et des territoires : le métabolisme de Paris et de l’Île-de-France »</a>.</li>"
 			+ '<br>'
 			+ "<li>Les tendances relatives à l’évolution des flux de matières ont été évaluées avec l’aide de Laurent Georgeault doctorant de l’université Paris 1 et chargé de mission à l’Institut de l’économie circulaire.</li>"
 			+ '</ul>'
-			+ '<h3>Pour plus d’information, voir aussi :</h3>'
-			+ "<ul><li>BARLES, S. <a href = \"http://www.developpementdurable.revues.org/10090\" target = \"_blank\">« L’écologie territoriale et les enjeux de la dématérialisation des sociétés : l’apport de l’analyse des flux de matières »</a>, Développement durable des territoires 5(1), 2014, en ligne, [consulté le 22 févr. 2014].</li>"
+			+ '<h4>Pour plus d’information, voir aussi :</h4>'
+			+ "<ul><li class = \"refs\">BARLES, S. <a href = \"http://www.developpementdurable.revues.org/10090\" target = \"_blank\">« L’écologie territoriale et les enjeux de la dématérialisation des sociétés : l’apport de l’analyse des flux de matières »</a>, Développement durable des territoires 5(1), 2014.</li>"
 			+ '<br>'
-			+ "<li>REPELLIN, P., DURET, B., BARLES, S. <a href = \"http://www.statistiques.developpement-durable.gouv.fr/publications/p/2101/1161/comptabilite-flux-matieres-regions-departements-guide.html\" target = \"_blank\">Comptabilité des flux de matières dans les régions et les départements.</a> Guide méthodologique. La Défense : Ministère de l’Écologie, du Développement durable et de l’Énergie – CGDD (coll. « Repères »), 2014. 114 p. En ligne, [consulté le 18 juin 2014].</li>"
+			+ "<li class = \"refs\">REPELLIN, P., DURET, B., BARLES, S. <a href = \"http://www.statistiques.developpement-durable.gouv.fr/publications/p/2101/1161/comptabilite-flux-matieres-regions-departements-guide.html\" target = \"_blank\">Comptabilité des flux de matières dans les régions et les départements.</a> Guide méthodologique. La Défense : Ministère de l’Écologie, du Développement durable et de l’Énergie – CGDD (coll. « Repères »), 2014.</li>"
 			+ "</ul>"
 			+ "<ul id = \"credits\">"
 			+ "<li><h3>Maîtrise d’ouvrage :</h3><p>Agence d’écologie urbaine – Mairie de Paris<br>(contact : <a href =\"mailto:entreprisesresponsables@paris.fr\">entreprisesresponsables@paris.fr</a>)<br></p><a href =\"http://www.paris.fr/\" target = \"_blank\"><img src = \"./data/graphics/logo-mdp.gif\"/></a></li>"
@@ -312,9 +313,9 @@ function UI(app) {
 			var addCircleToSet = function(r,set) {return function() {if(set.items.length < 12) set.push(addCircle(r, set));}}
 
 			var int_id = setInterval(function() {
-				setTimeout(addCircleToSet(r, ps), Math.floor(Math.random()*500));
 				setTimeout(addCircleToSet(r, ps), Math.floor(Math.random()*1000));
-			}, 1000);
+				setTimeout(addCircleToSet(r, ps), Math.floor(Math.random()*2000));
+			}, 2000);
 
 			$("#info_content").on('mouseover', addCircleToSet(r, ps))
 
@@ -322,7 +323,8 @@ function UI(app) {
 			function unloadInfo() {
 				$("#like").show();
 				$("#info span").html("i")
-				$("#info").toggleClass("x-info")
+				$("#info span").removeClass("x-info")
+				$("#info span").addClass("i-info")
 				$("#info_back").remove();
 				$("#info_content").remove();
 				$("#info").click(loadInfo);
@@ -330,7 +332,8 @@ function UI(app) {
 
 			$("#like").hide();
 			$("#info span").html("x")
-			$("#info").toggleClass("x-info")
+			$("#info span").removeClass("i-info")
+			$("#info span").addClass("x-info")
 			$("#info").off("click");
 			$("#info").click(unloadInfo);
 		}

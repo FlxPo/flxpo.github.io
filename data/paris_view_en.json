@@ -68,11 +68,11 @@
     "to":"Paris",
     "volume_o4":"19 156",
     "volume_o9":"19 156",
-    "trend":"1",
+    "trend":"-2",
     "unit":"kt/an",
     "color":"#96582D",
     "level":"1",
-    "parent":"1000",
+    "parent":"",
     "children":"1110;1120",
     "siblings":"1200",
     "root":"true",
@@ -292,7 +292,7 @@
     "unit":"kt/an",
     "color":"#DBE00B",
     "level":"1",
-    "parent":"1000",
+    "parent":"",
     "children":"1210;1220;1230",
     "siblings":"1100",
     "root":"true",
@@ -428,11 +428,11 @@
     "to":"right",
     "volume_o4":"12 474",
     "volume_o9":"12 474",
-    "trend":"-1",
+    "trend":"-2",
     "unit":"kt/an",
     "color":"#828282",
     "level":"1",
-    "parent":"2000",
+    "parent":"",
     "children":"2110;2120;2130;2140;2150",
     "siblings":"",
     "root":"true",
@@ -732,7 +732,7 @@
     "unit":"kt/an",
     "color":"#6B91AA",
     "level":"1",
-    "parent":"2000",
+    "parent":"",
     "children":"1910;1920;1930;1940",
     "siblings":"",
     "root":"true",
@@ -901,7 +901,7 @@
   {
     "id":"1940",
     "index":"45",
-    "name":"Emissions dissipatives ",
+    "name":"Emissions dissipatives",
     "nature":"matter",
     "type":"waste",
     "from":"Paris",
@@ -988,11 +988,11 @@
     "to":"Paris",
     "volume_o4":"2 554",
     "volume_o9":"2 554",
-    "trend":"-1",
+    "trend":"1",
     "unit":"kt/an",
     "color":"#9ADB28",
     "level":"1",
-    "parent":"2000",
+    "parent":"",
     "children":"2310;2320;2330",
     "siblings":"",
     "root":"true",
@@ -1862,7 +1862,7 @@
                     "text": {"time":"200", "content":"La majorité des flux (consommation de matières ou de produits, production de déchets ou émission de pollutions) sont dits linéaires car ils ont des origines et des destinations externes au territoire. Le recyclage, la valorisation de matière, organique ou énergétique sont eux qualifiés de circulaires. Au lieu d'être exportés vers le reste du monde ou rejetés vers la nature, ces flux sont redirigés vers l’économie du territoire. De l'économie circulaire, en somme."},
                     "flows": [{"vl":["1100","1200","2100", "1900", "2300"], "hl":"[]", "popups":["1100", "1200", "2100", "1900", "2300"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"Paris", "action":"appear", "time":"0"}],
-                    "ui":{"show":["matter", "energy", "water", "time"], "hide":[]},
+                    "ui":{"show":["matter", "energy", "water", "time", "expand", "contract"], "hide":[]},
                     "functions":""
                 }
                 ]
@@ -1887,8 +1887,8 @@
             "display_dot":true,
             "steps" :
                 [{
-                    "text": {"time":"200", "content":"Les rejets vers la nature sont des volumes produits par l'activité de la ville et rejetés sur son propre territoire. Il s’agit essentiellement d’émissions atmosphériques pour Paris. Pour en mieux en comprendre l’origine, consulter les rubriques sur les flux d’eaux et d’énergies."},
-                    "flows": [{"vl":["1100", "1200","2100","1900","2300"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "text": {"time":"200", "content":"Les rejets vers la nature sont des volumes produits par l'activité de la ville et rejetés sur son propre territoire. Il s’agit essentiellement d’émissions atmosphériques pour Paris. Pour mieux en comprendre l’origine, consulter les rubriques sur les flux d’eaux et d’énergies."},
+                    "flows": [{"vl":["1100", "1200","2100","1910","1940","2300"], "popups":["1940", "1910"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"Paris", "action":"appear", "time":"0"}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -1902,7 +1902,7 @@
             "steps" :
                 [{
                     "text": {"time":"200", "content":"Non, ce n’est pas parce que les Parisiens mangeraient plus que les autres. L’activité de restauration est très importante à Paris pour alimenter les nombreux actifs, touristes et visiteurs qui fréquentent le territoire. La quantité d’aliments entrants, ramenée au nombre d’habitants, est donc plus élevée sur la capitale que dans le reste de l’agglomération ou d’autres villes de France. Les volumes de déchets organiques représentent en contrepartie un enjeu important d’amélioration du métabolisme. En 2013, un Parisien jette 57 kg de déchets alimentaires, dont 13 kg non consommés."},
-                    "flows": [{"vl":["1110", "1121","1122","1123","1124","1125","1200","2100", "1900", "2310", "2320", "2330"], "hl":"[]", "popups":["1121", "2320", "2330"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["1110", "1121","1122","1123","1124","1125","1200","2100", "1900", "2310", "2320", "2330"], "hl":"[]", "popups":["1121", "2310", "2320", "2330"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"Paris", "action":"appear", "time":"0"}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -1915,8 +1915,8 @@
             "display_dot":true,       
             "steps" :
                 [{
-                    "text": {"time":"200", "content":"Selon la façon dont ils sont traités pour être éliminés, ils se retrouvent dans différentes catégories de flux soient exportés soient circulaires: valorisation énergétique, recyclage ou mise en décharge. Pour en savoir plus sur la production de déchets à Paris ou en Île-de-France consulter le <a href = \"www.paris.fr/viewmultimediadocument?multimediadocument-id=136470\" target = \"_blank\">Rapport 2012 sur la gestion des déchets</a> ou le <a href = \"http://www.ordif.com/public/document.srv?id=17965\" target = \"_blank\">Tableau de bord des déchets franciliens (édition 2013).</a>"},
-                    "flows": [{"vl":["1100","1200", "2110","2120","2131","2132","2133","2134","2140","2150", "1900", "2310", "2320", "2330"], "hl":"[]", "popups":["2320", "2330", "2310", "2131","2132","2133","2134"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "text": {"time":"200", "content":"Selon la façon dont ils sont traités pour être éliminés, ils se retrouvent dans différentes catégories de flux soient exportés soient circulaires: valorisation énergétique, recyclage ou mise en décharge. Pour en savoir plus sur la production de déchets à Paris ou en Ile-de-France consulter le <a href = \"www.paris.fr/viewmultimediadocument?multimediadocument-id=136470\" target = \"_blank\">Rapport 2012 sur la gestion des déchets</a> ou le <a href = \"http://www.ordif.com/public/document.srv?id=17965\" target = \"_blank\">Tableau de bord des déchets franciliens (édition 2013).</a>"},
+                    "flows": [{"vl":["1100","1200", "2110","2120","2130","2140","2150", "1900", "2310", "2320", "2330"], "hl":"[]", "popups":["2320", "2330", "2310", "2130"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"Paris", "action":"appear", "time":"0"}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -1987,7 +1987,7 @@
             "display_dot":true,      
             "steps" :
                 [{
-                    "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée est dissipée sous forme de chaleur. Cette énergie, ainsi que celle qui se retrouve « piégée » dans les canalisations, les structures etc. peuvent être récupérées. Ce flux d’ « énergie fatale » est représenté ici à titre indicatif afin de montrer les enjeux de la récupération d’énergie. Pour plus d’informations sur le potentiel de récupération de l’énergie solaire à Paris, consultez le <a href = \"http://capgeo.sig.paris.fr/Apps/CadastreSolaire/\" target = \"_blank\">cadastre solaire</a>."},
+                    "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée est dissipée sous forme de chaleur. Cette énergie, ainsi que celle qui se retrouve « piégée » dans les canalisations, les structures etc. peuvent être récupérées. Pour plus d’informations sur le potentiel de récupération de l’énergie solaire à Paris, consultez le <a href = \"http://capgeo.sig.paris.fr/Apps/CadastreSolaire/\" target = \"_blank\">cadastre solaire</a>."},
                     "flows": [{"vl":["3000", "4100", "4200", "4300"], "hl":"[]", "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"Paris", "action":"appear", "time":"0"}],
                     "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},

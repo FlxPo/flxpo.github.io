@@ -65,7 +65,7 @@
                     "text": {"time":"0", "content":""},
                     "flows": [],
                     "territories":[{"target":"Paris", "action":"appear"}],
-                    "ui":{"show":[], "hide":["matter", "energy", "water", "time", "info", "like"]},
+                    "ui":{"show":[], "hide":["matter", "energy", "water", "time", "expand", "contract", "info", "like"]},
                     "functions":""
                 }
                 ]

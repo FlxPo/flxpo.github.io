@@ -129,7 +129,7 @@ function View(app, name, previous, next, first_pass, target_slide, animNext) {
 		if (name == "start") {
 
 			// Injecting warning
-			$("<div id = \"warning\"><p>Ce site est optimisé pour Firefox, Chrome et Internet Explorer 9+.</p></div>").appendTo($("#content"));
+			$("<div id = \"warning\"><p>Ce site est optimisé pour Firefox, Chrome et Internet Explorer 9+</p></div>").appendTo($("#content"));
 
 			// Positionning div containing the elements
 			var center_div = $("#tstart");
@@ -262,7 +262,7 @@ function View(app, name, previous, next, first_pass, target_slide, animNext) {
 
 		else {
 
-			// Launch the loader
+			
 			$("#flows, #pins").show();
 
 			// Stop previous velocity animations on territories
@@ -339,7 +339,7 @@ function View(app, name, previous, next, first_pass, target_slide, animNext) {
 				var win = $(window);
 				var w = win.innerWidth(), h = win.innerHeight();
 				back.css({ width:w*0.97+'px', height:h*0.95+'px', top:0.025*h, left:0.015*w })
-				back.velocity({opacity:0.6}, {duration:300, delay:2500});
+				back.velocity({opacity:0.7}, {duration:300, delay:2500});
 
 
 				$(window).resize(function() {
@@ -360,7 +360,21 @@ function View(app, name, previous, next, first_pass, target_slide, animNext) {
 
 					var bot = id === "b4" ? $("#footer").getHiddenDimensions().height + 150 : textbox.bottom;
 
-					var html = "<div class = \"intro_text\"></div>";
+					var html = "<div class = \"intro_text\">";
+
+					if (textbox.arrow === "up") {
+						html = html + "<div class = \"arrow-up\"></div>"
+					} else if (textbox.arrow === "down") {
+						html = html + "<div class = \"arrow-down\"></div>"
+					} else if (textbox.arrow === "right") {
+						html = html + "<div class = \"arrow-right\"></div>"
+					} else {
+						html = html + "<div class = \"arrow-left\"></div>"
+					}
+
+					html = html + "</div>"
+
+
 					var div = $(html).appendTo(islide);
 					$("<p>"+text+"</p>").appendTo(div);
 					div.css({top:textbox.top, bottom:bot, left:textbox.left, right:textbox.right, width:textbox.width, height:textbox.height, "border-left":textbox["border-left"], "border-right":textbox["border-right"], "border-bottom":textbox["border-bottom"], "border-top":textbox["border-top"]})

@@ -375,6 +375,8 @@ Territory.prototype.setOffsets = function(territories, flows) {
 	var wast = [];
 
 	for(var key in inflows) {
+		if (inflows.hasOwnProperty(key)) {
+
 		var inflow = inflows[key];
 		var territory = territories[inflow.from];
 		var angle = Math.atan2(- territory.y + y, territory.x - x);
@@ -384,16 +386,20 @@ Territory.prototype.setOffsets = function(territories, flows) {
 			angle = - angle;
 		}
 
-		if (territory.y == y & territory.x == x) {
+		if (territory.y === y & territory.x === x) {
 			angle = -1;
 		}
 
 		if (inflow.type === "extraction") {angle = 1000; extr.push({id: key, volume: inflow.scaled_volume, offset:0, si:inflow.siblings, type:inflow.type});}
 		if (inflow.type === "recyclage") {recy.push({id: key, volume: inflow.scaled_volume, offset:0, si:inflow.siblings, type:inflow.type});}
-		if (inflow.type != "waste") {inoff.push({id: key, volume: inflow.scaled_volume, ang: angle, si:inflow.siblings, type:inflow.type});}
+		if (inflow.type !== "waste") {inoff.push({id: key, volume: inflow.scaled_volume, ang: angle, si:inflow.siblings, type:inflow.type});}
+	
+		}
 	}
 
 	for(var key in outflows) {
+		if (outflows.hasOwnProperty(key)) {
+
 		var outflow = outflows[key];
 		var territory = territories[outflow.to];
 		var angle = Math.atan2(- territory.y + y, territory.x - x);
@@ -406,8 +412,10 @@ Territory.prototype.setOffsets = function(territories, flows) {
 			angle = -1;
 		}
 
-		if (outflow.type == "waste") {angle = 1000; wast.push({id: key, volume: outflow.scaled_volume, offset:0, si:outflow.siblings, type:outflow.type});}
-		if (outflow.type != "extraction") {outoff.push({id: key, volume: outflow.scaled_volume, ang: angle, si:outflow.siblings, type:outflow.type});}
+		if (outflow.type === "waste") {angle = 1000; wast.push({id: key, volume: outflow.scaled_volume, offset:0, si:outflow.siblings, type:outflow.type});}
+		if (outflow.type !== "extraction") {outoff.push({id: key, volume: outflow.scaled_volume, ang: angle, si:outflow.siblings, type:outflow.type});}
+	
+		}
 	}
 
 	// Sort by angle, then id
@@ -426,7 +434,8 @@ Territory.prototype.setOffsets = function(territories, flows) {
 	var insort = function(a,b) {
 		if (a.ang != 0) {
 			if (Math.abs(b.ang - a.ang) < 0.01) {
-				return (parseInt(b.id) - parseInt(a.id));
+				var id_diff = parseInt(b.id) - parseInt(a.id);
+				return id_diff;
 			} else {
 				return +(b.ang - a.ang);
 			}
@@ -436,8 +445,10 @@ Territory.prototype.setOffsets = function(territories, flows) {
 	};
 
 	var volsort = function(a, b) {
-		if (areSiblings(a,b)) {
-			return - a.volume + b.volume;
+		var sib = areSiblings(a,b);
+		if (sib) {
+			var sib_diff = - a.volume + b.volume
+			return sib_diff;
 		} else {
 			return 0;
 		}

@@ -120,7 +120,7 @@ function Flows(app, rback, data, callback) {
 
 	}
 
-	this.displayFlows = function(view_list, hide_list, popups, year, animate, first_pass, scaling) {
+	this.displayFlows = function(view_list, hide_list, popups, year, animate, first_pass, scaling, anim_trend) {
 
 		this.loadFlows(view_list, hide_list);
 
@@ -146,10 +146,12 @@ function Flows(app, rback, data, callback) {
 		if (animate) this.stacks.dirtify();
 		this.stacks.unmessify();
 		this.stackPopups();
+		anim_trend && this.hidePopupButtons();
 
 		if (popups) {
 			var len = popups.length;
 			while (len--) {
+				console.log(popups[len])
 				this.list[popups[len]].popup.clickbase();
 			}
 		}
@@ -182,12 +184,11 @@ function Flows(app, rback, data, callback) {
 
 	this.changeYear = function(view_list, hide_list, popups, title, story, year, animate, first_pass, scaling, anim_trend) {
 
-		this.stopAnimTrends();
-		console.log(anim_trend)
+		!anim_trend && this.stopAnimTrends();
 		anim_trend && this.animTrends();
 
 		this.year = year;
-		this.displayFlows(view_list, hide_list, popups, year, animate, first_pass, scaling);
+		this.displayFlows(view_list, hide_list, popups, year, animate, first_pass, scaling, anim_trend);
 	}
 
 	this.findScale = function(view_list) {
@@ -232,19 +233,19 @@ function Flows(app, rback, data, callback) {
 	}
 
 	this.animTrends = function() {
+
 		this.anim_trends = true;
-		// $(".trendplus, .trendminus").show();
 
+		// Animate container div of trends
 		this.poptrends_container.show();
-
 		this.poptrends_container
 				.velocity({ top:0 },{ duration:0 })
 				.velocity({ top:10 },{ loop:true });
 
+		// Append legend
 		var tp = "<tr><td><div id = \"trendplus\"></td><td></div><p>Tendance à la hausse</p></td></tr>";
 		var tm = "<tr><td><div id = \"trendminus\"></td><td></div><p>Tendance à la baisse</p></td></tr>";
 		var tf = "<tr><td><div id = \"trendflat\"></td><td></div><p>Tendance stable</p></td></tr>";
-
 		$(tp+tf+tm).appendTo($("#trend_legend"));
 
 	}
@@ -254,6 +255,15 @@ function Flows(app, rback, data, callback) {
 		for (var key in flist) {
 			if (flist.hasOwnProperty(key)) {
 				flist[key].popup.hideBase();
+			}
+		}
+	}
+
+	this.hidePopupButtons = function() {
+		var flist = this.list;
+		for (var key in flist) {
+			if (flist.hasOwnProperty(key)) {
+				flist[key].popup.hidePopupButtons();
 			}
 		}
 	}
@@ -269,8 +279,7 @@ function Flows(app, rback, data, callback) {
 
 	this.stopAnimTrends = function() {
 
-		$("#trend_legend table").empty();
-		// $(".trendplus, .trendminus").hide();
+		$("#trend_legend").empty();
 
 		this.poptrends_container.hide();
 
@@ -605,7 +614,7 @@ Flow.prototype.getFlowPath = function() {
 			self.pulse.animate({cx:self.pulsepath[self.p].x, cy:self.pulsepath[self.p].y}, 100, animPulse)
 		}
 		
-		if (!this.flows.app.ie89) animPulse();
+		if (!this.flows.app.ie89 && this.scaled_volume > 2) animPulse();
 
 		this.pulsing = true;
 
@@ -685,18 +694,21 @@ function Popflow(flow) {
 
 		if (this.flow.trend) {
 
-			var trend_id = "trendflat";
+			var trend_class = "trendflat";
 			if (this.flow.trend === -1 || this.flow.trend === -2) {
-				trend_id = "trendminus";
+				trend_class = "trendminus";
 			} else if (this.flow.trend === 1 || this.flow.trend === 2) {
-				trend_id = "trendplus";
+				trend_class = "trendplus";
 			}
 
-			trend_icons = "<div class = \""+trend_id+"\"></div>";
+			trend_icons = "<div class = \""+trend_class+"\"></div>";
 
 			if (this.flow.trend === -2 || this.flow.trend === 2) {
 				trend_icons = trend_icons.concat(trend_icons);
 			}
+
+			var html2 = "<div id =\"" + id + "\" class = \"poptrend\">"+trend_icons+"</div>";
+			this.trend = $(html2).appendTo($("#trends"));
 
 		}
 
@@ -714,9 +726,6 @@ function Popflow(flow) {
 			"<div id = \"dot\"></div></div>";
 
 		this.button = $(html).appendTo($("#flows"));
-
-		var html2 = "<div id =\"" + id + "\" class = \"poptrend\">"+trend_icons+"</div>";
-		this.trend = $(html2).appendTo($("#trends"));
 
 		//Attach buttons
 		if (flow.parent) new ui.button("#less", ui.flowpop["#less"], "#"+id);
@@ -786,6 +795,8 @@ function Popflow(flow) {
 		this.dot = dot;
 		this.trend = trend;
 		this.labels = labels;
+		this.plus = plus;
+		this.less = less;
 
 		// Store label positioning
 		this.pos = null;
@@ -803,22 +814,16 @@ Popflow.prototype.adaptSizePosition = function(first_pass) {
 
 	var path = this.flow.pulsepath;
 	var len = path.length;
-	// var mid = Math.floor((0.4+Math.random()/5)*len);
-	// var mid = Math.floor(len*0.5);
-	// var x = path[mid].x, y = path[mid].y;
+
 	var mid = this.flow.mid;
 	var x = this.flow.midX, y = this.flow.midY;
 
 	this.base.css({width:c, height:c, left:x-c/2, top:y-c/2});
 
-	// this.trend.css({width:c, height:c, left:x-c/2, top:y-c/2});
-
 	var dim = this.tip.getHiddenDimensions();
 	this.tip.css({left:-dim.width*0.45 + c/2 - 15, top:-dim.height - 25 + c*0.25});
-	// this.tip.css({left:-dim.width*0.45 + c/2 - 15, top:-dim.height - + c*0.25});
 
 	this.dot.css({left:c/2 - 4, top:c/2 - 4});
-	// this.trend.css({left:c/2 - 13, top:0});
 
 	this.labels.css({"margin-top":-dim.height-5});
 
@@ -829,7 +834,6 @@ Popflow.prototype.adaptSizePosition = function(first_pass) {
 				"h":dim.height,
 				"hc":c/2,
 				"zero":this.flow.is_zero};
-
 			}
 
 	if (this.show_base) this.base.click();
@@ -873,6 +877,11 @@ Popflow.prototype.hideBase = function() {
 	this.base.css({"background-color":"transparent"})
 	this.dot.css({"background-color":"transparent"})
 	this.tip.css({"opacity":0})
+}
+
+Popflow.prototype.hidePopupButtons = function() {
+	if(this.plus) this.plus.hide();
+	if(this.less) this.less.hide();
 }
 
 Popflow.prototype.showBase = function() {

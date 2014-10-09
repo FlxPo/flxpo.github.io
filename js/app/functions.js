@@ -120,11 +120,6 @@ if (!Array.prototype.indexOf) {
   };
 }
 
-function formatNumber (num) {
-    console.log(num)
-    console.log(num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, " "))
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, " ")
-}
 
 function areSiblings(f1, f2) {
   if (f1.si && f2.si) {
@@ -139,10 +134,15 @@ function areSiblings(f1, f2) {
   }
 }
 
-function thousandSeparator(n, sep)
-{
+function thousandSeparator(n, sep) {
+
+    // Round
+    var round = n;
+    if (round > 99) { round = Math.round(n/10)*10; }
+
+    // Separate thousands
     var sRegExp = new RegExp('(-?[0-9]+)([0-9]{3})'),
-        sValue = n + '';
+        sValue = round + '';
     if(sep === undefined)
     {
         sep = ',';
@@ -152,6 +152,7 @@ function thousandSeparator(n, sep)
         sValue = sValue.replace(sRegExp, '$1' + sep + '$2');
     }
     return sValue;
+
 }
 
 //Optional parameter includeMargin is used when calculating outer dimensions
@@ -206,3 +207,8 @@ function desaturateColor(color, ratio) {
     var col = Raphael.hsl(col_hsl.h, col_hsl.s*ratio, col_hsl.l);
     return col;
 }
+
+Math.sign = Math.sign || function(x) {
+    if( +x === x ) {return (x === 0) ? x : (x > 0) ? 1 : -1;}
+    return NaN;
+};
