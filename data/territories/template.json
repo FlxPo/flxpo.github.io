@@ -1,0 +1,86 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+						"geom":"data/graphics/geom_.json",
+                        "f_anchor_x":"0",
+                        "f_anchor_y":"0",
+                        "iw":"1",
+                        "ih":"1",
+						"x":"0.5*w",
+						"y":"0.5*h",
+						"scale":"0.5"
+					}],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Pose de granit",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"15000",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a69ea9",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"",
+                    "text": {"time":"200", "content":""},
+                    "flows": [{"vl":[], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"",
+                    "text": {"time":"200", "content":""},
+                    "flows": [{"vl":[], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

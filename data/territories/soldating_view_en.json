@@ -1,0 +1,182 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"Chantiers de construction",
+						"geom":"data/graphics/geom_constructionbatiment_multiple.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.5",
+						"x":"0.33*w",
+						"y":"0.4*h",
+						"scale":"0.2",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Chantiers de déconstruction",
+                        "geom":"data/graphics/geom_deconstructionbatiment_multiple.json",
+                        "fax":"0",
+                        "fay":"0.1",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.66*w",
+                        "y":"0.425*h",
+                        "scale":"0.2",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Plateforme Web",
+                        "solution":true,
+                        "geom":"data/graphics/geom_plateformeweb.json",
+                        "fax":"0",
+                        "fay":"0",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0.5*w",
+                        "y":"0.19*h",
+                        "scale":"0.2",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Matériaux de<br>construction",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#6B5D70",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Terres excavées",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#6B5D70",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Valorisation de<br>terres non polluées",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t2",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#709E42",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Expérimentation d’échanges de terres inertes entre chantiers",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet SOLDATING, développé par la société HESUS, pourra être expérimenté pendant 2 ans sur les nombreux chantiers d’aménagement et de construction de la Mairie de Paris. Ce projet  propose une plateforme web et mobile permettant une mise en relation des acteurs des chantiers et une traçabilité des terres.<br><br>Cette plateforme de géo-localisation des chantiers émetteurs et des chantiers récepteurs permet la valorisation inter-chantiers des terres non polluées. Elle permettra de minimiser à la fois les apports extérieurs et l’envoi de terres inertes en centres de stockage. <b>On estime que la diminution de ces flux pourrait générer une réduction de 50 % des coûts liés à la gestion des terres inertes.</b><br><br><em>Porteur de projet : <a href = \"http://www.hesus.eu/\" target = \"_blank\">HESUS</a></em>"},
+                    "flows": [{"vl":["1000", "2000", "500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation d’échanges de terres inertes entre chantiers",
+                    "text": {"time":"200", "content":"L’Ile-de-France génère 30 millions* de tonnes de déchets par an pour le BTP, ce qui représente plus de 5 fois la production de déchets ménagers. Sur ces 30 millions* de tonnes, seuls 23 % sont recyclés.<br><br>Parmi les matériaux excavés, les terres inertes peuvent être soit stockées dans des centres de stockage adaptés, soit réutilisées sur d’autres chantiers. Compte tenu de la complexité logistique de la réutilisation notamment, moins de 10% des terres inertes sont aujourd’hui valorisées entre chantiers en France.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
+                    "flows": [{"vl":[], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation d’échanges de terres inertes entre chantiers",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet SOLDATING, développé par la société HESUS, pourra être expérimenté pendant 2 ans sur les nombreux chantiers d’aménagement et de construction de la Mairie de Paris. Ce projet  propose une plateforme web et mobile permettant une mise en relation des acteurs des chantiers et une traçabilité des terres.<br><br>Cette plateforme de géo-localisation des chantiers émetteurs et des chantiers récepteurs permet la valorisation inter-chantiers des terres non polluées. Elle permettra de minimiser à la fois les apports extérieurs et l’envoi de terres inertes en centres de stockage. <b>On estime que la diminution de ces flux pourrait générer une réduction de 50 % des coûts liés à la gestion des terres inertes.</b><br><br><em>Porteur de projet : <a href = \"http://www.hesus.eu/\" target = \"_blank\">HESUS</a></em>"},
+                    "flows": [{"vl":["1000", "2000", "500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Expérimentation d’échanges de terres inertes entre chantiers",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet SOLDATING, développé par la société HESUS, pourra être expérimenté pendant 2 ans sur les nombreux chantiers d’aménagement et de construction de la Mairie de Paris. Ce projet  propose une plateforme web et mobile permettant une mise en relation des acteurs des chantiers et une traçabilité des terres.<br><br>Cette plateforme de géo-localisation des chantiers émetteurs et des chantiers récepteurs permet la valorisation inter-chantiers des terres non polluées. Elle permettra de minimiser à la fois les apports extérieurs et l’envoi de terres inertes en centres de stockage. <b>On estime que la diminution de ces flux pourrait générer une réduction de 50 % des coûts liés à la gestion des terres inertes.</b><br><br><em>Porteur de projet : <a href = \"http://www.hesus.eu/\" target = \"_blank\">HESUS</a></em>"},
+                    "flows": [{"vl":["500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation d’échanges de terres inertes entre chantiers",
+                    "text": {"time":"200", "content":"L’Ile-de-France génère 30 millions* de tonnes de déchets par an pour le BTP, ce qui représente plus de 5 fois la production de déchets ménagers. Sur ces 30 millions* de tonnes, seuls 23 % sont recyclés.<br><br>Parmi les matériaux excavés, les terres inertes peuvent être soit stockées dans des centres de stockage adaptés, soit réutilisées sur d’autres chantiers. Compte tenu de la complexité logistique de la réutilisation notamment, moins de 10% des terres inertes sont aujourd’hui valorisées entre chantiers en France.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
+                    "flows": [{"vl":[], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

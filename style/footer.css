@@ -1,0 +1,174 @@
+/*______________________________________________________________*/
+/*Story*/
+#footer {
+	position:absolute;
+	bottom:2em;
+	width:100%;
+	display:inline;
+	z-index: 500;
+}
+
+/*Navigation*/
+#nav ul {
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+	text-align: center;
+}
+
+
+
+.n_button {
+	display:inline-block;
+	margin-right:10px;
+	margin-bottom:10px;
+
+	background-color: #eee;
+
+	width:15px;
+	height:15px;
+  	border-radius: 100%;
+  	/*border:2px solid #ddd;*/
+  	behavior: url(./css/pie/PIE.htc);
+
+	cursor: pointer;
+
+	text-align:center;
+	vertical-align: bottom;
+}
+
+.n_button:hover {
+	background-color: #ddd;
+}
+
+.n-clicked {
+	background-color: #ccc;
+}
+
+.n_button:hover .tip {
+	display:inline-block;
+}
+
+.n_button:hover .notch {
+	display:inline-block;
+}
+
+/*Content*/
+#story > ul {
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+}
+
+.s_button {
+	margin:15px;
+	width:40px;
+	height:40px;
+	border-radius: 100%;
+	cursor: pointer;
+	behavior: url(./css/pie/PIE.htc);
+	font-family: "Lobster";
+	font-size: 18px;
+}
+
+#previous {
+	display: none;
+	float:left;
+	margin-left: 15%;
+}
+#next {
+	display:none;
+	float:right;
+	margin-right: 15%;
+}
+
+.s_button > span {
+	display: none;
+	position:relative;
+	color: #000;
+	margin-left: -15px;
+	width:75px;
+	margin-top: -200px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.s_button:hover > span {
+	display:inline-block;
+}
+
+#tcontainer {
+	height:20%;
+	max-width: 60%;
+	text-align: justify;
+	margin:0 auto;
+	font-family: "Open Sans";
+}
+
+#s_text {
+	text-align: justify;
+ 	 margin: 0 auto;
+ 	 width: 100%;
+}
+
+a {
+	text-decoration: none;
+	color:#2387dc;
+	/*font-weight: bold;*/
+}
+
+a:visited {
+	color:#852a41;
+}
+
+
+/*______________________________________________________________*/
+/*Title*/
+#title {
+	width:100%;
+	text-align: center;
+	font-family: "Lobster";
+	font-weight: normal;
+	margin-bottom:16px;
+}
+
+#title ul {
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+	text-align: center;
+}
+
+#title:first-child {
+	display:inline-block;
+}
+
+#title h2 {
+	margin:0 auto;
+	font-weight: 400;
+}
+
+#skip, #go {
+	margin-left:10px;
+	margin-bottom:10px;
+	width:50px;
+	height:50px;
+	vertical-align: middle;
+	border-radius: 100%;
+	cursor: pointer;
+	behavior: url(./css/pie/PIE.htc);
+	display:none;
+}
+
+#skip span, #go span {
+	font-family: "Lobster";
+	position:relative;
+	color: #000;
+	width:100px;
+	top:-40px;
+}
+
+#title p {
+	font-family: "Open Sans";
+	margin:0 auto;
+}

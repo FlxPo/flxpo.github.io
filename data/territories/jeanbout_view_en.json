@@ -1,0 +1,187 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.35*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.35*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"Evénement avec traiteur",
+						"geom":"data/graphics/geom_traiteur.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.45",
+						"x":"0.3*w",
+						"y":"0.3*h",
+						"scale":"0.18",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Unité de lavage",
+                        "geom":"data/graphics/geom_centrerecyclage.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.45",
+                        "x":"0.7*w",
+                        "y":"0.3*h",
+                        "scale":"0.18",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1400",
+                            "index":"0",
+                            "name":"Achats de bouteilles",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"15",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#8965AA",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1350",
+                            "index":"0",
+                            "name":"Bouteilles jetées",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"15",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1300",
+                            "index":"0",
+                            "name":"Bouteilles récupérées",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"15",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1200",
+                            "index":"0",
+                            "name":"Bouteilles revalorisées",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t2",
+                            "volume_o4":"15",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#709E42",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Expérimentation d’un système de réutilisation de bouteilles<br>sur les événements et manifestations municipaux",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « Jean Bouteille » développé par R Cube Nord pourra être expérimenté pendant une période de 2 ans sur les événements organisés ou parrainés par la Mairie de Paris. <br><br>Ce projet propose un système de consigne des bouteilles utilisées par les traiteurs. Il met à disposition des traiteurs des embouteilleuses mobiles pour remplir de liquides en vrac (jus, vin, huile…) les bouteilles fournies. Il participe également à l’économie sociale et solidaire du territoire en mobilisant un ESAT pour l’unité  de lavage (à faible consommation d’eau), séchage, et stérilisation des bouteilles à faible consommation d’eau. <b>Le dispositif permet de réutiliser les bouteilles et de réduire ainsi le volume de déchets et génère localement une valeur ajoutée supérieure à un système basé sur du pré-emballé.</b></b><br><br><em>Porteur de projet : <a href = \"http://www.rcubenord.fr/\" target = \"_blank\">R Cube Nord</a></em>"},
+                    "flows": [{"vl":["1300", "1200"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation d’un système de réutilisation de bouteilles<br>sur les événements et manifestations municipaux",
+                    "text": {"time":"200", "content":"En 2013, 66 889 tonnes de déchets en verre ont été collectées à Paris dans les containers et colonnes à verre pour être recyclées. S’y ajoutent 5% non triés du contenu du bac vert d’ordures ménagères partant en incinération.<br><br>Les emballages plastique, acier, aluminium et alimentaires, quant à eux, représentent 6,7% du bac à couvercle jaune destiné au recyclage et environ 20 % du contenu non trié du bac vert. Une part non négligeable des déchets produits chaque année à Paris est donc liée à l’emballage de boissons."},
+                    "flows": [{"vl":["1350", "1400"], "hl":["1200","1300"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation d’un système de réutilisation de bouteilles<br>sur les événements et manifestations municipaux",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « Jean Bouteille » développé par R Cube Nord pourra être expérimenté pendant une période de 2 ans sur les événements organisés ou parrainés par la Mairie de Paris. <br><br>Ce projet propose un système de consigne des bouteilles utilisées par les traiteurs. Il met à disposition des traiteurs des embouteilleuses mobiles pour remplir de liquides en vrac (jus, vin, huile…) les bouteilles fournies. Il participe également à l’économie sociale et solidaire du territoire en mobilisant un ESAT pour l’unité  de lavage (à faible consommation d’eau), séchage, et stérilisation des bouteilles à faible consommation d’eau. <b>Le dispositif permet de réutiliser les bouteilles et de réduire ainsi le volume de déchets et génère localement une valeur ajoutée supérieure à un système basé sur du pré-emballé.</b></b><br><br><em>Porteur de projet : <a href = \"http://www.rcubenord.fr/\" target = \"_blank\">R Cube Nord</a></em>"},
+                    "flows": [{"vl":["1300", "1200"], "hl":["1350", "1400"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Expérimentation d’un système de réutilisation de bouteilles<br>sur les événements et manifestations municipaux",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « Jean Bouteille » développé par R Cube Nord pourra être expérimenté pendant une période de 2 ans sur les événements organisés ou parrainés par la Mairie de Paris. <br><br>Ce projet propose un système de consigne des bouteilles utilisées par les traiteurs. Il met à disposition des traiteurs des embouteilleuses mobiles pour remplir de liquides en vrac (jus, vin, huile…) les bouteilles fournies. Il participe également à l’économie sociale et solidaire du territoire en mobilisant un ESAT pour l’unité  de lavage (à faible consommation d’eau), séchage, et stérilisation des bouteilles à faible consommation d’eau. <b>Le dispositif permet de réutiliser les bouteilles et de réduire ainsi le volume de déchets et génère localement une valeur ajoutée supérieure à un système basé sur du pré-emballé.</b></b><br><br><em>Porteur de projet : <a href = \"http://www.rcubenord.fr/\" target = \"_blank\">R Cube Nord</a></em>"},
+                    "flows": [{"vl":["1300", "1200"], "hl":["1350", "1400"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation d’un système de réutilisation de bouteilles<br>sur les événements et manifestations municipaux",
+                    "text": {"time":"200", "content":"En 2013, 66 889 tonnes de déchets en verre ont été collectées à Paris dans les containers et colonnes à verre pour être recyclées. S’y ajoutent 5% non triés du contenu du bac vert d’ordures ménagères partant en incinération.<br><br>Les emballages plastique, acier, aluminium et alimentaires, quant à eux, représentent 6,7% du bac à couvercle jaune destiné au recyclage et environ 20 % du contenu non trié du bac vert. Une part non négligeable des déchets produits chaque année à Paris est donc liée à l’emballage de boissons."},
+                    "flows": [{"vl":["1350", "1400"], "hl":["1200","1300"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

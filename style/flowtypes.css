@@ -1,0 +1,51 @@
+#topleft {
+	position:absolute;
+	height:75px;
+	top:16px;
+	left:16px;
+	padding:16px;
+	z-index: 5;
+}
+
+#topleft ul {
+	list-style-type: none;
+	margin: 0px;
+	padding:0px;
+}
+
+.ft_button {
+	display: none;
+
+	margin-right:4px;
+	width:64px;
+	height:48px;
+	border-radius: 100%;
+	cursor: pointer;
+	behavior: url(./css/pie/PIE.htc);
+}
+
+
+
+.ft_button svg {
+	position:absolute;
+	top:-8px;
+}
+
+.ft_button > span {
+	font-family: "Lobster";
+	display:none;
+	position:absolute;
+	z-index:-2;
+	text-align: center;
+	width:64px;
+	margin-left:-72px;
+	padding-bottom:4px;
+	padding-top:56px;
+	padding-left:8px;
+	padding-right:8px;
+	font-size:18px;
+}
+
+.ft_button:hover > span {
+	display: inline-block;
+}

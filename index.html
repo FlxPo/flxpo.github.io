@@ -1,183 +1,394 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Backbone.js • MetApp</title>
 
-	<header>
-		<meta charset="utf-8"> 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Metabolisme Paris - Visualisation des flux de matières, d'énergie et d'eau</title>
-        <meta name="description" content="Metabolisme est une data visualisation des flux de matières, d'eau et d'énergie de la ville de Paris">
-        <meta name="author" content="Agence d'Ecologie Urbaine : Lise Dano, Thierry Mareschal - Equipe Data Design d'Elioth : Amandine Juston, Loubliana Petroff, Félix Pouchain" />
+  <link rel="stylesheet" href="style/flowtip-style.css">
+  <link rel="stylesheet" href="style/start.css">
+  <link rel="stylesheet" href="style/about.css">
+   <link rel="stylesheet" href="style/territory.css">
+   <link rel="stylesheet" href="style/pulse.css">
+   <link rel="stylesheet" href="style/legend.css">
 
-		<link rel = "stylesheet" type = "text/css" href = "css/style.css" media = "screen">
-
-		<!--[if lt IE 8]>
-			<link rel="stylesheet" type="text/css" href="css/style-ie.css">
-		<![endif]-->
-
-		<script src="js/lib/jquery-min.js"></script>
-		<script src="js/lib/jquery.zoom-min.js"></script>
-		<script src="js/lib/raphael-min.js"></script>
-		<script src="js/lib/velocity.js"></script>
-		<script src="js/lib/underscore.js"></script>
-		
-		<script src="js/app/brain 0.1.js"></script>
-		<script src="js/app/stacks.js"></script>
-		<script src="js/app/ui 0.1.js"></script>
-		<script src="js/app/functions.js"></script>
-		<script src="js/app/territories 0.1.js"></script>
-        <script src="js/app/flows 0.2.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/app/projects.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/app/story.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/app/launch.js"></script>
-
-        <!-- Google Analytics --> 
-		<script>
-
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-53643897-1', 'auto');
-		ga('send', 'pageview');
-
-		</script>
-
-		
-	</header>
-
-	<body>
-
-		<!-- Flows, territories, popups--> 
-		<div id = "content_outer">
-		<div id = "content">
-
-			<div id = "back"></div>
-			<div id = "middle"></div>
-
-			<div id = "start"></div>
-			<div id = "backstart">
-				<div id = "rstart">
-				</div>
-				<div id = "tstart">
-				</div>
-			</div>
-
-		</div>
-		</div>
-
-		<div id = "next_content_outer">
-		<div id = "next_content">
-
-			<div id = "back"></div>
-			<div id = "middle"></div>
-
-		</div>
-		</div>
-
-		<div id = "ui_outer">
-		<div id = "ui">
-
-		<!-- Pop flows div-->
-		<!-- <div id = "popflows"> -->
-			<div id = "flows"></div>
-			<div id = "trends"></div>
-			<div id = "pins"></div>
-			<div id = "territories"></div>
-
-		<!-- Flows type tab buttons : matter, energy, water--> 
-		<div id = "f_type">
-			<ul>
-				<li id = "matter" class = "f_button"><span>Matières</span></li>
-				<li id = "energy" class = "f_button"><span>Energies</span></li>
-				<li id = "water" class = "f_button"><span>Eaux</span></li>
-			</ul>
-		</div>
-
-		<!-- Flows type tab buttons : matter, energy, water--> 
-		<div id = "zoom_trend">
-
-			<div id = "terri">
-				<ul>
-					<li id = "projects" class = "zt_button"><span>Projets Innovants</span></li>
-					<li id = "paris" class = "zt_button"><span>Données Paris</span></li>
-					<li id = "pc" class = "zt_button"><span>Données Petite Couronne</span></li>
-					<li id = "idf" class = "zt_button"><span>Données Ile-de-France</span></li>
-				</ul>
-			</div>
-
-			<div id = "time">
-				<div class="toggle"><span>2004</span></div>
-			</div>
-
-			<div id = "exp_contr">
-				<ul>
-					<li id = "expand" class = "ce_button"><span>Afficher tous les sous flux</span></li>
-					<li id = "contract" class = "ce_button"><span>Revenir au niveau macro</span></li>
-				</ul>
-			</div>
-
-		</div>
-
-		<!-- Story slider--> 
-		<div id = "footer">
-
-		<div id = "nav">
-			<ul>
-			</ul>
-		</div>
-
-		<!-- Title of the view--> 
-		<div id = "title">
-			<ul>
-				<li><h2></h2></li>
-				<li id = "go"><span></span></li>
-				<li id = "skip"><span></span></li>
-			</ul>
-			<p></p>
-		</div>
-
-		<div id = "story">
-			<ul>
-				<li id = "s_button" class = "previous"><span>Info précédente</span></li>
-				<li id = "s_button" class = "next"><span>Plus d'infos</span></li>
-				<li id = "s_text"></li>
-			</ul>
-		</div>
-
-		</div>
-
-		<!-- Title of the view--> 
-		<div id = "legend">
-			<table id = "flowscale">
-				<tr>
-					<td id = "fs_container"><div></div></td>
-					<td id = "fs_text"></td>
-				</tr>
-			</table>
-			<table id = "trend_legend">
-			</table>
-		</div>
-
-		<!-- Info page access-->
-		<div id = "bottom_right">
-			<ul>
-				<li id = "like" class = "br_button"></li>
-				<li id = "info" class = "br_button"><span>i</span></li>
-			</ul>
-		</div>
-
-		</div>
-		</div>
-
-		<!-- Info page access--> 
-		<div id = "foot_logos">
-			<ul>
-				<li><a href = "http://www.paris.fr/" target="_blank"><img src = "./data/graphics/logo-mdp.gif"/></a></li>
-			</ul>
-		</div>
+   <link rel="stylesheet" href="style/intro.css">
 
 
-	</body>
+   <link rel="stylesheet" href="style/flowtypes.css">
+   <link rel="stylesheet" href="style/topright.css">
+   <link rel="stylesheet" href="style/bottomright.css">
+   <link rel="stylesheet" href="style/footer.css">
 
+   <link rel="stylesheet" href="style/flows.css">
+    <link rel="stylesheet" href="style/projects.css">
+
+      <link rel="stylesheet" href="style/global.css">
+
+</head>
+<body>
+
+  <div id = "appcontainer" class="unscrollable">
+
+  </div>
+
+
+  <div id = "ui">
+
+
+
+    <!-- Flows type tab buttons : matter, energy, water --> 
+    <div id = "topleft">
+      <ul>
+        <li id = "matter" class = "ft_button"><span>Matières</span></li>
+        <li id = "energy" class = "ft_button"><span>Energies</span></li>
+        <li id = "water" class = "ft_button"><span>Eaux</span></li>
+      </ul>
+    </div>
+
+    <!-- Territories tab buttons + time button + expand/contract --> 
+    <div id = "topright">
+
+      <div id = "terri">
+        <ul>
+          <li id = "projects" class = "terri_button"><span>Projets Innovants</span></li>
+          <li id = "paris" class = "terri_button"><span>Données Paris</span></li>
+          <li id = "pc" class = "terri_button"><span>Données Petite Couronne</span></li>
+          <li id = "idf" class = "terri_button"><span>Données Ile-de-France</span></li>
+        </ul>
+      </div>
+
+      <div id = "time_contr">
+      <div id = "time" class = "slider">
+        <div class="toggle"><span>2004</span></div>
+      </div>
+      </div>
+
+      <div id = "exp_contr">
+        <ul>
+          <li id = "expand" class = "ce_button"><span>Afficher tous les sous flux</span></li>
+          <li id = "contract" class = "ce_button"><span>Revenir au niveau macro</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <!-- Info page access-->
+    <div id = "bottom_right">
+      <ul>
+        <li id = "share" class = "br_button"></li>
+        <li id = "about_b" class = "br_button"><span class = "i-info">i</span></li>
+      </ul>
+    </div>
+
+    <!-- Legend --> 
+    <div id = "legend">
+      <table id = "flowscale" class = "hidden">
+        <tr>
+          <td id = "fs_container"><div></div></td>
+          <td id = "fs_text"><p></p></td>
+        </tr>
+      </table>
+      <table id = "trend_legend" class = "hidden">
+        <tr>
+          <td><div id = "trendplus"></td>
+          <td></div><p>Tendance à la hausse</p></td>
+        </tr>
+        <tr>
+          <td><div id = "trendminus"></td>
+          <td></div><p>Tendance à la baisse</p></td>
+        </tr>
+        <tr>
+          <td><div id = "trendflat"></td>
+          <td></div><p>Tendance stable</p></td>
+        </tr>
+      </table>
+    </div>
+
+
+  </div>
+
+
+<script type="text/template" id="popproject-template">
+
+      <div class="tip border-tip">
+        <div id = "mousebox"></div>
+        <p><%=name%></p>
+        <b class="border-notch notch"></b>
+        <b class="notch"></b>
+      </div>
+
+      <div id = "pin"></div>
+
+</script>
+
+<script type="text/template" id="itemproject-template">
+
+    <div class = "content">
+      <div class = "gcontainer"><img class = "graphics" src=<%=imgurl%>></div>
+      <div class = "text">
+        <h3 class = "name"><%=name%></h3>
+      <div>
+    </div>
+
+</script>
+
+<script type="text/template" id="project-template">
+
+  <div id = "leftpanel">
+    <div id = "header">
+      <h2>Projets Innovants</h2>
+      <p>Cliquez sur les projets pour accéder aux informations</p>
+    </div>
+    <div id = "content">
+      <ul id = "itemlist"></ul>
+    </div>
+  </div>
+
+  <div id = "rightpanel"></div>
+
+</script>
+
+
+<script type="text/template" id="story-template">
+
+    <div id = "nav">
+      <ul>
+      </ul>
+    </div>
+
+    <div id = "title">
+      <h2></h2>
+      <p></h2>
+    </div>
+
+    <div id = "story">
+      <ul>
+        <li id = "previous" class = "s_button"><span>Info précédente</span></li>
+        <li id = "next" class = "s_button"><span>Plus d‘infos</span></li>
+        <li id = "tcontainer"><p id = "s_text"></p></li>
+      </ul>
+    </div>
+
+</script>
+
+<script type="text/template" id="nav-template">
+
+    <div class="tip border-tip">
+      <h3><%=title%></h3>
+      <b class="border-notch notch"></b>
+      <b class="notch"></b>
+    </div>
+
+</script>
+
+<script type="text/template" id="flowtip-template">
+
+  <div class = "pulse"></div>
+
+ <% // Dot %>
+      <div class = "dot"></div>
+
+       <% // Mouse catcher when user moves from base to tip %>
+        <div class = "mousebox"></div>
+
+      <% //Wrapper for the tip content %>
+      <div class = "tip border-tip">
+
+        <% // Tip content %>
+        <h3><%= name %></h3>                                                     <% // Field displaying the name of the flow %>
+        <ul class = "label">
+          <li><p class = "volume"></p> <p class = "unit"><%= unit %></p></li>                                           <% // Field displaying the volume of the flow %>
+          <li id = "ungroup" class = "popbutton"><span>Détail du flux</span></li>     <% // Button to access children of the flow %>
+          <li id = "group" class = "popbutton"><span>Retour en arrière</span></li>         <% // Button to access parent and uncles of the flow %>
+        </ul>
+
+        <% // Bottom arrow for the tip %>
+        <b class="border-notch notch"></b>
+        <b class="notch"></b>
+
+    </div>
+
+</script>
+
+
+<script type="text/template" id="flow-template">
+  <div class = "pulse"></div></div>
+</script>
+     
+
+</script>
+    <script type="text/template" id="start-template">
+
+  <div id = "warning"><p><%= warningText %></p></div>
+
+  <div id = "backstart">
+
+    <div id = "rstart"></div>
+
+    <div id = "tstart">
+      <h1><%= startTitle %></h1>
+      <p><%= startText %></p>
+      <div id = "launch"><p>Explorer</p></div>
+      <div id = "demo"><p>Démo</p></div>
+    </div>
+
+  </div>
+
+    <!-- Info page access--> 
+    <div id = "foot_logos">
+      <ul>
+        <li><a href = "http://www.paris.fr/" target="_blank"><img src = "./data/graphics/logo-mdp.gif"/></a></li>
+      </ul>
+    </div>
+
+</script>
+
+<script type="text/template" id="intro-template">
+  
+  <div id = "intro_back">
+    </div>
+
+    <div id = "top_left" class = "intro_box"><p><div class = "arrow-up"></div><%=topleft%></p></div>
+    <div id = "top_right1" class = "intro_box"><div class = "arrow-right"></div><p><%=topright1%></p></div>
+    <div id = "top_right2" class = "intro_box"><div class = "arrow-right"></div><p><%=topright2%></p></div>
+    <div id = "top_right3" class = "intro_box"><div class = "arrow-right"></div><p><%=topright3%></p></div>
+    <div id = "bottom" class = "intro_box"><div class = "arrow-down"></div><p><%=bottom%></p></div>
+
+
+
+</script>
+
+<script type="text/template" id="about-template">
+
+  <div id = "info_back"></div>
+  <div>
+
+    <div id = "info_content">
+
+      <ul id = "info_header">
+        <li><h2><%= title %></h2></li>
+        <li id = "launch"><p>Intro</p></li>
+        <li id = "demo"><p>Démo</p></li>
+      </ul>
+
+      <ul id = "info_main">
+      <li>Les données sur les flux d’énergies et d’eaux sont celles de la Ville de Paris.</li>
+      <br>
+      <li>La nomenclature des flux et les données utilisées pour cette infographie sont adaptées du rapport de Sabine Barles, professeure d’urbanisme à l’université Paris 1 Panthéon-Sorbonne (UMR Géographie-Cités) : <a href = "./data/Barles-EI-Paris.pdf" target = "_blank">« Mesurer la performance écologique des villes et des territoires : le métabolisme de Paris et de l’Île-de-France »</a>
+      </li>
+      <br>
+      <li>Les tendances relatives à l’évolution des flux de matières ont été évaluées avec l’aide de Laurent Georgeault doctorant de l’université Paris 1 et chargé de mission à l’Institut de l’économie circulaire.</li>
+    </ul>
+
+    <p>Pour plus d’information, voir aussi :</p>
+    
+    <ul>
+      <li class = "refs">BARLES, S. <a href = "http://www.developpementdurable.revues.org/10090" target = "_blank">« L’écologie territoriale et les enjeux de la dématérialisation des sociétés : l’apport de l’analyse des flux de matières »</a>, Développement durable des territoires 5(1), 2014.</li>
+      <br>
+      <li class = "refs">REPELLIN, P., DURET, B., BARLES, S. <a href = "http://www.statistiques.developpement-durable.gouv.fr/publications/p/2101/1161/comptabilite-flux-matieres-regions-departements-guide.html" target = "_blank">Comptabilité des flux de matières dans les régions et les départements.</a> Guide méthodologique. La Défense : Ministère de l’Écologie, du Développement durable et de l’Énergie – CGDD (coll. « Repères »), 2014.</li>
+    </ul>
+
+    <ul id = "credits">
+      <li>
+        <h3>Maîtrise d’ouvrage :</h3>
+        <p>Agence d’écologie urbaine – Mairie de Paris<br>(contact : <a href ="mailto:entreprisesresponsables@paris.fr">entreprisesresponsables@paris.fr</a>)<br></p>
+        <a href ="http://www.paris.fr/" target = "_blank"><img src = "./data/graphics/logo-mdp.gif"/></a>
+      </li>
+      <li>
+        <h3>Conception :</h3>
+        <p>Elioth<br>(contact : <a href ="mailto:elioth@elioth.fr">elioth@elioth.fr</a>)</p><a href ="http://elioth.com/" target = "_blank"><img src = "./data/graphics/logo-elioth.png"/></a>
+      </li>
+      </ul>
+  </div>
+
+ </div>
+
+</script>
+
+<script type="text/template" id="item-template">
+
+  <p class = "label hidden"></p>
+
+</script>
+
+<script type="text/template" id="territory-template">
+
+  <div id = "flowcontainer" class = "hidden"></div>
+  <div id = "itemcontainer"></div>
+  <div id = "projectcontainer"></div>
+  <div id = "popcontainer"></div>
+  <div id = "storycontainer"></div>
+
+</script>
+
+  <script src="js/lib/jquery-min.js"></script>
+
+  <script src="js/lib/underscore-min.js"></script>
+  <script src="js/lib/backbone-min.js"></script>
+
+  <script src="js/lib/velocity-min.js"></script>
+  <script src="js/lib/velocity.ui-min.js"></script>
+
+  <script src="js/lib/raphael-min.js"></script>
+
+  <script src="js/lib/springy.js"></script>
+
+  <script src="js/app/utilities/utilities.js"></script>
+  <script src="js/app/utilities/stacks.js"></script>
+
+  <script src="js/app/models/start-model.js"></script>
+  <script src="js/app/models/about-model.js"></script>
+  <script src="js/app/models/territory-model.js"></script>
+  <script src="js/app/models/circle-model.js"></script>
+  <script src="js/app/models/button-model.js"></script>
+  <script src="js/app/models/item-model.js"></script>
+  <script src="js/app/models/flow-model.js"></script>
+  <script src="js/app/models/story-model.js"></script>
+  <script src="js/app/models/project-model.js"></script>
+
+  <script src="js/app/models/flowtip-model.js"></script>
+
+  <script src="js/app/views/about-view.js"></script>
+  <script src="js/app/views/start-view.js"></script>
+  <script src="js/app/views/territory-view.js"></script>
+  <script src="js/app/views/territories-view.js"></script>
+  <script src="js/app/views/app-view.js"></script>
+  <script src="js/app/views/circle-view.js"></script>
+  <script src="js/app/views/pulse-view.js"></script>
+  <script src="js/app/views/ui-view.js"></script>
+  <script src="js/app/views/radio-view.js"></script>
+  <script src="js/app/views/button-view.js"></script>
+  <script src="js/app/views/intro-view.js"></script>
+
+  <script src="js/app/views/nav-view.js"></script>
+
+  <script src="js/app/views/story-view.js"></script>
+  <script src="js/app/views/stories-view.js"></script>
+
+  <script src="js/app/views/item-view.js"></script>
+  <script src="js/app/views/items-view.js"></script>
+
+  <script src="js/app/views/flow-view.js"></script>
+  <script src="js/app/views/flows-view.js"></script>
+
+  <script src="js/app/views/itemproject-view.js"></script>
+    <script src="js/app/views/popproject-view.js"></script>
+     <script src="js/app/views/projects-view.js"></script>
+
+  <script src="js/app/views/flowtip-view.js"></script>
+
+  <script src="js/app/collections/button-collection.js"></script>
+  <script src="js/app/collections/territory-collection.js"></script>
+  <script src="js/app/collections/item-collection.js"></script>
+  <script src="js/app/collections/flow-collection.js"></script>
+  <script src="js/app/collections/story-collection.js"></script>
+  <script src="js/app/collections/project-collection.js"></script>
+
+  <script src="js/app/routers/router.js"></script>
+
+  <script src="js/app/app.js"></script>
+
+</body>
 </html>

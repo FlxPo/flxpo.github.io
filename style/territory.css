@@ -1,0 +1,29 @@
+#territory{
+	position:absolute;
+	overflow: hidden;
+	width:100%;
+	height:100%;
+	left:0;
+	z-index: 0;
+}
+
+.item {
+	position: absolute;
+	/*display:none;*/
+	opacity:0;
+}
+
+.item .label {
+	font-family: "Lobster";
+	position: absolute;
+	margin:0;
+	white-space: nowrap;
+	padding:4px 8px;
+	background-color: #eee;
+	z-index: 2;
+	text-align: center
+}
+
+#popcontainer, #storycontainer {
+	opacity:0;
+}

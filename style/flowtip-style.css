@@ -1,0 +1,214 @@
+/*___________________________________________________________*/
+/*Content styling*/
+.tip h3 {
+
+    font-family:"Lobster";
+
+    font-weight: 400;
+    margin:0px;
+    padding:0;
+
+    font-size: 16px;
+
+}
+
+.tip ul {
+
+    list-style-type: none;
+
+    margin:0px;
+    padding:0px;
+
+}
+
+.tip li {
+
+    display: inline-block;
+
+}
+
+.volume, .unit {
+    display: inline-block;
+    margin:0px;
+    padding:5px 0px;
+    font-size:12px;
+}
+
+.popbutton {
+
+    background-color: #ccc;
+
+    width:24px;
+    height:24px;
+
+    margin: 0px 0px 0px 2px;
+    vertical-align: middle;
+
+    border-radius: 100%;
+
+    cursor: pointer;
+
+}
+
+.popbutton:hover span {
+    display:inline-block;
+}
+
+.popbutton span {
+    display: none;
+    font-family: "Lobster";
+    font-size: 14px;
+    position:absolute;
+    color: #000;
+    width:100px;
+    margin-left:-40px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+
+
+/*___________________________________________________________*/
+/*Base button styling*/
+.dot {
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    background-color: #fff;
+
+    border-radius: 100%;
+
+}
+
+.pulse {
+
+    position:fixed;
+    border-radius: 100%;
+
+}
+
+.flowtip {
+    position:absolute;
+
+    width:20px;
+    height:20px;
+
+    background-color:#ccc;
+
+    border-radius: 100%;
+
+    cursor: pointer;
+
+}
+
+.mousebox {
+
+    display:inline-block;
+    position:absolute;
+
+    width:25px;
+    height:30px;
+
+    margin-left: -2.5px;
+    margin-top: -10px;
+
+    cursor:pointer;
+
+}
+
+/*___________________________________________________________*/
+/*Box styling*/
+
+/*Box containing tip content*/
+.tip {
+
+    display: none;
+    position: relative;
+
+    padding: 5px;
+
+    background-color: rgba(255,255,255,0.95);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    text-align: center;
+    white-space: nowrap;
+
+    cursor:default;
+
+}
+
+.tip-displayed {
+    display: inline-block;
+}
+
+/*Notch under the box*/
+.tip .notch {
+
+    display:inline-block;
+    position: absolute;
+    top: 100%;
+
+    margin: 0px 0px 0px -6px;
+    padding: 0;
+    width: 0;
+    height: 0;
+
+    border-top: 10px solid rgba(255,255,255,0.95);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0;
+
+}
+
+/*Border of the notch*/
+.border-tip .border-notch {
+
+    border-top-color: #ddd;
+    margin-top: 1.5px;
+
+}
+
+/*ADD*/
+#trend {
+    position:absolute;
+}
+
+
+.trend {
+    position:absolute;
+}
+
+.trend.plus, .trend.minus {
+    width: 0; 
+    height: 0; 
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    margin:5px;
+}
+
+.trend.plus {
+    border-bottom: 8px solid #555;
+}
+
+.trend.minus {
+    border-top: 8px solid #555;
+}
+
+.trend.flat {
+    width: 10px; 
+    height: 3px; 
+    background:#555;
+    margin:8px;
+}
+
+#tr1 {
+
+}
+
+#tr2 {
+    margin-top:14px;
+}

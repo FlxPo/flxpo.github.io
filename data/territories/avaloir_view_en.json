@@ -1,0 +1,165 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+						"geom":"data/graphics/geom_rue_filtre.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.6",
+						"x":"0.3*w",
+						"y":"0.2*h",
+						"scale":"0.2",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Rue parisienne",
+                        "geom":"data/graphics/geom_rue_avaloir.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.3*w",
+                        "y":"0.2*h",
+                        "scale":"0.2",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Espaces verts",
+                        "geom":"data/graphics/geom_espacesverts.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.7*w",
+                        "y":"0.45*h",
+                        "scale":"0.2",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Rejets d'eau au milieu naturel",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#23679E",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Eaux de ruissellement<br>dépolluées",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t4",
+                            "volume_o4":"80",
+                            "volume_o9":"80",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#4AA1AF",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Expérimentation de la valorisation d’eaux de ruissellement dépolluées",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de deux « avaloirs dépolluants » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté  pendant deux ans sur le territoire parisien.<br><br>Ces avaloirs devraient assurer la dépollution à hauteur de 80 à 90 %  de la charge de l’eau de ruissellement entrante. Cette eau dépolluée pourra être valorisée pour l’arrosage des espaces verts ou la lutte contre les îlots de chaleur A terme,  cela peut permettre de limiter les volumes d’eau de ruissellement apportés au réseau d’assainissement et de réduire les déversements potentiels et pollutions liés aux épisodes orageux. <br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
+                    "flows": [{"vl":["500","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation de la valorisation d’eaux de ruissellement dépolluées",
+                    "text": {"time":"200", "content":"Le volume d’eau déversé en Seine par le réseau d’assainissement parisien pour l’ensemble de l’année 2012 est estimé à 2,2 millions de m3*. Ces déversements surviennent essentiellement par temps de pluie au niveau des déversoirs d’orage. De manière générale, la Ville de Paris s’est fixé pour objectif de limiter ces rejets en Seine ainsi que l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement et de favoriser plutôt l’infiltration ou la réutilisation des eaux de surface.<br><br><span style = \"font-size:12px\">* Rapport annuel 2012 sur le prix et la qualité des services publics de l'eau potable et d'assainissement à Paris</span>"},
+                    "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation de la valorisation d’eaux de ruissellement dépolluées",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de deux « avaloirs dépolluants » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté  pendant deux ans sur le territoire parisien.<br><br>Ces avaloirs devraient assurer la dépollution à hauteur de 80 à 90 %  de la charge de l’eau de ruissellement entrante. Cette eau dépolluée pourra être valorisée pour l’arrosage des espaces verts ou la lutte contre les îlots de chaleur A terme,  cela peut permettre de limiter les volumes d’eau de ruissellement apportés au réseau d’assainissement et de réduire les déversements potentiels et pollutions liés aux épisodes orageux. <br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
+                    "flows": [{"vl":["1000","500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Expérimentation de la valorisation d’eaux de ruissellement dépolluées",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de deux « avaloirs dépolluants » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté  pendant deux ans sur le territoire parisien.<br><br>Ces avaloirs devraient assurer la dépollution à hauteur de 80 à 90 %  de la charge de l’eau de ruissellement entrante. Cette eau dépolluée pourra être valorisée pour l’arrosage des espaces verts ou la lutte contre les îlots de chaleur A terme,  cela peut permettre de limiter les volumes d’eau de ruissellement apportés au réseau d’assainissement et de réduire les déversements potentiels et pollutions liés aux épisodes orageux. <br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
+                    "flows": [{"vl":["500","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation de la valorisation d’eaux de ruissellement dépolluées",
+                    "text": {"time":"200", "content":"Le volume d’eau déversé en Seine par le réseau d’assainissement parisien pour l’ensemble de l’année 2012 est estimé à 2,2 millions de m3*. Ces déversements surviennent essentiellement par temps de pluie au niveau des déversoirs d’orage. De manière générale, la Ville de Paris s’est fixé pour objectif de limiter ces rejets en Seine ainsi que l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement et de favoriser plutôt l’infiltration ou la réutilisation des eaux de surface.<br><br><span style = \"font-size:12px\">* Rapport annuel 2012 sur le prix et la qualité des services publics de l'eau potable et d'assainissement à Paris</span>"},
+                    "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

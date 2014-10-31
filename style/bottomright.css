@@ -1,0 +1,47 @@
+/*______________________________________________________________*/
+/*Bottom right*/
+#bottom_right {
+	position:absolute;
+	bottom:16px;
+	right:16px;
+	padding:16px;
+	overflow: hidden;
+}
+
+#bottom_right > ul {
+	list-style-type: none;
+	margin: 0px;
+	padding:0px;
+}
+
+.br_button {
+	display: none;
+	font-family:"Lobster";
+	margin-right:4px;
+	width:48px;
+	height:48px;
+	border-radius: 100%;
+	cursor: pointer;
+	behavior: url(./css/pie/PIE.htc);
+}
+
+.br_button span {
+	position:absolute;
+	color:#777;
+/*	width:1.5em;
+	height:1.5em;*/
+
+	font-size:2em;
+}
+
+/*.i-info {
+	font-family:"Lobster";
+	margin-left: 20px;
+	margin-top: 6px;
+}
+
+.x-info {
+	font-family:"Open Sans";
+	margin-left: -1em;
+	margin-top: 0em;
+}*/

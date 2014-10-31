@@ -1,0 +1,69 @@
+/*______________________________________________________________*/
+/*Scale*/
+
+#legend {
+	width:12em;
+	position:absolute;
+	bottom:1.5em;
+	left:1em;
+
+	z-index: -1000;
+}
+
+#legend table {
+	margin-top:10px;
+	table-layout: fixed;
+}
+
+#legend table tbody tr td p {
+	margin:0;
+	font-family: "Open Sans";
+	font-size:10px;
+}
+
+#legend #fs_container div {
+	width:40px;
+}
+
+#legend #fs_text p {
+	font-size:12px;
+}
+
+
+#legend #trendplus {
+
+	width: 0; 
+	height: 0; 
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #555;
+
+	margin-left:15px;
+	/*position:absolute;*/
+	/*display:inline-block;*/
+}
+
+#legend #trendminus {
+
+	width: 0; 
+	height: 0; 
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid #555;
+
+	margin-left:15px;
+	/*position:absolute;*/
+	/*display:inline-block;*/
+}
+
+#legend #trendflat {
+
+	width: 10px; 
+	height: 3px; 
+	background:#555;
+
+	margin:10px;
+	margin-left: 17.5px;
+	/*position:absolute;*/
+	/*display:inline-block;*/
+}

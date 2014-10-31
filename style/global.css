@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url('fonts/Lobster/lobster-webfont.eot');
+    src: url('fonts/Lobster/lobster-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Lobster/lobster-webfont.woff2') format('woff2'),
+         url('fonts/Lobster/lobster-webfont.woff') format('woff'),
+         url('fonts/Lobster/lobster-webfont.ttf') format('truetype'),
+         url('fonts/Lobster/lobster-webfont.svg#lobster_1.4regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/Open-Sans/opensans-regular-webfont.eot');
+    src: url('fonts/Open-Sans/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Open-Sans/opensans-regular-webfont.woff2') format('woff2'),
+         url('fonts/Open-Sans/opensans-regular-webfont.woff') format('woff'),
+         url('fonts/Open-Sans/opensans-regular-webfont.ttf') format('truetype'),
+         url('fonts/Open-Sans/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, html {
+	margin:0;
+	padding:0;
+	font-family: "Open Sans";
+	font-weight: 400;
+  font-size: 14px;
+  overflow: hidden
+}
+
+html svg {
+  -webkit-transform-origin-x: 0%;
+  -webkit-transform-origin-y: 0%;
+}
+
+#appcontainer {
+  /*position: absolute;*/
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index: -1;
+}
+
+.unscrollable {
+  overflow-x:hidden;
+  overflow-y:hidden;
+}
+
+.scrollable {
+  overflow-y: scroll;
+}
+
+#ui {
+  z-index: +1;
+  overflow:hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.show_v {
+  display: block;
+}
+
+.show_h {
+  display: inline-block;
+}
+
+a {
+	text-decoration: none;
+	color:#2387dc;
+}
+
+a:visited {
+	color:#852a41;
+}
+
+.button-clicked > span {
+  display: inline-block;
+}
+
+
+.down {
+	position:absolute;
+	top:100%;
+}
+
+.up {
+	position:absolute;
+	top:-100%;
+}
+
+.middle {
+	position:absolute;
+	top:0%;
+}

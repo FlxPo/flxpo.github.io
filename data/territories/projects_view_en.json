@@ -1,0 +1,217 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [
+					{
+                        "id":"t2",
+						"name":"t2",
+						"geom":"data/graphics/geom_projects.json",
+                        "fax":"0",
+                        "fay":"0",
+                        "iw":"1",
+                        "ih":"1",
+						"x":"0.66*w",
+						"y":"0.5*h",
+						"scale":"0.6"
+					}],
+	"flows": 		[],
+	"projects":		[{
+                        "id":"p0",
+                        "view":"paves",
+                        "name":"Projets globaux ou non positionnés à ce jour",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_centrerecyclage.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":true,
+                        "x":"0.52",
+                        "y":"0"
+                    },
+                    {
+                        "id":"p1",
+                        "view":"paves",
+						"name":"Recyclage des matériaux de voirie en pierre naturelle",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_centrerecyclage.png",
+						"territory":"t2",
+						"type":"global",
+                        "render":false,
+						"x":"0.1",
+						"y":"0.1"
+					},
+                    {
+                        "id":"p2",
+                        "view":"paves",
+                        "name":"Echanges de terres inertes",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_constructionbatiment_multiple.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.5"
+                    },
+                    {
+                        "id":"p3",
+                        "view":"paves",
+                        "name":"Réemploi des matériaux de chantiers",
+                        "description":"",
+                        "imgurl":"data/graphics/items/thumb_deconstructionbatiment_multiple.png",
+                        "territory":"t2",
+                        "type":"local",
+                        "render":true,
+                        "x":"0.77",
+                        "y":"0.41"
+                    },
+                    {
+                        "id":"p4",
+                        "view":"paves",
+                        "name":"Valorisation d’eaux de ruissellement",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_rue_avaloir.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.3",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p5",
+                        "view":"paves",
+                        "name":"Filtration des eaux des fontaines",
+                        "description":"",
+                        "imgurl":"data/graphics/items/thumb_fontaine.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.35",
+                        "y":"0.35"
+                    },
+                    {
+                        "id":"p6",
+                        "view":"paves",
+                        "name":"Reconstitution de sols fertiles",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_fleuve.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.5"
+                    },
+                    {
+                        "id":"p7",
+                        "view":"paves",
+                        "name":"Aquaponie urbaine",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_agriculture_urbaine.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.7",
+                        "y":"0.6"
+                    },
+                    {
+                        "id":"p8",
+                        "view":"paves",
+                        "name":"Nouvelle vie pour les déchets administratifs",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_plateformeweb.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p9",
+                        "view":"paves",
+                        "name":"Collecte des de l'administration",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_centrerecyclage.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p10",
+                        "view":"paves",
+                        "name":"Réutilisation de bouteilles sur les événements municipaux",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_traiteur.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p11",
+                        "view":"paves",
+                        "name":"Valorisation des bio-déchets de cantine",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_usinemethanisation.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p12",
+                        "view":"paves",
+                        "name":"Valorisation des bio-déchets de cantine",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_usinemethanisation.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p13",
+                        "view":"paves",
+                        "name":"Valorisation des marcs de brasserie",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_microbrasserie.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p14",
+                        "view":"paves",
+                        "name":"Auto-partage interentreprises",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_voitures.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    }],
+
+
+    "stories": {
+        "matter":[{
+            "title":"Des flux linéaires aux flux circulaires",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"",
+                    "text": {"time":"200", "content":""},
+                    "flows": [],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}]
+                }
+                ]
+        }],
+        "energy":[],
+        "water":[]
+    }
+}  

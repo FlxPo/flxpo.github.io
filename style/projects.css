@@ -1,0 +1,177 @@
+#leftpanel {
+	position:absolute;
+	top:0;
+	left:-33%;
+	width:33%;
+	height:100%;
+	background-color: #FAFAFA;
+	/*padding:16px;*/
+	border-right:1px solid #ddd;
+
+	text-align: center;
+}
+
+#leftpanel:before {
+    content: '';
+    height: 100%;
+    float: left;
+}
+
+#leftpanel h2 {
+	display:none;
+	margin:16px 0px 0px 0px;
+}
+
+#leftpanel p {
+	/*padding:8px 0px 24px 0px;*/
+	margin:15px;
+	font-size: 12px;
+}
+
+#leftpanel #header {
+	/*position:fixed;*/
+	height:50px;
+	border-bottom: 1px solid #ddd;
+	overflow:hidden;
+}
+
+#rightpanel {
+	width:100%;
+}
+
+#leftpanel #content {
+    position: relative;
+    z-index: 1;
+}
+
+#leftpanel #content:after{
+    content: '';
+    clear: both;
+    display: block;
+}
+
+#itemlist {
+	list-style-type: none;
+	padding: 0;
+	margin:0;
+	text-align: center;
+	position:absolute;
+	height:100%;
+	overflow:auto;
+}
+
+/*______________________________________________________________*/
+/*Items*/
+
+.itemproject{
+	display: inline-block;
+
+	width:150px;
+	height:150px;
+
+	margin:8px;
+
+	border-radius:32px;
+	background-color: #fff;
+	border:2px solid #fff;
+
+	overflow:hidden;
+
+	cursor:pointer;
+}
+
+.itemproject .content {
+	position:relative;
+	margin:8px 0px;
+	overflow:hidden;
+	width:150px;
+	height:150px;
+}
+
+.itemproject .text {
+	position:relative;
+	background-color: rgba(255, 255, 255, 0.6);
+	padding-bottom: 6px;
+}
+
+.itemproject .name {
+	font-family: "Lobster";
+	font-weight:400;
+	font-size: 14px;
+
+	margin:4px 8px;
+}
+
+/*.itemproject .subtitle {
+	display:none;
+	font-weight:400;
+	font-size: 14px;
+	margin:8px;
+}*/
+
+.itemproject .gcontainer {
+	position:absolute;
+	bottom:15px;
+	width:140px;
+}
+
+.itemproject .graphics {
+	width:100px;
+	margin:0 auto;
+}
+
+.item-focused {
+	border:2px solid #a788a9;
+}
+
+
+/*______________________________________________________________*/
+/*Projects*/
+.popproject {
+	display:inline-block;
+	position:absolute;
+	width:0px;
+	height:0px;
+}
+
+.popproject p {
+	font-family: "Lobster";
+	font-size: 15px;
+	margin:0;
+	padding:0px;
+}
+
+#pin {
+	position:absolute;
+	margin:0;
+	padding:0;
+	left:-20px;
+}
+
+.local {
+	width:40px;
+	height:40px;
+	top:-40px;
+}
+
+.global {
+	width:30px;
+	height:30px;
+	top:-20px;
+}
+
+#pin > svg {
+	cursor:pointer;
+}
+
+.popproject .tip {
+	font-size:18px;
+}
+
+/*.popproject:hover .tip {
+	display:inline-block;
+}
+
+.popproject:hover .notch {
+	display:inline-block;
+}*/

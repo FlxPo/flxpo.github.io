@@ -1,0 +1,26 @@
+[
+{
+	"id":"projects",
+	"title": "PROJECTS Page",
+	"z":3,
+	"ui_elements":["p", "paris", "pc", "idf", "about", "share"]
+},
+{
+	"id":"paris",
+	"title": "PARIS Page",
+	"z":2,
+	"ui_elements":["matter", "energy", "water", "p", "paris", "pc", "idf", "time", "expand", "contract", "about", "share"]
+},
+{
+	"id":"pc",
+	"title": "PC Page",
+	"z":1,
+	"ui_elements":["matter", "p", "paris", "pc", "idf", "time", "expand", "contract", "about", "share"]
+},
+{
+	"id":"idf",
+	"title": "IDF Page",
+	"z":0,
+	"ui_elements":["matter", "p", "paris", "pc", "idf", "time", "expand", "contract", "about", "share"]
+}
+]

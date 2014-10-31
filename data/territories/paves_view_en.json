@@ -1,0 +1,220 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0",
+                        "y":"0.35*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w",
+                        "y":"0.3*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "name":"t2",
+                        "fax":"0",
+                        "fay":"0",
+                        "iw":"1",
+                        "ih":"0.8",
+                        "geom":"data/graphics/geom_construction.json",
+                        "x":"0.3*w",
+                        "y":"0.4*h",
+                        "scale":"0.2"
+                    },
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "fax":"0",
+                        "fay":"0",
+                        "iw":"1",
+                        "ih":"0.8",
+                        "geom":"data/graphics/geom_deconstruction.json",
+                        "x":"0.4*w",
+                        "y":"0.2*h",
+                        "scale":"0.2"
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.8",
+                        "geom":"data/graphics/geom_entrepot.json",
+                        "x":"0.7*w",
+                        "y":"0.4*h",
+                        "scale":"0.2",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[
+                        {
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Pose de granit",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"15000",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a69ea9",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        },
+                        {
+                            "id":"1100",
+                            "index":"0",
+                            "name":"Pose de granit neuf",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#fa9898",
+                            "color2":"#fbacac",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Matériaux déconstruits",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a69ea9",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        },
+                        {
+                            "id":"2001",
+                            "index":"0",
+                            "name":"Matériaux déconstruits",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t4",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a69ea9",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Granit recyclé",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t2",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a9bc94",
+                            "color2":"#bac9a9",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":""
+                        }
+                    ],
+
+
+    "stories": {
+        "matter":[{
+            "title":"Recyclage des matériaux de voirie en pierre naturelle",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Entretien et aménagement de la voirie parisienne",
+                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un cetre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !<strong>"},
+                    "flows": [{"vl":["1100", "2001", "500"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":["s_button.next"], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Le centre de recyclage des matériaux parisiens à Bonneuil-sur-Marne",
+                    "text": {"time":"200", "content":"La voirie parisienne totalise déjà 2,5 millions de tonnes de granit en place ! Lors de nouveaux aménagements ou de l'entretien, une partie de ce stock est déconstruite, et en l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
+                    
+                    "flows": [{"vl":[], "hl":["1100", "2001", "500"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
+                                {"vl":["1000", "2000"], "hl":[], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Recyclage des pavés et matériaux de voirie en pierre naturelle",
+                    "text": {"time":"200", "content":"Grâce au centre de recyclage, au lieu de recourir à du granit totalement «neuf» qui provient de Bretagne, du Tarn ou d’Espagne, <strong>la Ville de Paris peut utiliser 50% de matériaux recyclés !</strong> Ce dispositif permet d’économiser chaque année près d’un million d’euros sur l’achat des matériaux, 600 tonnes d'émissions de CO<sub>2</sub>, et 300 camions de 25 tonnes sur les routes.<br><br><em>Porteurs de projet : Direction de la Voirie et des Déplacements – <a href = \"http://www.paris.fr/\" target = \"_blank\">Mairie de Paris</a>.</em>"},
+                    "flows": [{"vl":["2001"], "hl":["2000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
+                                 {"vl":["500","1100"], "hl":["1000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }
+                ],       
+            "b_steps" :
+                [{
+                    "subtitle":"Entretien et aménagement de la voirie parisienne",
+                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un centre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !<strong>"},
+                    "flows": [{"vl":["1100", "2001", "500"], "hl":["1000", "2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":["s_button.next"], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Le centre de recyclage des matériaux parisiens à Bonneuil-sur-Marne",
+                    "text": {"time":"1000", "content":"La voirie parisienne totalise déjà 2,5 millions de tonnes de granit en place ! Lors de nouveaux aménagements ou de l'entretien, une partie de ce stock est déconstruite, et en l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
+                    
+                    "flows": [{"vl":["1000", "2000"], "hl":["500", "1100", "2001"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }
+                ]
+        }],
+        "energy":[],
+        "water":[]
+    }
+}

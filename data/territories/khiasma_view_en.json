@@ -1,0 +1,148 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"Chantiers de déconstruction",
+						"geom":"data/graphics/geom_deconstructionbatiment_multiple.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.4",
+						"x":"0.3*w",
+						"y":"0.2*h",
+						"scale":"0.2",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Création d'un<br>kiosque en bois",
+                        "geom":"data/graphics/geom_kiosque.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.7*w",
+                        "y":"0.45*h",
+                        "scale":"0.2",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Matériaux divers<br>de déconstruction",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#6B5D70",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Matériaux divers<br>de déconstruction",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#6B5D70",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet MYTHOLOGIES, porté par les associations BELLASTOCK et KHIASMA, pourra être expérimenté pendant 2 ans sur un quartier parisien (probablement le quartier des Fougères dans le 19ème arrondissement).<br><br>Ce projet propose une micro-architecture réalisée à partir du réemploi de matériaux de construction et permet d’accueillir des activités socio-culturelles à destination des habitants d’un quartier. Il permettra de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction tout en tissant un lien social entre les habitants et les acteurs locaux.<br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a> et <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a></em>"},
+                    "flows": [{"vl":["500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
+                    "text": {"time":"200", "content":"L’Ile-de-France génère 30* millions de tonnes de déchets par an pour le BTP, ce qui représente plus de 5 fois la production de déchets ménagers. Sur ces 30 millions de tonnes, seuls 23% sont recyclés.<br><br>Les chantiers de déconstruction représentent donc un  potentiel de récupération qui pourrait être exploité plus largement.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
+                    "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet MYTHOLOGIES, porté par les associations BELLASTOCK et KHIASMA, pourra être expérimenté pendant 2 ans sur un quartier parisien (probablement le quartier des Fougères dans le 19ème arrondissement).<br><br>Ce projet propose une micro-architecture réalisée à partir du réemploi de matériaux de construction et permet d’accueillir des activités socio-culturelles à destination des habitants d’un quartier. Il permettra de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction tout en tissant un lien social entre les habitants et les acteurs locaux.<br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a> et <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a></em>"},
+                    "flows": [{"vl":["500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet MYTHOLOGIES, porté par les associations BELLASTOCK et KHIASMA, pourra être expérimenté pendant 2 ans sur un quartier parisien (probablement le quartier des Fougères dans le 19ème arrondissement).<br><br>Ce projet propose une micro-architecture réalisée à partir du réemploi de matériaux de construction et permet d’accueillir des activités socio-culturelles à destination des habitants d’un quartier. Il permettra de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction tout en tissant un lien social entre les habitants et les acteurs locaux.<br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a> et <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a></em>"},
+                    "flows": [{"vl":["500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
+                    "text": {"time":"200", "content":"L’Ile-de-France génère 30* millions de tonnes de déchets par an pour le BTP, ce qui représente plus de 5 fois la production de déchets ménagers. Sur ces 30 millions de tonnes, seuls 23% sont recyclés.<br><br>Les chantiers de déconstruction représentent donc un  potentiel de récupération qui pourrait être exploité plus largement.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
+                    "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

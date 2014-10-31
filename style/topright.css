@@ -1,0 +1,129 @@
+#topright {
+	position:absolute;
+	top:1em;
+	right:1em;
+	padding:1em;
+	z-index :10;
+}
+
+#topright ul {
+	list-style-type: none;
+	list-style-position: inside;
+	margin: 0px;
+	padding:0px;
+}
+
+.terri_button {
+	display:none;
+	width:48px;
+	height:48px;
+	border-radius: 100%;
+	margin-bottom:4px;
+	cursor: pointer;
+}
+
+.terri_button span {
+	font-family: "Lobster";
+	display: none;
+	position:absolute;
+	color: #000;
+	width:12em;
+	margin-top: 1em;
+	margin-left: -16.5em;
+	text-align: right;
+}
+
+.terri-clicked span {
+	display: inline;
+}
+
+.terri_button:hover > span {
+	display:inline;
+}
+
+
+/*______________________________________________________________*/
+/*Toggle*/
+
+#time_contr {
+	margin-top:1.25em;
+}
+
+.slider {
+	display:none;
+	width:3em;
+	height:1.75em;
+	background-color:#eee;
+	border-radius: 0.75em;
+	text-align: left;
+	behavior: url(./css/pie/PIE.htc);
+}
+
+.toggle {
+	display:inline-block;
+    margin:0.2em;
+    background-color:#ccc;
+    border-radius:100%;
+    width:1.2em;
+    height:1.2em;
+    border:1px solid #aaa;
+    behavior: url(./css/pie/PIE.htc);
+}
+
+.toggle-right {
+	margin-left:1.45em;
+}
+
+#time span {
+	display: inherit;
+	font-family: "Lobster";
+	font-size: 0.9em;
+	margin-left: -50%;
+	margin-top:1.75em;
+}
+
+#time:hover {
+	background-color:#ddd;
+}
+
+#time:hover .toggle {
+	background-color:#bbb;
+}
+
+/*______________________________________________________________*/
+/*Contract and expand*/
+#exp_contr {
+	margin-top:28px;
+}
+
+.ce_button {
+	display: none;
+	width:32px;
+	height:32px;
+	border-radius: 100%;
+	cursor: pointer;
+	behavior: url(./css/pie/PIE.htc);
+}
+
+
+#exp_contr ul li {
+	padding:0px;
+	margin:0 auto;
+	margin-top:4px;
+}
+
+
+.ce_button span {
+	font-family: "Lobster";
+	display: none;
+	position:absolute;
+	color: #000;
+	width:12em;
+	margin-top: 0.25em;
+	margin-left: -15.5em;
+	text-align: right;
+}
+
+.ce_button:hover > span {
+	display:inline;
+}
