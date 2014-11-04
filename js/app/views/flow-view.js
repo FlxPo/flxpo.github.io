@@ -100,6 +100,8 @@ app.FlowView = Backbone.View.extend({
 		// Get offset
 		var offsetto = this.model.get("offsetto") || 0;
 		var offsetfrom = this.model.get("offsetfrom") || 0;
+		var offsetextr = this.model.get("offsetextr") || 0;
+		var offsetwast = this.model.get("offsetwast") || 0;
 
 		// Get origin and destination coordinates
 		var xfrom = xf + wf/2;
@@ -130,11 +132,10 @@ app.FlowView = Backbone.View.extend({
 
 		// Exit origin
 		if (type === "extraction") {
-			flowpath.push(['M', xf - ifrom.w*0.15, yf]);
+			flowpath.push(['M', xf - ifrom.w*0.15 + offsetextr, yf]);
 		} else {
 			flowpath.push(['M', xf, yfrom]);
-			if (type !== "waste") {flowpath.push(['L', xfrom, yfrom]);}
-			else {flowpath.push(['L', xfrom*0.95, yfrom]);}
+			flowpath.push(['L', xfrom, yfrom]);
 		}
 
 		// Bend the curve
@@ -161,8 +162,6 @@ app.FlowView = Backbone.View.extend({
 					flat_mid = 1;
 				}
 
-				// Feeding node exit tangent
-				// flowpath.push(['C', xfrom + wf/2, yfrom,
 				var cp1 = { x:xfrom + (deltaX + deltaY)/wf*30, y:yfrom };
 				var cp2 = { x:midX + deltaX/2, y:midY + deltaY/2 + corry };
 				var mp = { x:midX, y:midY + flat_mid*deltaY/2 + corry};
@@ -179,42 +178,41 @@ app.FlowView = Backbone.View.extend({
 
 				flowpath.push(pA, pB);
 
-				// Right tangent of middle point,  middle point, left tangent of middle point
-				// midX + (deltaX+deltaY)*0.75, yfrom - hf * Math.sign(yt - yf)*0.6,
-				// midX, yfrom - hf * Math.sign(yt - yf)*0.6]);
-				// flowpath.push(['C', midX - (deltaX+deltaY)*0.75, yfrom - hf * Math.sign(yt - yf)*0.6,
-
-				// Feeded node entrance tangent and position
-				// xto - wt/2, yto,
-				// xto, yto]);
-
 			}
 
 		} else if (type === "recyclage") {
 
 			this.offsetrecy = -this.model.get("offsetrecy");
 
-			flowpath.push(['C', xfrom + wf/4 + this.offsetrecy * 2 + 100, yfrom,
-				xf + wf/2 + this.offsetrecy * 3 +100, yf+ hf/1 + this.offsetrecy * 2,
-				xf, yf + hf/1 + this.offsetrecy * 2]);
+			var cpd1 = wf/4 + this.offsetrecy * 2 + 100;
+			cpd1 = cpd1 > 100 ? 100 + 3*this.offsetrecy : cpd1 - this.offsetrecy;
+			var cpd2 = + wf/2 + this.offsetrecy * 5 +100;
+			cpd2 = cpd2 > 300 ? 300 + 3*this.offsetrecy : cpd2 - this.offsetrecy;
 
-			flowpath.push(['C', xf - wf/2 - this.offsetrecy * 3 -100, yf + hf/1 + this.offsetrecy * 2,
-				xto - wf/4 - this.offsetrecy * 2 - 100, yto,
+			flowpath.push(['C', xfrom + cpd1, yfrom,
+				xf + cpd2, yf + hf/1 + this.offsetrecy * 1.25,
+				xf, yf + hf/1 + this.offsetrecy * 1.25]);
+
+			flowpath.push(['C', xf - cpd2, yf + hf/1 + this.offsetrecy * 1.25,
+				xto - cpd1, yto,
 				xto, yto]);
 
 		} else if (type === "extraction") {
 
-			flowpath.push(['C', xf, yf - hf*1.5,
-								xto - wf/4, yto,
+			var off = this.model.get("offsetextr");
+
+			flowpath.push(['C', xf + off, yf - hf*1.5 - off*4,
+								xto - wf/4 - off *4, yto,
 								xto, yto]);
 
 		} else {
 
-			this.offsetwast = 0;
+			var off = this.model.get("offsetwast");
 
-			flowpath.push(['C', xf + wf*0.75 - this.offsetwast*3.5, yfrom,
-								xt + wf*0.1, yfrom - hf*1.5 + this.offsetwast*4.5,
-								xt + wf*0.1 + this.offsetwast, yfrom - hf*0.15 + this.offsetwast]);
+			flowpath.push(['C', xfrom + (hf+wf)/4 + off *4, yfrom,
+								xf + ifrom.w*0.15, yto - (hf+wf)/2 - off*5,
+								xf + ifrom.w*0.15 - off, yto]);
+
 
 		}
 

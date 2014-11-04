@@ -2,14 +2,22 @@ var app = app || {};
 
 app.CircleView = Backbone.View.extend({
 
+	template: _.template( $('#flow-template').html() ),
+
 	initialize:function(options) {
 		this.paper = options.paper;
-		// this.circles = options.circles;
-		// this.index = options.circles.length;
+	},
+
+	cacheComponents:function() {
+		this.$pulse = this.$el.find(".pulse");
+		return this;
 	},
 
 	// Render functions
 	render: function(options) {
+
+		// this.$el.html( this.template() );
+		// this.cacheComponents();
 
 		// Load the attributes of the circle and append the circle to the canvas
 		var m = this.model.toJSON();
@@ -17,15 +25,14 @@ app.CircleView = Backbone.View.extend({
 		path.attr({path:["M", m.x, m.y-m.rad, "A", m.rad, m.rad, 0,1,1,m.x-0.1, m.y-m.rad, "Z"], stroke:m.col, 'stroke-width':m.sw, opacity:m.op});
 		path.toBack();
 		this.path = path;
-
-		// Load pulse
-		// this.pulse = new app.PulseView( {parent:this} )
-
-		// Launch
-		// this.pulse.render();
-		// $("#appcontainer").append(this.pulse.el)
 		this.transitionIn();
-		// this.transitionOut();
+
+		// var pupath = this.paper.path();
+		// pupath.attr({path:["M", m.x, m.y-4*m.rad, "A", 4*m.rad, 4*m.rad, 0,1,1,m.x-0.1, m.y-4*m.rad, "Z"]}).hide();
+		// this.pupath = pupath;
+
+		// this.renderPulse();
+
 	},
 
 	transitionIn:function() {
@@ -35,25 +42,6 @@ app.CircleView = Backbone.View.extend({
 
 	transitionOut:function() {
 
-		// var path = this.path;
-		// var m = this.model.toJSON();
-
-		// // When the path disappears, remove the DOM element, remove the list item
-		// var closeOnComplete = function() {
-		// 	// return function() {
-		// 		this.path.remove();
-		// 		// this.pulse.remove();
-		// 		this.circles.splice(self.index, 1);
-		// 		this.remove();
-		// }
-		// var callback = _.bind(closeOnComplete, this);
-
-		// // Kill the path after a random amount of time
-		// setTimeout(function() {
-		// 			var t = 400 + Math.floor(Math.random()*400);
-		// 			path.animate( {transform:["s",0.5,0.5, m.x, m.y]}, t, "ease-in", callback);
-		// }, Math.floor(Math.random()*4000));
-
 	},
 
 	close:function() {
@@ -61,8 +49,6 @@ app.CircleView = Backbone.View.extend({
 		var closeOnComplete = function() {
 			this.path.remove();
 			this.stopListening();
-			delete this.$el;
-			delete this.el;
 		}
 
 		var m = this.model.toJSON();
@@ -72,6 +58,79 @@ app.CircleView = Backbone.View.extend({
 		return this;
 
 
+	},
+
+	renderPulse: function() {
+
+		// TO DO : path to points function
+		var path = this.pupath,
+			pupath = [],
+			step = 10,
+			len = path.getTotalLength(),
+			l = 0;
+
+		while(l < path.getTotalLength()) {
+			var pos = path.getPointAtLength(l);
+			pupath.push( {x:pos.x, y:pos.y} );
+			l += step;
+		}
+
+		this.pulsePath = pupath;
+		this.pupath.remove();
+		//////
+
+		var d = this.model.get("sw");
+		offset = -Math.round(d/2);
+		this.$pulse.css( {width:d,
+							height:d,
+							"margin-top":offset,
+							"margin-left":offset,
+							"background-color":"#fff",
+							opacity:0.2
+						} );
+
+		function restart() {
+			$.Velocity.RunSequence(seq);
+		}
+
+		function sequenceGenerator(args) {
+
+			var el = args.element
+			var path = args.path;
+			var seq = [];
+			var incr = args.increment;
+			var n = path.length;
+			var dt = args.duration/n*incr;
+
+			for (var i = 0; i < n; i+=incr) {
+
+				var t = Math.round(path[i].y*10)/10;
+				var l = Math.round(path[i].x*10)/10;
+				var o = { duration:dt, easing:"linear" };
+
+				if (i === 0) {
+					o = { duration:0, easing:"linear" };
+				} else if (i > n - incr - 1) {
+					o = { duration:dt, easing:"linear", complete:args.complete };
+				}
+
+				var step = {elements:el, properties:{ top:t,left:l }, options:o };
+				seq.push(step);
+			}
+
+			return seq;
+		}
+
+		if (this.pulsing) {
+			this.$pulse.velocity( "stop", true )
+		}
+
+		var seq = sequenceGenerator( {element:this.$pulse, path:pupath, duration:pupath.length*40, increment:5, complete:restart} );
+		$.Velocity.RunSequence(seq);
+
+		this.pulsing = true;
+
+		return this;
 	}
 
 });

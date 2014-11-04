@@ -64,7 +64,7 @@
 
 	"flows": 		[
                         {
-                            "id":"1000",
+                            "id":"3000",
                             "index":"0",
                             "name":"Pose de granit",
                             "type":"input",
@@ -82,7 +82,7 @@
                             "siblings":""
                         },
                         {
-                            "id":"1100",
+                            "id":"3100",
                             "index":"0",
                             "name":"Pose de granit neuf",
                             "type":"input",
@@ -136,7 +136,7 @@
                             "siblings":""
                         },
                         {
-                            "id":"500",
+                            "id":"4000",
                             "index":"0",
                             "name":"Granit recyclé",
                             "type":"input",
@@ -165,7 +165,7 @@
                 [{
                     "subtitle":"Entretien et aménagement de la voirie parisienne",
                     "text": {"time":"200", "content":"La Mairie de Paris a mis en place un cetre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !<strong>"},
-                    "flows": [{"vl":["1100", "2001", "500"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["3100", "2001", "4000"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -176,8 +176,8 @@
                     "subtitle":"Le centre de recyclage des matériaux parisiens à Bonneuil-sur-Marne",
                     "text": {"time":"200", "content":"La voirie parisienne totalise déjà 2,5 millions de tonnes de granit en place ! Lors de nouveaux aménagements ou de l'entretien, une partie de ce stock est déconstruite, et en l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
                     
-                    "flows": [{"vl":[], "hl":["1100", "2001", "500"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
-                                {"vl":["1000", "2000"], "hl":[], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    "flows": [{"vl":[], "hl":["3100", "2001", "4000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
+                                {"vl":["3000", "2000"], "hl":[], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
                     
                     "territories":[{"target":"t4", "action":"disappear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -187,7 +187,7 @@
                     "subtitle":"Recyclage des pavés et matériaux de voirie en pierre naturelle",
                     "text": {"time":"200", "content":"Grâce au centre de recyclage, au lieu de recourir à du granit totalement «neuf» qui provient de Bretagne, du Tarn ou d’Espagne, <strong>la Ville de Paris peut utiliser 50% de matériaux recyclés !</strong> Ce dispositif permet d’économiser chaque année près d’un million d’euros sur l’achat des matériaux, 600 tonnes d'émissions de CO<sub>2</sub>, et 300 camions de 25 tonnes sur les routes.<br><br><em>Porteurs de projet : Direction de la Voirie et des Déplacements – <a href = \"http://www.paris.fr/\" target = \"_blank\">Mairie de Paris</a>.</em>"},
                     "flows": [{"vl":["2001"], "hl":["2000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
-                                 {"vl":["500","1100"], "hl":["1000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                                 {"vl":["4000","3100"], "hl":["3000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -197,16 +197,16 @@
                 [{
                     "subtitle":"Entretien et aménagement de la voirie parisienne",
                     "text": {"time":"200", "content":"La Mairie de Paris a mis en place un centre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !<strong>"},
-                    "flows": [{"vl":["1100", "2001", "500"], "hl":["1000", "2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["3100", "2001", "4000"], "hl":["3000", "2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":["s_button.next"], "hide":[]},
                     "functions":""
                 },
                 {
                     "subtitle":"Le centre de recyclage des matériaux parisiens à Bonneuil-sur-Marne",
-                    "text": {"time":"1000", "content":"La voirie parisienne totalise déjà 2,5 millions de tonnes de granit en place ! Lors de nouveaux aménagements ou de l'entretien, une partie de ce stock est déconstruite, et en l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
+                    "text": {"time":"3000", "content":"La voirie parisienne totalise déjà 2,5 millions de tonnes de granit en place ! Lors de nouveaux aménagements ou de l'entretien, une partie de ce stock est déconstruite, et en l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
                     
-                    "flows": [{"vl":["1000", "2000"], "hl":["500", "1100", "2001"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    "flows": [{"vl":["3000", "2000"], "hl":["4000", "3100", "2001"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
                     
                     "territories":[{"target":"t4", "action":"disappear", "parms":{}, "time":0}],
                     "ui":{"show":[], "hide":[]},

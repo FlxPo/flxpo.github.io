@@ -12,6 +12,8 @@ app.IntroView = Backbone.View.extend({
 
 	initialize:function() {
 
+		_.bindAll(this, "resizeBack");
+
 		this.content = {topleft:"Trois types de flux : matières, énergies, eaux",
 						topright1:"Accès aux projets innovants",
 						topright2:"<br>Trois échelles : Paris, Ile-de-France, Petite Couronne<br><br> ",
@@ -39,23 +41,24 @@ app.IntroView = Backbone.View.extend({
 		return this;
 	},
 
+	resizeBack:function() {
+		var win = $(window), w = win.innerWidth(), h = win.innerHeight();
+		this.$back.css({ width:w*0.97+'px', height:h*0.95+'px', top:0.025*h, left:0.015*w })
+	},
+
 	attachResize:function() {
 
 		var win = $(window), w = win.innerWidth(), h = win.innerHeight();
 			this.$back.css({ width:w*0.97+'px', height:h*0.95+'px', top:0.025*h, left:0.015*w })
-
-		var self = this;
-		function resizeBack() {
-			var win = $(window), w = win.innerWidth(), h = win.innerHeight();
-			self.$back.css({ width:w*0.97+'px', height:h*0.95+'px', top:0.025*h, left:0.015*w })
-		};
-		$(window).on("resize", resizeBack);
+		
+		$(window).on("resize", this.resizeBack);
 		return this;
 	},
 
 	// Removes all elements of the view
 	close:function() {
 		this.stopListening();
+		$(window).off("resize", this.resizeBack);
 		this.remove();
 	}
 

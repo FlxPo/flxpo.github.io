@@ -8,20 +8,24 @@ app.AppView = Backbone.View.extend({
 
     this.router = new app.Router();
 
+    console.log(window.location.pathname)
+
     var self = this;
     // Load init resource data
     $.ajax({
 
-      url:"data/init.json"
+      url:"data/init.json",
+      data: { get_param: 'value' },
+      dataType: 'json',
 
-    }).done(function(data) {
-
-      // Loads UI
-      self.ui = new app.UIView({init:data.ui});
-      // Loads territories
-      self.territories = new app.TerritoriesView({init:data.navigation});
-      // Loads router
-      Backbone.history.start();
+      success:function(data) {
+        // Loads UI
+        self.ui = new app.UIView({init:data.ui});
+        // Loads territories
+        self.territories = new app.TerritoriesView({init:data.navigation});
+        // Loads router
+        Backbone.history.start();
+      }
 
     });
 
@@ -32,6 +36,9 @@ app.AppView = Backbone.View.extend({
       // Store the previous (if existing) / current view for processing
       var previous = this.currentPage || null;
       var next = view;
+
+      // Unbind all listeners of previous view to avoid collisions with the next
+      previous && previous.stopAllListening();
 
       // Get the direction of the transition upward / downward / still
       var dz = previous
@@ -59,11 +66,10 @@ app.AppView = Backbone.View.extend({
         _.delay(function() {
           previous.transitionOut( {dz:dz, callback:destroyPrevious(previous)} );
           next.transitionIn( {dz:dz});
-        }, 300);
+        }, 500);
       }
 
       // Load/unload ui elements
-      console.log(previous)
       var d = previous === null ? 300 : 1250;
       this.ui.showButtons(next.model.get("ui_elements"), 1250);
 

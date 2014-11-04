@@ -13,18 +13,26 @@ app.ItemView = Backbone.View.extend({
 		this.input = new flow_collection();
 		this.output = new flow_collection();
 		this.recyclage = new flow_collection();
+		this.extraction = new flow_collection();
+		this.waste = new flow_collection();
 
 		var self = this;
 		var geom_url = this.model.get("geom");
 		if (geom_url) {
 
 			$.ajax({
-				"url":geom_url
-			}).done(function(data) {
-				self.model.set(data);
-				_.bind(self.createCanvas, self)(data);
-				self.parent.parent.$itemcontainer.prepend( self.render().el );
-				options.complete();
+
+				url:geom_url,
+      			data: { get_param: 'value' },
+      			dataType: 'json',
+
+				success:function(data) {
+					self.model.set(data);
+					_.bind(self.createCanvas, self)(data);
+					self.parent.parent.$itemcontainer.prepend( self.render().el );
+					options.complete();
+				}
+
 			});
 
 		} else {
@@ -37,7 +45,7 @@ app.ItemView = Backbone.View.extend({
 	createCanvas:function(data) {
 
 		//Create the raphael canvas to draw on according to current window size
-		var ws = getWindowSize();
+		var ws = utils.getWindowSize();
 		var w = ws.w, h = ws.h;
 
 		//Compute necessary transformations to reach target size and location
@@ -103,7 +111,7 @@ app.ItemView = Backbone.View.extend({
 		}
 
 		// Translate
-		var ws = getWindowSize();
+		var ws = utils.getWindowSize();
 		var w = ws.w, h = ws.h;
 		var xw = eval(m.get("x")) - (m.get("width")/2 * scaling * scaling || 0);
 		var yh = eval(m.get("y")) - (m.get("height")/2 * scaling * scaling || 0);
@@ -125,7 +133,7 @@ app.ItemView = Backbone.View.extend({
 	if (this.model.get("solution")) {
 		var s = Raphael(this.el, this.w*1.3, this.h*1.5);
 		$("svg", this.$el).css({position:"absolute"})
-		this.$el.children().first().css({top: -this.h*0.25, left:-this.w*0.15})
+		this.$el.children().first().css({top: -this.h*0.25, left:-this.w*0.15, opacity:0})
 
 		var a = this.w*1/2, b = this.h*1/2, dx = this.w*1.3/2, dy = this.h*1.5/2;
 
@@ -144,7 +152,7 @@ app.ItemView = Backbone.View.extend({
 		drawStick(150);
 
 		this.$solution = this.$el.children().first();
-		this.$solution.velocity({opacity:0}, {loop:true})
+		this.$solution.velocity({opacity:1}, {loop:true})
 
 	}
 
@@ -196,17 +204,24 @@ app.ItemView = Backbone.View.extend({
 	},
 
 	translate:function(args, delay) {
-		var ws = getWindowSize();
+		var ws = utils.getWindowSize();
 		var w = ws.w, h = ws.h;
 
-		this.$el.velocity({left:eval(args.x) - this.w/2, top:eval(args.y) - this.h/2}, {duration:parseInt(args.time), delay:delay, queue:false});
+		var m = this.model;
+		var scaling = this.scaling;
+
+		var xw = eval(args.x) - (m.get("width")/2 * scaling * scaling || 0);
+		var yh = eval(args.y) - (m.get("height")/2 * scaling * scaling || 0);
 
 		this.X = eval(args.x);
 		this.Y = eval(args.y);
 
-		var m = this.model;
-		this.fax = this.X+ (m.get("fax")*m.get("w_mod") || 0);
-		this.fay = this.Y+ (m.get("fay")*m.get("h_mod") || 0);
+		this.fax = this.X + (m.get("fax")*m.get("w_mod") || 0);
+		this.fay = this.Y + (m.get("fay")*m.get("h_mod") || 0);
+
+		console.log(this.fax)
+
+		this.$el.velocity({left:xw, top:yh}, {duration:parseInt(args.time), delay:delay, queue:false});
 	},
 
 	hideGround:function() {

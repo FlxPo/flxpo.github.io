@@ -13,8 +13,9 @@ app.Router = Backbone.Router.extend({
 
   initialize:function() {
 
-    this.listenTo(Backbone, "route:go", this.go)
-    this.listenTo(Backbone, "route:buildGo", this.buildGo)
+    this.listenTo(Backbone, "route:go", this.go);
+    this.listenTo(Backbone, "route:forceState", this.forceState);
+    this.listenTo(Backbone, "route:buildGo", this.buildGo);
 
     this.state = {
       rootState:null,
@@ -32,16 +33,27 @@ app.Router = Backbone.Router.extend({
 
   reloadView:function() {
     var self = this;
-  var doit;
-  return function() {
-    // if (self.curr_v !== "start") {
+    var doit;
+    return function() {
       clearTimeout(doit);
       doit = setTimeout(function() {
-        console.log("resize")
         self.reload();
       }, 500);
-    // }
-  }
+    }
+  },
+
+  forceState:function(args) {
+    if (this.state.rootState !== null && this.state.rootState !== "p") {
+
+      if(args.state.rootState) this.state.rootState = args.state.rootState;
+      if(args.state.territoryState) this.state.territoryState = args.state.territoryState;
+      if(args.state.typeState) this.state.typeState = args.state.typeState;
+      if(args.state.timeState) this.state.timeState = args.state.timeState;
+
+      Backbone.trigger("ui:route", {state:this.state});
+      this.navigate(this.stateToRoute(this.state));
+
+    }
   },
 
   go:function(route) {
@@ -49,18 +61,20 @@ app.Router = Backbone.Router.extend({
     this.navigate(route, {trigger:true});
   },
 
-  reload:function() {
+  reload:function(intro) {
+    if (intro) this.intro = false;
     Backbone.history.loadUrl(Backbone.history.fragment);
-    // this.navigate(Backbone.history.fragment, {trigger:true});
+  },
+
+  stateToRoute:function(args) {
+    a = [];
+    _.each(args, function(value) {value !== null && a.push(value)});
+    return a.join("/");
   },
 
   buildGo:function(target_state) {
 
-    function concatRoute(args) {
-      a = [];
-      _.each(args, function(value) {value !== null && a.push(value)});
-      return a.join("/");
-    }
+    var self = this;
 
     var routeBuilders = {
       root:function(args) {
@@ -72,7 +86,7 @@ app.Router = Backbone.Router.extend({
         } else {
           args.state = _.clone(args.previous_state);
         }
-        return(concatRoute(args.state));
+        return(self.stateToRoute(args.state));
       },
       territory:function(args) {
         args.state.rootState = "t";
@@ -85,37 +99,38 @@ app.Router = Backbone.Router.extend({
         }
 
         args.state.timeState = args.state.timeState || 1;
-        return(concatRoute(args.state));
+        return(self.stateToRoute(args.state));
       },
       type:function(args) {
         args.state.rootState = args.state.rootState || "t";
         args.state.territoryState = args.state.territoryState || "paris";
         args.state.typeState = args.id;
         args.state.timeState = args.state.timeState || 1;
-        return(concatRoute(args.state));
+        return(self.stateToRoute(args.state));
       },
       project:function(args) {
         args.state.rootState = "p";
         args.state.territoryState = args.id;
         args.state.typeState = null;
         args.state.timeState = null;
-        return(concatRoute(args.state));
+        return(self.stateToRoute(args.state));
       },
       time:function(args) {
         args.state.rootState = args.state.rootState || "t";
         args.state.territoryState = args.state.territoryState || "paris";
         args.state.typeState = args.state.typeState || "matter";
         args.state.timeState = args.state.timeState === "1" ? "2" : "1";
-        return(concatRoute(args.state));
+        return(self.stateToRoute(args.state));
       }
     };
 
     var s = _.clone(this.state);
+
     // Build the route and update the state
     var route = routeBuilders[target_state.change]( {state:this.state, previous_state:this.previous_state, id:target_state.id} );
     this.previous_state = s;
     
-    this.go( route );
+    this.go(route);
   },
 
   loadView: function(view, args) {
@@ -127,21 +142,25 @@ app.Router = Backbone.Router.extend({
       start:function(args) {
         var sv = new app.StartView( {model:new app.Start()} );
         app.instance.goto(sv);
+        self.state.rootState = "start";
+        self.state.territoryState = null;
+        self.state.typeState = null;
+        self.state.timeState = null;
       },
       about:function(args) {
         var av = new app.AboutView( {model:new app.About()} );
         app.instance.goto(av);
       },
       projects:function(args) {
-        app.instance.territories.addTerritoryView( {id:"projects", type:"matter"} )
+        var pv = new app.TerritoryView( {model:app.instance.territories.territories.get(projects), time:"1", type:"matter", goto:_.bind(app.instance.goto, app.instance)} )
         self.state.rootState = "p";
         self.state.territoryState = null;
         self.state.typeState = null;
         self.state.timeState = null;
       },
       territory:function(args) {
-        // app.instance.territories.addTerritoryView( {id:args.id, time:args.time, type:args.type, mt:args.mt} )
         app.instance.stopListeningPrevious();
+        console.log(app.instance.territories.territories)
         var tv = new app.TerritoryView( {model:app.instance.territories.territories.get(args.id), time:args.time, type:args.type, mt:args.mt, intro:args.intro, goto:_.bind(app.instance.goto, app.instance)} )
         self.state.rootState = "t";
         self.state.territoryState = args.id;
@@ -149,7 +168,6 @@ app.Router = Backbone.Router.extend({
         self.state.timeState = args.time;
       },
       project:function(args) {
-        // app.instance.territories.addTerritoryView( {id:args.id, time:1, type:"matter"} )
         app.instance.stopListeningPrevious();
         var tv = new app.TerritoryView( {model:app.instance.territories.territories.get(args.id), time:1, type:"matter", goto:_.bind(app.instance.goto, app.instance)} )
         // TerritoryView( {id:args.id, time:1, type:"matter"} )
@@ -179,8 +197,6 @@ app.Router = Backbone.Router.extend({
     // Validate projects route parameters
     } else if (view === "project") {
 
-      console.log(args.id)
-
       valid_projects = ["p1","p2","p3", "p4", "p5", "p6", "p7","p8","p9","p10","p11","p12","p13","p14","p15","p16"];
       return _.indexOf(valid_projects, args.id) !==-1;
 
@@ -206,12 +222,17 @@ app.Router = Backbone.Router.extend({
 
     var fired = false;
 
+    console.log(this.intro)
+
     // Catch a first_pass on Paris for intro
     var intro = false;
-    if (!this.intro && id === "paris" && type === "matter" && time === "1") {
+    // if (!this.intro && id === "paris" && type === "matter" && time === "1") {
+    if (this.previous_state.rootState === "start" || !this.intro) {
       this.intro = true;
       intro = true;
     }
+
+    console.log(intro)
     
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {
@@ -224,7 +245,6 @@ app.Router = Backbone.Router.extend({
           // Catch a 2012/matter route
           this.state.timeState = args.time;
           var mt = (this.state.timeState === "2" && this.state.typeState === "matter")
-          console.log(mt)
 
           if (mt) {
             Backbone.trigger("stories:go", {id:"last"});
@@ -243,7 +263,6 @@ app.Router = Backbone.Router.extend({
 
       if (!fired) {
         var mt = (time === "2" && type === "matter");
-        console.log(mt)
         var mod_args = _.extend(args, {mt:mt, intro:intro});
         this.validateRoute("territory", args) && this.loadView("territory", args); // TODO : handle false
         
@@ -251,7 +270,7 @@ app.Router = Backbone.Router.extend({
         this.state.typeState = type;
         this.state.timeState = time;
 
-        Backbone.trigger("ui:route", {state:_.clone(this.state)});
+        // Backbone.trigger("ui:route", {state:_.clone(this.state)});
       }
   },
 

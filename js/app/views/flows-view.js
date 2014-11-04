@@ -15,6 +15,9 @@ app.FlowsView = Backbone.View.extend({
 		this.listenTo(Backbone, "flows:parent", this.loadParent);
 	    this.listenTo(Backbone, "flows:changeYear", this.changeYear);
 	    this.listenTo(Backbone, "flows:nav", this.nav);
+	    this.listenTo(Backbone, "flows:expand", this.expand);
+	    this.listenTo(Backbone, "flows:contract", this.contract);
+
 	},
 
 	render: function(args) {
@@ -41,11 +44,11 @@ app.FlowsView = Backbone.View.extend({
 		// Scale the flows
 		var model_unit = vl_models[0] || hl_models[0];
 		var scaling = !args.scaling ? false : true;
-		this.scale = scaling ? this.findScale( {unit:(model_unit && model_unit.get("unit")) || "", virtual:model_unit.get("virtual") || false}) : this.scale;
+		this.scale = scaling ? this.findScale( {unit:(model_unit && model_unit.get("unit")) || "", virtual:(model_unit && model_unit.get("virtual")) || false}) : this.scale;
 		this.scaleFlows( {time:t, target_flows:vl_models, scale:this.scale} );
 
 		// Offset the flows
-		this.offsetFlows( {target_flows:vl_models} );
+		this.offsetFlows( {target_flows:vl_models, ref_from:args.ref_from, ref_to:args.ref_to, ref_recy:args.ref_recy, ref_extr:args.ref_extr, ref_wast:args.ref_wast} );
 
 		// Create each flow path
 		_.each(vl_models, function(flow) {
@@ -53,6 +56,7 @@ app.FlowsView = Backbone.View.extend({
 			if (!this.views_collection.get(flow.get("id"))) {
 
 				var ifrom_id = flow.get("from"), ito_id = flow.get("to");
+
 
 				// Create the view and append it
 				var fv = this.views_collection.add( {model:flow, id:flow.get("id"), ifrom:items_views.get(ifrom_id), ito:items_views.get(ito_id), parent:this.parent}  );
@@ -131,13 +135,16 @@ app.FlowsView = Backbone.View.extend({
 		// Dispatch the flows in the items views
 		_.each(vl_models, function(flow) {
 
-			if (!this.views_collection[flow.get("id")]) {
+			if (!this.views_collection.get(flow.get("id"))) {
 
 				// Inputs Outputs
 				var ifrom_id = flow.get("from"), ito_id = flow.get("to");
+				var f_id = flow.get("id");
 				flow.get("type") !== "extraction" && items_views.get(ifrom_id).output.add(flow);
 				flow.get("type") !== "waste" && items_views.get(ito_id).input.add(flow);
 				flow.get("type") === "recyclage" && items_views.get(ifrom_id).recyclage.add(flow);
+				flow.get("type") === "extraction" && items_views.get(ifrom_id).extraction.add(flow);
+				flow.get("type") === "waste" && items_views.get(ifrom_id).waste.add(flow);
 
 			}
 
@@ -151,14 +158,17 @@ app.FlowsView = Backbone.View.extend({
 		_.each(hl_models, function(flow) {
 			// Inputs Outputs
 			var ifrom_id = flow.get("from"), ito_id = flow.get("to");
-			flow.get("type") !== "extraction" && items_views.get(ito_id).input.remove(flow);
-			flow.get("type") !== "waste" && items_views.get(ifrom_id).output.remove(flow);
-			flow.get("type") === "recyclage" && items_views.get(ifrom_id).recyclage.remove(flow);
+			var f_id = flow.get("id");
+			flow.get("type") !== "extraction" && items_views.get(ito_id).input.remove(f_id);
+			flow.get("type") !== "waste" && items_views.get(ifrom_id).output.remove(f_id);
+			flow.get("type") === "recyclage" && items_views.get(ifrom_id).recyclage.remove(f_id);
+			flow.get("type") === "extraction" && items_views.get(ifrom_id).extraction.remove(f_id);
+			flow.get("type") === "waste" && items_views.get(ifrom_id).waste.remove(f_id);
 
-			self.views_collection.get(flow.get("id")).close();
+			self.views_collection.get(f_id).close();
 			_.delay(function() {
-				self.views_collection.get(flow.get("id")).remove();
-				self.views_collection.remove(flow.get("id"))
+				self.views_collection.get(f_id).remove();
+				self.views_collection.remove(f_id)
 			}, 300);
 		})
 	},
@@ -170,7 +180,7 @@ app.FlowsView = Backbone.View.extend({
 
 	findScale:function(args) {
 
-		var max_f = 0, min_h = 10000;
+		var max_f = 0, min_h = 10000, min_h_ref = 0;
 
 		// For each territory
 		_.each(this.items_views.views_collection.models, function(item) {
@@ -187,12 +197,13 @@ app.FlowsView = Backbone.View.extend({
 				max_f = Math.max(max_f, is4, os4, is9, os9);
 				// Find the minimum height
 				min_h = item.h < min_h ? item.h : min_h;
+				if (item.model.get("ref")) min_h_ref = item.h;
 			}
 		});
 
 		// Find the overall maximum and the scaling factor
 		var scale_vol = Math.max(2,max_f);
-		var scale_ref = min_h*0.95;
+		var scale_ref = (min_h_ref || min_h)*0.95;
 		var scale = Math.round(10000*scale_ref/scale_vol)/10000;
 
 
@@ -210,11 +221,15 @@ app.FlowsView = Backbone.View.extend({
 			flow.set("is_zero", false);
 			if (v === 0) { v = 0; flow.set("is_zero", true); }
 			else if (v < 2) { v=2; }
-			flow.set("volume", v);
+			flow.set("volume", Math.round(v*10)/10);
 		});
 	},
 
 	offsetFlows:function(args) {
+
+		var vl = [];
+		_.each(args.target_flows, function(flow) {vl.push(flow.id)});
+
 		var self = this;
 		_.each(this.items_views.views_collection.models, function(item) {
 			
@@ -229,12 +244,22 @@ app.FlowsView = Backbone.View.extend({
 					type_off = "offsetfrom"
 				} else if (type === "recyclage") {
 					type_off = "offsetrecy";
+				} else if (type === "extraction") {
+					type_off = "offsetextr";
+				} else if (type === "waste") {
+					type_off = "offsetwast";
 				}
 
+
 				var flows = args.item[type].models;
+				flows = _.filter(flows, function(flow) {return (_.indexOf(vl, flow.id) > -1)});
 
 				// Sorting
-				type === "input" ? flows.sort(_.bind(self.masterInputSort, self)) : flows.sort(_.bind(self.masterOutputSort, self));
+				// type === "input" ? utils.mergeSort(flows, _.bind(self.masterInputSort, self)) : utils.mergeSort(flows, _.bind(self.masterOutputSort, self));
+				
+				flows = utils.mergeSort(flows, _.bind(self.idSort, self));
+				flows = utils.mergeSort(flows, _.bind(self.volumeSort, self));
+				// console.log(flows)
 
 				// Offseting
 				var sum = 0;
@@ -248,17 +273,37 @@ app.FlowsView = Backbone.View.extend({
 				})
 
 				// Then offset the flows
+				var ref = args.ref ? args.ref : 0;
+
 				_.each(flows, function(flow, index) {
-					flow.set(type_off, off[index] - sum/2);
+					flow.set(type_off, off[index] - sum/2 + ref);
 				})
 
 			}
 
-			offset({item:item, type:"input"});
-			offset({item:item, type:"output"});
-			offset({item:item, type:"recyclage"});
+			offset({item:item, type:"input", ref:args.ref_to});
+			offset({item:item, type:"output", ref:args.ref_from});
+			offset({item:item, type:"recyclage", ref:args.ref_recy});
+			offset({item:item, type:"extraction", ref:args.ref_extr});
+			offset({item:item, type:"waste", ref:args.ref_wast});
 		
 		});
+	},
+
+	idSort:function(a, b) {
+		var a_id = parseInt(a.get("id")),
+			b_id = parseInt(b.get("id"));
+		var r = (b_id < a_id);
+		// console.log(b_id + " " + a_id + " " + r);
+		return r;
+	},
+
+	volumeSort:function(a, b) {
+		var a_volume = parseInt(a.get("volume")),
+			b_volume = parseInt(b.get("volume")),
+			sib = this.areSiblings(a,b);
+		var r = sib ? (a_volume > b_volume) : 0;
+		return r;
 	},
 
 	masterInputSort:function(a, b) {
@@ -271,23 +316,28 @@ app.FlowsView = Backbone.View.extend({
 			b_vol = b.get("volume"),
 			sib = this.areSiblings(a,b);
 
-		if (a_type === b_type)  {
-			if (sib) {
-				return b_vol - a_vol;
-			} else {
-				return b_id - a_id;
-			}
+		var r = 0;
+
+		if (a_type === b_type && sib)  {
+			// if (sib) {
+				r = (b_vol > a_vol);
+			// } else {
+			// 	r = b_id - a_id;
+			// }
 		} else if (a_type === "extraction" && b_type === "input") {
-			return -1;
+			r = -1;
 		} else if (a_type === "recyclage" && b_type === "input") {
-			return 1;
+			r = +1;
 		} else if (a_type === "input" && b_type === "extraction") {
-			return 1;
+			r = 1;
 		} else if (a_type === "input" && b_type === "recyclage") {
-			return -1;
+			r = +1;
 		} else {
-			return 0;
+			r = +(b_id > a_id);
 		}
+
+		console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
+		return r;
 
 	},
 
@@ -301,23 +351,32 @@ app.FlowsView = Backbone.View.extend({
 			b_vol = b.get("volume"),
 			sib = this.areSiblings(a,b);
 
-		if (a_type === b_type)  {
-			if (sib) {
-				return b_vol - a_vol;
-			} else {
-				return +b_id - a_id;
-			}
-		} else if (a_type === "waste" && b_type === "output") {
-			return -1;
+		if (a_type === b_type && sib)  {
+			// if (sib) {
+				r = (b_vol > a_vol);
+			// } else {
+			// 	r = +b_id - a_id;
+			// }
+		} else if (a_type === "waste" && (b_type === "output" || b_type === "input")) {
+			r = -1;
+		} else if (b_type === "waste" && (a_type === "output" || a_type === "input")) {
+			r = +1;
 		} else if (a_type === "recyclage" && b_type === "output") {
-			return 1;
-		} else if (a_type === "output" && b_type === "waste") {
-			return 1;
+			r = +1;
+		} else if ((a_type === "output" || a_type === "input") && b_type === "waste") {
+			r = -1;
 		} else if (a_type === "output" && b_type === "recyclage") {
-			return -1;
+			r = -1;
+		} else if (a_type === "recyclage" && b_type === "waste") {
+			r = -1;
+		} else if (a_type === "waste" && b_type === "recyclage") {
+			r = -1;
 		} else {
-			return 0;
+			r = (b_id < a_id);
 		}
+
+		console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
+		return r;
 	},
 
 	volumeSort:function(a, b) {
@@ -358,7 +417,24 @@ app.FlowsView = Backbone.View.extend({
 	},
 
 	loadChildren:function(args) {
-		this.render({view_list:args.ids, hide_list:[args.parentid], time:"same"})
+
+		// Test if all children have valid volumes (ie non NAs)
+		var pm = this.collection.get(args.parentid);
+		var ch_ids = pm.get("children");
+		var ch_models = _.filter(this.collection.models, function(model) {return (_.indexOf(ch_ids, model.id) > -1)});
+		var valid = true;
+		_.each(ch_models, function(model) {if (model.get("volume_o4") === -1 || model.get("volume_o9") === -1) {valid = false}})
+
+		if (valid) {
+			// Store the offset of the parent flow, used when rendering the children
+			var of = pm.get("offsetfrom");
+			var ot = pm.get("offsetto");
+			var or = pm.get("offsetrecy");
+			var oe = pm.get("offsetextr");
+			var ow = pm.get("offsetwast");
+
+			this.render({view_list:args.ids, hide_list:[args.parentid], time:"same", ref_from:of, ref_to:ot, ref_recy:or, ref_extr:oe, ref_wast:ow})
+		}
 	},
 
 	nav:function(args) {
@@ -370,17 +446,31 @@ app.FlowsView = Backbone.View.extend({
 				}
 			});
 		} else {
-			hl = args.hl
+			hl = args.hl;
 		}
 		this.render({view_list:args.vl, hide_list:hl, time:args.time, popups:args.popups, scaling:args.scaling, mt:args.mt})
 	},
 
 	loadParent:function(args) {
-		var pa = this.collection.get(args.parentid);
+
+		// Retrieve the offset of the parent
+		var pm = this.collection.get(args.parentid);
+
+		var of = pm.get("offsetfrom");
+		var ot = pm.get("offsetto");
+		var or = pm.get("offsetrecy");
+		var oe = pm.get("offsetextr");
+		var ow = pm.get("offsetwast");
 
 		// Search for siblings and other flows whose level is below the parent
-		var hl = pa.get("children");
-		this.render({view_list:[args.parentid], hide_list:hl, time:"same"})
+		var hl = [];
+		var pm_level = pm.get("level");
+		var pm_type = pm.get("type");
+
+		var sub_level = [];
+		_.each(this.views_collection.models, function(flow) {console.log(flow.id);if (flow.id != args.parentid && flow.model.get("level") !== pm_level && flow.model.get("type") === pm_type) hl.push(flow.id)})
+
+		this.render({view_list:[args.parentid], hide_list:hl, time:"same", ref_from:of, ref_to:ot, ref_recy:or, ref_extr:oe, ref_wast:ow})
 	},
 
 	changeYear:function(args) {
@@ -389,6 +479,48 @@ app.FlowsView = Backbone.View.extend({
 			vl.push(flow.id);
 		});
 		this.render( {view_list:vl, hide_list:[], time:args.time, mt:args.mt} );
+	},
+
+	expand:function(args) {
+
+		var vl = [];
+		var hl = [];
+
+		// Feed the view list with the leaves
+		_.each(this.collection.models, function(model) {
+			model.get("leaf") && (model.get("nature") === args.type) && vl.push(model.id);
+		})
+
+		// Feed the hide list with flows already drawn but that are not leaves
+		_.each(this.views_collection.models, function(flow) {
+			if ((_.indexOf(vl, flow.id) < 0)) {
+				hl.push(flow.id);
+			}
+		});
+
+		this.render( {view_list:vl, hide_list:hl, time:"same"} );
+
+	},
+
+	contract:function(args) {
+
+		var vl = [];
+		var hl = [];
+
+		// Feed the view list with the leaves
+		_.each(this.collection.models, function(model) {
+			model.get("root") && (model.get("nature") === args.type) && vl.push(model.id);
+		})
+
+		// Feed the hide list with flows already drawn but that are not leaves
+		_.each(this.views_collection.models, function(flow) {
+			if ((_.indexOf(vl, flow.id) < 0)) {
+				hl.push(flow.id);
+			}
+		});
+
+		this.render( {view_list:vl, hide_list:hl, time:"same"} );
+
 	}
 
 });

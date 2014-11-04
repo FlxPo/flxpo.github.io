@@ -29,7 +29,7 @@
                         "geom":"data/graphics/geom_pc-alone.json",
                         "f_anchor_x":"0",
                         "f_anchor_y":"0",
-                        "iw":"1",
+                        "iw":"1.5",
                         "ih":"0.7",
                         "x":"0.5*w",
                         "y":"0.4*h",
@@ -51,7 +51,7 @@
     "color":"#000000",
     "level":"0",
     "parent":"",
-    "children":"1100;1200",
+    "children":"1100;900",
     "siblings":"",
     "root":"false",
     "leaf":"false"
@@ -91,7 +91,7 @@
     "color":"#E2A40A",
     "level":"2",
     "parent":"1100",
-    "children":"1111;1112;1113",
+    "children":"",
     "siblings":"1120",
     "root":"false",
     "leaf":"false"
@@ -171,7 +171,7 @@
     "color":"#F75454",
     "level":"2",
     "parent":"1100",
-    "children":"1121;1122;1123;1124;1125",
+    "children":"",
     "siblings":"1110",
     "root":"false",
     "leaf":"false"
@@ -277,7 +277,7 @@
     "leaf":"true"
   },
   {
-    "id":"1200",
+    "id":"900",
     "index":"13",
     "name":"Extractions locales",
     "nature":"matter",
@@ -291,13 +291,13 @@
     "color":"#DBE00B",
     "level":"1",
     "parent":"1000",
-    "children":"1210;1220;1230",
+    "children":"910;920;930",
     "siblings":"",
     "root":"true",
     "leaf":"false"
   },
   {
-    "id":"1210",
+    "id":"910",
     "index":"14",
     "name":"Biomasse",
     "nature":"matter",
@@ -310,14 +310,14 @@
     "unit":"kt/an",
     "color":"#61CC1B",
     "level":"2",
-    "parent":"1200",
-    "children":"1211;1212",
-    "siblings":"1220;1230",
+    "parent":"900",
+    "children":"911;912",
+    "siblings":"920;930",
     "root":"false",
     "leaf":"false"
   },
   {
-    "id":"1211",
+    "id":"911",
     "index":"15",
     "name":"Biomasse agricole<br>et gibier",
     "nature":"matter",
@@ -330,14 +330,14 @@
     "unit":"kt/an",
     "color":"#88963D",
     "level":"3",
-    "parent":"1210",
+    "parent":"910",
     "children":"",
-    "siblings":"1212",
+    "siblings":"912",
     "root":"false",
     "leaf":"true"
   },
   {
-    "id":"1212",
+    "id":"912",
     "index":"16",
     "name":"Biomasse forestière",
     "nature":"matter",
@@ -350,14 +350,14 @@
     "unit":"kt/an",
     "color":"#3B7726",
     "level":"3",
-    "parent":"1211",
+    "parent":"911",
     "children":"",
-    "siblings":"1211",
+    "siblings":"911",
     "root":"false",
     "leaf":"true"
   },
   {
-    "id":"1220",
+    "id":"920",
     "index":"17",
     "name":"Minéraux",
     "nature":"matter",
@@ -370,14 +370,14 @@
     "unit":"kt/an",
     "color":"#77C6C2",
     "level":"2",
-    "parent":"1200",
+    "parent":"900",
     "children":"",
-    "siblings":"1210;1230",
+    "siblings":"910;930",
     "root":"false",
     "leaf":"true"
   },
   {
-    "id":"1230",
+    "id":"930",
     "index":"18",
     "name":"Produits pétroliers",
     "nature":"matter",
@@ -390,9 +390,9 @@
     "unit":"kt/an",
     "color":"#33250A",
     "level":"2",
-    "parent":"1200",
+    "parent":"900",
     "children":"",
-    "siblings":"1210;1230",
+    "siblings":"910;930",
     "root":"false",
     "leaf":"true"
   },
@@ -1286,8 +1286,9 @@
             "display_dot":true,       
             "steps" :
                 [{
+                    "subtitle":"Les flux de matières en Petite Couronne",
                     "text": {"time":"200","content":"Le niveau métropolitain représente des enjeux importants de coordination et de synergie entre les acteurs du territoire pour améliorer le métabolisme urbain. A l’heure actuelle, sur ce territoire dont la gouvernance est en construction, les données disponibles ne sont pas aussi fines que pour Paris ou l’Ile-de-France mais cela sera amené à évoluer avec la constitution de la Métropole du Grand Paris."},
-                    "flows": [{"vl":["1100","1200","2100", "1900"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["1100","900","2100", "1900"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":["matter"], "hide":["energy", "water"]},
                     "functions":""
@@ -1300,8 +1301,9 @@
             "display_dot":true,       
             "steps" :
                 [{
+                    "subtitle":"Les tendances d'évolution",
                     "text": {"time":"200","content":"Les tendances d’évolution des importations de marchandises entre 2003 et 2010 sont à la baisse pour la Petite Couronne (-27%) alors que celle des exportations sont en hausse (+25%)."},
-                    "flows": [{"vl":["1100","1200","2100", "1900"], "hl":"[]", "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "anim_trend":true, "mt":true}],
+                    "flows": [{"vl":["1100","900","2100", "1900"], "hl":"[]", "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "anim_trend":true, "mt":true}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":["matter"], "hide":["energy", "water"]},
                     "functions":""

@@ -54,6 +54,10 @@ app.ItemProjectView = Backbone.View.extend({
 	clk:function() {
 		var id = this.model.get("id");
 		id !== "p0" && Backbone.trigger("route:buildGo", {change:"project", id:id});
+	},
+
+	close:function() {
+		this.stopListening();
 	}
 
 });

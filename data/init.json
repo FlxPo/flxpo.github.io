@@ -12,21 +12,21 @@
 	"id":"paris",
 	"title": "PARIS Page",
 	"z":2,
-	"ui_elements":["matter", "energy", "water", "p", "paris", "pc", "idf", "time", "about", "share"],
+	"ui_elements":["matter", "energy", "water", "p", "paris", "pc", "idf", "time", "about", "share", "expand", "contract"],
 	"data_url":"data/territories/paris_view_en.json"
 },
 {
 	"id":"pc",
 	"title": "PC Page",
 	"z":1,
-	"ui_elements":["matter", "p", "paris", "pc", "idf", "time", "about", "share"],
+	"ui_elements":["matter", "p", "paris", "pc", "idf", "time", "about", "share", "expand", "contract"],
 	"data_url":"data/territories/pc_view_en.json"
 },
 {
 	"id":"idf",
 	"title": "IDF Page",
 	"z":0,
-	"ui_elements":["matter", "p", "paris", "pc", "idf", "time", "about", "share"],
+	"ui_elements":["matter", "p", "paris", "pc", "idf", "time", "about", "share", "expand", "contract"],
 	"data_url":"data/territories/idf_view_en.json"
 },
 {
@@ -282,7 +282,7 @@
 	{
 		"el":"#about_b",
 		"id":"about",
-		"change": "root",
+		"change": "",
 		"bg-col-n":"#eee",
 		"bg-col-a":"#ddd",
 		"bg-col-c":"#aaa",

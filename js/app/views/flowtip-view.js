@@ -17,7 +17,7 @@ app.FlowTipView = Backbone.View.extend({
 	initialize: function(options) {
 		this.parent = options.parent;
 		this.content = _.pick( this.parent.model.attributes, "name", "volume", "unit", "children", "parent" );
-		this.focus_color = darkenColor(this.parent.model.get("a_color"), 0.55);
+		this.focus_color = utils.darkenColor(this.parent.model.get("a_color"), 0.55);
 		this.rendered = false;
 
 		this.pos = {"is_zero":this.parent.model.get("is_zero")};
@@ -87,7 +87,7 @@ app.FlowTipView = Backbone.View.extend({
 			y = path[mid + noise].y;
 		
 		var vol = this.parent.model.get("volume");
-		var vol_c = constrainNumber(vol, 20, 60)*0.6;
+		var vol_c = utils.constrainNumber(vol, 20, 60)*0.6;
 		this.vol_c = vol_c;
 
 		// Store parms for auto layout		
@@ -133,7 +133,7 @@ app.FlowTipView = Backbone.View.extend({
 	renderVolume:function(year) {
 		var y = String(year) === "1" ? "volume_o4" : "volume_o9";
 		if (!this.parent.model.get("virtual") && this.parent.model.get(y) !== -1) {
-			var vol = formatVolume(this.parent.model.get(y), " ");
+			var vol = utils.formatVolume(this.parent.model.get(y), " ");
 			this.$volume.html(vol);
 		} else {
 			this.$volume.addClass("hidden")

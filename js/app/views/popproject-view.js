@@ -15,13 +15,12 @@ app.PopProjectView = Backbone.View.extend({
 	initialize:function(options) {
 		_.bindAll(this, "renderClean")
 		this.item = options.item;
+		this.id = this.model.get("id");
 	},
 
 	render:function() {
 		this.renderContent()
 			.cacheComponents()
-			.renderGeometry()
-			.correctPosition();
 			return this;
 	},
 
@@ -59,6 +58,10 @@ app.PopProjectView = Backbone.View.extend({
 	},
 
 	renderClean:function() {
+
+		this.renderGeometry()
+			.correctPosition();
+
 		var w = this.$tip.width(), h = this.$tip.height();
 		var offy = this.model.get("type") === "local" ? 60 : 40;
 		var offx = this.model.get("type") === "local" ? 10 : 15;
@@ -66,18 +69,21 @@ app.PopProjectView = Backbone.View.extend({
 	},
 
 	clk:function() {
-		var id = this.model.get("id");
-		id !== "p0" && Backbone.trigger("route:buildGo", {change:"project", id:id});
+		if (this.id === "px") {
+			Backbone.trigger("route:buildGo", {change:"root", id:"p"});
+		} else if (this.id !== "p0") {
+			Backbone.trigger("route:buildGo", {change:"project", id:id});
+		}
 	},
 
 	over:function() {
-		Backbone.trigger("projects:focus", {id:this.model.get("id"), freezePop:true})
-		this.model.get("id") === "p0" && this.$tip.addClass("show_h");
+		Backbone.trigger("projects:focus", {id:this.id, freezePop:true});
+		(this.id === "p0" || this.id === "px") && this.$tip.addClass("show_h");
 	},
 
 	out:function() {
-		Backbone.trigger("projects:unfocus", {id:this.model.get("id")})
-		this.model.get("id") === "p0" && this.$tip.removeClass("show_h");
+		Backbone.trigger("projects:unfocus", {id:this.id});
+		(this.id === "p0" || this.id === "px") && this.$tip.removeClass("show_h");
 	},
 
 	focus:function() {
@@ -90,6 +96,7 @@ app.PopProjectView = Backbone.View.extend({
 	},
 
 	close:function() {
+		this.stopListening();
 		this.pin_b && this.pin_b.remove();
 	}
 

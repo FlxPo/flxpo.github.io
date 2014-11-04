@@ -10,7 +10,6 @@ app.TerritoryView = Backbone.View.extend({
 
 		// Load intro if needed
 		this.intro = options.intro;
-		
 
 		// Load core data of the view
 		var data_url = this.model.get("data_url");
@@ -20,30 +19,35 @@ app.TerritoryView = Backbone.View.extend({
 
 		$.ajax({
 
-			url:data_url
+			url:data_url,
+      		data: { get_param: 'value' },
+      		dataType: 'json',
 
-		}).done(function(data) {
-			
-			// Load Items
-			var items = new app.ItemCollection(data.items);
-			self.items_views = new app.ItemsView( {parent:self, collection:items} );
+      		success:function(data) {
 
-			// Load flows
-			var flows = new app.FlowCollection(data.flows);
-			self.flows_views = new app.FlowsView( {parent:self, collection:flows, items_views:self.items_views} );
+				// Load Items
+				var items = new app.ItemCollection(data.items);
+				self.items_views = new app.ItemsView( {parent:self, collection:items} );
 
-			// Load projects
-			if (data.projects) {
-				var projects = new app.ProjectCollection(data.projects);
-				self.projects_views = new app.ProjectsView( {parent:self, collection:projects, items_views:self.items_views} );
+				// Load flows
+				var flows = new app.FlowCollection(data.flows);
+				self.flows_views = new app.FlowsView( {parent:self, collection:flows, items_views:self.items_views} );
+
+				// Load projects
+				if (data.projects) {
+					var projects = new app.ProjectCollection(data.projects);
+					var showpanel = (self.model.get("id") === "projects");
+					self.projects_views = new app.ProjectsView( {parent:self, collection:projects, items_views:self.items_views, showpanel:showpanel} );
+				}
+
+				// Load stories
+				var stories = new app.StoryCollection(data.stories[options.type]);
+				self.stories_views = new app.StoriesView( {collection:stories} );
+
+				// Load view
+				options.goto(self);
+
 			}
-
-			// Load stories
-			var stories = new app.StoryCollection(data.stories[options.type]);
-			self.stories_views = new app.StoriesView( {collection:stories} );
-
-			// Load view
-			options.goto(self);
 
 		})
 
@@ -56,8 +60,8 @@ app.TerritoryView = Backbone.View.extend({
 			if (this.intro) {
 				var iv = new app.IntroView();
 				$("body").append( iv.render().el );
-				console.log(iv)
-				iv.$back.velocity({opacity:0.6}, {duration:300, delay:250});
+				iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
+				this.iv = iv;
 			}
 
 
@@ -102,6 +106,25 @@ app.TerritoryView = Backbone.View.extend({
 		return this;
 	},
 
+	stopAllListening:function() {
+		// items:loaded listener
+		this.stopListening();
+
+		// items:animate listener
+		this.items_views.stopListening();
+
+		// flows:children flows:parent flows:changeYear flows:nav listeners
+		this.flows_views.stopListening();
+
+		// stories:go listener
+		this.stories_views.stopListening();
+
+		// project:focus projetc:unfocus listener
+		this.projects_views && this.projects_views.stopListening();
+
+		this.iv && this.iv.stopListening();
+	},
+
 	// Removes all elements of the view
 	close:function() {
 
@@ -117,6 +140,8 @@ app.TerritoryView = Backbone.View.extend({
 			this.projects_views.close();
 			this.projects_views.remove();
 		}
+
+		this.iv && this.iv.close();
 
 		this.stopListening();
 	},
@@ -137,6 +162,10 @@ app.TerritoryView = Backbone.View.extend({
 		this.$storycontainer.velocity("fadeOut", {duration:300});
 		this.$flowcontainer.velocity("fadeOut", {duration:300});
 		this.$popcontainer.velocity("fadeOut", {duration:300});
+
+		if (this.projects_views) {
+			this.projects_views.exitPanel();
+		}
 
 		var dz = options.dz || 0, t = "0%";
 		if (dz === 0) {

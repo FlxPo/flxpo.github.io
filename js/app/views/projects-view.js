@@ -20,6 +20,9 @@ app.ProjectsView = Backbone.View.extend({
 		this.listenTo(Backbone, "projects:focus", this.focusProject);
 		this.listenTo(Backbone, "projects:unfocus", this.unfocusProject);
 
+		// Keep the panel hidden ?
+		this.showpanel = options.showpanel;
+
 	},
 
 	render:function() {
@@ -32,7 +35,11 @@ app.ProjectsView = Backbone.View.extend({
 	},
 
 	slidePanel:function() {
-		this.$leftpanel.velocity({left:0}, {duration:1000, delay:1000, easing:"easeOut"})
+		this.showpanel && this.$leftpanel.velocity({left:0}, {duration:1000, delay:1000, easing:"easeOut"})
+	},
+
+	exitPanel:function() {
+		this.showpanel && this.$leftpanel.velocity("fadeOut", {duration:300})
 	},
 
 	renderContent:function() {
@@ -60,7 +67,7 @@ app.ProjectsView = Backbone.View.extend({
 
 	renderItems:function() {
 		this.collection.each(function(project, index) {
-			if (project.get("id") !== "p0") {
+			if (project.get("id") !== "p0" && project.get("id") !== "px") {
 				var ipv = this.ipv_collection.add( {id:project.get("id"), model:project} );
 				this.$list.append( ipv.render().el );
 			}
@@ -70,7 +77,7 @@ app.ProjectsView = Backbone.View.extend({
 
 	focusProject:function(args) {
 
-		if (args.id !== "p0") {
+		if (args.id !== "p0" && args.id !== "px") {
 
 			var ipv = this.ipv_collection.get(args.id);
 
@@ -101,11 +108,17 @@ app.ProjectsView = Backbone.View.extend({
 	},
 
 	close:function() {
+
+		this.$leftpanel.velocity("stop");
+		this.focused_item && this.focused_item.$el.velocity("stop");
+		this.focused_pop && this.focused_pop.$el.velocity("stop");
+
 		_.each(this.ppv_collection.models, function(ppv) {
 			ppv.close();
 			ppv.remove();
 		});
 		_.each(this.ipv_collection.models, function(ipv) {
+			ipv.close();
 			ipv.remove();
 		});
 		this.stopListening();

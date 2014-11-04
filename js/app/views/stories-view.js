@@ -38,7 +38,9 @@ app.StoriesView = Backbone.View.extend({
 		this.renderContent()
 		.cacheComponents()
 		.renderNav()
-		.attachButtons();
+
+		var self = this;
+		_.defer(function() {self.attachButtons();});
 		
 		return this;
 	},
@@ -151,6 +153,7 @@ nextStep:function(args) {
 					setTimeout(function() {
 
 						var flows = fs[flen],
+						type = flows.type,
 						vl = flows.vl,
 						hl = flows.hl,
 						popups = flows.popups,
@@ -159,7 +162,7 @@ nextStep:function(args) {
 						mt = flows.mt;
 
 						Backbone.trigger("flows:nav", {vl:vl, hl:hl, popups:popups, time:year, scaling:scaling, mt:mt});
-						Backbone.trigger("ui:route", {state:{territoryState:null, typeState:null, timeState:String(year)}})
+						Backbone.trigger("route:forceState", {state:{typeState:type, timeState:String(year)}});
 
 					}, parseInt(fs[flen].time));})(flen)
 				}

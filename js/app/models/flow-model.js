@@ -14,8 +14,8 @@ app.Flow = Backbone.Model.extend({
 
     // Create the 2 colors for the active (hovered/clicked) and normal states
     var c = this.get("color")
-    this.set( {"n_color":darkenColor(c, 0.7)} );
-    this.set( {"a_color":darkenColor(c, 0.6)} );
+    this.set( {"n_color":utils.darkenColor(c, 0.7)} );
+    this.set( {"a_color":utils.darkenColor(c, 0.6)} );
 
     // Store the ids of the family
     var ch = this.get("children");
@@ -32,6 +32,13 @@ app.Flow = Backbone.Model.extend({
     vo9 = vo9 === "NA" ? -1 : parseInt(vo9.replace(/\s+/g, ''));
     this.set("volume_o4", vo4);
     this.set("volume_o9", vo9);
+
+    // Leaf, root booleans
+    var root = this.get("root") == "true";
+    var leaf = this.get("leaf") == "true";
+    this.set("root", root);
+    this.set("leaf", leaf);
+
   }
 
 });

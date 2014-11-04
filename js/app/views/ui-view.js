@@ -8,7 +8,7 @@ app.UIView = Backbone.View.extend({
     "click #share":"popShare",
     "click #expand":"expandFlows",
     "click #contract":"contractFlows",
-    "click #about_b":"toggleX"
+    "click #about_b": "about"
   },
 
   initialize:function(options) {
@@ -19,11 +19,15 @@ app.UIView = Backbone.View.extend({
     this.listenTo(this.b_collection, 'add', this.addButton);
     this.b_collection.add(options.init);
 
+    console.log(options.init)
+
     this.listenTo(Backbone, "ui:route", this.updateButtons);
     this.listenTo(Backbone, "ui:clickRadio", this.clickRadio);
     this.listenTo(Backbone, "ui:scale", this.updateScale);
 
     this.renderScale();
+
+    _.bindAll(this, "about", "unloadAbout");
     
   },
 
@@ -49,7 +53,7 @@ app.UIView = Backbone.View.extend({
       $("#fs_container").show();
       $("#fs_container div").css({height:hscale + 10})
       this.Rscale.attr({path:["M",30,hscale+5,"H",25,"V",5,"H",30], "stroke-width":3, "stroke":"#ccc"});
-      $("#legend #fs_text p").html(formatVolume(vscale, " ") + " " + args.unit);
+      $("#legend #fs_text p").html(utils.formatVolume(vscale, " ") + " " + args.unit);
   
     }
 
@@ -69,6 +73,9 @@ app.UIView = Backbone.View.extend({
       var sc = value.model.get("show_class");
        value.$el.velocity("fadeOut", {duration:200})
     })
+
+    this.p_showed_buttons = this.showed_buttons;
+    this.showed_buttons = args;
 
     var len = args.length;
     while(len--) {
@@ -160,14 +167,48 @@ app.UIView = Backbone.View.extend({
     }
   },
 
+  about:function() {
+
+    // Store all buttons shown, then hide all buttons of the ui
+    this.showButtons(["about"]);
+
+    // Toggle the X to exit the modal
+    this.toggleX();
+
+    // Create the view
+    this.about_view = new app.AboutView( {model:new app.About()} );
+    this.$el.first().prepend(this.about_view.render().el);
+
+    // Bind the close call to the x button
+    this.$el.undelegate("#about_b", "click");
+    this.$el.delegate("#about_b", "click", this.unloadAbout);
+
+  },
+
+  unloadAbout:function() {
+
+    this.showButtons(this.p_showed_buttons);
+
+    this.toggleX();
+
+    this.about_view.close();
+    
+    $("html, body").scrollTop(0);
+    $("body").removeClass("scrollable");
+
+    this.$el.undelegate("#about_b", "click");
+    this.$el.delegate("#about_b", "click", this.about);
+
+  },
+
   expandFlows:function() {
     // Broadcast a expand event for the flows view to catch
-    Backbone.trigger("flows:expand");
+    Backbone.trigger("flows:expand", {type:app.instance.router.state.typeState});
   },
 
   contractFlows:function() {
     // Broadcast a contract event for the flows view to catch
-    Backbone.trigger("flows:contract");
+    Backbone.trigger("flows:contract", {type:app.instance.router.state.typeState});
   }
 
 });

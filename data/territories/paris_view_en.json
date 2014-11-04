@@ -94,7 +94,7 @@
     "children":"",
     "siblings":"1120",
     "root":"false",
-    "leaf":"false"
+    "leaf":"true"
   },
   {
     "id":"1111",
@@ -114,7 +114,7 @@
     "children":"",
     "siblings":"1112;1113",
     "root":"false",
-    "leaf":"true"
+    "leaf":"false"
   },
   {
     "id":"1112",
@@ -134,7 +134,7 @@
     "children":"",
     "siblings":"1111;1113",
     "root":"false",
-    "leaf":"true"
+    "leaf":"false"
   },
   {
     "id":"1113",
@@ -154,7 +154,7 @@
     "children":"",
     "siblings":"1111;1112",
     "root":"false",
-    "leaf":"true"
+    "leaf":"false"
   },
   {
     "id":"1120",
@@ -171,7 +171,7 @@
     "color":"#F75454",
     "level":"2",
     "parent":"1100",
-    "children":"1121;1122;1123;1124;1125",
+    "children":"1121;1122;1123;1124;1125;1126",
     "siblings":"1110",
     "root":"false",
     "leaf":"false"
@@ -192,7 +192,7 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1122;1123;1124;1125",
+    "siblings":"1122;1123;1124;1125;1126",
     "root":"false",
     "leaf":"true"
   },
@@ -212,7 +212,7 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1121;1123;1124;1125",
+    "siblings":"1121;1123;1124;1125;1126",
     "root":"false",
     "leaf":"true"
   },
@@ -232,7 +232,7 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1121;1122;1124;1125",
+    "siblings":"1121;1122;1124;1125;1126",
     "root":"false",
     "leaf":"true"
   },
@@ -252,7 +252,7 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1121;1122;1123;1125",
+    "siblings":"1121;1122;1123;1125;1126",
     "root":"false",
     "leaf":"true"
   },
@@ -272,7 +272,27 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1121;1122;1123;1124",
+    "siblings":"1121;1122;1123;1124;1126",
+    "root":"false",
+    "leaf":"true"
+  },
+  {
+    "id":"1126",
+    "index":"11",
+    "name":"Divers",
+    "nature":"matter",
+    "type":"input",
+    "from":"t0",
+    "to":"t2",
+    "volume_o4":"1130",
+    "volume_o9":"1130",
+    "trend":"1",
+    "unit":"kt/an",
+    "color":"#ccc",
+    "level":"3",
+    "parent":"1120",
+    "children":"",
+    "siblings":"1121;1122;1123;1124;1125",
     "root":"false",
     "leaf":"true"
   },
@@ -334,7 +354,7 @@
     "children":"",
     "siblings":"1212",
     "root":"false",
-    "leaf":"true"
+    "leaf":"false"
   },
   {
     "id":"1212",
@@ -354,7 +374,7 @@
     "children":"",
     "siblings":"1211",
     "root":"false",
-    "leaf":"true"
+    "leaf":"false"
   },
   {
     "id":"1220",
@@ -374,7 +394,7 @@
     "children":"",
     "siblings":"1210;1230",
     "root":"false",
-    "leaf":"true"
+    "leaf":"false"
   },
   {
     "id":"1230",
@@ -394,7 +414,7 @@
     "children":"",
     "siblings":"1210;1230",
     "root":"false",
-    "leaf":"true"
+    "leaf":"false"
   },
   {
     "id":"2000",
@@ -1437,7 +1457,7 @@
     "leaf":"true"
   },
   {
-    "id":"4000",
+    "id":"2900",
     "index":"74",
     "name":"Productions locales",
     "nature":"energy",
@@ -1451,13 +1471,13 @@
     "color":"#DDA20E",
     "level":"0",
     "parent":"",
-    "children":"4100;4200;4300",
+    "children":"2910;2920;2930",
     "siblings":"",
     "root":"false",
     "leaf":"false"
   },
   {
-    "id":"4100",
+    "id":"2910",
     "index":"75",
     "name":"Solaire thermique",
     "nature":"energy",
@@ -1470,14 +1490,14 @@
     "unit":"GWh/an",
     "color":"#E86300",
     "level":"1",
-    "parent":"4000",
+    "parent":"",
     "children":"",
-    "siblings":"4200;4300",
+    "siblings":"2920;2930",
     "root":"true",
     "leaf":"true"
   },
   {
-    "id":"4200",
+    "id":"2920",
     "index":"76",
     "name":"Solaire photovoltaique",
     "nature":"energy",
@@ -1490,14 +1510,14 @@
     "unit":"GWh/an",
     "color":"#1C96E8",
     "level":"1",
-    "parent":"4000",
+    "parent":"",
     "children":"",
-    "siblings":"4100;4300",
+    "siblings":"2910;2930",
     "root":"true",
     "leaf":"true"
   },
   {
-    "id":"4300",
+    "id":"2930",
     "index":"77",
     "name":"Chaleur",
     "nature":"energy",
@@ -1511,13 +1531,13 @@
     "color":"#E2280A",
     "level":"1",
     "parent":"",
-    "children":"4310;4320",
-    "siblings":"4100;4200",
+    "children":"2931;2932",
+    "siblings":"2910;2920",
     "root":"true",
     "leaf":"false"
   },
   {
-    "id":"4310",
+    "id":"2931",
     "index":"78",
     "name":"Geothermie",
     "nature":"energy",
@@ -1530,14 +1550,14 @@
     "unit":"GWh/an",
     "color":"#893C34",
     "level":"2",
-    "parent":"4300",
+    "parent":"",
     "children":"",
-    "siblings":"4320",
+    "siblings":"2932",
     "root":"false",
     "leaf":"true"
   },
   {
-    "id":"4320",
+    "id":"2932",
     "index":"79",
     "name":"CPCU",
     "nature":"energy",
@@ -1550,9 +1570,9 @@
     "unit":"GWh/an",
     "color":"#AF1717",
     "level":"2",
-    "parent":"4300",
+    "parent":"2930",
     "children":"",
-    "siblings":"4310",
+    "siblings":"2931",
     "root":"false",
     "leaf":"true"
   },
@@ -1817,7 +1837,7 @@
     "leaf":"true"
   },
   {
-    "id":"8000",
+    "id":"4900",
     "index":"94",
     "name":"Eaux pluviales",
     "nature":"water",
@@ -1838,6 +1858,19 @@
   }
 ],
 
+    "projects":[{
+                        "id":"px",
+                        "view":"paves",
+                        "name":"Accédez aux projets innovants",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_centrerecyclage.png",
+                        "territory":"t2",
+                        "type":"local",
+                        "render":true,
+                        "x":"0.5",
+                        "y":"0.45"
+                    }],
+
     "stories": {
         "matter":
         [{
@@ -1848,7 +1881,7 @@
                 [{
                     "subtitle":"Des flux linéaires aux flux circulaires",
                     "text": {"time":"200", "content":"La majorité des flux (consommation de matières ou de produits, production de déchets ou émission de pollutions) sont dits linéaires car ils ont des origines et des destinations externes au territoire. Le recyclage, la valorisation de matière, organique ou énergétique sont eux qualifiés de circulaires. Au lieu d'être exportés vers le reste du monde ou rejetés vers la nature, ces flux sont redirigés vers l’économie du territoire. De l'économie circulaire, en somme."},
-                    "flows": [{"vl":["1100","1200","2100", "1900", "2300"], "hl":["all"], "popups":["1100", "1200", "2100", "1900", "2300"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["1100","1200","2100", "1900", "2300"], "hl":["all"], "popups":["1100", "1200", "2100", "1900", "2300"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0", "type":"matter"}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":["matter", "energy", "water", "time", "expand", "contract"], "hide":[]},
                     "functions":""
@@ -1862,7 +1895,7 @@
             "steps" :
                 [{
                     "subtitle":"Paris est dépendant de ses importations",
-                    "text": {"time":"200", "content":"Paris importe l’équivalent de 8,8 tonnes de matières par habitant pour son fonctionnement, dont 20% de combustibles fossiles. L’importance de ces prélèvements sur des ressources extérieures à son territoire fait de t2 une ville très dépendante de son environnement proche et lointain."},
+                    "text": {"time":"200", "content":"Paris importe l’équivalent de 8,8 tonnes de matières par habitant pour son fonctionnement, dont 20% de combustibles fossiles. L’importance de ces prélèvements sur des ressources extérieures à son territoire fait de Paris une ville très dépendante de son environnement proche et lointain."},
                     "flows": [{"vl":["1110","1120","1200","2100", "1900", "2300"], "hl":["all"], "popups":["1110", "1120"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[],
                     "ui":{"show":[], "hide":[]},
@@ -1891,8 +1924,8 @@
             "display_dot":true,       
             "steps" :
                 [{
-                    "subtitle":"",
-                    "text": {"time":"200", "content":"Non, ce n’est pas parce que les parisiens mangeraient plus que les autres. L’activité de restauration est très importante à Paris pour alimenter les nombreux actifs, touristes et visiteurs qui fréquentent le territoire. La quantité d’aliments entrants, ramenée au nombre d’habitants, est donc plus élevée sur la capitale que dans le reste de l’agglomération ou d’autres villes de France. Les volumes de déchets organiques représentent en contrepartie un enjeu important d’amélioration du métabolisme. En 2013, un t2ien jette 57 kg de déchets alimentaires, dont 13 kg non consommés."},
+                    "subtitle":"On consomme plus d’aliments à Paris",
+                    "text": {"time":"200", "content":"Non, ce n’est pas parce que les parisiens mangeraient plus que les autres. L’activité de restauration est très importante à Paris pour alimenter les nombreux actifs, touristes et visiteurs qui fréquentent le territoire. La quantité d’aliments entrants, ramenée au nombre d’habitants, est donc plus élevée sur la capitale que dans le reste de l’agglomération ou d’autres villes de France. Les volumes de déchets organiques représentent en contrepartie un enjeu important d’amélioration du métabolisme. En 2013, un parisien jette 57 kg de déchets alimentaires, dont 13 kg non consommés."},
                     "flows": [{"vl":["1110", "1121","1122","1123","1124","1125","1200","2100", "1900", "2310", "2320", "2330"], "hl":["all"], "popups":["1121", "2310", "2320", "2330"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[],
                     "ui":{"show":[], "hide":[]},
@@ -1906,7 +1939,7 @@
             "display_dot":true,       
             "steps" :
                 [{
-                    "subtitle":"",
+                    "subtitle":"Et les déchets ?",
                     "text": {"time":"200", "content":"Selon la façon dont ils sont traités pour être éliminés, ils se retrouvent dans différentes catégories de flux soient exportés soient circulaires: valorisation énergétique, recyclage ou mise en décharge. Pour en savoir plus sur la production de déchets à Paris ou en Ile-de-France consulter le <a href = \"www.paris.fr/viewmultimediadocument?multimediadocument-id=136470\" target = \"_blank\">Rapport 2012 sur la gestion des déchets</a> ou le <a href = \"http://www.ordif.com/public/document.srv?id=17965\" target = \"_blank\">Tableau de bord des déchets franciliens (édition 2013).</a>"},
                     "flows": [{"vl":["1100","1200", "2110","2120","2130","2140","2150", "1900", "2310", "2320", "2330"], "hl":["all"], "popups":["2320", "2330", "2310", "2130"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[],
@@ -1938,9 +1971,9 @@
             "display_dot":true,      
             "steps" :
                 [{
-                    "subtitle":"",
+                    "subtitle":"Paris ne peut être indépendant énergétiquement",
                     "text": {"time":"200", "content":"Si Paris ne peut être indépendant énergétiquement, la part d’énergies renouvelables et de récupération dans son mix énergétique peut encore être grandement améliorée."},
-                    "flows": [{"vl":["3000", "4100", "4200", "4300"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["3000", "2910","2920", "2931"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "type":"energy"}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
                     "functions":""
@@ -1953,9 +1986,9 @@
             "display_dot":true,      
             "steps" :
                 [{
-                    "subtitle":"",
+                    "subtitle":"La production de chaleur",
                     "text": {"time":"200", "content":"La chaleur du réseau urbain est produite par un mix énergétique dont 40% est issu de la valorisation énergétique des déchets."},
-                    "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "4100", "4200", "4300"], "popups":["3200", "4300"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "2910", "2920", "2930"], "popups":["3200", "2930"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}],
                     "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
                     "functions":""
@@ -1968,9 +2001,9 @@
             "display_dot":true,      
             "steps" :
                 [{
-                    "subtitle":"",
+                    "subtitle":"Les consommations électriques augmentent…",
                     "text": {"time":"200", "content":"… Alors que les consommations de gaz naturel et de fioul diminuent. Cela est dû aux changements de comportement et à l’usage croissant d’appareils mobiles, informatiques et ménagers."},
-                    "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "4100", "4200", "4300"], "popups":["3100","3500","3600"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "2910", "2920", "2930"], "popups":["3100","3500","3600"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}],
                     "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
                     "functions":""
@@ -1983,9 +2016,9 @@
             "display_dot":true,      
             "steps" :
                 [{
-                    "subtitle":"",
+                    "subtitle":"L’énergie, un flux circulaire ?",
                     "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée est dissipée sous forme de chaleur. Cette énergie, ainsi que celle qui se retrouve « piégée » dans les canalisations, les structures etc. peuvent être récupérées. Pour plus d’informations sur le potentiel de récupération de l’énergie solaire à Paris, consultez le <a href = \"http://capgeo.sig.paris.fr/Apps/CadastreSolaire/\" target = \"_blank\">cadastre solaire</a>."},
-                    "flows": [{"vl":["3000", "4100", "4200", "4300"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["3000", "2910", "2920", "2930"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}],
                     "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
                     "functions":""
@@ -2000,9 +2033,9 @@
             "display_dot":true,    
             "steps" :
                 [{
-                    "subtitle":"",
+                    "subtitle":"Circulation des flux d’eaux",
                     "text": {"time":"200", "content":"Paris possède deux réseaux d’alimentation en eau (eau potable et eau non potable) et un réseau unitaire de collecte des eaux usées et des eaux de pluie."},
-                    "flows": [{"vl":["5100", "5200", "7000", "8000"], "hl":["all"],"popups":["5100", "5200", "7000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["5100", "5200", "7000", "4900"], "hl":["all"],"popups":["5100", "5200", "7000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "type":"water"}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
                     "functions":""
@@ -2015,9 +2048,9 @@
             "display_dot":true,    
             "steps" :
                 [{
-                    "subtitle":"",
-                    "text": {"time":"200", "content":"La consommation globale d’eau à Paris a baissé de 12% entre 2004 et 2012. Les volumes rejetés au milieu naturel par temps d’orage ont baissé de 30 %, alors que la pluviométrie était supérieure en 2012 (648 mm) par rapport à 2004 (570 mm). Pour en savoir plus sur les orientations de la politique municipale et les enjeux de l’eau à t2, consulter le <a href = \"http://www.paris.fr/pratique/environnement/eau/le-livre-bleu/rub_134_stand_121837_port_3119\" target = \"_blank\">livre bleu</a> ou le <a href = \"http://www.paris.fr/pratique/eau/donnees-rapports/prix-et-qualite-des-services-publics-de-l-eau-potable-et-de-l-assainissement/rub_6467_stand_25141_port_14623\" target = \"_blank\">rapport annuel de l'eau et de l'assainissement</a>."},
-                    "flows": [{"vl":["5100", "5200", "7000", "8000"], "hl":["all"],"popups":["5100", "5200", "7000", "8000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "subtitle":"La consommation d’eau à Paris baisse",
+                    "text": {"time":"200", "content":"La consommation globale d’eau à Paris a baissé de 12% entre 2004 et 2012. Les volumes rejetés au milieu naturel par temps d’orage ont baissé de 30 %, alors que la pluviométrie était supérieure en 2012 (648 mm) par rapport à 2004 (570 mm). Pour en savoir plus sur les orientations de la politique municipale et les enjeux de l’eau à Paris, consulter le <a href = \"http://www.paris.fr/pratique/environnement/eau/le-livre-bleu/rub_134_stand_121837_port_3119\" target = \"_blank\">livre bleu</a> ou le <a href = \"http://www.paris.fr/pratique/eau/donnees-rapports/prix-et-qualite-des-services-publics-de-l-eau-potable-et-de-l-assainissement/rub_6467_stand_25141_port_14623\" target = \"_blank\">rapport annuel de l'eau et de l'assainissement</a>."},
+                    "flows": [{"vl":["5100", "5200", "7000", "4900"], "hl":["all"],"popups":["5100", "5200", "7000", "4900"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}],
                     "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
                     "functions":""
@@ -2030,9 +2063,9 @@
             "display_dot":true,    
             "steps" :
                 [{
-                    "subtitle":"",
+                    "subtitle":"Pourquoi récupérer l’eau ?",
                     "text": {"time":"200", "content":"Les bénéfices sont nombreux : diminution des pressions sur la ressource, baisse des quantités d'eaux pluviales envoyées vers les stations d’épuration, réduction des rejets et donc des pollutions vers le milieu naturel par temps de pluie et diminution des risques d'inondation par débordement des réseaux lors des orages."},
-                    "flows": [{"vl":["5100", "5200", "7100", "7200", "8000"], "hl":["all"], "popups":["5100", "5200", "7100", "7200", "8000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["5100", "5200", "7100", "7200", "4900"], "hl":["all"], "popups":["5100", "5200", "7100", "7200", "4900"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}],
                     "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
                     "functions":""

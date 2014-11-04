@@ -13,9 +13,6 @@ app.StartView = Backbone.View.extend({
 	},
 
 	initialize:function(options) {
-
-		// _.bindAll(this, "addCircle");
-
 		var ViewsCollection = Backbone.Collection.extend( {model:app.CircleView} );
 		this.views_collection = new ViewsCollection();
 	},
@@ -23,11 +20,9 @@ app.StartView = Backbone.View.extend({
 	// Render functions
 	render: function(options) {
 		this.$el.html( this.template( this.model.attributes ) );
-
 		options = options || {};
 		this.adjustVertically(options);
 		this.renderRaphael();
-
 		return this;
 	},
 
@@ -69,28 +64,29 @@ app.StartView = Backbone.View.extend({
 		if (this.views_collection.models.length > 0) {
 			var n = Math.floor(this.views_collection.models.length*Math.random());
 			var c = this.views_collection.at(n).close();
-			this.views_collection.remove(c)
+			this.views_collection.remove(c);
 		}
+	},
+
+	stopAllListening:function() {
+		this.stopListening();
 	},
 
 	// Removes all elements of the view
 	close:function() {
+
+		this.stopListening();
+
 		clearInterval(this.clockAddCircle);
 		clearInterval(this.clockKillCircle);
-
-		console.log(this)
 
 		_.each(this.views_collection.models, function(circle) {
 			circle.close();
 			circle.remove();
-			delete circle;
 		})
 
 		this.paper.remove();
 
-		this.stopListening();
-		// delete this.$el;
-		// delete this.el;
 	},
 
 	transitionIn:function(options) {
@@ -101,9 +97,11 @@ app.StartView = Backbone.View.extend({
 
 	transitionOut:function(options) {
 
+		console.log(typeof options.callback)
+
 		var dz = options.dz || 0, t = "0%";
 		if (dz === 0) {
-			callback();
+			options.callback();
 			return;
 		} else if (dz > 0) {
 			t = "-100%";

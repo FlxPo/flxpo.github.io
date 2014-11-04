@@ -27,10 +27,10 @@
                         "id":"t4",
                         "name":"t4",
                         "geom":"data/graphics/geom_idf-paris.json",
-                        "fax":"0.35",
-                        "fay":"-0.25",
+                        "fax":"-0.081",
+                        "fay":"-0.171",
                         "iw":"0.121",
-                        "ih":"1.2",
+                        "ih":"0.099",
                         "x":"0.5*w",
                         "y":"0.4*h",
                         "scale":"0.4"
@@ -39,10 +39,10 @@
                         "id":"t3",
                         "name":"t3",
                         "geom":"data/graphics/geom_idf-pc.json",
-                        "fax":"0.35",
-                        "fay":"0.13",
+                        "fax":"-0.066",
+                        "fay":"-0.156",
                         "iw":"0.229",
-                        "ih":"0.5",
+                        "ih":"0.305",
                         "x":"0.5*w",
                         "y":"0.4*h",
                         "scale":"0.4"
@@ -54,10 +54,11 @@
                         "f_anchor_x":"0",
                         "f_anchor_y":"0",
                         "iw":"1",
-                        "ih":"1",
+                        "ih":"0.75",
                         "x":"0.5*w",
                         "y":"0.4*h",
-                        "scale":"0.4"
+                        "scale":"0.4",
+                        "ref":true
                     }],
 	"flows": 		[
   {
@@ -75,7 +76,7 @@
     "color":"#000000",
     "level":"0",
     "parent":"",
-    "children":"1100;1200",
+    "children":"1100;900",
     "siblings":"",
     "root":"false",
     "leaf":"false"
@@ -195,7 +196,7 @@
     "color":"#F75454",
     "level":"2",
     "parent":"1100",
-    "children":"1121;1122;1123;1124;1125",
+    "children":"1121;1122;1123;1124;1125;1126",
     "siblings":"1110",
     "root":"false",
     "leaf":"false"
@@ -216,7 +217,7 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1122;1123;1124;1125",
+    "siblings":"1122;1123;1124;1125;1126",
     "root":"false",
     "leaf":"true"
   },
@@ -236,7 +237,7 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1121;1123;1124;1125",
+    "siblings":"1121;1123;1124;1125;1126",
     "root":"false",
     "leaf":"true"
   },
@@ -256,7 +257,7 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1121;1122;1124;1125",
+    "siblings":"1121;1122;1124;1125;1126",
     "root":"false",
     "leaf":"true"
   },
@@ -276,7 +277,7 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1121;1122;1123;1125",
+    "siblings":"1121;1122;1123;1125;1126",
     "root":"false",
     "leaf":"true"
   },
@@ -296,12 +297,32 @@
     "level":"3",
     "parent":"1120",
     "children":"",
-    "siblings":"1121;1122;1123;1124",
+    "siblings":"1121;1122;1123;1124;1126",
     "root":"false",
     "leaf":"true"
   },
   {
-    "id":"1200",
+    "id":"1126",
+    "index":"11",
+    "name":"Divers",
+    "nature":"matter",
+    "type":"input",
+    "from":"t0",
+    "to":"t2",
+    "volume_o4":"10227",
+    "volume_o9":"10227",
+    "trend":"1",
+    "unit":"kt/an",
+    "color":"#ccc",
+    "level":"3",
+    "parent":"1120",
+    "children":"",
+    "siblings":"1121;1122;1123;1124;1125",
+    "root":"false",
+    "leaf":"true"
+  },
+  {
+    "id":"900",
     "index":"13",
     "name":"Extractions locales",
     "nature":"matter",
@@ -315,13 +336,13 @@
     "color":"#DBE00B",
     "level":"1",
     "parent":"",
-    "children":"1210;1220;1230",
+    "children":"910;920;930",
     "siblings":"",
     "root":"true",
     "leaf":"false"
   },
   {
-    "id":"1210",
+    "id":"910",
     "index":"14",
     "name":"Biomasse",
     "nature":"matter",
@@ -334,14 +355,14 @@
     "unit":"kt/an",
     "color":"#61CC1B",
     "level":"2",
-    "parent":"1200",
-    "children":"1211;1212",
-    "siblings":"1220;1230",
+    "parent":"900",
+    "children":"911;912",
+    "siblings":"920;930",
     "root":"false",
     "leaf":"false"
   },
   {
-    "id":"1211",
+    "id":"911",
     "index":"15",
     "name":"Biomasse agricole<br>et gibier",
     "nature":"matter",
@@ -354,14 +375,14 @@
     "unit":"kt/an",
     "color":"#88963D",
     "level":"3",
-    "parent":"1210",
+    "parent":"910",
     "children":"",
-    "siblings":"1212",
+    "siblings":"912",
     "root":"false",
     "leaf":"true"
   },
   {
-    "id":"1212",
+    "id":"912",
     "index":"16",
     "name":"Biomasse forestière",
     "nature":"matter",
@@ -374,14 +395,14 @@
     "unit":"kt/an",
     "color":"#3B7726",
     "level":"3",
-    "parent":"1211",
+    "parent":"911",
     "children":"",
-    "siblings":"1211",
+    "siblings":"911",
     "root":"false",
     "leaf":"true"
   },
   {
-    "id":"1220",
+    "id":"920",
     "index":"17",
     "name":"Minéraux",
     "nature":"matter",
@@ -394,14 +415,14 @@
     "unit":"kt/an",
     "color":"#77C6C2",
     "level":"2",
-    "parent":"1200",
+    "parent":"900",
     "children":"",
-    "siblings":"1210;1230",
+    "siblings":"910;930",
     "root":"false",
     "leaf":"true"
   },
   {
-    "id":"1230",
+    "id":"930",
     "index":"18",
     "name":"Produits pétroliers",
     "nature":"matter",
@@ -414,9 +435,9 @@
     "unit":"kt/an",
     "color":"#33250A",
     "level":"2",
-    "parent":"1200",
+    "parent":"900",
     "children":"",
-    "siblings":"1210;1230",
+    "siblings":"910;930",
     "root":"false",
     "leaf":"true"
   },
@@ -1386,19 +1407,64 @@
         "matter":
         [
         {
+            "title":"Une région dynamique",
+            "subtitle":"",
+            "display_dot":true,       
+            "steps" :
+                [{
+                    "subtitle":"Une région dynamique",
+                    "text": {"time":"200","content":"La région Ile-de-France est marquée par son dynamisme économique. Cela se traduit sur le territoire par l’importation et l’exportation de volumes conséquents de marchandises ou produits manufacturés. La région importe ainsi l’équivalent de 12 tonnes de matières par habitant et exporte 5.2 t/hab/an."},
+                    "flows": [{"vl":["1100","900","2100", "1900", "2300"], "hl":["all"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"900"}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"hideGround", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"hideGround", "parms":{"time":100}, "time":0},
+                                    {"target":"t2", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0},
+                                    {"target":"t3", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0},
+                                    {"target":"t4", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }
+                ]
+        },
+        {
             "title":"Une région en pleine construction",
             "subtitle":"",
             "display_dot":true,       
             "steps" :
                 [{
+                    "subtitle":"Une région en pleine construction",
                     "text": {"time":"200","content":"Du fait de l’importance des chantiers de construction de logements ou de renouvellement urbain, les flux de matériaux de construction importés et ceux liés aux déchets de chantiers représentent de gros volumes et donc des enjeux importants pour l’amélioration du métabolisme de la région."},
-                    "flows": [{"vl":["1121","1122","1123","1124","1125","1210","1220","1230","2121","2122","2123","2124","2125", "1921","1922","1923","1924","1925", "2311","2312","2313","2314"], "hl":["all"], "popups":["1123","1220","2123","2314","1924"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["1121","1122","1123","1124","1125","910","920","930","2121","2122","2123","2124","2125", "1921","1922","1923","1924","1925", "2311","2312","2313","2314"], "hl":["all"], "popups":["1123","920","2123","2314","1924"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"hideGround", "parms":{"time":100}, "time":0},
-                                    {"target":"t3", "action":"hideGround", "parms":{"time":100}, "time":0}],
+                                    {"target":"t3", "action":"hideGround", "parms":{"time":100}, "time":0},
+                                    {"target":"t2", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0},
+                                    {"target":"t3", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0},
+                                    {"target":"t4", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0}],
                     "ui":{"show":["matter"], "hide":["energy", "water"]},
+                    "functions":""
+                }
+                ]
+        },
+        {
+            "title":"Paris dépendant des territoires proches",
+            "subtitle":"",
+            "display_dot":true,       
+            "steps" :
+                [{
+                    "subtitle":"Paris dépendant des territoires proches",
+                    "text": {"time":"200","content":"Paris, zone urbaine dense et très consommatrice, échange de grandes quantités de matières avec la Petite Couronne et le reste de l’Ile-de-France où la ressource est plus importante. La région Ile-de-France consomme beaucoup plus de matériaux de construction que Paris et la Petite Couronne où les constructions sont plus restreintes du fait de la moindre disponibilité foncière."},
+                    "flows": [{"vl":["10000", "10001", "10002", "10003"], "hl":["all"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"1200"}],
+                    "territories":[{"target":"t4", "action":"showGround", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"showGround", "parms":{"time":100}, "time":0},
+                                    {"target":"t2", "action":"translate", "parms":{"x":"w*0.35","y":"h*0.5","time":1000}, "time":0},
+                                    {"target":"t3", "action":"translate", "parms":{"x":"w*0.4","y":"h*0.2","time":1000}, "time":0},
+                                    {"target":"t4", "action":"translate", "parms":{"x":"w*0.7","y":"h*0.3","time":1000}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
                     "functions":""
                 }
                 ]
@@ -1409,10 +1475,14 @@
             "display_dot":true,       
             "steps" :
                 [{
+                    "subtitle":"Les tendances d’évolution",
                     "text": {"time":"200","content":"Les tendances d’évolution des importations et exportations de marchandises entre 2003 et 2010 sont à la baisse pour la Région (-25 % pour les importations et -20 % pour les exportations). Le flux de matières exportées vers la nature est en hausse du fait de l’augmentation des volumes de déchets du BTP et des activités économiques mis en décharge. Les volumes de déchets ménagers mis en décharge diminuent ainsi que les émissions atmosphériques."},
-                    "flows": [{"vl":["1100","1200","2100", "1900", "2300"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"1200", "anim_trend":true, "mt":true}],
-                    "territories":[{"target":"t4", "action":"appear", "time":"0"},{"target":"t2", "action":"appear", "time":"0"},{"target":"t3", "action":"appear", "time":"0"},
-                                    {"target":"t4", "action":"hideGround", "time":"0"},{"target":"t3", "action":"hideGround", "time":"0"}],
+                    "flows": [{"vl":["1100","900","2100", "1900", "2300"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"900", "anim_trend":true, "mt":true}],
+                    "territories":[{"target":"t4", "action":"hideGround", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"hideGround", "parms":{"time":100}, "time":0},
+                                    {"target":"t2", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0},
+                                    {"target":"t3", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0},
+                                    {"target":"t4", "action":"translate", "parms":{"x":"w*0.5","y":"h*0.4","time":1000}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
                 }
@@ -1427,4 +1497,3 @@
 
 
                 }
-  
