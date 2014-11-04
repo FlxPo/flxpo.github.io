@@ -3655,6 +3655,8 @@ return function (global, window, document, undefined) {
 
             /* Note: Infinite loops don't return promises. */
             if (resolver && opts.loop !== true) {
+                console.log(resolver);
+                console.log(elements);
                 resolver(elements);
             }
 

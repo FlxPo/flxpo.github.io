@@ -143,7 +143,7 @@ nextStep:function(args) {
 		var appear_title = {elements:this.$title, properties:{ opacity:1 }, options:{duration:200} };
 		var appear_text = {elements:this.$text, properties:{ opacity:1 }, options:{duration:200, sequenceQueue:false} };
 
-		$.Velocity.RunSequence([disappear_title, disappear_text, appear_title, appear_text]);
+		// $.Velocity.RunSequence([disappear_title, disappear_text, appear_title, appear_text]);
 
 		// Animate the flows
 		var step = steps[s], fs = step.flows, flen = fs.length;

@@ -1,27 +1,15 @@
 {
-	"ui_elements":{},
-	"scale":"w/2000",
 	"items": [{
                         "id":"t0",
                         "name":"t0",
-                        "f_anchor_x":"",
-                        "f_anchor_y":"",
-                        "iw":"1",
-                        "ih":"1",
                         "x":"-10",
-                        "y":"0.5*h",
-                        "scale":"1"
+                        "y":"0.5*h"
                     },
                     {
                         "id":"t1",
                         "name":"t1",
-                        "f_anchor_x":"",
-                        "f_anchor_y":"",
-                        "iw":"1",
-                        "ih":"1",
                         "x":"w+10",
-                        "y":"0.5*h",
-                        "scale":"1"
+                        "y":"0.5*h"
                     },
 					{
                         "id":"t2",
@@ -1860,10 +1848,8 @@
 
     "projects":[{
                         "id":"px",
-                        "view":"paves",
                         "name":"Accédez aux projets innovants",
                         "description":"Description du projet en une phrase.",
-                        "imgurl":"data/graphics/items/thumb_centrerecyclage.png",
                         "territory":"t2",
                         "type":"local",
                         "render":true,
@@ -1882,9 +1868,7 @@
                     "subtitle":"Des flux linéaires aux flux circulaires",
                     "text": {"time":"200", "content":"La majorité des flux (consommation de matières ou de produits, production de déchets ou émission de pollutions) sont dits linéaires car ils ont des origines et des destinations externes au territoire. Le recyclage, la valorisation de matière, organique ou énergétique sont eux qualifiés de circulaires. Au lieu d'être exportés vers le reste du monde ou rejetés vers la nature, ces flux sont redirigés vers l’économie du territoire. De l'économie circulaire, en somme."},
                     "flows": [{"vl":["1100","1200","2100", "1900", "2300"], "hl":["all"], "popups":["1100", "1200", "2100", "1900", "2300"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0", "type":"matter"}],
-                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
-                    "ui":{"show":["matter", "energy", "water", "time", "expand", "contract"], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}]
                 }
                 ]
         },
@@ -1897,9 +1881,7 @@
                     "subtitle":"Paris est dépendant de ses importations",
                     "text": {"time":"200", "content":"Paris importe l’équivalent de 8,8 tonnes de matières par habitant pour son fonctionnement, dont 20% de combustibles fossiles. L’importance de ces prélèvements sur des ressources extérieures à son territoire fait de Paris une ville très dépendante de son environnement proche et lointain."},
                     "flows": [{"vl":["1110","1120","1200","2100", "1900", "2300"], "hl":["all"], "popups":["1110", "1120"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[],
-                    "ui":{"show":[], "hide":[]},
-                    "functions":""
+                    "territories":[]
                 }
                 ]
         },
@@ -1909,12 +1891,10 @@
             "display_dot":true,
             "steps" :
                 [{
-                    "subtitle":"",
+                    "subtitle":"Les flux internes au territoire parisien",
                     "text": {"time":"200", "content":"Les rejets vers la nature sont des volumes produits par l'activité de la ville et rejetés sur son propre territoire. Il s’agit essentiellement d’émissions atmosphériques pour Paris. Pour mieux en comprendre l’origine, consulter les rubriques sur les flux d’eaux et d’énergies."},
                     "flows": [{"vl":["1100", "1200","2100","1910","1940","2300"], "popups":["1940", "1910"], "hl":["all"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[],
-                    "ui":{"show":[], "hide":[]},
-                    "functions":""
+                    "territories":[]
                 }
                 ]
         },
@@ -1927,9 +1907,7 @@
                     "subtitle":"On consomme plus d’aliments à Paris",
                     "text": {"time":"200", "content":"Non, ce n’est pas parce que les parisiens mangeraient plus que les autres. L’activité de restauration est très importante à Paris pour alimenter les nombreux actifs, touristes et visiteurs qui fréquentent le territoire. La quantité d’aliments entrants, ramenée au nombre d’habitants, est donc plus élevée sur la capitale que dans le reste de l’agglomération ou d’autres villes de France. Les volumes de déchets organiques représentent en contrepartie un enjeu important d’amélioration du métabolisme. En 2013, un parisien jette 57 kg de déchets alimentaires, dont 13 kg non consommés."},
                     "flows": [{"vl":["1110", "1121","1122","1123","1124","1125","1200","2100", "1900", "2310", "2320", "2330"], "hl":["all"], "popups":["1121", "2310", "2320", "2330"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[],
-                    "ui":{"show":[], "hide":[]},
-                    "functions":""
+                    "territories":[]
                 }
                 ]
         },
@@ -1942,9 +1920,7 @@
                     "subtitle":"Et les déchets ?",
                     "text": {"time":"200", "content":"Selon la façon dont ils sont traités pour être éliminés, ils se retrouvent dans différentes catégories de flux soient exportés soient circulaires: valorisation énergétique, recyclage ou mise en décharge. Pour en savoir plus sur la production de déchets à Paris ou en Ile-de-France consulter le <a href = \"www.paris.fr/viewmultimediadocument?multimediadocument-id=136470\" target = \"_blank\">Rapport 2012 sur la gestion des déchets</a> ou le <a href = \"http://www.ordif.com/public/document.srv?id=17965\" target = \"_blank\">Tableau de bord des déchets franciliens (édition 2013).</a>"},
                     "flows": [{"vl":["1100","1200", "2110","2120","2130","2140","2150", "1900", "2310", "2320", "2330"], "hl":["all"], "popups":["2320", "2330", "2310", "2130"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[],
-                    "ui":{"show":[], "hide":[]},
-                    "functions":""
+                    "territories":[]
                 }
                 ]
         },
@@ -1957,9 +1933,7 @@
                     "subtitle":"Les tendances d'évolution",
                     "text": {"time":"200", "content":"Les tendances d’évolution des importations et exportations de marchandises entre 2003 et 2010 sont nettement à la baisse, de l’ordre de 40 % pour Paris.  Alors que les volumes de déchets ménagers collectés ont diminué de 6% à Paris (24% si l’on considère les volumes par habitant), les volumes de ceux qui sont valorisés énergétiquement ont augmenté de plus de 40%."},
                     "flows": [{"vl":["1100","1200","2100", "1900", "2300"], "hl":["all"], "popups":["1100", "1200", "2100", "1900", "2300"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "anim_trend":true, "mt":true}],
-                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
-                    "ui":{"show":[], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}]
                 }
                 ]
         }
@@ -1974,9 +1948,7 @@
                     "subtitle":"Paris ne peut être indépendant énergétiquement",
                     "text": {"time":"200", "content":"Si Paris ne peut être indépendant énergétiquement, la part d’énergies renouvelables et de récupération dans son mix énergétique peut encore être grandement améliorée."},
                     "flows": [{"vl":["3000", "2910","2920", "2931"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "type":"energy"}],
-                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
-                    "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}]
                 }
                 ]
         },
@@ -1989,9 +1961,7 @@
                     "subtitle":"La production de chaleur",
                     "text": {"time":"200", "content":"La chaleur du réseau urbain est produite par un mix énergétique dont 40% est issu de la valorisation énergétique des déchets."},
                     "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "2910", "2920", "2930"], "popups":["3200", "2930"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[{"target":"t2", "action":"appear", "time":"0"}],
-                    "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }
                 ]
         },
@@ -2004,9 +1974,7 @@
                     "subtitle":"Les consommations électriques augmentent…",
                     "text": {"time":"200", "content":"… Alors que les consommations de gaz naturel et de fioul diminuent. Cela est dû aux changements de comportement et à l’usage croissant d’appareils mobiles, informatiques et ménagers."},
                     "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "2910", "2920", "2930"], "popups":["3100","3500","3600"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[{"target":"t2", "action":"appear", "time":"0"}],
-                    "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }
                 ]
         },
@@ -2019,9 +1987,7 @@
                     "subtitle":"L’énergie, un flux circulaire ?",
                     "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée est dissipée sous forme de chaleur. Cette énergie, ainsi que celle qui se retrouve « piégée » dans les canalisations, les structures etc. peuvent être récupérées. Pour plus d’informations sur le potentiel de récupération de l’énergie solaire à Paris, consultez le <a href = \"http://capgeo.sig.paris.fr/Apps/CadastreSolaire/\" target = \"_blank\">cadastre solaire</a>."},
                     "flows": [{"vl":["3000", "2910", "2920", "2930"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[{"target":"t2", "action":"appear", "time":"0"}],
-                    "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }
                 ]
         }]
@@ -2036,9 +2002,7 @@
                     "subtitle":"Circulation des flux d’eaux",
                     "text": {"time":"200", "content":"Paris possède deux réseaux d’alimentation en eau (eau potable et eau non potable) et un réseau unitaire de collecte des eaux usées et des eaux de pluie."},
                     "flows": [{"vl":["5100", "5200", "7000", "4900"], "hl":["all"],"popups":["5100", "5200", "7000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "type":"water"}],
-                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
-                    "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}]
                 }
                 ]
         },
@@ -2051,9 +2015,7 @@
                     "subtitle":"La consommation d’eau à Paris baisse",
                     "text": {"time":"200", "content":"La consommation globale d’eau à Paris a baissé de 12% entre 2004 et 2012. Les volumes rejetés au milieu naturel par temps d’orage ont baissé de 30 %, alors que la pluviométrie était supérieure en 2012 (648 mm) par rapport à 2004 (570 mm). Pour en savoir plus sur les orientations de la politique municipale et les enjeux de l’eau à Paris, consulter le <a href = \"http://www.paris.fr/pratique/environnement/eau/le-livre-bleu/rub_134_stand_121837_port_3119\" target = \"_blank\">livre bleu</a> ou le <a href = \"http://www.paris.fr/pratique/eau/donnees-rapports/prix-et-qualite-des-services-publics-de-l-eau-potable-et-de-l-assainissement/rub_6467_stand_25141_port_14623\" target = \"_blank\">rapport annuel de l'eau et de l'assainissement</a>."},
                     "flows": [{"vl":["5100", "5200", "7000", "4900"], "hl":["all"],"popups":["5100", "5200", "7000", "4900"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[{"target":"t2", "action":"appear", "time":"0"}],
-                    "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }
                 ]
             },
@@ -2066,9 +2028,7 @@
                     "subtitle":"Pourquoi récupérer l’eau ?",
                     "text": {"time":"200", "content":"Les bénéfices sont nombreux : diminution des pressions sur la ressource, baisse des quantités d'eaux pluviales envoyées vers les stations d’épuration, réduction des rejets et donc des pollutions vers le milieu naturel par temps de pluie et diminution des risques d'inondation par débordement des réseaux lors des orages."},
                     "flows": [{"vl":["5100", "5200", "7100", "7200", "4900"], "hl":["all"], "popups":["5100", "5200", "7100", "7200", "4900"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
-                    "territories":[{"target":"t2", "action":"appear", "time":"0"}],
-                    "ui":{"show":["matter", "energy", "water", "idf", "pc"], "hide":[]},
-                    "functions":""
+                    "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }
                 ]
             }

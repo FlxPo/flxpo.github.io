@@ -79,6 +79,7 @@ app.UIView = Backbone.View.extend({
 
     var len = args.length;
     while(len--) {
+      console.log(args[len])
       var bv = this.buttons[args[len]];
       var sc = bv.model.get("show_class");
       this.buttons[args[len]].$el.velocity("fadeIn", {display:sc, duration:200, delay:d})
@@ -96,6 +97,7 @@ app.UIView = Backbone.View.extend({
 
   updateButtons:function(args) {
     var state = args.state;
+    console.log(state)
     state.rootState === "p" && this.buttons[state.rootState].clk({silent:true});
     state.territoryState !== null && state.rootState !== "p" && this.buttons[state.territoryState].clk({silent:true});
     state.typeState !== null && this.buttons[state.typeState].clk({silent:true});
@@ -114,6 +116,8 @@ app.UIView = Backbone.View.extend({
     var $toggle = $el.find(".toggle");
     var $label = $el.find(".toggle span");
 
+    $("#trend_legend").removeClass("show_h");
+
     // Target state : 2012/Tendances ?
     if (state.timeState === "2") {
 
@@ -126,10 +130,8 @@ app.UIView = Backbone.View.extend({
         $("#trend_legend").addClass("show_h");
       } else if (state.typeState === "energy") {
         $label.html("2009");
-        $("#trend_legend").removeClass("show_h");
       } else {
         $label.html("2012");
-        $("#trend_legend").removeClass("show_h");
       }
 
     // Else move toggle on the left and hide legend
@@ -139,13 +141,8 @@ app.UIView = Backbone.View.extend({
       // Change span content and display legend if needed
       if (state.typeState === "matter") {
         $label.html("2003");
-        $("#trend_legend").removeClass("show_h");
-      } else if (state.typeState === "energy") {
-        $label.html("2004");
-        $("#trend_legend").removeClass("show_h");
       } else {
         $label.html("2004");
-        $("#trend_legend").removeClass("show_h");
       }
     }
 

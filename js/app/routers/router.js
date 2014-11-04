@@ -164,7 +164,7 @@ app.Router = Backbone.Router.extend({
         var tv = new app.TerritoryView( {model:app.instance.territories.territories.get(args.id), time:args.time, type:args.type, mt:args.mt, intro:args.intro, goto:_.bind(app.instance.goto, app.instance)} )
         self.state.rootState = "t";
         self.state.territoryState = args.id;
-        self.state.typeState = "matter";
+        self.state.typeState = args.type;
         self.state.timeState = args.time;
       },
       project:function(args) {
@@ -265,7 +265,7 @@ app.Router = Backbone.Router.extend({
         var mt = (time === "2" && type === "matter");
         var mod_args = _.extend(args, {mt:mt, intro:intro});
         this.validateRoute("territory", args) && this.loadView("territory", args); // TODO : handle false
-        
+        console.log(args)
         this.state.territoryState = id;
         this.state.typeState = type;
         this.state.timeState = time;
