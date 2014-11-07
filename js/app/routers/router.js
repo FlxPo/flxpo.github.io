@@ -160,7 +160,6 @@ app.Router = Backbone.Router.extend({
       },
       territory:function(args) {
         app.instance.stopListeningPrevious();
-        console.log(app.instance.territories.territories)
         var tv = new app.TerritoryView( {model:app.instance.territories.territories.get(args.id), time:args.time, type:args.type, mt:args.mt, intro:args.intro, goto:_.bind(app.instance.goto, app.instance)} )
         self.state.rootState = "t";
         self.state.territoryState = args.id;
@@ -222,8 +221,6 @@ app.Router = Backbone.Router.extend({
 
     var fired = false;
 
-    console.log(this.intro)
-
     // Catch a first_pass on Paris for intro
     var intro = false;
     // if (!this.intro && id === "paris" && type === "matter" && time === "1") {
@@ -231,8 +228,6 @@ app.Router = Backbone.Router.extend({
       this.intro = true;
       intro = true;
     }
-
-    console.log(intro)
     
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {
@@ -265,7 +260,6 @@ app.Router = Backbone.Router.extend({
         var mt = (time === "2" && type === "matter");
         var mod_args = _.extend(args, {mt:mt, intro:intro});
         this.validateRoute("territory", args) && this.loadView("territory", args); // TODO : handle false
-        console.log(args)
         this.state.territoryState = id;
         this.state.typeState = type;
         this.state.timeState = time;

@@ -72,22 +72,17 @@ app.StoriesView = Backbone.View.extend({
 	},
 
 	go:function(args) {
-
 		var id = args.id === "last" ?  this.collection.models.length-1 : args.id;
-
 		// Get the view list of the first story
 		if (this.collection.models[id]) {
-
 			var steps = this.collection.models[id].get("steps");
 			steps.length > 1 && this.showNext();
-
 			// Load the story
 			this.injectContent(id, 0, 1);
-
 			// Change the style of the nav button
 			this.nv_collection.get(id).clk( {silent:true} );
 		}
-},
+	},
 
 nextStep:function(args) {
 
@@ -129,12 +124,8 @@ nextStep:function(args) {
 
 		function inject() {
 			return function() {
-				// Change the text
 				self.$title.html(steps[s].subtitle);
-				// self.$subtitle.html(steps[s].subtitle);
 				self.$text.html(steps[s].text.content);
-				// var al = steps[s].text.align;
-				// al && self.$text.css( {"text-align":"center"} );
 			}
 		}
 
@@ -143,7 +134,7 @@ nextStep:function(args) {
 		var appear_title = {elements:this.$title, properties:{ opacity:1 }, options:{duration:200} };
 		var appear_text = {elements:this.$text, properties:{ opacity:1 }, options:{duration:200, sequenceQueue:false} };
 
-		// $.Velocity.RunSequence([disappear_title, disappear_text, appear_title, appear_text]);
+		$.Velocity.RunSequence([disappear_title, disappear_text, appear_title, appear_text]);
 
 		// Animate the flows
 		var step = steps[s], fs = step.flows, flen = fs.length;

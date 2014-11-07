@@ -19,8 +19,6 @@ app.UIView = Backbone.View.extend({
     this.listenTo(this.b_collection, 'add', this.addButton);
     this.b_collection.add(options.init);
 
-    console.log(options.init)
-
     this.listenTo(Backbone, "ui:route", this.updateButtons);
     this.listenTo(Backbone, "ui:clickRadio", this.clickRadio);
     this.listenTo(Backbone, "ui:scale", this.updateScale);
@@ -79,7 +77,6 @@ app.UIView = Backbone.View.extend({
 
     var len = args.length;
     while(len--) {
-      console.log(args[len])
       var bv = this.buttons[args[len]];
       var sc = bv.model.get("show_class");
       this.buttons[args[len]].$el.velocity("fadeIn", {display:sc, duration:200, delay:d})
@@ -97,7 +94,6 @@ app.UIView = Backbone.View.extend({
 
   updateButtons:function(args) {
     var state = args.state;
-    console.log(state)
     state.rootState === "p" && this.buttons[state.rootState].clk({silent:true});
     state.territoryState !== null && state.rootState !== "p" && this.buttons[state.territoryState].clk({silent:true});
     state.typeState !== null && this.buttons[state.typeState].clk({silent:true});
