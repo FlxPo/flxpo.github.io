@@ -69,9 +69,10 @@ app.PopProjectView = Backbone.View.extend({
 	},
 
 	clk:function() {
-		if (this.id === "px") {
+		var id = this.id;
+		if (id === "px") {
 			Backbone.trigger("route:buildGo", {change:"root", id:"p"});
-		} else if (this.id !== "p0") {
+		} else if (id !== "p0") {
 			Backbone.trigger("route:buildGo", {change:"project", id:id});
 		}
 	},

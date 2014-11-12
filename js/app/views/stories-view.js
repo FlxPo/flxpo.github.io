@@ -54,8 +54,7 @@ app.StoriesView = Backbone.View.extend({
 
 		this.collection.each(function(story, index) {
 
-			var nav_model = Backbone.Model.extend({});
-			var nm = new nav_model({id:index, title:story.get("title"), display_dot:story.get("display_dot")});
+			var nm = new Backbone.Model({id:index, title:story.get("title"), display_dot:story.get("display_dot")});
 			var nv = this.nv_collection.add( {id:index, model:nm} );
 			this.$nav.append( nv.render().el );
 			_.defer(nv.renderClean)

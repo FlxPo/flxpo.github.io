@@ -62,7 +62,7 @@ app.Router = Backbone.Router.extend({
   },
 
   reload:function(intro) {
-    if (intro) this.intro = false;
+    if (intro) this.force_intro = true;
     Backbone.history.loadUrl(Backbone.history.fragment);
   },
 
@@ -224,7 +224,7 @@ app.Router = Backbone.Router.extend({
     // Catch a first_pass on Paris for intro
     var intro = false;
     // if (!this.intro && id === "paris" && type === "matter" && time === "1") {
-    if (this.previous_state.rootState === "start" || !this.intro) {
+    if (this.previous_state.rootState === "start" || this.force_intro) {
       this.intro = true;
       intro = true;
     }

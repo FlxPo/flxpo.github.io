@@ -73,7 +73,7 @@
                         {
                             "id":"500",
                             "index":"0",
-                            "name":"Purges",
+                            "name":"Eaux de purges",
                             "type":"input",
                             "from":"t3",
                             "to":"t1",
@@ -117,7 +117,7 @@
             "steps" :
                 [{
                     "subtitle":"Expérimentation de la filtration en continu des eaux des fontaines",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de « système de filtration des fontaines » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté sur deux fontaines monumentales parisiennes.<br><br>Cette filtration en continu permettra de limiter les volumes d’eau de purge donc d’eau consommée et d’eau rejetée dans le réseau d’assainissement. Elle permettra également de limiter les produits chimiques utilisés pour le traitement des eaux de la fontaine. L’expérimentation menée devrait permettre de mesurer dans quelle proportion.<br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de « système de filtration des fontaines » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté sur deux fontaines monumentales parisiennes.<br><br><strong>Cette filtration en continu permettra de limiter les volumes d’eau de purge</strong> donc d’eau consommée et d’eau rejetée dans le réseau d’assainissement. Elle permettra également de limiter les produits chimiques utilisés pour le traitement des eaux de la fontaine. L’expérimentation menée devrait permettre de mesurer dans quelle proportion.<br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
                     "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -126,7 +126,7 @@
                 },
                 {
                     "subtitle":"Expérimentation de la filtration en continu des eaux des fontaines",
-                    "text": {"time":"200", "content":"Pour l’essentiel, les fontaines d’ornement fonctionnent en circuit fermé c’est-à-dire que la même eau (souvent issue du réseau d’eau non potable, à Paris) est utilisée en boucle dans la fontaine. Malgré tout, il est nécessaire périodiquement de réaliser des purges destinées à assurer la bonne qualité et la transparence des eaux du bassin de la fontaine. Sont également ajoutés périodiquement des algicides ou du chlore destinés à maintenir la qualité des eaux."},
+                    "text": {"time":"200", "content":"Pour l’essentiel, les fontaines d’ornement fonctionnent en circuit fermé c’est-à-dire que la même eau (souvent issue du réseau d’eau non potable, à Paris) est utilisée en boucle dans la fontaine. Malgré tout, il est nécessaire périodiquement de réaliser des purge</strong>s destinées à assurer la bonne qualité et la transparence des eaux du bassin de la fontaine. Sont également ajoutés périodiquement des algicides ou du chlore destinés à maintenir la qualité des eaux."},
                     "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -134,7 +134,7 @@
                 },
                 {
                     "subtitle":"Expérimentation de la filtration en continu des eaux des fontaines",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de « système de filtration des fontaines » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté sur deux fontaines monumentales parisiennes.<br><br>Cette filtration en continu permettra de limiter les volumes d’eau de purge donc d’eau consommée et d’eau rejetée dans le réseau d’assainissement. Elle permettra également de limiter les produits chimiques utilisés pour le traitement des eaux de la fontaine. L’expérimentation menée devrait permettre de mesurer dans quelle proportion.<br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de « système de filtration des fontaines » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté sur deux fontaines monumentales parisiennes.<br><br><strong>Cette filtration en continu permettra de limiter les volumes d’eau de purge</strong> donc d’eau consommée et d’eau rejetée dans le réseau d’assainissement. Elle permettra également de limiter les produits chimiques utilisés pour le traitement des eaux de la fontaine. L’expérimentation menée devrait permettre de mesurer dans quelle proportion.<br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
                     "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -143,7 +143,7 @@
             "b_steps" :
                 [{
                     "subtitle":"Expérimentation de la filtration en continu des eaux des fontaines",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de « système de filtration des fontaines » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté sur deux fontaines monumentales parisiennes.<br><br>Cette filtration en continu permettra de limiter les volumes d’eau de purge donc d’eau consommée et d’eau rejetée dans le réseau d’assainissement. Elle permettra également de limiter les produits chimiques utilisés pour le traitement des eaux de la fontaine. L’expérimentation menée devrait permettre de mesurer dans quelle proportion.<br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de « système de filtration des fontaines » développé par VEOLIA et suivi par l’Ecole des Ingénieurs de la Ville de Paris pourra être expérimenté sur deux fontaines monumentales parisiennes.<br><br><strong>Cette filtration en continu permettra de limiter les volumes d’eau de purge</strong> donc d’eau consommée et d’eau rejetée dans le réseau d’assainissement. Elle permettra également de limiter les produits chimiques utilisés pour le traitement des eaux de la fontaine. L’expérimentation menée devrait permettre de mesurer dans quelle proportion.<br><br><em>Porteur de projet : <a href = \"http://www.veolia.fr/\" target = \"_blank\">Veolia</a></em>"},
                     "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -151,7 +151,7 @@
                 },
                 {
                     "subtitle":"Expérimentation de la filtration en continu des eaux des fontaines",
-                    "text": {"time":"200", "content":"Pour l’essentiel, les fontaines d’ornement fonctionnent en circuit fermé c’est-à-dire que la même eau (souvent issue du réseau d’eau non potable, à Paris) est utilisée en boucle dans la fontaine. Malgré tout, il est nécessaire périodiquement de réaliser des purges destinées à assurer la bonne qualité et la transparence des eaux du bassin de la fontaine. Sont également ajoutés périodiquement des algicides ou du chlore destinés à maintenir la qualité des eaux."},
+                    "text": {"time":"200", "content":"Pour l’essentiel, les fontaines d’ornement fonctionnent en circuit fermé c’est-à-dire que la même eau (souvent issue du réseau d’eau non potable, à Paris) est utilisée en boucle dans la fontaine. Malgré tout, il est nécessaire périodiquement de réaliser des purge</strong>s destinées à assurer la bonne qualité et la transparence des eaux du bassin de la fontaine. Sont également ajoutés périodiquement des algicides ou du chlore destinés à maintenir la qualité des eaux."},
                     "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},

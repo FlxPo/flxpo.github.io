@@ -3,7 +3,7 @@ var app = app || {};
 app.TerritoriesView = Backbone.View.extend({
 
   initialize:function(options) {
-    this.territories = new app.TerritoryCollection();
+    this.territories = new Backbone.Collection();//new app.TerritoryCollection();
     this.territories.add(options.init);
     this.currentView = null;
   },

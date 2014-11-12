@@ -31,7 +31,7 @@
                         "fax":"0",
                         "fay":"0.25",
                         "iw":"1",
-                        "ih":"0.5",
+                        "ih":"0.35",
 						"x":"0.3*w",
 						"y":"0.25*h",
 						"scale":"0.2",
@@ -45,7 +45,7 @@
                         "fax":"0",
                         "fay":"0.25",
                         "iw":"1",
-                        "ih":"0.5",
+                        "ih":"0.35",
                         "x":"0.7*w",
                         "y":"0.45*h",
                         "scale":"0.2",
@@ -54,7 +54,7 @@
                     }],
 
 	"flows": 		[{
-                            "id":"1400",
+                            "id":"1000",
                             "index":"0",
                             "name":"Déchets encombrants",
                             "type":"input",
@@ -120,7 +120,7 @@
                 [{
                     "subtitle":"Expérimentation de l’extension de la collecte de déchets<br>par une ressourcerie aux sites administratifs municipaux",
                     "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « Les vases communicants » porté par l’Interloque pourra être expérimenté pendant une période de 2 ans sur les 2ème et 18ème arrondissements. Ce projet propose d’étendre aux sites de la Mairie de Paris de ces arrondissements la collecte par les ressourceries Interloque de déchets encombrants (mobilier, électroménager…). <b>Il permet de donner une seconde vie aux objets concernés, limitant ainsi la production de déchets et contribue à l’économie sociale et solidaire du territoire.</b> A titre d’exemple, en 2013, dans le 18ème, ont été collectées par la ressourcerie Interloque 323 tonnes de déchets (dont 90% ont été valorisés). Les ressourceries des 2ème et 18ème occupent déjà 20 employés.</b><br><br><em>Porteur de projet : <a href = \"http://www.interloque.com/\" target = \"_blank\">L'Interloque</a></em>"},
-                    "flows": [{"vl":["1200","1300","1400"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["1200","1300","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -129,7 +129,7 @@
                 {
                     "subtitle":"Expérimentation de l’extension de la collecte de déchets<br>par une ressourcerie aux sites administratifs municipaux",
                     "text": {"time":"200", "content":"En 2013, 87 405 tonnes de déchets occasionnels et encombrants ont été collectés à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants. Parmi lesquels,  on compte notamment 2 % de déchets d’éléments d’ameublement et 2% de déchets électroniques qui seront valorisés. En plus des bois, papier et carton, métaux et gravats triés, il reste toutefois 87 % d’encombrants en mélange. <br><br>Parallèlement, les activités de l’administration municipale génèrent aussi des déchets de ce type  dont une part est réutilisée ou recyclée mais dont le gisement reste mal connu."},
-                    "flows": [{"vl":["1400"], "hl":["1300","1200"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["1000"], "hl":["1300","1200"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -137,7 +137,7 @@
                 {
                     "subtitle":"Expérimentation de l’extension de la collecte de déchets<br>par une ressourcerie aux sites administratifs municipaux",
                     "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « Les vases communicants » porté par l’Interloque pourra être expérimenté pendant une période de 2 ans sur les 2ème et 18ème arrondissements. Ce projet propose d’étendre aux sites de la Mairie de Paris de ces arrondissements la collecte par les ressourceries Interloque de déchets encombrants (mobilier, électroménager…). <b>Il permet de donner une seconde vie aux objets concernés, limitant ainsi la production de déchets et contribue à l’économie sociale et solidaire du territoire.</b> A titre d’exemple, en 2013, dans le 18ème, ont été collectées par la ressourcerie Interloque 323 tonnes de déchets (dont 90% ont été valorisés). Les ressourceries des 2ème et 18ème occupent déjà 20 employés.</b><br><br><em>Porteur de projet : <a href = \"http://www.interloque.com/\" target = \"_blank\">L'Interloque</a></em>"},
-                    "flows": [{"vl":["1200","1300","1400"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["1200","1300","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -146,7 +146,7 @@
                 [{
                     "subtitle":"Expérimentation de l’extension de la collecte de déchets<br>par une ressourcerie aux sites administratifs municipaux",
                     "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « Les vases communicants » porté par l’Interloque pourra être expérimenté pendant une période de 2 ans sur les 2ème et 18ème arrondissements. Ce projet propose d’étendre aux sites de la Mairie de Paris de ces arrondissements la collecte par les ressourceries Interloque de déchets encombrants (mobilier, électroménager…). <b>Il permet de donner une seconde vie aux objets concernés, limitant ainsi la production de déchets et contribue à l’économie sociale et solidaire du territoire.</b> A titre d’exemple, en 2013, dans le 18ème, ont été collectées par la ressourcerie Interloque 323 tonnes de déchets (dont 90% ont été valorisés). Les ressourceries des 2ème et 18ème occupent déjà 20 employés.</b><br><br><em>Porteur de projet : <a href = \"http://www.interloque.com/\" target = \"_blank\">L'Interloque</a></em>"},
-                    "flows": [{"vl":["1200","1300","1400"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["1200","1300","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -154,7 +154,7 @@
                 {
                     "subtitle":"Expérimentation de l’extension de la collecte de déchets<br>par une ressourcerie aux sites administratifs municipaux",
                     "text": {"time":"200", "content":"En 2013, 87 405 tonnes de déchets occasionnels et encombrants ont été collectés à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants. Parmi lesquels,  on compte notamment 2 % de déchets d’éléments d’ameublement et 2% de déchets électroniques qui seront valorisés. En plus des bois, papier et carton, métaux et gravats triés, il reste toutefois 87 % d’encombrants en mélange. <br><br>Parallèlement, les activités de l’administration municipale génèrent aussi des déchets de ce type  dont une part est réutilisée ou recyclée mais dont le gisement reste mal connu."},
-                    "flows": [{"vl":["1400"], "hl":["1300","1200"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["1000"], "hl":["1300","1200"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""

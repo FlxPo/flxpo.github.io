@@ -32,9 +32,9 @@
                         "fay":"0.1",
                         "iw":"1",
                         "ih":"1",
-						"x":"0.7*w",
+						"x":"0.75*w",
 						"y":"0.35*h",
-						"scale":"0.15",
+						"scale":"0.13",
                         "force_w_scale":true
 					},
                     {
@@ -60,7 +60,7 @@
                         "fay":"0.3",
                         "iw":"1",
                         "ih":"1",
-                        "x":"0.425*w",
+                        "x":"0.47*w",
                         "y":"0.275*h",
                         "scale":"0.15",
                         "force_w_scale":true,
@@ -74,22 +74,22 @@
                         "fax":"0",
                         "fay":"0.1",
                         "iw":"1",
-                        "ih":"0.8",
-                        "x":"0.8*w",
-                        "y":"0.525*h",
+                        "ih":"0.55",
+                        "x":"0.75*w",
+                        "y":"0.535*h",
                         "scale":"0.14",
                         "force_w_scale":true
                     }],
 
 	"flows": 		[{
-                            "id":"1200",
+                            "id":"3000",
                             "index":"0",
                             "name":"Produits frais",
                             "type":"input",
                             "from":"t0",
                             "to":"t5",
-                            "volume_o4":"80",
-                            "volume_o9":"80",
+                            "volume_o4":"60",
+                            "volume_o9":"60",
                             "trend":"-1",
                             "unit":"t / an",
                             "color":"#8C2929",
@@ -101,7 +101,7 @@
                             "virtual":true
                         },
                         {
-                            "id":"1250",
+                            "id":"1350",
                             "index":"0",
                             "name":"Déchets organiques",
                             "type":"input",
@@ -158,7 +158,7 @@
                             "virtual":true
                         },
                         {
-                            "id":"1350",
+                            "id":"1450",
                             "index":"0",
                             "name":"Produits frais",
                             "type":"input",
@@ -186,7 +186,7 @@
                 [{
                     "subtitle":"Expérimentation d’aquaponie urbaine",
                     "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « La Ferme du quartier », projet d’aquaponie urbaine, pourra être expérimenté pendant 2 ans sur une toiture ou une dépendance d’un bâtiment administratif. Il permettra de proposer aux habitants des produits frais locaux en circuit court. Ce mode d’agriculture permet de ne pas augmenter les flux entrants sur le territoire : les homards d’eau douce pourront être nourris à partir des bio-déchets d’une cantine ; les plantes cultivées seront alimentées en engrais naturel par la production piscicole écologique.<br><br><em>Porteur de projet : Gabriel Bedoy, Mathieu Mastin – La Ferme du Quartier</em>"},
-                    "flows": [{"vl":["1200", "1300", "1250", "1400", "1350"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["3000", "1300", "1350", "1400", "1450"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0},
@@ -197,7 +197,7 @@
                 {
                     "subtitle":"Expérimentation d’aquaponie urbaine",
                     "text": {"time":"200", "content":"Paris importe chaque année 4 340 000 t de produits agricoles et alimentaires. La consommation sur place d’une partie de ces produits agro-alimentaires génère des déchets organiques qui sont ensuite incinérés. En moyenne, ce sont, en France, selon l’ADEME, 33% du poids d’un repas qui finissent dans la poubelle."},
-                    "flows": [{"vl":["1200", "1300"], "hl":["1400", "1350", "1250"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["3000", "1300"], "hl":["1400", "1450", "1350"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"disappear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -205,7 +205,7 @@
                 {
                     "subtitle":"Expérimentation d’aquaponie urbaine",
                     "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « La Ferme du quartier », projet d’aquaponie urbaine, pourra être expérimenté pendant 2 ans sur une toiture ou une dépendance d’un bâtiment administratif. Il permettra de proposer aux habitants des produits frais locaux en circuit court. Ce mode d’agriculture permet de ne pas augmenter les flux entrants sur le territoire : les homards d’eau douce pourront être nourris à partir des bio-déchets d’une cantine ; les plantes cultivées seront alimentées en engrais naturel par la production piscicole écologique.<br><br><em>Porteur de projet : Gabriel Bedoy, Mathieu Mastin – La Ferme du Quartier</em>"},
-                    "flows": [{"vl":["1200", "1300", "1250", "1400", "1350", "1400", "1350", "1250"], "hl":[], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["3000", "1300", "1350", "1400", "1450", "1400", "1450", "1350"], "hl":[], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -214,7 +214,7 @@
                 [{
                     "subtitle":"Expérimentation d’aquaponie urbaine",
                     "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet « La Ferme du quartier », projet d’aquaponie urbaine, pourra être expérimenté pendant 2 ans sur une toiture ou une dépendance d’un bâtiment administratif. Il permettra de proposer aux habitants des produits frais locaux en circuit court. Ce mode d’agriculture permet de ne pas augmenter les flux entrants sur le territoire : les homards d’eau douce pourront être nourris à partir des bio-déchets d’une cantine ; les plantes cultivées seront alimentées en engrais naturel par la production piscicole écologique.<br><br><em>Porteur de projet : Gabriel Bedoy, Mathieu Mastin – La Ferme du Quartier</em>"},
-                    "flows": [{"vl":["1200", "1300", "1250", "1400", "1350", "1400", "1350", "1250"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["3000", "1300", "1350", "1400", "1450", "1400", "1450", "1350"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
@@ -222,7 +222,7 @@
                 {
                     "subtitle":"Expérimentation d’aquaponie urbaine",
                     "text": {"time":"200", "content":"Paris importe chaque année 4 340 000 t de produits agricoles et alimentaires. La consommation sur place d’une partie de ces produits agro-alimentaires génère des déchets organiques qui sont ensuite incinérés. En moyenne, ce sont, en France, selon l’ADEME, 33% du poids d’un repas qui finissent dans la poubelle."},
-                    "flows": [{"vl":["1200", "1300"], "hl":["1400", "1350", "1250"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["3000", "1300"], "hl":["1400", "1450", "1350"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"disappear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""

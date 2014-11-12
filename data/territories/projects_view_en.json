@@ -150,7 +150,7 @@
                     {
                         "id":"p11",
                         "view":"paves",
-                        "name":"Valorisation des bio-déchets de cantine",
+                        "name":"Valorisation des bio-déchets de cantine (1)",
                         "description":"Description du projet en une phrase.",
                         "imgurl":"data/graphics/items/thumb_usinemethanisation.png",
                         "territory":"t2",
@@ -162,7 +162,7 @@
                     {
                         "id":"p12",
                         "view":"paves",
-                        "name":"Valorisation des bio-déchets de cantine",
+                        "name":"Valorisation des bio-déchets de cantine (2)",
                         "description":"Description du projet en une phrase.",
                         "imgurl":"data/graphics/items/thumb_usinemethanisation.png",
                         "territory":"t2",

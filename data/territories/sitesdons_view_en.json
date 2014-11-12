@@ -31,7 +31,7 @@
                         "fax":"0",
                         "fay":"0.25",
                         "iw":"1",
-                        "ih":"0.5",
+                        "ih":"0.35",
 						"x":"0.3*w",
 						"y":"0.35*h",
 						"scale":"0.17",
@@ -45,7 +45,7 @@
                         "fax":"0",
                         "fay":"0.1",
                         "iw":"1",
-                        "ih":"0.5",
+                        "ih":"0.35",
                         "x":"0.7*w",
                         "y":"0.55*h",
                         "scale":"0.17",
@@ -143,7 +143,7 @@
                 },
                 {
                     "subtitle":"Expérimentation d’une plateforme Internet de don d’objets aux acteurs de l’ESS",
-                    "text": {"time":"200", "content":"En 2013, 87 405 tonnes de déchets occasionnels et encombrants ont été collectés à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants. Parmi lesquels, on compte notamment 2 % de déchets d’éléments d’ameublement et 2% de déchets électroniques qui seront valorisés spécifiquement. En plus des bois, papier et carton, métaux et gravats triés, il reste toutefois 87 % d’encombrants en mélange.Parallèlement, les activités de l’administration municipale génèrent aussi des déchets de ce type  dont une part est réutilisée ou recyclée mais dont le gisement reste mal connu."},
+                    "text": {"time":"200", "content":"En 2013, 87 405 tonnes de déchets occasionnels et encombrants ont été collectés à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants. Parmi lesquels, on compte notamment 2 % de déchets d’éléments d’ameublement et 2% de déchets électroniques qui seront valorisés spécifiquement. En plus des bois, papier et carton, métaux et gravats triés, il reste toutefois 87 % d’encombrants en mélange.<br><br>Parallèlement, les activités de l’administration municipale génèrent aussi des déchets de ce type  dont une part est réutilisée ou recyclée mais dont le gisement reste mal connu."},
                     "flows": [{"vl":["1300","1100"], "hl":["1200"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -160,7 +160,7 @@
             "b_steps" :
                 [{
                     "subtitle":"Expérimentation d’une plateforme Internet de don d’objets aux acteurs de l’ESS",
-                    "text": {"time":"200", "content":"En 2013, 87 405 tonnes de déchets occasionnels et encombrants ont été collectés à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants. Parmi lesquels, on compte notamment 2 % de déchets d’éléments d’ameublement et 2% de déchets électroniques qui seront valorisés spécifiquement. En plus des bois, papier et carton, métaux et gravats triés, il reste toutefois 87 % d’encombrants en mélange.Parallèlement, les activités de l’administration municipale génèrent aussi des déchets de ce type  dont une part est réutilisée ou recyclée mais dont le gisement reste mal connu."},
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, un projet de site Internet porté par Co-recyclage pourra être expérimenté pendant une période de 2 ans sur l’administration parisienne.  Ce projet propose une plateforme Internet mettant en relation les donateurs potentiels d’objets non alimentaires destinés au rebut (mobilier, électroménager, informatique, livres, vêtements, jouets…) et les acteurs de l’économie sociale et solidaire (ESS) intéressés. <b>Il permet de donner une seconde vie aux objets concernés, limitant ainsi la production de déchets – en particulier encombrants - et contribue à l’économie sociale et solidaire du territoire.</b><br><br><em>Porteur de projet : <a href = \"http://www.co-recyclage.com/\" target = \"_blank\">Co-Recyclage</a></em>"},
                     "flows": [{"vl":["1200"], "hl":["1300","1100"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -168,7 +168,7 @@
                 },
                 {
                     "subtitle":"Expérimentation d’une plateforme Internet de don d’objets aux acteurs de l’ESS",
-                    "text": {"time":"200", "content":"En 2013, 87 405 tonnes de déchets occasionnels et encombrants ont été collectés à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants. Parmi lesquels, on compte notamment 2 % de déchets d’éléments d’ameublement et 2% de déchets électroniques qui seront valorisés spécifiquement. En plus des bois, papier et carton, métaux et gravats triés, il reste toutefois 87 % d’encombrants en mélange.Parallèlement, les activités de l’administration municipale génèrent aussi des déchets de ce type  dont une part est réutilisée ou recyclée mais dont le gisement reste mal connu."},
+                    "text": {"time":"200", "content":"En 2013, 87 405 tonnes de déchets occasionnels et encombrants ont été collectés à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants. Parmi lesquels, on compte notamment 2 % de déchets d’éléments d’ameublement et 2% de déchets électroniques qui seront valorisés spécifiquement. En plus des bois, papier et carton, métaux et gravats triés, il reste toutefois 87 % d’encombrants en mélange.<br><br>Parallèlement, les activités de l’administration municipale génèrent aussi des déchets de ce type  dont une part est réutilisée ou recyclée mais dont le gisement reste mal connu."},
                     "flows": [{"vl":["1300","1100"], "hl":["1200"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},

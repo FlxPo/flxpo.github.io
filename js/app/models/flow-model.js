@@ -21,9 +21,9 @@ app.Flow = Backbone.Model.extend({
     var ch = this.get("children");
     var pa = this.get("parent");
     var si = this.get("siblings");
-    this.set("children", ch === "" ? undefined : ch.split(";"));
-    this.set("parent", pa === "" ? undefined : pa);
-    this.set("siblings", si === "" ? undefined : si.split(";").concat(this.get("id")));
+    ch && this.set("children", ch === "" ? undefined : ch.split(";"));
+    pa && this.set("parent", pa === "" ? undefined : pa);
+    si && this.set("siblings", si === "" ? undefined : si.split(";").concat(this.get("id")));
 
     // Validate volumes
     var vo4 = this.get("volume_o4");

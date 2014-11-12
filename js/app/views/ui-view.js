@@ -15,7 +15,8 @@ app.UIView = Backbone.View.extend({
 
     this.buttons = {};
 
-    this.b_collection = new app.ButtonCollection();
+    this.b_collection = new Backbone.Collection();
+
     this.listenTo(this.b_collection, 'add', this.addButton);
     this.b_collection.add(options.init);
 
@@ -41,14 +42,17 @@ app.UIView = Backbone.View.extend({
       var vscale = Math.round(0.0001 * 80/args.scale) / 0.0001;
       var hscale = vscale*args.scale;
 
-
     if (hscale < 2) {
 
       $("#fs_container").hide();
+      $("#fs_text").hide();
 
     } else if (!args.virtual) {
 
+      $("#legend").velocity("fadeIn", {duration:200, display:"block", delay:1000});
+
       $("#fs_container").show();
+      $("#fs_text").show();
       $("#fs_container div").css({height:hscale + 10})
       this.Rscale.attr({path:["M",30,hscale+5,"H",25,"V",5,"H",30], "stroke-width":3, "stroke":"#ccc"});
       $("#legend #fs_text p").html(utils.formatVolume(vscale, " ") + " " + args.unit);
@@ -66,6 +70,8 @@ app.UIView = Backbone.View.extend({
   showButtons:function(args, delay) {
 
     var d = delay || 0;
+
+    $("#legend").velocity("fadeOut", {duration:200});
 
     _.each(this.buttons, function(value) {
       var sc = value.model.get("show_class");
@@ -169,7 +175,7 @@ app.UIView = Backbone.View.extend({
     this.toggleX();
 
     // Create the view
-    this.about_view = new app.AboutView( {model:new app.About()} );
+    this.about_view = new app.AboutView()//; {model:new app.About()} );
     this.$el.first().prepend(this.about_view.render().el);
 
     // Bind the close call to the x button

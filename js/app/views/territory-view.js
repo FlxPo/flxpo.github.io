@@ -26,7 +26,7 @@ app.TerritoryView = Backbone.View.extend({
       		success:function(data) {
 
 				// Load Items
-				var items = new app.ItemCollection(data.items);
+				var items = new Backbone.Collection(data.items);
 				self.items_views = new app.ItemsView( {parent:self, collection:items} );
 
 				// Load flows
@@ -35,13 +35,13 @@ app.TerritoryView = Backbone.View.extend({
 
 				// Load projects
 				if (data.projects) {
-					var projects = new app.ProjectCollection(data.projects);
+					var projects = new Backbone.Collection(data.projects);//app.ProjectCollection(data.projects);
 					var showpanel = (self.model.get("id") === "projects");
 					self.projects_views = new app.ProjectsView( {parent:self, collection:projects, items_views:self.items_views, showpanel:showpanel} );
 				}
 
 				// Load stories
-				var stories = new app.StoryCollection(data.stories[options.type]);
+				var stories = new Backbone.Collection(data.stories[options.type]);//new app.StoryCollection(data.stories[options.type]);
 				self.stories_views = new app.StoriesView( {collection:stories} );
 
 				// Load view

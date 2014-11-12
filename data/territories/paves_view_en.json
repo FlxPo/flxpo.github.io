@@ -1,9 +1,6 @@
 {
-	"ui_elements":{},
-	"scale":"w/2000",
 	"items": [{
                         "id":"t0",
-                        "name":"t0",
                         "fax":"",
                         "fay":"",
                         "iw":"1",
@@ -14,7 +11,6 @@
                     },
                     {
                         "id":"t1",
-                        "name":"t1",
                         "fax":"",
                         "fay":"",
                         "iw":"1",
@@ -25,7 +21,7 @@
                     },
                     {
                         "id":"t2",
-                        "name":"t2",
+                        "label":"Chantier de voirie",
                         "fax":"0",
                         "fay":"0",
                         "iw":"1",
@@ -33,11 +29,11 @@
                         "geom":"data/graphics/geom_construction.json",
                         "x":"0.3*w",
                         "y":"0.4*h",
-                        "scale":"0.2"
+                        "scale":"0.19"
                     },
                     {
                         "id":"t3",
-                        "name":"t3",
+                        "label":"Chantier de<br>renouvellement de voirie",
                         "fax":"0",
                         "fay":"0",
                         "iw":"1",
@@ -45,11 +41,11 @@
                         "geom":"data/graphics/geom_deconstruction.json",
                         "x":"0.4*w",
                         "y":"0.2*h",
-                        "scale":"0.2"
+                        "scale":"0.18"
                     },
                     {
                         "id":"t4",
-                        "name":"t4",
+                        "label":"Centre de recyclage",
                         "fax":"0",
                         "fay":"0.15",
                         "iw":"1",
@@ -57,7 +53,7 @@
                         "geom":"data/graphics/geom_entrepot.json",
                         "x":"0.7*w",
                         "y":"0.4*h",
-                        "scale":"0.2",
+                        "scale":"0.18",
                         "force_w_scale":true,
                         "solution":true
                     }],
@@ -65,106 +61,69 @@
 	"flows": 		[
                         {
                             "id":"3000",
-                            "index":"0",
                             "name":"Pose de granit",
                             "type":"input",
                             "from":"t0",
                             "to":"t2",
                             "volume_o4":"15000",
                             "volume_o9":"NA",
-                            "trend":"-1",
                             "unit":"t / an",
-                            "color":"#a69ea9",
-                            "color2":"#b7b1ba",
-                            "level":"0",
-                            "parent":"",
-                            "children":"",
-                            "siblings":""
+                            "color":"#a69ea9"
                         },
                         {
                             "id":"3100",
-                            "index":"0",
-                            "name":"Pose de granit neuf",
+                            "name":"Pose de<br>granit neuf",
                             "type":"input",
                             "from":"t0",
                             "to":"t2",
                             "volume_o4":"7500",
                             "volume_o9":"NA",
-                            "trend":"-1",
                             "unit":"t / an",
-                            "color":"#fa9898",
-                            "color2":"#fbacac",
-                            "level":"0",
-                            "parent":"",
-                            "children":"",
-                            "siblings":""
+                            "color":"#fa9898"
                         },
                         {
                             "id":"2000",
-                            "index":"0",
-                            "name":"Matériaux déconstruits",
+                            "name":"Matériaux<br>déconstruits",
                             "type":"input",
                             "from":"t3",
                             "to":"t1",
                             "volume_o4":"7500",
                             "volume_o9":"NA",
-                            "trend":"-1",
                             "unit":"t / an",
-                            "color":"#a69ea9",
-                            "color2":"#b7b1ba",
-                            "level":"0",
-                            "parent":"",
-                            "children":"",
-                            "siblings":""
+                            "color":"#a69ea9"
                         },
                         {
                             "id":"2001",
-                            "index":"0",
-                            "name":"Matériaux déconstruits",
+                            "name":"Matériaux<br>déconstruits",
                             "type":"input",
                             "from":"t3",
                             "to":"t4",
                             "volume_o4":"7500",
                             "volume_o9":"NA",
-                            "trend":"-1",
                             "unit":"t / an",
-                            "color":"#a69ea9",
-                            "color2":"#b7b1ba",
-                            "level":"0",
-                            "parent":"",
-                            "children":"",
-                            "siblings":""
+                            "color":"#a69ea9"
                         },
                         {
                             "id":"4000",
-                            "index":"0",
                             "name":"Granit recyclé",
                             "type":"input",
                             "from":"t4",
                             "to":"t2",
                             "volume_o4":"7500",
                             "volume_o9":"NA",
-                            "trend":"-1",
                             "unit":"t / an",
-                            "color":"#a9bc94",
-                            "color2":"#bac9a9",
-                            "level":"0",
-                            "parent":"",
-                            "children":"",
-                            "siblings":""
+                            "color":"#a9bc94"
                         }
                     ],
 
 
     "stories": {
         "matter":[{
-            "title":"Recyclage des matériaux de voirie en pierre naturelle",
-            "subtitle":"",
             "display_dot":false,       
             "steps" :
                 [{
                     "subtitle":"Entretien et aménagement de la voirie parisienne",
-                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un cetre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !<strong>"},
+                    "text": {"time":"200", "content":"15 000 tonnes de granit sont posées annuellement sur 450 chantiers d’amélioration de la voirie parisienne. Le granit «neuf » utilisé provient de Bretagne, du Tarn ou d’Espagne.<br><br>Plus de 2,5 millions de tonnes de granit sont en place sur la voirie. Pour l’entretien ou des aménagements, une partie est déconstruite chaque année. En l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
                     "flows": [{"vl":["3100", "2001", "4000"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
@@ -174,7 +133,7 @@
                 },
                 {
                     "subtitle":"Le centre de recyclage des matériaux parisiens à Bonneuil-sur-Marne",
-                    "text": {"time":"200", "content":"La voirie parisienne totalise déjà 2,5 millions de tonnes de granit en place ! Lors de nouveaux aménagements ou de l'entretien, une partie de ce stock est déconstruite, et en l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
+                    "text": {"time":"200", "content":"la Mairie de Paris a mis en place un centre de recyclage des matériaux situé à Bonneuil-sur-Marne. Les matériaux issus des chantiers d’entretien / déconstructions y sont amenés pour y être retaillés ou recyclés. Ainsi sur les 15 000 tonnes de granit posées annuellement, 50 % sont du granit recyclé."},
                     
                     "flows": [{"vl":[], "hl":["3100", "2001", "4000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
                                 {"vl":["3000", "2000"], "hl":[], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
@@ -185,7 +144,7 @@
                 },
                 {
                     "subtitle":"Recyclage des pavés et matériaux de voirie en pierre naturelle",
-                    "text": {"time":"200", "content":"Grâce au centre de recyclage, au lieu de recourir à du granit totalement «neuf» qui provient de Bretagne, du Tarn ou d’Espagne, <strong>la Ville de Paris peut utiliser 50% de matériaux recyclés !</strong> Ce dispositif permet d’économiser chaque année près d’un million d’euros sur l’achat des matériaux, 600 tonnes d'émissions de CO<sub>2</sub>, et 300 camions de 25 tonnes sur les routes.<br><br><em>Porteurs de projet : Direction de la Voirie et des Déplacements – <a href = \"http://www.paris.fr/\" target = \"_blank\">Mairie de Paris</a>.</em>"},
+                    "text": {"time":"200", "content":"50% du granit utilisé sur la voirie est recyclé. Ceci permet à la Ville de Paris d’économiser près d’un million d’euros par an sur l’achat des matériaux. L’émission de 600 tonnes de CO2 est ainsi évitée.  300 camions de 25 tonnes en moins se retrouvent sur les routes.<br><br><em>Porteurs de projet : Direction de la Voirie et des Déplacements – <a href = \"http://www.paris.fr/\" target = \"_blank\">Mairie de Paris</a>.</em>"},
                     "flows": [{"vl":["2001"], "hl":["2000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
                                  {"vl":["4000","3100"], "hl":["3000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -196,7 +155,7 @@
             "b_steps" :
                 [{
                     "subtitle":"Entretien et aménagement de la voirie parisienne",
-                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un centre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !<strong>"},
+                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un centre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !"},
                     "flows": [{"vl":["3100", "2001", "4000"], "hl":["3000", "2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":["s_button.next"], "hide":[]},
@@ -213,8 +172,6 @@
                     "functions":""
                 }
                 ]
-        }],
-        "energy":[],
-        "water":[]
+        }]
     }
 }

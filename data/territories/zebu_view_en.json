@@ -59,7 +59,7 @@
                         "fax":"0",
                         "fay":"0.15",
                         "iw":"1",
-                        "ih":"0.7",
+                        "ih":"0.55",
                         "x":"0.5*w",
                         "y":"0.4*h",
                         "scale":"0.15",
@@ -115,7 +115,7 @@
                             "virtual":true
                         },
                         {
-                            "id":"1500",
+                            "id":"800",
                             "index":"0",
                             "name":"Valorisation matière",
                             "type":"input",
@@ -134,7 +134,7 @@
                             "virtual":true
                         },
                         {
-                            "id":"1200",
+                            "id":"1500",
                             "index":"0",
                             "name":"Valorisation énergétique",
                             "type":"input",
@@ -199,8 +199,8 @@
             "steps" :
                 [{
                     "subtitle":"Expérimentation de la valorisation des marcs de brasserie",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet  ZéBu (Zone d’étude écosystémique sur le métabolisme des Brasseries Urbaines), coordonné par l’association Zone-Ah, pourra être expérimenté pendant 2 ans sur le territoire parisien. Il propose une collecte des marcs de brasserie (drêches) et une recherche de filières de valorisation (compostage, substrat de production, valorisation énergétique, bio-matériaux, alimentation animale…). A terme, le projet envisage une relocalisation parallèle de la production de houblon et 710 tonnes de drêches franciliennes pourraient être concernées par la mise en place d’une filière d’élimination spécifique.<br><br><em>Porteur de projet : <a href = \"http://www.zone-ah.org/\" target = \"_blank\">Zone-Ah</a></em>"},
-                    "flows": [{"vl":["1400", "1300","1200","1500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet  ZéBu (Zone d’étude écosystémique sur le métabolisme des Brasseries Urbaines), coordonné par l’association Zone-Ah, pourra être expérimenté pendant 2 ans sur le territoire parisien. Il propose une collecte des marcs de brasserie (drêches) et une recherche de filières de valorisation (compostage, substrat de production, valorisation énergétique, bio-matériaux, alimentation animale…). A terme, le projet envisage une relocalisation parallèle de la production de houblon et <strong>710 tonnes de drêches franciliennes pourraient être concernées par la mise en place d’une filière d’élimination spécifique</strong>.<br><br><em>Porteur de projet : <a href = \"http://www.zone-ah.org/\" target = \"_blank\">Zone-Ah</a></em>"},
+                    "flows": [{"vl":["1400", "1300","1500","800"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0},
@@ -212,7 +212,7 @@
                 {
                     "subtitle":"Expérimentation de la valorisation des marcs de brasserie",
                     "text": {"time":"200", "content":"Paris et sa petite couronne ont connu durant les cinq dernières années une hausse de 90 % des installations de micro-brasseries (11 brasseries ou bars producteurs sont localisés à Paris-même). En 2013, on peut estimer la production de marcs de brasserie (drêches) à Paris et petite couronne à près de 470 t. L'essor rapide de ces brasseries vient nuancer les efforts menés par les collectivités pour réduire leurs déchets. Dans le cas de Paris, les drêches sont prises en charge dans le circuit classique d’élimination des déchets et incinérées."},
-                    "flows": [{"vl":["1000"], "hl":["1400", "1300","1200","1500"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "flows": [{"vl":["1000"], "hl":["1400", "1300","1500","800"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t5", "action":"disappear", "parms":{"time":300}, "time":0},
@@ -222,8 +222,8 @@
                 },
                 {
                     "subtitle":"Expérimentation de la valorisation des marcs de brasserie",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet  ZéBu (Zone d’étude écosystémique sur le métabolisme des Brasseries Urbaines), coordonné par l’association Zone-Ah, pourra être expérimenté pendant 2 ans sur le territoire parisien. Il propose une collecte des marcs de brasserie (drêches) et une recherche de filières de valorisation (compostage, substrat de production, valorisation énergétique, bio-matériaux, alimentation animale…). A terme, le projet envisage une relocalisation parallèle de la production de houblon et 710 tonnes de drêches franciliennes pourraient être concernées par la mise en place d’une filière d’élimination spécifique.<br><br><em>Porteur de projet : <a href = \"http://www.zone-ah.org/\" target = \"_blank\">Zone-Ah</a></em>"},
-                    "flows": [{"vl":["1400", "1300","1200","1500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet  ZéBu (Zone d’étude écosystémique sur le métabolisme des Brasseries Urbaines), coordonné par l’association Zone-Ah, pourra être expérimenté pendant 2 ans sur le territoire parisien. Il propose une collecte des marcs de brasserie (drêches) et une recherche de filières de valorisation (compostage, substrat de production, valorisation énergétique, bio-matériaux, alimentation animale…). A terme, le projet envisage une relocalisation parallèle de la production de houblon et <strong>710 tonnes de drêches franciliennes pourraient être concernées par la mise en place d’une filière d’élimination spécifique</strong>.<br><br><em>Porteur de projet : <a href = \"http://www.zone-ah.org/\" target = \"_blank\">Zone-Ah</a></em>"},
+                    "flows": [{"vl":["1400", "1300","1500","800"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t5", "action":"appear", "parms":{"time":300}, "time":0},
@@ -234,8 +234,8 @@
             "b_steps" :
                 [{
                     "subtitle":"Expérimentation de la valorisation des marcs de brasserie",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet  ZéBu (Zone d’étude écosystémique sur le métabolisme des Brasseries Urbaines), coordonné par l’association Zone-Ah, pourra être expérimenté pendant 2 ans sur le territoire parisien. Il propose une collecte des marcs de brasserie (drêches) et une recherche de filières de valorisation (compostage, substrat de production, valorisation énergétique, bio-matériaux, alimentation animale…). A terme, le projet envisage une relocalisation parallèle de la production de houblon et 710 tonnes de drêches franciliennes pourraient être concernées par la mise en place d’une filière d’élimination spécifique.<br><br><em>Porteur de projet : <a href = \"http://www.zone-ah.org/\" target = \"_blank\">Zone-Ah</a></em>"},
-                    "flows": [{"vl":["1400", "1300","1200","1500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet  ZéBu (Zone d’étude écosystémique sur le métabolisme des Brasseries Urbaines), coordonné par l’association Zone-Ah, pourra être expérimenté pendant 2 ans sur le territoire parisien. Il propose une collecte des marcs de brasserie (drêches) et une recherche de filières de valorisation (compostage, substrat de production, valorisation énergétique, bio-matériaux, alimentation animale…). A terme, le projet envisage une relocalisation parallèle de la production de houblon et <strong>710 tonnes de drêches franciliennes pourraient être concernées par la mise en place d’une filière d’élimination spécifique</strong>.<br><br><em>Porteur de projet : <a href = \"http://www.zone-ah.org/\" target = \"_blank\">Zone-Ah</a></em>"},
+                    "flows": [{"vl":["1400", "1300","1500","800"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t5", "action":"appear", "parms":{"time":300}, "time":0},
@@ -246,7 +246,7 @@
                 {
                     "subtitle":"Expérimentation de la valorisation des marcs de brasserie",
                     "text": {"time":"200", "content":"Paris et sa petite couronne ont connu durant les cinq dernières années une hausse de 90 % des installations de micro-brasseries (11 brasseries ou bars producteurs sont localisés à Paris-même). En 2013, on peut estimer la production de marcs de brasserie (drêches) à Paris et petite couronne à près de 470 t. L'essor rapide de ces brasseries vient nuancer les efforts menés par les collectivités pour réduire leurs déchets. Dans le cas de Paris, les drêches sont prises en charge dans le circuit classique d’élimination des déchets et incinérées."},
-                    "flows": [{"vl":["1000"], "hl":["1400", "1300","1200","1500"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "flows": [{"vl":["1000"], "hl":["1400", "1300","1500","800"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t5", "action":"disappear", "parms":{"time":300}, "time":0},

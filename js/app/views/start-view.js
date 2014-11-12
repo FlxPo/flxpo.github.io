@@ -96,9 +96,6 @@ app.StartView = Backbone.View.extend({
 	},
 
 	transitionOut:function(options) {
-
-		console.log(typeof options.callback)
-
 		var dz = options.dz || 0, t = "0%";
 		if (dz === 0) {
 			options.callback();

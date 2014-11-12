@@ -8,8 +8,6 @@ app.AppView = Backbone.View.extend({
 
     this.router = new app.Router();
 
-    console.log(window.location.pathname)
-
     var self = this;
     // Load init resource data
     $.ajax({
