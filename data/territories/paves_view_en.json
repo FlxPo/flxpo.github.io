@@ -133,7 +133,7 @@
                 },
                 {
                     "subtitle":"Le centre de recyclage des matériaux parisiens à Bonneuil-sur-Marne",
-                    "text": {"time":"200", "content":"la Mairie de Paris a mis en place un centre de recyclage des matériaux situé à Bonneuil-sur-Marne. Les matériaux issus des chantiers d’entretien / déconstructions y sont amenés pour y être retaillés ou recyclés. Ainsi sur les 15 000 tonnes de granit posées annuellement, 50 % sont du granit recyclé."},
+                    "text": {"time":"200", "content":"la Mairie de Paris a mis en place un centre de recyclage des matériaux situé à Bonneuil-sur-Marne. Les matériaux issus des chantiers d’entretien / déconstructions y sont amenés pour y être retaillés ou recyclés. <strong>Ainsi sur les 15 000 tonnes de granit posées annuellement, 50 % sont du granit recyclé.</strong>"},
                     
                     "flows": [{"vl":[], "hl":["3100", "2001", "4000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
                                 {"vl":["3000", "2000"], "hl":[], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
@@ -144,7 +144,7 @@
                 },
                 {
                     "subtitle":"Recyclage des pavés et matériaux de voirie en pierre naturelle",
-                    "text": {"time":"200", "content":"50% du granit utilisé sur la voirie est recyclé. Ceci permet à la Ville de Paris d’économiser près d’un million d’euros par an sur l’achat des matériaux. L’émission de 600 tonnes de CO2 est ainsi évitée.  300 camions de 25 tonnes en moins se retrouvent sur les routes.<br><br><em>Porteurs de projet : Direction de la Voirie et des Déplacements – <a href = \"http://www.paris.fr/\" target = \"_blank\">Mairie de Paris</a>.</em>"},
+                    "text": {"time":"200", "content":"<strong>50% du granit utilisé sur la voirie est recyclé</strong>. Ceci permet à la Ville de Paris d’économiser près d’un million d’euros par an sur l’achat des matériaux. L’émission de 600 tonnes de CO2 est ainsi évitée.  300 camions de 25 tonnes en moins se retrouvent sur les routes.<br><br><em>Porteurs de projet : Direction de la Voirie et des Déplacements – <a href = \"http://www.paris.fr/\" target = \"_blank\">Mairie de Paris</a>.</em>"},
                     "flows": [{"vl":["2001"], "hl":["2000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
                                  {"vl":["4000","3100"], "hl":["3000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -155,7 +155,7 @@
             "b_steps" :
                 [{
                     "subtitle":"Entretien et aménagement de la voirie parisienne",
-                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un centre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !"},
+                    "text": {"time":"200", "content":"La Mairie de Paris a mis en place un centre de recyclage des matériaux, à Bonneuil-sur-Marne : les matériaux issus des chantiers d’entretien et de déconstruction de la ville y sont amenés pour être recyclés. <strong>Ainsi, la moitié des 15 000 tonnes de granit posées annuellement dans la ville est issue du recyclage !</strong>"},
                     "flows": [{"vl":["3100", "2001", "4000"], "hl":["3000", "2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":["s_button.next"], "hide":[]},

@@ -27,9 +27,12 @@
 	top:5%;
 	left:12.5%;
 	text-align: justify;
-	border-radius: 2em;
 	z-index: 101;
 	opacity:0.95;
+
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+	border-radius: 2em;
 }
 
 #info_header li {
@@ -76,6 +79,9 @@
 
 #info_main {
 	border:2px solid #fff;
+
+	-webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
 	border-radius: 1em;
 }
 

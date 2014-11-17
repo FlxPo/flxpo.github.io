@@ -196,7 +196,7 @@ app.Router = Backbone.Router.extend({
     // Validate projects route parameters
     } else if (view === "project") {
 
-      valid_projects = ["p1","p2","p3", "p4", "p5", "p6", "p7","p8","p9","p10","p11","p12","p13","p14","p15","p16"];
+      valid_projects = ["p1","p2","p3", "p4", "p5", "p6", "p7","p8","p9","p10","p11","p12","p13","p14","p15","p16", "p17", "p18", "p19"];
       return _.indexOf(valid_projects, args.id) !==-1;
 
     }
@@ -226,8 +226,11 @@ app.Router = Backbone.Router.extend({
     // if (!this.intro && id === "paris" && type === "matter" && time === "1") {
     if (this.previous_state.rootState === "start" || this.force_intro) {
       this.intro = true;
+      this.force_intro = false;
       intro = true;
     }
+
+    console.log(intro)
     
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {

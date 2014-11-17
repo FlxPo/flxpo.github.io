@@ -5,13 +5,14 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    // Concatenate all js files
+    // Concatenate all css/js files
     concat: {
-      options: {
-        separator: ';'
+      cssfiles : {
+        src: 'style/*.css',
+        dest: 'build/app-metab-syle.css'
       },
-      dist: {
-        src: ['js/app/**/*.js'],
+      jsfiles : {
+        src: 'js/app/**/*.js',
         dest: 'build/app-metab.js'
       }
     }
@@ -24,18 +25,9 @@ module.exports = function(grunt) {
         files: {
           'build/app-metab.min.js': ['build/app-metab.js']
         }
-      }
-    }
-
-    ,
-
-    concat: {
-      options: {
-        separator: ';'
       },
-      dist: {
-        src: ['style/*.css'],
-        dest: 'build/style.css'
+      options: {
+        preserveComments:false
       }
     }
 
@@ -43,13 +35,7 @@ module.exports = function(grunt) {
 
     cssmin: {
       my_target: {
-        files: [{
-          expand: true,
-          cwd: 'style/',
-          src: ['*.css'],
-          dest: 'build/',
-          ext: '.min.css'
-        }]
+        files: {'build/app-metab-syle.css': ['build/app-metab-syle.min.css']}
       }
     }
 

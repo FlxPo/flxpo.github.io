@@ -26,7 +26,7 @@
 					{
                         "id":"t2",
 						"name":"t2",
-                        "label":"Restaurants colectifs",
+                        "label":"Restaurants collectifs",
 						"geom":"data/graphics/geom_restaurant collectif.json",
                         "fax":"0",
                         "fay":"0.2",

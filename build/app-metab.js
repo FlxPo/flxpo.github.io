@@ -1,12 +1,9 @@
 var app = app || {};
 
-app.ButtonCollection = Backbone.Collection.extend({
-  model: app.Button
-});;var app = app || {};
-
 app.FlowCollection = Backbone.Collection.extend({
   model: app.Flow
-});;var app = app || {};
+});
+var app = app || {};
 
 app.Circle = Backbone.Model.extend({
 
@@ -31,7 +28,8 @@ app.Circle = Backbone.Model.extend({
   			});
   }
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.Flow = Backbone.Model.extend({
 
@@ -74,7 +72,8 @@ app.Flow = Backbone.Model.extend({
 
   }
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.FlowTip = Backbone.Model.extend({
 
@@ -85,7 +84,8 @@ app.FlowTip = Backbone.Model.extend({
     parent:     true
   }
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.Item = Backbone.Model.extend({
 
@@ -99,7 +99,8 @@ app.Item = Backbone.Model.extend({
 		}
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.Start = Backbone.Model.extend({
 
@@ -111,7 +112,8 @@ app.Start = Backbone.Model.extend({
   	ui_elements:[]
   }
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.Router = Backbone.Router.extend({
   
@@ -309,7 +311,7 @@ app.Router = Backbone.Router.extend({
     // Validate projects route parameters
     } else if (view === "project") {
 
-      valid_projects = ["p1","p2","p3", "p4", "p5", "p6", "p7","p8","p9","p10","p11","p12","p13","p14","p15","p16"];
+      valid_projects = ["p1","p2","p3", "p4", "p5", "p6", "p7","p8","p9","p10","p11","p12","p13","p14","p15","p16", "p17", "p18", "p19"];
       return _.indexOf(valid_projects, args.id) !==-1;
 
     }
@@ -339,8 +341,11 @@ app.Router = Backbone.Router.extend({
     // if (!this.intro && id === "paris" && type === "matter" && time === "1") {
     if (this.previous_state.rootState === "start" || this.force_intro) {
       this.intro = true;
+      this.force_intro = false;
       intro = true;
     }
+
+    console.log(intro)
     
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {
@@ -388,7 +393,8 @@ app.Router = Backbone.Router.extend({
 
 });
 
-;var app = app || {};
+
+var app = app || {};
 
 app.Stacks = function() {
 
@@ -556,7 +562,8 @@ app.Stack.prototype.unmessify = function() {
 		// },t*1000); 
 
 		}
-	};var utils = (function() {
+	}
+var utils = (function() {
 
   function getWindowSize() {
     var width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
@@ -666,7 +673,8 @@ app.Stack.prototype.unmessify = function() {
     } else {
       return (x > 0 ? 1 : -1);
     }
-  };var app = app || {};
+  }
+var app = app || {};
 
 app.AboutView = Backbone.View.extend({
 
@@ -770,17 +778,24 @@ app.AboutView = Backbone.View.extend({
 
 	// Interaction functions
 	intro:function() {
-		console.log("intro")
 		app.instance.ui.unloadAbout();
-		app.instance.router.reload(true);
+		var r = app.instance.router;
+		console.log(r.state.rootState)
+		if (r.state.rootState != "t") {
+			app.instance.router.force_intro = true;
+			app.instance.router.go("t/paris/matter/1");
+		} else {
+			app.instance.router.reload(true);
+		}
 	},
 
 	demo:function() {
-		console.log("demo")
+		Backbone.trigger("ui:demo");
 	}
 
 });
-;var app = app || {};
+
+var app = app || {};
 
 app.AppView = Backbone.View.extend({
 
@@ -871,7 +886,8 @@ app.AppView = Backbone.View.extend({
     }
   }
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.ButtonView = Backbone.View.extend({
 
@@ -1002,7 +1018,8 @@ app.ButtonView = Backbone.View.extend({
 		this.grey_strokes = grey_strokes;
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.CircleView = Backbone.View.extend({
 
@@ -1138,7 +1155,40 @@ app.CircleView = Backbone.View.extend({
 	}
 
 });
-;var app = app || {};
+
+var app = app || {};
+
+app.DemoView = Backbone.View.extend({
+
+	id:"video_container",
+
+	template: _.template( $('#demo-template').html() ),
+
+	events: {
+		"click #close_demo": "UIclose"
+	},
+
+	initialize:function() {
+	},
+
+	render: function(options) {
+		this.$el.html( this.template() );
+		this.$el.addClass("middle");
+		return this;
+	},
+
+	// Removes all elements of the view
+	close:function() {
+		this.stopListening();
+	},
+
+	UIclose:function() {
+		Backbone.trigger("ui:closeDemo");
+	}
+
+});
+
+var app = app || {};
 
 app.FlowView = Backbone.View.extend({
 
@@ -1517,7 +1567,8 @@ app.FlowView = Backbone.View.extend({
 		// this.path.animate( {"stroke-width":this.model.get("flowVolume")[this.year]}, 200, "easeOut" )
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.FlowsView = Backbone.View.extend({
 
@@ -2042,7 +2093,8 @@ app.FlowsView = Backbone.View.extend({
 
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.FlowTipView = Backbone.View.extend({
 
@@ -2307,7 +2359,8 @@ app.FlowTipView = Backbone.View.extend({
 	}
 
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.IntroView = Backbone.View.extend({
 
@@ -2372,7 +2425,8 @@ app.IntroView = Backbone.View.extend({
 	}
 
 });
-;var app = app || {};
+
+var app = app || {};
 
 app.ItemView = Backbone.View.extend({
 
@@ -2404,7 +2458,7 @@ app.ItemView = Backbone.View.extend({
 					self.model.set(data);
 					_.bind(self.createCanvas, self)(data);
 					self.parent.parent.$itemcontainer.prepend( self.render().el );
-					_.delay(options.complete, 50);
+					_.defer(options.complete);
 				}
 
 			});
@@ -2615,7 +2669,8 @@ app.ItemView = Backbone.View.extend({
 	}
 
 });
-;var app = app || {};
+
+var app = app || {};
 
 app.ItemProjectView = Backbone.View.extend({
 
@@ -2677,7 +2732,8 @@ app.ItemProjectView = Backbone.View.extend({
 		this.stopListening();
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.ItemsView = Backbone.View.extend({
 
@@ -2716,7 +2772,8 @@ app.ItemsView = Backbone.View.extend({
 		iv && iv[args.action](args.parms, args.time);
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.NavView = Backbone.View.extend({
 
@@ -2755,7 +2812,8 @@ app.NavView = Backbone.View.extend({
 
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.PopProjectView = Backbone.View.extend({
 
@@ -2858,7 +2916,8 @@ app.PopProjectView = Backbone.View.extend({
 		this.pin_b && this.pin_b.remove();
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.ProjectsView = Backbone.View.extend({
 
@@ -2984,7 +3043,8 @@ app.ProjectsView = Backbone.View.extend({
 		this.stopListening();
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.PulseView = Backbone.View.extend({
 
@@ -3048,7 +3108,8 @@ app.PulseView = Backbone.View.extend({
 		return this;
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.RadioView = Backbone.View.extend({
 
@@ -3063,7 +3124,8 @@ app.RadioView = Backbone.View.extend({
   	this.buttonsViews.push(new app.ButtonView( {model:bm, el:value} ));
   }
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.StartView = Backbone.View.extend({
 
@@ -3180,11 +3242,12 @@ app.StartView = Backbone.View.extend({
 	},
 
 	demo:function() {
-		// console.log("demo")
+		Backbone.trigger("ui:demo");
 	}
 
 });
-;var app = app || {};
+
+var app = app || {};
 
 app.StoriesView = Backbone.View.extend({
 
@@ -3371,7 +3434,8 @@ nextStep:function(args) {
 		this.nextStep( {dir:1} );
 	}
 
-});;var app = app || {};
+});
+var app = app || {};
 
 app.TerritoriesView = Backbone.View.extend({
 
@@ -3394,7 +3458,8 @@ app.TerritoriesView = Backbone.View.extend({
   }
 
 });
-;var app = app || {};
+
+var app = app || {};
 
 app.TerritoryView = Backbone.View.extend({
 
@@ -3426,7 +3491,7 @@ app.TerritoryView = Backbone.View.extend({
 				self.items_views = new app.ItemsView( {parent:self, collection:items} );
 
 				// Load flows
-				var flows = new app.FlowCollection(data.flows);
+				var flows = new Backbone.Collection(data.flows, {model:app.Flow});
 				self.flows_views = new app.FlowsView( {parent:self, collection:flows, items_views:self.items_views} );
 
 				// Load projects
@@ -3450,21 +3515,28 @@ app.TerritoryView = Backbone.View.extend({
 		// When rendering, Wait for items to be loaded before computing flow paths
 		this.listenTo(Backbone, "items:loaded", function() {
 
-			this.projects_views && this.$projectcontainer.append( this.projects_views.render().el );
+			var self = this;
+
+			_.defer(function() {
+
+			self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
 			Backbone.trigger("stories:go", {id:0});
 
-			if (this.intro) {
+			if (self.intro) {
 				var iv = new app.IntroView();
 				$("body").append( iv.render().el );
 				iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
-				this.iv = iv;
+				self.iv = iv;
 			}
 
 
-			this.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
-			this.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
-			this.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
+			self.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
+			self.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
+			self.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
 			$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+
+			})
+
 		});
 
 	},
@@ -3577,7 +3649,8 @@ app.TerritoryView = Backbone.View.extend({
 	}
 
 });
-;var app = app || {};
+
+var app = app || {};
 
 app.UIView = Backbone.View.extend({
 
@@ -3602,10 +3675,12 @@ app.UIView = Backbone.View.extend({
     this.listenTo(Backbone, "ui:route", this.updateButtons);
     this.listenTo(Backbone, "ui:clickRadio", this.clickRadio);
     this.listenTo(Backbone, "ui:scale", this.updateScale);
+    this.listenTo(Backbone, "ui:demo", this.demo);
+    this.listenTo(Backbone, "ui:closeDemo", this.unloadDemo);
 
     this.renderScale();
 
-    _.bindAll(this, "about", "unloadAbout");
+    _.bindAll(this, "about", "unloadAbout", "demo", "unloadDemo");
     
   },
 
@@ -3754,7 +3829,7 @@ app.UIView = Backbone.View.extend({
     this.toggleX();
 
     // Create the view
-    this.about_view = new app.AboutView()//; {model:new app.About()} );
+    this.about_view = new app.AboutView();
     this.$el.first().prepend(this.about_view.render().el);
 
     // Bind the close call to the x button
@@ -3777,6 +3852,16 @@ app.UIView = Backbone.View.extend({
     this.$el.undelegate("#about_b", "click");
     this.$el.delegate("#about_b", "click", this.about);
 
+  },
+
+  demo:function() {
+    this.demo_view = new app.DemoView();
+    this.$el.append(this.demo_view.render().el);
+  },
+
+  unloadDemo:function() {
+    this.demo_view.close();
+    this.demo_view.remove();
   },
 
   expandFlows:function() {

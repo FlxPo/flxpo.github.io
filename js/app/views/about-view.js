@@ -102,13 +102,19 @@ app.AboutView = Backbone.View.extend({
 
 	// Interaction functions
 	intro:function() {
-		console.log("intro")
 		app.instance.ui.unloadAbout();
-		app.instance.router.reload(true);
+		var r = app.instance.router;
+		console.log(r.state.rootState)
+		if (r.state.rootState != "t") {
+			app.instance.router.force_intro = true;
+			app.instance.router.go("t/paris/matter/1");
+		} else {
+			app.instance.router.reload(true);
+		}
 	},
 
 	demo:function() {
-		console.log("demo")
+		Backbone.trigger("ui:demo");
 	}
 
 });

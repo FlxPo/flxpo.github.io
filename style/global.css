@@ -1,26 +1,4 @@
-@font-face {
-    font-family: 'Lobster';
-    src: url('fonts/Lobster/lobster-webfont.eot');
-    src: url('fonts/Lobster/lobster-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Lobster/lobster-webfont.woff2') format('woff2'),
-         url('fonts/Lobster/lobster-webfont.woff') format('woff'),
-         url('fonts/Lobster/lobster-webfont.ttf') format('truetype'),
-         url('fonts/Lobster/lobster-webfont.svg#lobster_1.4regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
-@font-face {
-    font-family: 'Open Sans';
-    src: url('fonts/Open-Sans/opensans-regular-webfont.eot');
-    src: url('fonts/Open-Sans/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Open-Sans/opensans-regular-webfont.woff2') format('woff2'),
-         url('fonts/Open-Sans/opensans-regular-webfont.woff') format('woff'),
-         url('fonts/Open-Sans/opensans-regular-webfont.ttf') format('truetype'),
-         url('fonts/Open-Sans/opensans-regular-webfont.svg#open_sansregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
 body, html {
 	margin:0;

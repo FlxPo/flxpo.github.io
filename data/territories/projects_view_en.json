@@ -194,6 +194,42 @@
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
+                    },
+                    {
+                        "id":"p15",
+                        "view":"paves",
+                        "name":"Recyclage des produits de déconstruction des cimetières parisiens",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_cimetiere.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p16",
+                        "view":"paves",
+                        "name":"Réutilisation de terres sur les jardins",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_espaces_verts_chantier.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p17",
+                        "view":"paves",
+                        "name":"Réemploi de parkas",
+                        "description":"Description du projet en une phrase.",
+                        "imgurl":"data/graphics/items/thumb_administration.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
                     }],
 
 

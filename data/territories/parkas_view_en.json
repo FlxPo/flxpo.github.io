@@ -1,0 +1,128 @@
+{
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Administration",
+                        "geom":"data/graphics/geom_administration_voiture2.json",
+                        "fax":"0",
+                        "fay":"0.3",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.3*w",
+                        "y":"0.25*h",
+                        "scale":"0.18",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Personnes en difficulté",
+                        "geom":"data/graphics/geom_groupepersonne.json",
+                        "fax":"0",
+                        "fay":"0.1",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.7*w",
+                        "y":"0.5*h",
+                        "scale":"0.17",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"100",
+                            "name":"Déchets d’activités textiles",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"200",
+                            "volume_o9":"200",
+                            "color":"#939393",
+                            "virtual":true
+                        },
+                        {
+                            "id":"130",
+                            "name":"Vêtements réemployés",
+                            "type":"recyclage",
+                            "from":"t2",
+                            "to":"t2",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#7FB57F",
+                            "virtual":true
+                        },
+                        {
+                            "id":"120",
+                            "name":"Vêtements donnés",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#7FB57F",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Réemploi de parkas",
+                    "text": {"time":"200", "content":"Des parkas marines achetées  initialement pour répondre à un besoin ponctuel suite à la tempête de 1999 ont pu être réemployées pour équiper des agents de logistique générale de la Direction des Espaces Verts et de l’environnement, non pourvus de ce type de vêtement. Le reste du stock qui ne répondait pas aux spécificités des tâches des agents a été proposé à d’autres services de la Ville de Paris pour qu’il puisse être distribué aux SDF par les correspondants de nuit ou donné à des partenaires associatifs. <strong>Ce sont au total un peu plus de 400 parkas qui ont ainsi trouvé une seconde vie.</strong><br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["130","120"], "hl":[], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Réemploi de parkas",
+                    "text": {"time":"200", "content":"La Ville de Paris assure la fourniture et la distribution de dotations vestimentaires pour 28 000 agents A la Direction des Espaces Verts et de l’Environnement, 3 600 agents bénéficient d’une dotation, pour lesquels sont définies 40 fiches spécifiques déclinées par fonction et par sexe. Ceci afin de permettre une bonne identification des agents par le public et d’assurer la protection des agents par le biais des équipements de protection individuelle."},
+                    "flows": [{"vl":["100"], "hl":["130","120"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[]
+                },
+                {
+                    "subtitle":"Réemploi de parkas",
+                    "text": {"time":"200", "content":"Des parkas marines achetées  initialement pour répondre à un besoin ponctuel suite à la tempête de 1999 ont pu être réemployées pour équiper des agents de logistique générale de la Direction des Espaces Verts et de l’environnement, non pourvus de ce type de vêtement. Le reste du stock qui ne répondait pas aux spécificités des tâches des agents a été proposé à d’autres services de la Ville de Paris pour qu’il puisse être distribué aux SDF par les correspondants de nuit ou donné à des partenaires associatifs. <strong>Ce sont au total un peu plus de 400 parkas qui ont ainsi trouvé une seconde vie.</strong><br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["130","120"], "hl":["100"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[]
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Réemploi de parkas",
+                    "text": {"time":"200", "content":"Des parkas marines achetées  initialement pour répondre à un besoin ponctuel suite à la tempête de 1999 ont pu être réemployées pour équiper des agents de logistique générale de la Direction des Espaces Verts et de l’environnement, non pourvus de ce type de vêtement. Le reste du stock qui ne répondait pas aux spécificités des tâches des agents a été proposé à d’autres services de la Ville de Paris pour qu’il puisse être distribué aux SDF par les correspondants de nuit ou donné à des partenaires associatifs. <strong>Ce sont au total un peu plus de 400 parkas qui ont ainsi trouvé une seconde vie.</strong><br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["130","120"], "hl":["100"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[]
+                },
+                {
+                    "subtitle":"Réemploi de parkas",
+                    "text": {"time":"200", "content":"La Ville de Paris assure la fourniture et la distribution de dotations vestimentaires pour 28 000 agents A la Direction des Espaces Verts et de l’Environnement, 3 600 agents bénéficient d’une dotation, pour lesquels sont définies 40 fiches spécifiques déclinées par fonction et par sexe. Ceci afin de permettre une bonne identification des agents par le public et d’assurer la protection des agents par le biais des équipements de protection individuelle."},
+                    "flows": [{"vl":["100"], "hl":["130","120"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[]
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

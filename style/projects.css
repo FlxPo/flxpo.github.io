@@ -71,7 +71,11 @@
 
 	margin:8px;
 
-	border-radius:32px;
+	-webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    border-radius: 32px;
+    behavior: url(./style/pie/PIE.htc);
+
 	background-color: #fff;
 	border:2px solid #fff;
 
@@ -101,13 +105,6 @@
 
 	margin:4px 8px;
 }
-
-/*.itemproject .subtitle {
-	display:none;
-	font-weight:400;
-	font-size: 14px;
-	margin:8px;
-}*/
 
 .itemproject .gcontainer {
 	position:absolute;
@@ -167,11 +164,3 @@
 .popproject .tip {
 	font-size:18px;
 }
-
-/*.popproject:hover .tip {
-	display:inline-block;
-}
-
-.popproject:hover .notch {
-	display:inline-block;
-}*/

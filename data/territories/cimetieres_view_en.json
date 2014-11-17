@@ -1,0 +1,150 @@
+{
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"Cimetière",
+						"geom":"data/graphics/geom_cimetiere.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.4",
+						"x":"0.3*w",
+						"y":"0.25*h",
+						"scale":"0.18",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Plateforme de concassage",
+                        "geom":"data/graphics/geom_centreconcassage.json",
+                        "fax":"0",
+                        "fay":"0.1",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.55*w",
+                        "y":"0.425*h",
+                        "scale":"0.18",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "name":"Matériaux de<br>construction",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"115",
+                            "volume_o9":"100",
+                            "color":"#6B5D70",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "name":"Déchets de déconstruction",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"115",
+                            "volume_o9":"100",
+                            "color":"#6B5D70",
+                            "color2":"#b7b1ba",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3000",
+                            "name":"Graves",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t2",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "color":"#709E42",
+                            "virtual":true
+                        },
+                        {
+                            "id":"4000",
+                            "name":"Déchets de déconstruction",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "color":"#6B5D70",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
+                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession ou provenant de la démolition de chaussée sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne <strong>entre 2&nbsp400 et 3&nbsp500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["1000", "2000", "3000", "4000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
+                    "text": {"time":"200", "content":"Bien que la production de granulats à partir de matériaux recyclés ait tendance à augmenter,  elle reste faible : seulement 6,5 % de la production française en 2010 soit  17 millions de tonnes sur les 365 millions de tonnes produits en France.<br><br><span style = \"font-size:12px\">*SOeS, d'après Unicem</span>"},
+                    "flows": [{"vl":["1000", "2000"], "hl":["3000", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
+                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession ou provenant de la démolition de chaussée sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne <strong>entre 2&nbsp400 et 3&nbsp500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["1000", "2000", "3000", "4000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
+                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession ou provenant de la démolition de chaussée sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne <strong>entre 2&nbsp400 et 3&nbsp500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["1000", "2000", "3000", "4000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
+                    "text": {"time":"200", "content":"Bien que la production de granulats à partir de matériaux recyclés ait tendance à augmenter,  elle reste faible : seulement 6,5 % de la production française en 2010 soit  17 millions de tonnes sur les 365 millions de tonnes produits en France.<br><br><span style = \"font-size:12px\">*SOeS, d'après Unicem</span>"},
+                    "flows": [{"vl":["1000", "2000"], "hl":["3000", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }]
+    }
+         }
+  

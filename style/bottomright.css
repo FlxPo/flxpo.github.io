@@ -20,28 +20,17 @@
 	margin-right:4px;
 	width:48px;
 	height:48px;
-	border-radius: 100%;
 	cursor: pointer;
-	behavior: url(./css/pie/PIE.htc);
+
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+	border-radius: 100%;
+	behavior: url(./style/pie/PIE.htc);
+
 }
 
 .br_button span {
 	position:absolute;
 	color:#777;
-/*	width:1.5em;
-	height:1.5em;*/
-
 	font-size:2em;
 }
-
-/*.i-info {
-	font-family:"Lobster";
-	margin-left: 20px;
-	margin-top: 6px;
-}
-
-.x-info {
-	font-family:"Open Sans";
-	margin-left: -1em;
-	margin-top: 0em;
-}*/

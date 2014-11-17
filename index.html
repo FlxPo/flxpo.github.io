@@ -6,21 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <title>Metabolisme Paris</title>
+  <meta name="description" content="Metabolisme est une data visualisation des flux de matières, d'eau et d'énergie de la ville de Paris">
+  <meta name="author" content="Agence d'Ecologie Urbaine : Lise Dano, Thierry Mareschal - Equipe Data Design d'Elioth : Amandine Juston, Loubliana Petroff, Félix Pouchain" />
 
-  <link rel="stylesheet" href="style/flowtip-style.css">
-  <link rel="stylesheet" href="style/start.css">
-  <link rel="stylesheet" href="style/about.css">
-  <link rel="stylesheet" href="style/territory.css">
-  <link rel="stylesheet" href="style/pulse.css">
-  <link rel="stylesheet" href="style/legend.css">
-  <link rel="stylesheet" href="style/intro.css">
-  <link rel="stylesheet" href="style/flowtypes.css">
-  <link rel="stylesheet" href="style/topright.css">
-  <link rel="stylesheet" href="style/bottomright.css">
-  <link rel="stylesheet" href="style/footer.css">
-  <link rel="stylesheet" href="style/flows.css">
-  <link rel="stylesheet" href="style/projects.css">
-  <link rel="stylesheet" href="style/global.css">
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="build/app-metab-fonts.css">
+  <link rel="stylesheet" href="build/app-metab-syle.css">
 
 </head>
 
@@ -32,7 +23,6 @@
 
   <div id = "ui">
 
-    <!-- Flows type tab buttons : matter, energy, water --> 
     <div id = "topleft">
       <ul>
         <li id = "matter" class = "ft_button"><span>Matières</span></li>
@@ -41,7 +31,6 @@
       </ul>
     </div>
 
-    <!-- Territories tab buttons + time button + expand/contract --> 
     <div id = "topright">
 
       <div id = "terri">
@@ -68,8 +57,6 @@
 
     </div>
 
-
-    <!-- Info page access-->
     <div id = "bottom_right">
       <ul>
         <li id = "share" class = "br_button"></li>
@@ -77,7 +64,6 @@
       </ul>
     </div>
 
-    <!-- Legend --> 
     <div id = "legend">
       <table id = "flowscale" class = "hidden">
         <tr>
@@ -182,27 +168,18 @@
 
   <div class = "pulse"></div>
 
- <% // Dot %>
       <div class = "dot"></div>
+      <div class = "mousebox"></div>
 
-       <% // Mouse catcher when user moves from base to tip %>
-        <div class = "mousebox"></div>
-
-      <% //Wrapper for the tip content %>
       <div class = "tip border-tip">
-
-        <% // Tip content %>
-        <h3><%= name %></h3>                                                     <% // Field displaying the name of the flow %>
+        <h3><%= name %></h3>
         <ul class = "label">
-          <li><p class = "volume"></p> <p class = "unit"><%= unit %></p></li>                                           <% // Field displaying the volume of the flow %>
-          <li id = "ungroup" class = "popbutton"><span>Détail du flux</span></li>     <% // Button to access children of the flow %>
-          <li id = "group" class = "popbutton"><span>Retour en arrière</span></li>         <% // Button to access parent and uncles of the flow %>
+          <li><p class = "volume"></p> <p class = "unit"><%= unit %></p></li>
+          <li id = "ungroup" class = "popbutton"><span>Détail du flux</span></li>
+          <li id = "group" class = "popbutton"><span>Retour en arrière</span></li>
         </ul>
-
-        <% // Bottom arrow for the tip %>
         <b class="border-notch notch"></b>
         <b class="notch"></b>
-
     </div>
 
 </script>
@@ -318,72 +295,48 @@
 
 </script>
 
+
+<script type="text/template" id="demo-template">
+
+  <div id="close_demo">
+    <span>X</span>
+  </div>
+
+  <div class="wrapper hidden">
+    <video controls id="offline_video">
+      <source src="data/video/demo.mp4"></source>
+   </video>
+  </div>
+  
+  <iframe id = "video" 
+          class = ""
+          src="//www.youtube.com/embed/YSkh5pLiXuU"
+          frameborder="0"
+          allowfullscreen>
+  </iframe>
+
+  </script>
+
+
+<!-- ONLINE-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <!--<script src="js/lib/jquery-min.js"></script>-->
-
-  <!--<script src="js/lib/underscore-min.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-
-   <!--<script src="js/lib/backbone-min.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
-
-  <!--<script src="js/lib/velocity.js"></script>-->
-  <!--<script src="js/lib/velocity-min.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js"></script>
-
- <!--<script src="js/lib/velocity.ui-min.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.ui.min.js"></script>
-
-  <!--<script src="js/lib/raphael-min.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
 
-  <!--
+
+<!-- OFFLINE
+  <script src="js/lib/jquery-min.js"></script>
+  <script src="js/lib/underscore-min.js"></script>
+  <script src="js/lib/backbone-min.js"></script>
+  <script src="js/lib/velocity-min.js"></script>
+  <script src="js/lib/velocity.ui-min.js"></script>
+  <script src="js/lib/raphael-min.js"></script>
+ -->
+
   <script src="build/app-metab.min.js"></script>
-  <script src="js/app.js"></script>
--->
-
-  <script src="js/app/utilities/utilities.js"></script>
-  <script src="js/app/utilities/stacks.js"></script>
-
-  <script src="js/app/models/start-model.js"></script>
-  <script src="js/app/models/circle-model.js"></script>
-  <script src="js/app/models/item-model.js"></script>
-  <script src="js/app/models/flow-model.js"></script>
-
-  <script src="js/app/models/flowtip-model.js"></script>
-
-  <script src="js/app/views/about-view.js"></script>
-  <script src="js/app/views/start-view.js"></script>
-  <script src="js/app/views/territory-view.js"></script>
-  <script src="js/app/views/territories-view.js"></script>
-  <script src="js/app/views/app-view.js"></script>
-  <script src="js/app/views/circle-view.js"></script>
-  <script src="js/app/views/pulse-view.js"></script>
-  <script src="js/app/views/ui-view.js"></script>
-  <script src="js/app/views/radio-view.js"></script>
-  <script src="js/app/views/button-view.js"></script>
-  <script src="js/app/views/intro-view.js"></script>
-
-  <script src="js/app/views/nav-view.js"></script>
-  
-  <script src="js/app/views/stories-view.js"></script>
-
-  <script src="js/app/views/item-view.js"></script>
-  <script src="js/app/views/items-view.js"></script>
-
-  <script src="js/app/views/flow-view.js"></script>
-  <script src="js/app/views/flows-view.js"></script>
-
-  <script src="js/app/views/itemproject-view.js"></script>
-  <script src="js/app/views/popproject-view.js"></script>
-  <script src="js/app/views/projects-view.js"></script>
-
-  <script src="js/app/views/flowtip-view.js"></script>
-
-  <script src="js/app/collections/flow-collection.js"></script>
-
-  <script src="js/app/routers/router.js"></script>
-
   <script src="js/app.js"></script>
 
 </body>

@@ -29,7 +29,7 @@
                         "label":"Micro-brasseries",
 						"geom":"data/graphics/geom_microbrasserie.json",
                         "fax":"0",
-                        "fay":"0",
+                        "fay":"0.2",
                         "iw":"1",
                         "ih":"0.8",
 						"x":"0.25*w",

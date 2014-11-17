@@ -39,8 +39,6 @@
 	border-bottom: 8px solid #555;
 
 	margin-left:15px;
-	/*position:absolute;*/
-	/*display:inline-block;*/
 }
 
 #legend #trendminus {
@@ -52,8 +50,6 @@
 	border-top: 8px solid #555;
 
 	margin-left:15px;
-	/*position:absolute;*/
-	/*display:inline-block;*/
 }
 
 #legend #trendflat {
@@ -64,6 +60,4 @@
 
 	margin:10px;
 	margin-left: 17.5px;
-	/*position:absolute;*/
-	/*display:inline-block;*/
 }

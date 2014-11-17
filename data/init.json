@@ -126,6 +126,27 @@
 	"z":4,
 	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
 	"data_url":"data/territories/autopartage_view_en.json"
+},
+{
+	"id":"p15",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/cimetieres_view_en.json"
+},
+{
+	"id":"p16",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/terresjardins_view_en.json"
+},
+{
+	"id":"p17",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/parkas_view_en.json"
 }
 ],
 

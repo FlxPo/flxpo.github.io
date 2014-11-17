@@ -1,6 +1,12 @@
 {
   "name": "metabolisme-paris",
+  "main":"app://x/index.html",
   "version": "0.9.0",
+  "window": {
+    "toolbar": false,
+    "width": 1280,
+    "height": 800
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-concat": "^0.5.0",

@@ -115,7 +115,7 @@ app.StartView = Backbone.View.extend({
 	},
 
 	demo:function() {
-		// console.log("demo")
+		Backbone.trigger("ui:demo");
 	}
 
 });

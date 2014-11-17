@@ -19,9 +19,12 @@
 	margin-right:4px;
 	width:64px;
 	height:48px;
-	border-radius: 100%;
 	cursor: pointer;
-	behavior: url(./css/pie/PIE.htc);
+
+	-webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    behavior: url(./style/pie/PIE.htc);
 }
 
 

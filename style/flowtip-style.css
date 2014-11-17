@@ -44,9 +44,12 @@
     margin: 0px 0px 0px 2px;
     vertical-align: middle;
 
-    border-radius: 100%;
-
     cursor: pointer;
+
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    behavior: url(./style/pie/PIE.htc);
 
 }
 
@@ -79,28 +82,35 @@
 
     background-color: #fff;
 
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
     border-radius: 100%;
+    behavior: url(./style/pie/PIE.htc);
 
 }
 
 .pulse {
 
     position:fixed;
+    
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
     border-radius: 100%;
+    behavior: url(./style/pie/PIE.htc);
 
 }
 
 .flowtip {
     position:absolute;
-
     width:20px;
     height:20px;
-
     background-color:#ccc;
-
-    border-radius: 100%;
-
     cursor: pointer;
+
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    behavior: url(./style/pie/PIE.htc);
 
 }
 
@@ -132,7 +142,10 @@
 
     background-color: rgba(255,255,255,0.95);
     border: 1px solid #ddd;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     border-radius: 10px;
+    behavior: url(./style/pie/PIE.htc);
 
     text-align: center;
     white-space: nowrap;

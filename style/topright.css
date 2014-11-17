@@ -17,7 +17,10 @@
 	display:none;
 	width:48px;
 	height:48px;
-	border-radius: 100%;
+	-webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    behavior: url(./style/pie/PIE.htc);
 	margin-bottom:4px;
 	cursor: pointer;
 }
@@ -54,20 +57,24 @@
 	width:3em;
 	height:1.75em;
 	background-color:#eee;
-	border-radius: 0.75em;
+	-webkit-border-radius: 0.75em;
+    -moz-border-radius: 0.75em;
+    border-radius: 0.75em;
+    behavior: url(./style/pie/PIE.htc);
 	text-align: left;
-	behavior: url(./css/pie/PIE.htc);
 }
 
 .toggle {
 	display:inline-block;
     margin:0.2em;
     background-color:#ccc;
-    border-radius:100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    behavior: url(./style/pie/PIE.htc);
     width:1.2em;
     height:1.2em;
     border:1px solid #aaa;
-    behavior: url(./css/pie/PIE.htc);
 }
 
 .toggle-right {
@@ -100,9 +107,11 @@
 	display: none;
 	width:32px;
 	height:32px;
-	border-radius: 100%;
+	-webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    behavior: url(./style/pie/PIE.htc);
 	cursor: pointer;
-	behavior: url(./css/pie/PIE.htc);
 }
 
 

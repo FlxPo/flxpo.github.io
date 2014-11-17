@@ -23,10 +23,12 @@ app.UIView = Backbone.View.extend({
     this.listenTo(Backbone, "ui:route", this.updateButtons);
     this.listenTo(Backbone, "ui:clickRadio", this.clickRadio);
     this.listenTo(Backbone, "ui:scale", this.updateScale);
+    this.listenTo(Backbone, "ui:demo", this.demo);
+    this.listenTo(Backbone, "ui:closeDemo", this.unloadDemo);
 
     this.renderScale();
 
-    _.bindAll(this, "about", "unloadAbout");
+    _.bindAll(this, "about", "unloadAbout", "demo", "unloadDemo");
     
   },
 
@@ -175,7 +177,7 @@ app.UIView = Backbone.View.extend({
     this.toggleX();
 
     // Create the view
-    this.about_view = new app.AboutView()//; {model:new app.About()} );
+    this.about_view = new app.AboutView();
     this.$el.first().prepend(this.about_view.render().el);
 
     // Bind the close call to the x button
@@ -198,6 +200,16 @@ app.UIView = Backbone.View.extend({
     this.$el.undelegate("#about_b", "click");
     this.$el.delegate("#about_b", "click", this.about);
 
+  },
+
+  demo:function() {
+    this.demo_view = new app.DemoView();
+    this.$el.append(this.demo_view.render().el);
+  },
+
+  unloadDemo:function() {
+    this.demo_view.close();
+    this.demo_view.remove();
   },
 
   expandFlows:function() {

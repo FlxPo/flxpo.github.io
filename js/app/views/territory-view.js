@@ -30,7 +30,7 @@ app.TerritoryView = Backbone.View.extend({
 				self.items_views = new app.ItemsView( {parent:self, collection:items} );
 
 				// Load flows
-				var flows = new app.FlowCollection(data.flows);
+				var flows = new Backbone.Collection(data.flows, {model:app.Flow});
 				self.flows_views = new app.FlowsView( {parent:self, collection:flows, items_views:self.items_views} );
 
 				// Load projects
@@ -54,21 +54,28 @@ app.TerritoryView = Backbone.View.extend({
 		// When rendering, Wait for items to be loaded before computing flow paths
 		this.listenTo(Backbone, "items:loaded", function() {
 
-			this.projects_views && this.$projectcontainer.append( this.projects_views.render().el );
+			var self = this;
+
+			_.defer(function() {
+
+			self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
 			Backbone.trigger("stories:go", {id:0});
 
-			if (this.intro) {
+			if (self.intro) {
 				var iv = new app.IntroView();
 				$("body").append( iv.render().el );
 				iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
-				this.iv = iv;
+				self.iv = iv;
 			}
 
 
-			this.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
-			this.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
-			this.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
+			self.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
+			self.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
+			self.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
 			$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+
+			})
+
 		});
 
 	},
