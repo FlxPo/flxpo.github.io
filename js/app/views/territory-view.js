@@ -58,21 +58,24 @@ app.TerritoryView = Backbone.View.extend({
 
 			_.defer(function() {
 
-			self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
-			Backbone.trigger("stories:go", {id:0});
+				_.delay(function() {
 
-			if (self.intro) {
-				var iv = new app.IntroView();
-				$("body").append( iv.render().el );
-				iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
-				self.iv = iv;
-			}
+					self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
+					Backbone.trigger("stories:go", {id:0});
 
+					if (self.intro) {
+						var iv = new app.IntroView();
+						$("body").append( iv.render().el );
+						iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
+						self.iv = iv;
+					}
 
-			self.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
-			self.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
-			self.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
-			$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+					self.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
+					self.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
+					self.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
+					$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+
+				}, 50);
 
 			})
 

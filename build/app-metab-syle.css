@@ -1059,11 +1059,33 @@ a:visited {
 
 .itemproject .graphics {
 	width:100px;
-	margin:0 auto;
+	margin-left:10px;
 }
 
 .item-focused {
 	border:2px solid #a788a9;
+}
+
+.itemproject .logocontainer {
+	position:absolute;
+	width:150px;
+	height:150px
+}
+
+.itemproject .logocontainer > img {
+	position:absolute;
+	width:75px;
+	margin-left: -37.5px;
+	margin-top:55px;
+}
+
+
+.itemproject .logocontainer .mask {
+	position: absolute;
+	width:150px;
+	height:150px;
+	background-color: #fff;
+	opacity:0.7;
 }
 
 
@@ -1212,7 +1234,7 @@ a:visited {
 }
 
 #launch, #demo {
-	display: inline-block;
+	display: none;
 	width:4em;
 	height:4em;
 	background-color: #ddd;
@@ -1222,6 +1244,10 @@ a:visited {
     behavior: url(./style/pie/PIE.htc);
 	cursor:pointer;
 	margin: 0 0.5em;
+}
+
+#launch, #demo {
+	display: inline-block;
 }
 
 #launch p, #demo p {

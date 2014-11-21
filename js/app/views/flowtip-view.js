@@ -120,7 +120,7 @@ app.FlowTipView = Backbone.View.extend({
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend plus\"></div>" + "<div id = \"tr2\" class = \"trend plus\"></div></div>"
 				} else if (trend === - 1) {
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend minus\"></div></div>"
-				} else {
+				} else if (trend === - 2) {
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend minus\"></div>" + "<div id = \"tr2\" class = \"trend minus\"></div></div>"
 				}
 				this.$trend = $(html).appendTo(this.$el);

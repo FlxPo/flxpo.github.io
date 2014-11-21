@@ -27,7 +27,7 @@ app.Router = Backbone.Router.extend({
     this.previous_state = _.clone(this.state);
 
     $(window).on("resize", _.bind(this.reloadView(), this));
-    _.bindAll(this, "reload")
+    _.bindAll(this, "reload");
 
   },
 
@@ -229,8 +229,6 @@ app.Router = Backbone.Router.extend({
       this.force_intro = false;
       intro = true;
     }
-
-    console.log(intro)
     
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {

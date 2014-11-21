@@ -1452,14 +1452,14 @@
     "type":"extraction",
     "from":"t2",
     "to":"t2",
-    "volume_o4":"NA",
-    "volume_o9":"622",
+    "volume_o4":"0",
+    "volume_o9":"1238",
     "trend":"-1",
     "unit":"GWh/an",
     "color":"#DDA20E",
     "level":"0",
     "parent":"",
-    "children":"2910;2920;2930",
+    "children":"2910;2930",
     "siblings":"",
     "root":"false",
     "leaf":"false"
@@ -1478,7 +1478,7 @@
     "unit":"GWh/an",
     "color":"#E86300",
     "level":"1",
-    "parent":"",
+    "parent":"2900",
     "children":"",
     "siblings":"2920;2930",
     "root":"true",
@@ -1512,13 +1512,13 @@
     "type":"extraction",
     "from":"t2",
     "to":"t2",
-    "volume_o4":"NA",
+    "volume_o4":"0",
     "volume_o9":"616",
     "trend":"-1",
     "unit":"GWh/an",
     "color":"#E2280A",
     "level":"1",
-    "parent":"",
+    "parent":"2900",
     "children":"2931;2932",
     "siblings":"2910;2920",
     "root":"false",
@@ -1538,7 +1538,7 @@
     "unit":"GWh/an",
     "color":"#893C34",
     "level":"2",
-    "parent":"",
+    "parent":"2930",
     "children":"",
     "siblings":"2932",
     "root":"true",
@@ -1552,7 +1552,7 @@
     "type":"extraction",
     "from":"t2",
     "to":"t2",
-    "volume_o4":"NA",
+    "volume_o4":"0",
     "volume_o9":"500",
     "trend":"1",
     "unit":"GWh/an",
@@ -1947,7 +1947,7 @@
                 [{
                     "subtitle":"Paris ne peut être indépendant énergétiquement",
                     "text": {"time":"200", "content":"Si Paris ne peut être indépendant énergétiquement, la part d’énergies renouvelables et de récupération dans son mix énergétique peut encore être grandement améliorée."},
-                    "flows": [{"vl":["3000", "2910","2920", "2931"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "type":"energy"}],
+                    "flows": [{"vl":["3000", "2900","2920"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0", "type":"energy"}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}]
                 }
                 ]
@@ -1973,7 +1973,7 @@
                 [{
                     "subtitle":"Les consommations électriques augmentent…",
                     "text": {"time":"200", "content":"… Alors que les consommations de gaz naturel et de fioul diminuent. Cela est dû aux changements de comportement et à l’usage croissant d’appareils mobiles, informatiques et ménagers."},
-                    "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "2910", "2920", "2930"], "popups":["3100","3500","3600"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "2900", "2920"], "popups":["3100","3500","3600"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }
                 ]
@@ -1986,7 +1986,7 @@
                 [{
                     "subtitle":"L’énergie, un flux circulaire ?",
                     "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée est dissipée sous forme de chaleur. Cette énergie, ainsi que celle qui se retrouve « piégée » dans les canalisations, les structures etc. peuvent être récupérées. Pour plus d’informations sur le potentiel de récupération de l’énergie solaire à Paris, consultez le <a href = \"http://capgeo.sig.paris.fr/Apps/CadastreSolaire/\" target = \"_blank\">cadastre solaire</a>."},
-                    "flows": [{"vl":["3000", "2910", "2920", "2930"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
+                    "flows": [{"vl":["3000", "2900", "2920"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }
                 ]

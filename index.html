@@ -13,6 +13,18 @@
   <link rel="stylesheet" href="build/app-metab-fonts.css">
   <link rel="stylesheet" href="build/app-metab-syle.css">
 
+  <script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-53643897-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
 </head>
 
 <body class = "unscrollable">
@@ -108,6 +120,10 @@
 
     <div class = "content">
       <div class = "gcontainer"><img class = "graphics" src=<%=imgurl%>></div>
+      <div class = "logocontainer hidden">
+        <div class = "mask"></div>
+        <img src="data/graphics/logoamusmall.png">
+      </div>
       <div class = "text">
         <h3 class = "name"><%=name%></h3>
       <div>
@@ -248,7 +264,7 @@
       <ul id = "info_main">
       <li>Les données sur les flux d’énergies et d’eaux sont celles de la Ville de Paris.</li>
       <br>
-      <li>La nomenclature des flux et les données utilisées pour cette infographie sont adaptées du rapport de Sabine Barles, professeure d’urbanisme à l’université Paris 1 Panthéon-Sorbonne (UMR Géographie-Cités) : <a href = "./data/Barles-EI-Paris.pdf" target = "_blank">« Mesurer la performance écologique des villes et des territoires : le métabolisme de Paris et de l’Île-de-France »</a>
+      <li>La nomenclature des flux et les données utilisées pour cette infographie sont adaptées du rapport de Sabine Barles, professeure d’urbanisme à l’université Paris 1 Panthéon-Sorbonne (UMR Géographie-Cités) : <a href = "data/pdf/Barles-EI-Paris.pdf" target = "_blank">« Mesurer la performance écologique des villes et des territoires : le métabolisme de Paris et de l’Île-de-France »</a>
       </li>
       <br>
       <li>Les tendances relatives à l’évolution des flux de matières ont été évaluées avec l’aide de Laurent Georgeault doctorant de l’université Paris 1 et chargé de mission à l’Institut de l’économie circulaire.</li>
@@ -310,7 +326,7 @@
   
   <iframe id = "video" 
           class = ""
-          src="//www.youtube.com/embed/YSkh5pLiXuU"
+          src="//www.youtube.com/embed/35oqKJgJbaE"
           frameborder="0"
           allowfullscreen>
   </iframe>
@@ -327,14 +343,14 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
 
 
-<!-- OFFLINE
+<!-- OFFLINE 
   <script src="js/lib/jquery-min.js"></script>
   <script src="js/lib/underscore-min.js"></script>
   <script src="js/lib/backbone-min.js"></script>
   <script src="js/lib/velocity-min.js"></script>
   <script src="js/lib/velocity.ui-min.js"></script>
   <script src="js/lib/raphael-min.js"></script>
- -->
+-->
 
   <script src="build/app-metab.min.js"></script>
   <script src="js/app.js"></script>

@@ -2,10 +2,14 @@
   "name": "metabolisme-paris",
   "main":"app://x/index.html",
   "version": "0.9.0",
+  "webkit": {
+    "page-cache":false
+  },
   "window": {
-    "toolbar": false,
+    "toolbar": true,
     "width": 1280,
-    "height": 800
+    "height": 800,
+    "icon": "favicon.png"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

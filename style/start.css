@@ -68,7 +68,7 @@
 }
 
 #launch, #demo {
-	display: inline-block;
+	display: none;
 	width:4em;
 	height:4em;
 	background-color: #ddd;
@@ -78,6 +78,10 @@
     behavior: url(./style/pie/PIE.htc);
 	cursor:pointer;
 	margin: 0 0.5em;
+}
+
+#launch, #demo {
+	display: inline-block;
 }
 
 #launch p, #demo p {

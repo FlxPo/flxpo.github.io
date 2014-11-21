@@ -142,7 +142,7 @@ app.Router = Backbone.Router.extend({
     this.previous_state = _.clone(this.state);
 
     $(window).on("resize", _.bind(this.reloadView(), this));
-    _.bindAll(this, "reload")
+    _.bindAll(this, "reload");
 
   },
 
@@ -344,8 +344,6 @@ app.Router = Backbone.Router.extend({
       this.force_intro = false;
       intro = true;
     }
-
-    console.log(intro)
     
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {
@@ -2216,7 +2214,7 @@ app.FlowTipView = Backbone.View.extend({
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend plus\"></div>" + "<div id = \"tr2\" class = \"trend plus\"></div></div>"
 				} else if (trend === - 1) {
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend minus\"></div></div>"
-				} else {
+				} else if (trend === - 2) {
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend minus\"></div>" + "<div id = \"tr2\" class = \"trend minus\"></div></div>"
 				}
 				this.$trend = $(html).appendTo(this.$el);
@@ -2695,7 +2693,8 @@ app.ItemProjectView = Backbone.View.extend({
 	},
 
 	cacheComponents:function() {
-		this.$subtitle = this.$el.find(".subtitle");
+		this.$logocontainer = this.$el.find(".logocontainer");
+		// this.$logo = this.$el.find(".logocontainer");
 		return this;
 	},
 
@@ -2714,13 +2713,13 @@ app.ItemProjectView = Backbone.View.extend({
 
 	focus:function() {
 		this.$el.addClass("item-focused");
-		this.$subtitle.velocity("fadeIn", {duration:100});
+		this.model.get("amu") && this.$logocontainer.show();
 		return this;
 	},
 
 	unfocus:function() {
 		this.$el.removeClass("item-focused");
-		this.$subtitle.velocity("fadeOut", {duration:100});
+		this.model.get("amu") && this.$logocontainer.hide();
 	},
 
 	clk:function() {
@@ -3519,21 +3518,24 @@ app.TerritoryView = Backbone.View.extend({
 
 			_.defer(function() {
 
-			self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
-			Backbone.trigger("stories:go", {id:0});
+				_.delay(function() {
 
-			if (self.intro) {
-				var iv = new app.IntroView();
-				$("body").append( iv.render().el );
-				iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
-				self.iv = iv;
-			}
+					self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
+					Backbone.trigger("stories:go", {id:0});
 
+					if (self.intro) {
+						var iv = new app.IntroView();
+						$("body").append( iv.render().el );
+						iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
+						self.iv = iv;
+					}
 
-			self.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
-			self.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
-			self.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
-			$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+					self.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
+					self.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
+					self.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
+					$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+
+				}, 50);
 
 			})
 

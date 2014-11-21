@@ -23,7 +23,8 @@ app.ItemProjectView = Backbone.View.extend({
 	},
 
 	cacheComponents:function() {
-		this.$subtitle = this.$el.find(".subtitle");
+		this.$logocontainer = this.$el.find(".logocontainer");
+		// this.$logo = this.$el.find(".logocontainer");
 		return this;
 	},
 
@@ -42,13 +43,13 @@ app.ItemProjectView = Backbone.View.extend({
 
 	focus:function() {
 		this.$el.addClass("item-focused");
-		this.$subtitle.velocity("fadeIn", {duration:100});
+		this.model.get("amu") && this.$logocontainer.show();
 		return this;
 	},
 
 	unfocus:function() {
 		this.$el.removeClass("item-focused");
-		this.$subtitle.velocity("fadeOut", {duration:100});
+		this.model.get("amu") && this.$logocontainer.hide();
 	},
 
 	clk:function() {
