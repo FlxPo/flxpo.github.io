@@ -230,6 +230,30 @@
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
+                    },
+                    {
+                        "id":"p19",
+                        "view":"paves",
+                        "name":"Valorisation des boues de curage des canaux",
+                        "imgurl":"data/graphics/items/thumb_fleuve.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "amu":false,
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
+                    },
+                    {
+                        "id":"p20",
+                        "view":"paves",
+                        "name":"La tente des glaneurs",
+                        "imgurl":"data/graphics/items/thumb_tente_glaneur.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "amu":false,
+                        "render":false,
+                        "x":"0.5",
+                        "y":"0.65"
                     }],
 
 

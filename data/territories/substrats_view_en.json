@@ -33,7 +33,7 @@
                         "iw":"1",
                         "ih":"1",
 						"x":"0.15*w",
-						"y":"0.15*h",
+						"y":"0.125*h",
 						"scale":"0.15",
                         "force_w_scale":true
 					},
@@ -47,7 +47,7 @@
                         "iw":"1",
                         "ih":"0.6",
                         "x":"0.5*w",
-                        "y":"0.4*h",
+                        "y":"0.37*h",
                         "scale":"0.15",
                         "force_w_scale":true
                     },
@@ -61,7 +61,7 @@
                         "iw":"1",
                         "ih":"1",
                         "x":"0.325*w",
-                        "y":"0.275*h",
+                        "y":"0.25*h",
                         "scale":"0.15",
                         "force_w_scale":true
                     },
@@ -241,8 +241,8 @@
             "display_dot":false,       
             "steps" :
                 [{
-                    "subtitle":"Expérimentation de la valorisation de déchets d’activités<br>municipales en sols fertiles de substitution",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de « substrats fertiles de substitution » développé par la société Enviro Conseil et Travaux associée au Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes pourra être expérimenté sur une durée de 2 ans.<br><br>Il propose la mise en place d’une plateforme de mélange permettant de constituer des sols fertiles à destination des espaces verts urbains et des fosses d’arbres à partir de déchets de démolition, de boues de curage et de déchets verts.<b>Il permettra de limiter les volumes de déchets inertes de chantier et de boues évacués en centres de stockage en leur offrant une filière de valorisation.</b> A terme, le substrat fertile de substitution proposé pourra constituer une alternative à un approvisionnement de plus en plus lointain en terres végétales.<br><br><em>Porteur de projet : <a href = \"http://www.groupe-ect.com/\" target = \"_blank\">Enviro Conseil et Travaux</a> et <a href = \"http://www.ietihqe.fr/\" target = \"_blank\">Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes</a></em>"},
+                    "subtitle":"Expérimentation de la valorisation de déchets d’activités municipales en sols fertiles de substitution",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de « substrats fertiles de substitution » développé par la société Enviro Conseil et Travaux associée au Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes pourra être expérimenté sur une durée de 2 ans. Il propose la mise en place d’une plateforme de mélange permettant de constituer des sols fertiles à destination des espaces verts urbains et des fosses d’arbres à partir de déchets de démolition, de boues de curage et de déchets verts.<b>Il permettra de limiter les volumes de déchets inertes de chantier et de boues évacués en centres de stockage en leur offrant une filière de valorisation.</b> A terme, le substrat fertile de substitution proposé pourra constituer une alternative à un approvisionnement de plus en plus lointain en terres végétales.<br><br><em>Porteur de projet : <a href = \"http://www.groupe-ect.com/\" target = \"_blank\">Enviro Conseil et Travaux</a> et <a href = \"http://www.ietihqe.fr/\" target = \"_blank\">Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes</a></em>"},
                     "flows": [{"vl":["700","600","3050","2100","2000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
@@ -252,7 +252,7 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Expérimentation de la valorisation de déchets d’activités<br>municipales en sols fertiles de substitution",
+                    "subtitle":"Expérimentation de la valorisation de déchets d’activités municipales en sols fertiles de substitution",
                     "text": {"time":"200", "content":"La demande en terres végétales est croissante. Ces terres sont nécessaires notamment à la constitution de massifs ou de fosses destinées à accueillir les arbres. La ressource diminue et la distance aux zones d’approvisionnement augmente.  Parallèlement, les chantiers d’aménagement urbains génèrent des déchets inertes de type gravats, les activités d’entretien d’espaces verts produisent des déchets verts et l’entretien des canaux et des lacs et rivières des Bois conduit au prélèvement de boues de curage."},
                     "flows": [{"vl":["700","600","3000", "2000", "2150", "2050"], "hl":["3050","2100","2000", "700"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t5", "action":"disappear", "parms":{"time":100}, "time":0}],
@@ -260,8 +260,8 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Expérimentation de la valorisation de déchets d’activités<br>municipales en sols fertiles de substitution",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de « substrats fertiles de substitution » développé par la société Enviro Conseil et Travaux associée au Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes pourra être expérimenté sur une durée de 2 ans.<br><br>Il propose la mise en place d’une plateforme de mélange permettant de constituer des sols fertiles à destination des espaces verts urbains et des fosses d’arbres à partir de déchets de démolition, de boues de curage et de déchets verts.<b>Il permettra de limiter les volumes de déchets inertes de chantier et de boues évacués en centres de stockage en leur offrant une filière de valorisation.</b> A terme, le substrat fertile de substitution proposé pourra constituer une alternative à un approvisionnement de plus en plus lointain en terres végétales.<br><br><em>Porteur de projet : <a href = \"http://www.groupe-ect.com/\" target = \"_blank\">Enviro Conseil et Travaux</a> et <a href = \"http://www.ietihqe.fr/\" target = \"_blank\">Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes</a></em>"},
+                    "subtitle":"Expérimentation de la valorisation de déchets d’activités municipales en sols fertiles de substitution",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de « substrats fertiles de substitution » développé par la société Enviro Conseil et Travaux associée au Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes pourra être expérimenté sur une durée de 2 ans. Il propose la mise en place d’une plateforme de mélange permettant de constituer des sols fertiles à destination des espaces verts urbains et des fosses d’arbres à partir de déchets de démolition, de boues de curage et de déchets verts.<b>Il permettra de limiter les volumes de déchets inertes de chantier et de boues évacués en centres de stockage en leur offrant une filière de valorisation.</b> A terme, le substrat fertile de substitution proposé pourra constituer une alternative à un approvisionnement de plus en plus lointain en terres végétales.<br><br><em>Porteur de projet : <a href = \"http://www.groupe-ect.com/\" target = \"_blank\">Enviro Conseil et Travaux</a> et <a href = \"http://www.ietihqe.fr/\" target = \"_blank\">Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes</a></em>"},
                     "flows": [{"vl":["700","600","3050","2100","2000", "2000"], "hl":["2150", "2050","3000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t5", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -269,15 +269,15 @@
                 }],       
             "b_steps" :
                 [{
-                    "subtitle":"Expérimentation de la valorisation de déchets d’activités<br>municipales en sols fertiles de substitution",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de « substrats fertiles de substitution » développé par la société Enviro Conseil et Travaux associée au Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes pourra être expérimenté sur une durée de 2 ans.<br><br>Il propose la mise en place d’une plateforme de mélange permettant de constituer des sols fertiles à destination des espaces verts urbains et des fosses d’arbres à partir de déchets de démolition, de boues de curage et de déchets verts.<b>Il permettra de limiter les volumes de déchets inertes de chantier et de boues évacués en centres de stockage en leur offrant une filière de valorisation.</b> A terme, le substrat fertile de substitution proposé pourra constituer une alternative à un approvisionnement de plus en plus lointain en terres végétales.<br><br><em>Porteur de projet : <a href = \"http://www.groupe-ect.com/\" target = \"_blank\">Enviro Conseil et Travaux</a> et <a href = \"http://www.ietihqe.fr/\" target = \"_blank\">Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes</a></em>"},
+                    "subtitle":"Expérimentation de la valorisation de déchets d’activités municipales en sols fertiles de substitution",
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de « substrats fertiles de substitution » développé par la société Enviro Conseil et Travaux associée au Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes pourra être expérimenté sur une durée de 2 ans. Il propose la mise en place d’une plateforme de mélange permettant de constituer des sols fertiles à destination des espaces verts urbains et des fosses d’arbres à partir de déchets de démolition, de boues de curage et de déchets verts.<b>Il permettra de limiter les volumes de déchets inertes de chantier et de boues évacués en centres de stockage en leur offrant une filière de valorisation.</b> A terme, le substrat fertile de substitution proposé pourra constituer une alternative à un approvisionnement de plus en plus lointain en terres végétales.<br><br><em>Porteur de projet : <a href = \"http://www.groupe-ect.com/\" target = \"_blank\">Enviro Conseil et Travaux</a> et <a href = \"http://www.ietihqe.fr/\" target = \"_blank\">Bureau d’études Ingénierie de l’Environnement et des Techniques Innovantes</a></em>"},
                     "flows": [{"vl":["700","600","3050","2100","2000", "2000"], "hl":["3000","2000", "2150", "2050"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t5", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
                 },
                 {
-                    "subtitle":"Expérimentation de la valorisation de déchets d’activités<br>municipales en sols fertiles de substitution",
+                    "subtitle":"Expérimentation de la valorisation de déchets d’activités municipales en sols fertiles de substitution",
                     "text": {"time":"200", "content":"La demande en terres végétales est croissante. Ces terres sont nécessaires notamment à la constitution de massifs ou de fosses destinées à accueillir les arbres. La ressource diminue et la distance aux zones d’approvisionnement augmente.  Parallèlement, les chantiers d’aménagement urbains génèrent des déchets inertes de type gravats, les activités d’entretien d’espaces verts produisent des déchets verts et l’entretien des canaux et des lacs et rivières des Bois conduit au prélèvement de boues de curage."},
                     "flows": [{"vl":["700","600","3000", "2000", "2150", "2050"], "hl":["3050","2100","2000", "700"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t5", "action":"disappear", "parms":{"time":100}, "time":0}],

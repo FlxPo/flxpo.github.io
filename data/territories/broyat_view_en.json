@@ -1,0 +1,169 @@
+{
+	"items": [{
+                        "id":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0",
+                        "y":"0.35*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w",
+                        "y":"0.3*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "label":"Espaces verts",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "geom":"data/graphics/geom_espacesverts.json",
+                        "x":"0.3*w",
+                        "y":"0.4*h",
+                        "scale":"0.185"
+                    },
+                    {
+                        "id":"t3",
+                        "label":"Chantier d'élagage",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.8",
+                        "geom":"data/graphics/geom_espacesverts_elagage.json",
+                        "x":"0.42*w",
+                        "y":"0.2*h",
+                        "scale":"0.185"
+                    },
+                    {
+                        "id":"t4",
+                        "label":"Plateforme de stockage/broyage",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "geom":"data/graphics/geom_plateforme_stockage_bois.json",
+                        "x":"0.7*w",
+                        "y":"0.4*h",
+                        "scale":"0.16",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[
+                        {
+                            "id":"3000",
+                            "name":"Matériaux de broyat",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"15000",
+                            "volume_o9":"NA",
+                            "color":"#6B5D70",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3100",
+                            "name":"Matériaux de broyat",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "color":"#6B5D70",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "name":"Déchets ligneux",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "color":"#a69ea9",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2001",
+                            "name":"Déchets ligneux",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t4",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "color":"#a69ea9",
+                            "virtual":true
+                        },
+                        {
+                            "id":"4000",
+                            "name":"Broyat recyclé",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t2",
+                            "volume_o4":"7500",
+                            "volume_o9":"NA",
+                            "color":"#a9bc94",
+                            "virtual":true
+                        }
+                    ],
+
+
+    "stories": {
+        "matter":[{
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Plateforme de valorisation des déchets ligneux",
+                    "text": {"time":"200", "content":"Branches élaguées et arbres abattus en raison de leur vieillesse dans Paris ou dans le Bois de Vincennes sont stockés sur une plateforme du Bois puis broyés (les arbres urbains ne sont pas utilisables en bois d’œuvre). Le broyat obtenu est recyclé en paillage au pied des massifs dans les jardins parisiens permettant d’éviter la pousse d’herbes indésirables, contribuant ainsi à la mise en œuvre du plan « zéro phytosanitaires » et à la diminution des besoins en arrosage. <strong>Depuis 2012, ce sont environ 6&nbsp000 m3 de broyat qui sont ainsi utilisés</strong> dans les jardins parisiens, les allées forestières, les aires de jeux ou les circulations douces.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["3100", "2001", "4000"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Plateforme de valorisation des déchets ligneux",
+                    "text": {"time":"200", "content":"Sans compter les arbres des bois de Vincennes et de Boulogne, Paris comptabilise près de  190 000 arbres dont 32 500 dans les cimetières et 100 000 arbres d'alignement dans les rues. Chaque année, les arbres dangereux ou dépérissant sont abattus et de nombreux arbres élagués. Ces opérations génèrent d’importants volumes de bois qui sont aujourd’hui broyés sur place puis utilisés dans les jardins les plus proches en paillage. Le service de l’arbre de la Ville de Paris qui assure cette gestion a souhaité aller encore plus loin en recyclant la totalité de ces déchets, des branchages aux troncs entiers. Cette volonté s’inscrit dans une démarche de management environnemental (ISO 14 001) qui prône notamment une meilleure gestion des déchets verts."},
+                    
+                    "flows": [{"vl":[], "hl":["3100", "2001", "4000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
+                                {"vl":["3000", "2000"], "hl":[], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Plateforme de valorisation des déchets ligneux",
+                    "text": {"time":"200", "content":"Branches élaguées et arbres abattus en raison de leur vieillesse dans Paris ou dans le Bois de Vincennes sont stockés sur une plateforme du Bois puis broyés (les arbres urbains ne sont pas utilisables en bois d’œuvre). Le broyat obtenu est recyclé en paillage au pied des massifs dans les jardins parisiens permettant d’éviter la pousse d’herbes indésirables, contribuant ainsi à la mise en œuvre du plan « zéro phytosanitaires » et à la diminution des besoins en arrosage. <strong>Depuis 2012, ce sont environ 6&nbsp000 m3 de broyat qui sont ainsi utilisés</strong> dans les jardins parisiens, les allées forestières, les aires de jeux ou les circulations douces.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["3100", "2001", "4000"], "hl":["3000","2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}]
+                }
+                ],       
+            "b_steps" :
+                [{
+                    "subtitle":"Plateforme de valorisation des déchets ligneux",
+                    "text": {"time":"200", "content":"Branches élaguées et arbres abattus en raison de leur vieillesse dans Paris ou dans le Bois de Vincennes sont stockés sur une plateforme du Bois puis broyés (les arbres urbains ne sont pas utilisables en bois d’œuvre). Le broyat obtenu est recyclé en paillage au pied des massifs dans les jardins parisiens permettant d’éviter la pousse d’herbes indésirables, contribuant ainsi à la mise en œuvre du plan « zéro phytosanitaires » et à la diminution des besoins en arrosage. <strong>Depuis 2012, ce sont environ 6&nbsp000 m3 de broyat qui sont ainsi utilisés</strong> dans les jardins parisiens, les allées forestières, les aires de jeux ou les circulations douces.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["3100", "2001", "4000"], "hl":["3000","2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Plateforme de valorisation des déchets ligneux",
+                    "text": {"time":"200", "content":"Sans compter les arbres des bois de Vincennes et de Boulogne, Paris comptabilise près de  190 000 arbres dont 32 500 dans les cimetières et 100 000 arbres d'alignement dans les rues. Chaque année, les arbres dangereux ou dépérissant sont abattus et de nombreux arbres élagués. Ces opérations génèrent d’importants volumes de bois qui sont aujourd’hui broyés sur place puis utilisés dans les jardins les plus proches en paillage. Le service de l’arbre de la Ville de Paris qui assure cette gestion a souhaité aller encore plus loin en recyclant la totalité de ces déchets, des branchages aux troncs entiers. Cette volonté s’inscrit dans une démarche de management environnemental (ISO 14 001) qui prône notamment une meilleure gestion des déchets verts."},
+                    
+                    "flows": [{"vl":[], "hl":["3100", "2001", "4000"], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0},
+                                {"vl":["3000", "2000"], "hl":[], "year":"o4", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":100}, "time":0}]
+                }
+                ]
+        }]
+    }
+}

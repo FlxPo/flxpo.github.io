@@ -147,6 +147,20 @@
 	"z":4,
 	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
 	"data_url":"data/territories/parkas_view_en.json"
+},
+{
+	"id":"p19",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/boues_view_en.json"
+},
+{
+	"id":"p20",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/glaneurs_view_en.json"
 }
 ],
 

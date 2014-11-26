@@ -1972,7 +1972,7 @@
             "steps" :
                 [{
                     "subtitle":"Les consommations électriques augmentent…",
-                    "text": {"time":"200", "content":"… Alors que les consommations de gaz naturel et de fioul diminuent. Cela est dû aux changements de comportement et à l’usage croissant d’appareils mobiles, informatiques et ménagers."},
+                    "text": {"time":"200", "content":"… Alors que les consommations de gaz naturel et de fioul diminuent. Cela est dû aux changements de comportement et à l’usage croissant d’appareils mobiles, informatiques et de climatisation, notamment dans le secteur tertiaire."},
                     "flows": [{"vl":["3100","3200","3300","3400","3500","3600","3700", "2900", "2920"], "popups":["3100","3500","3600"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }
@@ -1985,7 +1985,7 @@
             "steps" :
                 [{
                     "subtitle":"L’énergie, un flux circulaire ?",
-                    "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée est dissipée sous forme de chaleur. Cette énergie, ainsi que celle qui se retrouve « piégée » dans les canalisations, les structures etc. peuvent être récupérées. Pour plus d’informations sur le potentiel de récupération de l’énergie solaire à Paris, consultez le <a href = \"http://capgeo.sig.paris.fr/Apps/CadastreSolaire/\" target = \"_blank\">cadastre solaire</a>."},
+                    "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée est dissipée sous forme de chaleur. Cette énergie, ainsi que celle qui se retrouve « piégée » dans les canalisations, les structures etc. peuvent être récupérées. L’énergie solaire représente également un potentiel important pour la production d’énergie renouvelable, pour plus d'informations sur ce potentiel à Paris, consultez le <a href = \"http://capgeo.sig.paris.fr/Apps/CadastreSolaire/\" target = \"_blank\">cadastre solaire</a>."},
                     "flows": [{"vl":["3000", "2900", "2920"], "hl":["all"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":"0"}],
                     "territories":[{"target":"t2", "action":"appear", "time":"0"}]
                 }

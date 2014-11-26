@@ -47,7 +47,7 @@
                         "iw":"1",
                         "ih":"0.3",
                         "x":"0.7*w",
-                        "y":"0.45*h",
+                        "y":"0.35*h",
                         "scale":"0.2",
                         "force_w_scale":true,
                         "solution":true

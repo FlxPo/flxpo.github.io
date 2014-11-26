@@ -1,0 +1,258 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.35*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"« Glaneurs »",
+						"geom":"data/graphics/geom_groupepersonne.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"1",
+						"x":"0.75*w",
+						"y":"0.6*h",
+						"scale":"0.15",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Centre de compostage",
+                        "geom":"data/graphics/geom_centrerecyclage.json",
+                        "fax":"0",
+                        "fay":"0.25",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.75*w",
+                        "y":"0.4*h",
+                        "scale":"0.14",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Marchés",
+                        "geom":"data/graphics/geom_marches.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0.25*w",
+                        "y":"0.2*h",
+                        "scale":"0.15",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t5",
+                        "name":"t5",
+                        "label":"« La tente des glaneurs »",
+                        "geom":"data/graphics/geom_tente_glaneur.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.45*w",
+                        "y":"0.5*h",
+                        "scale":"0.14",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[{
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Invendus redistribués",
+                            "type":"input",
+                            "from":"t5",
+                            "to":"t2",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#709E42",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2010",
+                            "index":"0",
+                            "name":"Invendus redistribués",
+                            "type":"input",
+                            "from":"t5",
+                            "to":"t2",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#709E42",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2100",
+                            "index":"0",
+                            "name":"Invendus",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t5",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#939393",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2150",
+                            "index":"0",
+                            "name":"Invendus",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t1",
+                            "volume_o4":"200",
+                            "volume_o9":"200",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#939393",
+                            "virtual":true
+                        },
+                        {
+                            "id":"700",
+                            "index":"0",
+                            "name":"Invendus impropres<br>à la consommation",
+                            "type":"input",
+                            "from":"t5",
+                            "to":"t3",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#939393",
+                            "virtual":true
+                        },
+                        {
+                            "id":"200",
+                            "index":"0",
+                            "name":"Déchets",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#939393",
+                            "virtual":true
+                        },
+                        {
+                            "id":"250",
+                            "index":"0",
+                            "name":"Déchets",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#939393",
+                            "virtual":true
+                        },
+                        {
+                            "id":"300",
+                            "index":"0",
+                            "name":"Invendus",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t2",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#939393",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Devenir des aliments sur un marché « classique »",
+                    "text": {"time":"200", "content":"Une partie des aliments vendus  (surplus à durée de vie courte, fruits et légumes « abîmés « ) sur les marchés parisiens n’est pas consommée et devient des déchets collectés par les équipes de nettoiement.<br><br>Plusieurs dizaines de personnes en difficultés financières, des « glaneurs » peuvent être amenées, à chaque marché, à ramasser des denrées délaissées dans des conditions parfois peu souhaitables."},
+                    "flows": [{"vl":["200","300"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Redistribution d’invendus grâce à la Tente des glaneurs",
+                    "text": {"time":"200", "content":"La première « Tente des glaneurs » installée sur le marché de Joinville (19ème arrondissement) permet de collecter les invendus auprès des commerçants du marché et de les redistribuer dans de bonnes conditions aux « glaneurs ».<br><br>Les bénévoles de l’association redistribuent entre 300 et 400 kilos d’invendus à 50 à 80 glaneurs chaque dimanche."},
+                    "flows": [{"vl":["2000", "2100", "250"], "hl":["300","200"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t5", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Déchets évités grâce à la Tente des glaneurs",
+                    "text": {"time":"200", "content":"Avant la redistribution, les fruits et légumes impropres à la consommation sont mis de côté. Ils partiront en centre de compostage. Entre 200 kg et 300 kg sont ainsi envoyés en compostage chaque dimanche. Le compost produit sera revendu aux agriculteurs pour amender les sols. La Mairie de Paris, dans le cadre du Programme Local de Prévention des Déchets, envisage de généraliser cette expérimentation à une vingtaine de marchés pour la redistribution et une cinquantaine pour le compostage.<br><br><em>Porteurs de projet : <a href = \"https://fr-fr.facebook.com/LaTenteDesGlaneursParis/\" target = \"_blank\">La tente des glaneurs</a> - <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction de la propreté et de l'eau - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["700","2010"], "hl":["2000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Devenir des aliments sur un marché « classique »",
+                    "text": {"time":"200", "content":"Une partie des aliments vendus  (surplus à durée de vie courte, fruits et légumes « abîmés « ) sur les marchés parisiens n’est pas consommée et devient des déchets collectés par les équipes de nettoiement.<br><br>Plusieurs dizaines de personnes en difficultés financières, des « glaneurs » peuvent être amenées, à chaque marché, à ramasser des denrées délaissées dans des conditions parfois peu souhaitables."},
+                    "flows": [{"vl":["200","300"], "hl":["2000", "2100", "250"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t5", "action":"disappear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Redistribution d’invendus grâce à la Tente des glaneurs",
+                    "text": {"time":"200", "content":"La première « Tente des glaneurs » installée sur le marché de Joinville (19ème arrondissement) permet de collecter les invendus auprès des commerçants du marché et de les redistribuer dans de bonnes conditions aux « glaneurs ».<br><br>Les bénévoles de l’association redistribuent entre 300 et 400 kilos d’invendus à 50 à 80 glaneurs chaque dimanche."},
+                    "flows": [{"vl":["2000"], "hl":["700","2010"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Déchets évités grâce à la Tente des glaneurs",
+                    "text": {"time":"200", "content":"Avant la redistribution, les fruits et légumes impropres à la consommation sont mis de côté. Ils partiront en centre de compostage. Entre 200 kg et 300 kg sont ainsi envoyés en compostage chaque dimanche. Le compost produit sera revendu aux agriculteurs pour amender les sols. La Mairie de Paris, dans le cadre du Programme Local de Prévention des Déchets, envisage de généraliser cette expérimentation à une vingtaine de marchés pour la redistribution et une cinquantaine pour le compostage.<br><br><em>Porteurs de projet : <a href = \"https://fr-fr.facebook.com/LaTenteDesGlaneursParis/\" target = \"_blank\">La tente des glaneurs</a> - <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction de la propreté et de l'eau - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["700","2010"], "hl":["2000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  
