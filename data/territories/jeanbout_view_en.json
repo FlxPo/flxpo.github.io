@@ -62,14 +62,8 @@
                             "to":"t2",
                             "volume_o4":"15",
                             "volume_o9":"20",
-                            "trend":"-1",
                             "unit":"t / an",
                             "color":"#8965AA",
-                            "color2":"#b7b1ba",
-                            "level":"0",
-                            "parent":"",
-                            "children":"",
-                            "siblings":"",
                             "virtual":true
                         },
                         {
@@ -81,14 +75,8 @@
                             "to":"t1",
                             "volume_o4":"15",
                             "volume_o9":"20",
-                            "trend":"-1",
                             "unit":"t / an",
                             "color":"#A8A8A8",
-                            "color2":"#b7b1ba",
-                            "level":"0",
-                            "parent":"",
-                            "children":"",
-                            "siblings":"",
                             "virtual":true
                         },
                         {

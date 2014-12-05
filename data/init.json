@@ -149,6 +149,13 @@
 	"data_url":"data/territories/parkas_view_en.json"
 },
 {
+	"id":"p18",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/broyat_view_en.json"
+},
+{
 	"id":"p19",
 	"title": "Paves Page",
 	"z":4,
@@ -161,6 +168,41 @@
 	"z":4,
 	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
 	"data_url":"data/territories/glaneurs_view_en.json"
+},
+{
+	"id":"p21",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/jardincoll_view_en.json"
+},
+{
+	"id":"p22",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/ecologicoil_view_en.json"
+},
+{
+	"id":"p23",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/secondevie_view_en.json"
+},
+{
+	"id":"p24",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/letablisienne_view_en.json"
+},
+{
+	"id":"p25",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/extramuros_view_en.json"
 }
 ],
 

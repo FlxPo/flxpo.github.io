@@ -1,0 +1,131 @@
+{
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Immeuble d'habitation",
+                        "geom":"data/graphics/geom_immeuble_jardinseul.json",
+                        "fax":"0",
+                        "fay":"0.35",
+                        "iw":"1",
+                        "ih":"0.3",
+                        "x":"0.5*w",
+                        "y":"0.35*h",
+                        "scale":"0.19",
+                        "force_w_scale":true
+                    },
+					{
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Immeuble d'habitation",
+                        "geom":"data/graphics/geom_immeuble_projet_compost.json",
+                        "fax":"0",
+                        "fay":"0.3",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.5*w",
+                        "y":"0.35*h",
+                        "scale":"0.19",
+                        "force_w_scale":true
+                    }
+                    ],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "name":"Déchets ménagers",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"10000",
+                            "volume_o9":"10000",
+                            "color":"#a69ea9",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "name":"Déchets ménagers",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"12000",
+                            "volume_o9":"12000",
+                            "color":"#a69ea9",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3000",
+                            "name":"Bio-déchets compostés",
+                            "type":"recyclage",
+                            "from":"t2",
+                            "to":"t2",
+                            "volume_o4":"2000",
+                            "volume_o9":"2000",
+                            "color":"#709E42",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Un jardin collectif productif où tout se recycle, ou presque",
+                    "text": {"time":"200", "content":"Depuis le lancement du projet de compost collectif en pied d’immeuble en 2007, ce sont aujourd’hui l’équivalent de 8 tonnes de déchets organiques que transforment chaque année 80 foyers en un compost de qualité. Il est utilisé pour les plantes de balcon mais surtout pour amender le sol d'un jardin partagé de 45 parcelles créé par ces habitants. De plus les 3 poules du jardin collectif consomment 450 kg de déchets par an.<br><br><em>Porteur de projet : <a href = \"http://jardinsanterre.blogspot.fr/\" target = \"_blank\">Jardin Santerre</a></em>"},
+                    "flows": [{"vl":["1000","3000"], "hl":[], "year":"09", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Un jardin collectif productif où tout se recycle, ou presque",
+                    "text": {"time":"200", "content":"A Paris, en 2013, 17,5% du volume des ordures ménagères résiduelles (celles jetées dans le bac vert et incinérées) est composé de déchets putrescibles, soit environ 140&nbsp000 tonnes.  Sur ce total, les déchets alimentaires représentent 100&nbsp000 tonnes, soit 44 kg par habitant par an."},
+                    "flows": [{"vl":["2000"], "hl":["1000","3000"], "year":"09", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Un jardin collectif productif où tout se recycle, ou presque",
+                    "text": {"time":"200", "content":"Depuis le lancement du projet de compost collectif en pied d’immeuble en 2007, ce sont aujourd’hui l’équivalent de 8 tonnes de déchets organiques que transforment chaque année 80 foyers en un compost de qualité. Il est utilisé pour les plantes de balcon mais surtout pour amender le sol d'un jardin partagé de 45 parcelles créé par ces habitants. De plus les 3 poules du jardin collectif consomment 450 kg de déchets par an.<br><br><em>Porteur de projet : <a href = \"http://jardinsanterre.blogspot.fr/\" target = \"_blank\">Jardin Santerre</a></em>"},
+                    "flows": [{"vl":["1000","3000"], "hl":["2000"], "year":"09", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}]
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Un jardin collectif productif où tout se recycle, ou presque",
+                    "text": {"time":"200", "content":"Depuis le lancement du projet de compost collectif en pied d’immeuble en 2007, ce sont aujourd’hui l’équivalent de 8 tonnes de déchets organiques que transforment chaque année 80 foyers en un compost de qualité. Il est utilisé pour les plantes de balcon mais surtout pour amender le sol d'un jardin partagé de 45 parcelles créé par ces habitants. De plus les 3 poules du jardin collectif consomment 450 kg de déchets par an.<br><br><em>Porteur de projet : <a href = \"http://jardinsanterre.blogspot.fr/\" target = \"_blank\">Jardin Santerre</a></em>"},
+                    "flows": [{"vl":["1000","3000"], "hl":["2000"], "year":"09", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Un jardin collectif productif où tout se recycle, ou presque",
+                    "text": {"time":"200", "content":"A Paris, en 2013, 17,5% du volume des ordures ménagères résiduelles (celles jetées dans le bac vert et incinérées) est composé de déchets putrescibles, soit environ 140&nbsp000 tonnes.  Sur ce total, les déchets alimentaires représentent 100&nbsp000 tonnes, soit 44 kg par habitant par an."},
+                    "flows": [{"vl":["2000"], "hl":["1000","3000"], "year":"09", "anim":false, "fp":false, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}]
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

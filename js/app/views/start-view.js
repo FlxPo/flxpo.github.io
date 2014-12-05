@@ -20,6 +20,9 @@ app.StartView = Backbone.View.extend({
 	// Render functions
 	render: function(options) {
 		this.$el.html( this.template( this.model.attributes ) );
+
+		// this.$el.find("#demo").hide();
+
 		options = options || {};
 		this.adjustVertically(options);
 		this.renderRaphael();

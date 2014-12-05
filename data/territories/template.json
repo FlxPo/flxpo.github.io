@@ -25,34 +25,31 @@
                     },
 					{
                         "id":"t2",
-						"name":"t2",
-						"geom":"data/graphics/geom_.json",
-                        "f_anchor_x":"0",
-                        "f_anchor_y":"0",
+                        "name":"t2",
+                        "label":"",
+                        "geom":"data/graphics/geom_.json",
+                        "fax":"0",
+                        "fay":"0.15",
                         "iw":"1",
-                        "ih":"1",
-						"x":"0.5*w",
-						"y":"0.5*h",
-						"scale":"0.5"
+                        "ih":"0.33",
+                        "x":"0.3*w",
+                        "y":"0.3*h",
+                        "scale":"0.18",
+                        "force_w_scale":true
 					}],
 
 	"flows": 		[{
-                            "id":"1000",
+                            "id":"1350",
                             "index":"0",
-                            "name":"Pose de granit",
+                            "name":"Bouteilles jetées",
                             "type":"input",
                             "from":"t0",
                             "to":"t2",
-                            "volume_o4":"15000",
-                            "volume_o9":"NA",
-                            "trend":"-1",
+                            "volume_o4":"15",
+                            "volume_o9":"20",
                             "unit":"t / an",
-                            "color":"#a69ea9",
-                            "color2":"#b7b1ba",
-                            "level":"0",
-                            "parent":"",
-                            "children":"",
-                            "siblings":""
+                            "color":"#A8A8A8",
+                            "virtual":true
                         }],
 
     "stories": {
@@ -63,21 +60,12 @@
             "steps" :
                 [{
                     "subtitle":"",
-                    "text": {"time":"200", "content":""},
-                    "flows": [{"vl":[], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
-                    "territories":[],
-                    "ui":{"show":[], "hide":[]},
-                    "functions":""
+                    "text": {"time":"200", "content":"<br><br><em>Porteur de projet : <a href = \"\" target = \"_blank\"></a></em>"},
+                    "flows": [{"vl":[], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}]
                 }],       
             "b_steps" :
-                [{
-                    "subtitle":"",
-                    "text": {"time":"200", "content":""},
-                    "flows": [{"vl":[], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
-                    "territories":[],
-                    "ui":{"show":[], "hide":[]},
-                    "functions":""
-                }]
+                []
         }],
         "energy":[],
         "water":[]
