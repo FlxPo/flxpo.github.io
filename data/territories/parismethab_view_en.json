@@ -103,7 +103,7 @@
                         {
                             "id":"1500",
                             "index":"0",
-                            "name":"#FF8F2E",
+                            "name":"Engrais",
                             "type":"input",
                             "from":"t4",
                             "to":"t3",
@@ -122,7 +122,7 @@
                         {
                             "id":"1100",
                             "index":"0",
-                            "name":"Biogaz injecté<br>dans le réseau (CH<sub>4</sub>)",
+                            "name":"Biogaz (CH<sub>4</sub>)",
                             "type":"input",
                             "from":"t4",
                             "to":"t5",

@@ -136,7 +136,7 @@
                         {
                             "id":"1100",
                             "index":"0",
-                            "name":"Biogaz injecté<br>dans le réseau (CH<sub>4</sub>)",
+                            "name":"Biogaz (CH<sub>4</sub>)",
                             "type":"input",
                             "from":"t4",
                             "to":"t5",
