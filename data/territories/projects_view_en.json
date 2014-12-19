@@ -213,11 +213,11 @@
                         "name":"Réutilisation de terres sur les jardins",
                         "imgurl":"data/graphics/items/thumb_espaces_verts_chantier.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.115",
+                        "y":"0.67"
                     },
                     {
                         "id":"p17",
@@ -225,11 +225,11 @@
                         "name":"Réemploi de parkas",
                         "imgurl":"data/graphics/items/thumb_administration.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.62",
+                        "y":"0.82"
                     },
                     {
                         "id":"p18",
@@ -237,11 +237,11 @@
                         "name":"Valorisation des déchets ligneux",
                         "imgurl":"data/graphics/items/thumb_espacesverts_elagage.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.91",
+                        "y":"0.77"
                     },
                     {
                         "id":"p19",
@@ -249,11 +249,11 @@
                         "name":"Valorisation des boues de curage des canaux",
                         "imgurl":"data/graphics/items/thumb_fleuve.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.68",
+                        "y":"0.24"
                     },
                     {
                         "id":"p20",
@@ -261,11 +261,11 @@
                         "name":"La tente des glaneurs",
                         "imgurl":"data/graphics/items/thumb_tente_glaneur.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.66",
+                        "y":"0.26"
                     },
                     {
                         "id":"p21",
@@ -273,11 +273,11 @@
                         "name":"Un Jardin Collectif",
                         "imgurl":"data/graphics/items/thumb_immeuble_compost_tout.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.68",
+                        "y":"0.71"
                     },
                     {
                         "id":"p22",
@@ -285,11 +285,11 @@
                         "name":"Collecte et valorisation des huiles alimentaires",
                         "imgurl":"data/graphics/items/thumb_fabricant_bio_diesel.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.75",
+                        "y":"1"
                     },
                     {
                         "id":"p23",
@@ -297,11 +297,11 @@
                         "name":"Une seconde vie pour les cartons",
                         "imgurl":"data/graphics/items/thumb_demenagement.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.55",
+                        "y":"0.21"
                     },
                     {
                         "id":"p24",
@@ -309,11 +309,11 @@
                         "name":"Un atelier partagé pour bricoler",
                         "imgurl":"data/graphics/items/thumb_atelier.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.74",
+                        "y":"0.67"
                     },
                     {
                         "id":"p25",
@@ -321,11 +321,11 @@
                         "name":"Valorisation créative des déchets de bois",
                         "imgurl":"data/graphics/items/thumb_atelier.png",
                         "territory":"t2",
-                        "type":"global",
+                        "type":"local",
                         "amu":false,
-                        "render":false,
-                        "x":"0.5",
-                        "y":"0.65"
+                        "render":true,
+                        "x":"0.73",
+                        "y":"0.46"
                     }],
 
 

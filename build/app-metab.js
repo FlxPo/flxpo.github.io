@@ -70,6 +70,9 @@ app.Flow = Backbone.Model.extend({
     this.set("root", root);
     this.set("leaf", leaf);
 
+    // Level
+    this.set("level", parseInt(this.get("level")));
+
   }
 
 });
@@ -1616,7 +1619,12 @@ app.FlowsView = Backbone.View.extend({
 		this.scaleFlows( {time:t, target_flows:vl_models, scale:this.scale} );
 
 		// Offset the flows
-		this.offsetFlows( {target_flows:vl_models, ref_from:args.ref_from, ref_to:args.ref_to, ref_recy:args.ref_recy, ref_extr:args.ref_extr, ref_wast:args.ref_wast} );
+		this.offsetFlows( {target_flows:vl_models,
+							ref_from:args.ref_from,
+							ref_to:args.ref_to,
+							ref_recy:args.ref_recy,
+							ref_extr:args.ref_extr,
+							ref_wast:args.ref_wast} );
 
 		// Create each flow path
 		_.each(vl_models, function(flow) {
@@ -1862,7 +1870,6 @@ app.FlowsView = Backbone.View.extend({
 		var a_id = parseInt(a.get("id")),
 			b_id = parseInt(b.get("id"));
 		var r = (b_id < a_id);
-		// console.log(b_id + " " + a_id + " " + r);
 		return r;
 	},
 
@@ -2021,6 +2028,8 @@ app.FlowsView = Backbone.View.extend({
 
 	loadParent:function(args) {
 
+		var self = this;
+
 		// Retrieve the offset of the parent
 		var pm = this.collection.get(args.parentid);
 
@@ -2034,9 +2043,45 @@ app.FlowsView = Backbone.View.extend({
 		var hl = [];
 		var pm_level = pm.get("level");
 		var pm_type = pm.get("type");
+		var pm_children = pm.get("children");
+
+		if(typeof of === "undefined") {
+
+			of = 0;
+			ot = 0;
+			or = 0;
+			oe = 0;
+			ow = 0;
+
+			_.each(pm_children, function(id) {
+				var flow = self.collection.get(id);
+				of = of + flow.get("offsetfrom");
+				ot = ot + flow.get("offsetto");
+				or = or + flow.get("offsetrecy");
+				oe = oe + flow.get("offsetextr");
+				ow = ow + flow.get("offsetwast");
+			})
+
+			n = pm_children.length
+			of = of/n;
+			ot = ot/n;
+			or = or/n;
+			oe = oe/n;
+			ow = ow/n;
+
+		}
 
 		var sub_level = [];
-		_.each(this.views_collection.models, function(flow) {console.log(flow.id);if (flow.id != args.parentid && flow.model.get("level") !== pm_level && flow.model.get("type") === pm_type) hl.push(flow.id)})
+		_.each(this.views_collection.models, function(flow) {
+
+			if (flow.model.get("type") === pm_type &&						// Hide only flow of the same type (ie input/recycling...)
+				(_.indexOf(pm_children, flow.model.get("id")) !== -1) ||	// Hide children of the target parent or
+				flow.model.get("level") === pm_level + 2) {  	
+
+				hl.push(flow.id)
+
+			}
+		})
 
 		this.render({view_list:[args.parentid], hide_list:hl, time:"same", ref_from:of, ref_to:ot, ref_recy:or, ref_extr:oe, ref_wast:ow})
 	},
@@ -2092,6 +2137,8 @@ app.FlowsView = Backbone.View.extend({
 	}
 
 });
+
+
 var app = app || {};
 
 app.FlowTipView = Backbone.View.extend({
@@ -2644,8 +2691,6 @@ app.ItemView = Backbone.View.extend({
 
 		this.fax = this.X + (m.get("fax")*m.get("w_mod") || 0);
 		this.fay = this.Y + (m.get("fay")*m.get("h_mod") || 0);
-
-		console.log(this.fax)
 
 		this.$el.velocity({left:xw, top:yh}, {duration:parseInt(args.time), delay:delay, queue:false});
 	},

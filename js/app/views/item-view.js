@@ -219,8 +219,6 @@ app.ItemView = Backbone.View.extend({
 		this.fax = this.X + (m.get("fax")*m.get("w_mod") || 0);
 		this.fay = this.Y + (m.get("fay")*m.get("h_mod") || 0);
 
-		console.log(this.fax)
-
 		this.$el.velocity({left:xw, top:yh}, {duration:parseInt(args.time), delay:delay, queue:false});
 	},
 

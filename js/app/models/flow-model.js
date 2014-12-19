@@ -39,6 +39,9 @@ app.Flow = Backbone.Model.extend({
     this.set("root", root);
     this.set("leaf", leaf);
 
+    // Level
+    this.set("level", parseInt(this.get("level")));
+
   }
 
 });

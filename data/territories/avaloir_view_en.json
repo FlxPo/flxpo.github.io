@@ -34,7 +34,8 @@
 						"x":"0.3*w",
 						"y":"0.2*h",
 						"scale":"0.2",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "solution":true
 					},
                     {
                         "id":"t3",

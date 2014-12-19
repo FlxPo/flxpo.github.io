@@ -667,7 +667,7 @@
   {
     "id":"2134",
     "index":"33",
-    "name":"BTP",
+    "name":"Déchets du BTP",
     "nature":"matter",
     "type":"output",
     "from":"t2",
@@ -1607,7 +1607,7 @@
   {
     "id":"5200",
     "index":"83",
-    "name":"Eau Non Potable ",
+    "name":"Eau Non Potable",
     "nature":"water",
     "type":"input",
     "from":"t0",

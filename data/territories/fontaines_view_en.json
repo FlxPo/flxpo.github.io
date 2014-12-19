@@ -34,7 +34,8 @@
 						"x":"0.5*w",
 						"y":"0.3*h",
 						"scale":"0.2",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "solution":true
 					},
                     {
                         "id":"t3",
@@ -62,7 +63,7 @@
                             "volume_o9":"20",
                             "trend":"-1",
                             "unit":"t / an",
-                            "color":"#23679E",
+                            "color":"#27CCE2",
                             "color2":"#b7b1ba",
                             "level":"0",
                             "parent":"",
@@ -81,7 +82,7 @@
                             "volume_o9":"20",
                             "trend":"-1",
                             "unit":"t / an",
-                            "color":"#4AA1AF",
+                            "color":"#0D3549",
                             "color2":"#b7b1ba",
                             "level":"0",
                             "parent":"",
