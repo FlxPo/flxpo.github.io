@@ -203,6 +203,41 @@
 	"z":4,
 	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
 	"data_url":"data/territories/extramuros_view_en.json"
+},
+{
+	"id":"p26",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/wattignies_view_en.json"
+},
+{
+	"id":"p28",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/sapins_view_en.json"
+},
+{
+	"id":"p31",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/franprix_view_en.json"
+},
+{
+	"id":"p32",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/rejoue_view_en.json"
+},
+{
+	"id":"p33",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/reservearts_view_en.json"
 }
 ],
 

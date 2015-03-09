@@ -1,0 +1,185 @@
+{
+    "ui_elements":{},
+    "scale":"w/2000",
+    "items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"",
+                        "geom":"data/graphics/geom_immeuble_parisien_sapinseul.json",
+                        "fax":"0",
+                        "fay":"0.3",
+                        "iw":"1",
+                        "ih":"0.2",
+                        "x":"0.3*w",
+                        "y":"0.25*h",
+                        "scale":"0.18",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Dépôt des sapins dans la rue",
+                        "geom":"data/graphics/geom_immeuble_parisien.json",
+                        "fax":"0",
+                        "fay":"0.3",
+                        "iw":"1",
+                        "ih":"0.2",
+                        "x":"0.3*w",
+                        "y":"0.25*h",
+                        "scale":"0.18",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Point de collecte<br>des sapins",
+                        "geom":"data/graphics/geom_espacesverts_broyeursapin.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.3",
+                        "x":"0.7*w",
+                        "y":"0.35*h",
+                        "scale":"0.18",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+    "flows":        [{
+                            "id":"1500",
+                            "index":"0",
+                            "name":"Achat de sapins",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#8C2929",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Sapins jetés",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#939393",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Apport de sapins",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t4",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#a9bc94",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Seconde vie pour les sapins",
+                    "text": {"time":"200", "content":"Les sapins (sans décoration, non floqués et sans sac), sont déposés par le public dans une centaine de points d'apport volontaire situés dans les jardins de Paris. Ces sapins sont transformés en broyat qui est utilisé soit comme paillage directement répandu sur les massifs des jardins parisiens, soit comme composant pour la fabrication de compost. Ces opérations ont lieu directement sur site pour limiter les transports. Les excédants de broyat ne pouvant pas être utilisés sur place sont utilisés sur d’autres sites ou pour la réalisation d’allées piétonnes.<b> 54 236 sapins ont été récoltés début 2015. Ils ont été transformés en 870 m3 de paillis (62 sapins collectés permettent de fournir environ 1 m3 de broyat).</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement – Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["1500", "500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Seconde vie pour les sapins",
+                    "text": {"time":"200", "content":"Choisir un sapin naturel, qui plus est issu d'une production agricole locale et raisonnée,  a des effets positifs sur l‘environnement, notamment parce que, lors de sa croissance, le futur sapin de Noël contribue à séquestrer du CO<sub>2</sub>. Mais qu’en est-il de sa fin de vie ? Chaque année, les nombreux sapins jetés sur la voie publique doivent être incinérés au même titre que les ordures ménagères, ce qui a un coût tant financier qu’environnemental. C’est pourquoi la municipalité s’est fixé pour objectif de significativement accroître le nombre de sapins recyclés en adaptant le dispositif de récupération pour minimiser le transport et met en place au plus près des Parisiens des points de recyclage où sont broyés les sapins."},
+                    "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t2", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Seconde vie pour les sapins",
+                    "text": {"time":"200", "content":"Les sapins (sans décoration, non floqués et sans sac), sont déposés par le public dans une centaine de points d'apport volontaire situés dans les jardins de Paris. Ces sapins sont transformés en broyat qui est utilisé soit comme paillage directement répandu sur les massifs des jardins parisiens, soit comme composant pour la fabrication de compost. Ces opérations ont lieu directement sur site pour limiter les transports. Les excédants de broyat ne pouvant pas être utilisés sur place sont utilisés sur d’autres sites ou pour la réalisation d’allées piétonnes.<b> 54 236 sapins ont été récoltés début 2015. Ils ont été transformés en 870 m3 de paillis (62 sapins collectés permettent de fournir environ 1 m3 de broyat).</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement – Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [
+                {
+                    "subtitle":"Seconde vie pour les sapins",
+                    "text": {"time":"200", "content":"Les sapins (sans décoration, non floqués et sans sac), sont déposés par le public dans une centaine de points d'apport volontaire situés dans les jardins de Paris. Ces sapins sont transformés en broyat qui est utilisé soit comme paillage directement répandu sur les massifs des jardins parisiens, soit comme composant pour la fabrication de compost. Ces opérations ont lieu directement sur site pour limiter les transports. Les excédants de broyat ne pouvant pas être utilisés sur place sont utilisés sur d’autres sites ou pour la réalisation d’allées piétonnes. <b>54 236 sapins ont été récoltés début 2015. Ils ont été transformés en 870 m3 de paillis (62 sapins collectés permettent de fournir environ 1 m3 de broyat).</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement – Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Seconde vie pour les sapins",
+                    "text": {"time":"200", "content":"Choisir un sapin naturel, qui plus est issu d'une production agricole locale et raisonnée,  a des effets positifs sur l‘environnement, notamment parce que, lors de sa croissance, le futur sapin de Noël contribue à séquestrer du CO<sub>2</sub>. Mais qu’en est-il de sa fin de vie ? Chaque année, les nombreux sapins jetés sur la voie publique doivent être incinérés au même titre que les ordures ménagères, ce qui a un coût tant financier qu’environnemental. C’est pourquoi la municipalité s’est fixé pour objectif de significativement accroître le nombre de sapins recyclés en adaptant le dispositif de récupération pour minimiser le transport et met en place au plus près des Parisiens des points de recyclage où sont broyés les sapins."},
+                    "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t2", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }
+                ]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

@@ -185,9 +185,9 @@ app.Router = Backbone.Router.extend({
     // Validate territories route parameters
     if (view === "territory") {
 
-      valid_territories = ["paris", "pc", "idf"];
-      valid_types = ["matter", "energy", "water"];
-      valid_times = ["1","2"];
+      var valid_territories = ["paris", "pc", "idf"];
+      var valid_types = ["matter", "energy", "water"];
+      var valid_times = ["1","2"];
 
       return _.indexOf(valid_territories, args.id) !== -1 &&
              _.indexOf(valid_types, args.type) !== -1 &&
@@ -196,8 +196,12 @@ app.Router = Backbone.Router.extend({
     // Validate projects route parameters
     } else if (view === "project") {
 
-      valid_projects = ["p1","p2","p3", "p4", "p5", "p6", "p7","p8","p9","p10","p11","p12","p13","p14","p15","p16", "p17", "p18", "p19", "p20", "p21", "p22", "p23","p24", "p25", "p26"];
-      return _.indexOf(valid_projects, args.id) !==-1;
+      var max_id = 34;
+      var ids = [];
+      for (var i = 0; i<max_id; i++) {ids[i] = i;}
+      var valid_ids = ids.map(function(id) {return "p"+id})
+
+      return _.indexOf(valid_ids, args.id) !==-1;
 
     }
 

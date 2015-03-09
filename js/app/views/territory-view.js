@@ -35,7 +35,7 @@ app.TerritoryView = Backbone.View.extend({
 
 				// Load projects
 				if (data.projects) {
-					var projects = new Backbone.Collection(data.projects);//app.ProjectCollection(data.projects);
+					var projects = new Backbone.Collection(data.projects);
 					var showpanel = (self.model.get("id") === "projects");
 					self.projects_views = new app.ProjectsView( {parent:self, collection:projects, items_views:self.items_views, showpanel:showpanel} );
 				}
@@ -61,6 +61,7 @@ app.TerritoryView = Backbone.View.extend({
 				_.delay(function() {
 
 					self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
+
 					Backbone.trigger("stories:go", {id:0});
 
 					if (self.intro) {

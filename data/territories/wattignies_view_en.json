@@ -1,0 +1,164 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+						"geom":"data/graphics/geom_ecole_egoutseul.json",
+                        "fax":"0",
+                        "fay":"0.25",
+                        "iw":"1",
+                        "ih":"0.8",
+						"x":"0.5*w",
+						"y":"0.3*h",
+						"scale":"0.22",
+                        "force_w_scale":true,
+                        "solution":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Ecole Wattignies",
+                        "geom":"data/graphics/geom_ecole_egout.json",
+                        "fax":"0",
+                        "fay":"0.25",
+                        "iw":"1",
+                        "ih":"0.45",
+                        "x":"0.5*w",
+                        "y":"0.3*h",
+                        "scale":"0.22",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Besoins de chauffage",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t3",
+                            "volume_o4":"100",
+                            "volume_o9":"30",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#E50000",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Chaleur perdue<br>dans les eaux usées",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"30",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#E50000",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Chaleur récupérée",
+                            "type":"recyclage",
+                            "from":"t3",
+                            "to":"t3",
+                            "volume_o4":"70",
+                            "volume_o9":"70",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#FF8F2E",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Chauffage par les eaux usées de l’école Wattignies",
+                    "text": {"time":"200", "content":"L’installation d’un échangeur thermique immergé en partie basse du collecteur des usées de la rue Wattignies permet de récupérer une partie des calories contenues dans ces eaux  pour chauffer un fluide caloporteur (eau glycolée) dont la température passe de 4 à 8°C et qui alimente une pompe à chaleur.<b> Ce système permet de couvrir 70% des besoins de chauffage et de  réduire de plus de 59% les émissions de CO<sub>2</sub> du groupe scolaire rue de Wattignies.</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Service Technique de l’Eau et l’Assainissement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Chauffage par les eaux usées de l’école Wattignies",
+                    "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée pour chauffer nos bâtiments ou pour les besoins sanitaires est perdue. Cette énergie, nommée énergie fatale, se dissipe en particulier dans les canalisations d’évacuation (eaux grises rejoignant les égouts). Elle peut être récupérée ou valorisée pour partiellement couvrir d’autres besoins."},
+                    "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Chauffage par les eaux usées de l’école Wattignies",
+                    "text": {"time":"200", "content":"L’installation d’un échangeur thermique immergé en partie basse du collecteur des usées de la rue Wattignies permet de récupérer une partie des calories contenues dans ces eaux  pour chauffer un fluide caloporteur (eau glycolée) dont la température passe de 4 à 8°C et qui  alimente une pompe à chaleur. Ce système permet de couvrir 70% des besoins de chauffage et de  réduire de plus de 59% les émissions de CO<sub>2</sub> du groupe scolaire rue de Wattignies.<br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Service Technique de l’Eau et l’Assainissement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Chauffage par les eaux usées de l’école Wattignies",
+                    "text": {"time":"200", "content":"<b>L’installation d’un échangeur thermique immergé en partie basse du collecteur des usées de la rue Wattignies permet de récupérer une partie des calories contenues dans ces eaux  pour chauffer un fluide caloporteur (eau glycolée) dont la température passe de 4 à 8°C et qui  alimente une pompe à chaleur. Ce système permet de couvrir 70% des besoins de chauffage et de  réduire de plus de 59% les émissions de CO<sub>2</sub> du groupe scolaire rue de Wattignies.</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Service Technique de l’Eau et l’Assainissement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Chauffage par les eaux usées de l’école Wattignies",
+                    "text": {"time":"200", "content":"Une grande partie de l’énergie utilisée pour chauffer nos bâtiments ou pour les besoins sanitaires est perdue. Cette énergie, nommée énergie fatale, se dissipe en particulier dans les canalisations d’évacuation (eaux grises rejoignant les égouts). Elle peut être récupérée ou valorisée pour partiellement couvrir d’autres besoins."},
+                    "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

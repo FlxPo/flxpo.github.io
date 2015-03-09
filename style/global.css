@@ -77,3 +77,54 @@ a:visited {
 	position:absolute;
 	top:0%;
 }
+
+
+
+
+/* fonts */
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 2;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-chantier:before {
+  content: "\e600";
+}
+
+.icon-dechetsverts:before {
+  content: "\e601";
+}
+
+.icon-eau:before {
+  content: "\e602";
+}
+
+.icon-energies:before {
+  content: "\e603";
+}
+
+.icon-matieres:before {
+  content: "\e604";
+}
+
+.icon-nouveauxmodels:before {
+  content: "\e605";
+}
+
+.icon-tous:before {
+  content: "\e606";
+}
+
+.icon-search:before {
+  content: "\e986";
+}

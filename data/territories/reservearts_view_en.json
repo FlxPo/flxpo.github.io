@@ -1,0 +1,164 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Activités économiques<br>(luxe, événementiel, bricolage)",
+                        "geom":"data/graphics/geom_centrerecyclage.json",
+                        "fax":"0",
+                        "fay":"0.22",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.3*w",
+                        "y":"0.35*h",
+                        "scale":"0.22",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Réserve des Arts",
+                        "geom":"data/graphics/geom_atelier_reservedesarts.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.65*w",
+                        "y":"0.4*h",
+                        "scale":"0.21",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Déchets collectés",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"100",
+                            "volume_o9":"70",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Matières premières<br>pour le secteur culturel",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"70",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#93C893",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Déchets",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"70",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#0D3549",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"La Réserve des arts",
+                    "text": {"time":"200", "content":"La Réserve des arts est une ressourcerie spécialisée unique en France qui collecte des déchets issus d’activités économiques (chutes de production, avaries de matériel, etc.), provenant du secteur du luxe, de l’évènementiel et du bricolage. Ces matières premières secondaires sont redistribuées aux professionnels du secteur culturel qui les valorisent, les détournent et créent de nouveaux produits. <b>Ce sont 33 tonnes de déchets collectés en 2014 qui ont été valorisés à 100%.</b><br><br><em>Porteur de projet : <a href = \"http://www.lareservedesarts.org/\" target = \"_blank\">La Réserve des arts</a></em>"},
+                    "flows": [{"vl":["500","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"La Réserve des arts",
+                    "text": {"time":"200", "content":"Les secteurs d’activités de l’industrie, du commerce et des services (hors BTP et agriculture) génèrent 6 millions de tonnes de déchets non dangereux par an en Ile-de-France* (soit un peu plus que les déchets ménagers et assimilés : 5.7 millions de tonnes). Hormis les déchets triés à la source et pour lesquels des filières de traitement existent (papiers, cartons, verre, palettes, caisses, …), beaucoup de déchets se retrouvent en mélange et ne possèdent pas de filière de valorisation ou de réutilisation.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
+                    "flows": [{"vl":["2000"], "hl":["500", "1000"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"La Réserve des arts",
+                    "text": {"time":"200", "content":"La Réserve des arts est une ressourcerie spécialisée unique en France qui collecte des déchets issus d’activités économiques (chutes de production, avaries de matériel, etc.), provenant du secteur du luxe, de l’évènementiel et du bricolage. Ces matières premières secondaires sont redistribuées aux professionnels du secteur culturel qui les valorisent, les détournent et créent de nouveaux produits. <b>Ce sont 33 tonnes de déchets collectés en 2014 qui ont été valorisés à 100%.</b><br><br><em>Porteur de projet : <a href = \"http://www.lareservedesarts.org/\" target = \"_blank\">La Réserve des arts</a></em>"},
+                    "flows": [{"vl":["500","1000"], "hl":["2000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"La Réserve des arts",
+                    "text": {"time":"200", "content":"La Réserve des arts est une ressourcerie spécialisée unique en France qui collecte des déchets issus d’activités économiques (chutes de production, avaries de matériel, etc.), provenant du secteur du luxe, de l’évènementiel et du bricolage. Ces matières premières secondaires sont redistribuées aux professionnels du secteur culturel qui les valorisent, les détournent et créent de nouveaux produits. <b>Ce sont 33 tonnes de déchets collectés en 2014 qui ont été valorisés à 100%.</b><br><br><em>Porteur de projet : <a href = \"http://www.lareservedesarts.org/\" target = \"_blank\">La Réserve des arts</a></em>"},
+                    "flows": [{"vl":["500","1000"], "hl":["2000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"La Réserve des arts",
+                    "text": {"time":"200", "content":"Les secteurs d’activités de l’industrie, du commerce et des services (hors BTP et agriculture) génèrent 6 millions de tonnes de déchets non dangereux par an en Ile-de-France* (soit un peu plus que les déchets ménagers et assimilés : 5.7 millions de tonnes). Hormis les déchets triés à la source et pour lesquels des filières de traitement existent (papiers, cartons, verre, palettes, caisses, …), beaucoup de déchets se retrouvent en mélange et ne possèdent pas de filière de valorisation ou de réutilisation.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
+                    "flows": [{"vl":["2000"], "hl":["500", "1000"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

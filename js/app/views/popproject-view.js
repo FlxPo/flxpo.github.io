@@ -16,6 +16,7 @@ app.PopProjectView = Backbone.View.extend({
 		_.bindAll(this, "renderClean")
 		this.item = options.item;
 		this.id = this.model.get("id");
+		this.rendered = true;
 	},
 
 	render:function() {
@@ -75,6 +76,16 @@ app.PopProjectView = Backbone.View.extend({
 		} else if (id !== "p0") {
 			Backbone.trigger("route:buildGo", {change:"project", id:id});
 		}
+	},
+
+	show:function() {
+		this.$el.velocity("fadeIn", {duration:200, display:"block"});
+		this.rendered = true;
+	},
+
+	hide:function() {
+		this.$el.velocity("fadeOut", {duration:200});
+		this.rendered = false;
 	},
 
 	over:function() {

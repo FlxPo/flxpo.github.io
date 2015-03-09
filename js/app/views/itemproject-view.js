@@ -14,6 +14,7 @@ app.ItemProjectView = Backbone.View.extend({
 	template: _.template( $('#itemproject-template').html() ),
 
 	initialize:function() {
+		this.rendered = true;
 	},
 
 	render:function() {
@@ -35,6 +36,17 @@ app.ItemProjectView = Backbone.View.extend({
 
 	over:function() {
 		Backbone.trigger("projects:focus", {id:this.model.get("id")})
+	},
+
+	hide:function() {
+		this.$el.velocity("fadeOut", {duration:0});
+		this.$el.addClass("item-hidden");
+		this.rendered = false;
+	},
+
+	show:function() {
+		this.$el.velocity("fadeIn", {duration:0, display:"inline-block"});
+		this.rendered = true;
 	},
 
 	out:function() {

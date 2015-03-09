@@ -1,0 +1,183 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"Livraison par bateaux<br>et camions électriques",
+						"geom":"data/graphics/geom_livraison_bateau.json",
+                        "fax":"0",
+                        "fay":"0.1",
+                        "iw":"1",
+                        "ih":"0.8",
+						"x":"0.35*w",
+						"y":"0.31*h",
+						"scale":"0.2",
+                        "force_w_scale":true,
+                        "solution":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Livraison par camions",
+                        "geom":"data/graphics/geom_livraison_camion.json",
+                        "fax":"0",
+                        "fay":"0.17",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.35*w",
+                        "y":"0.3*h",
+                        "scale":"0.2",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Magasins Franprix",
+                        "geom":"data/graphics/geom_franprix.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.6*w",
+                        "y":"0.3*h",
+                        "scale":"0.2",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Consommation énergétique<br>de la chaîne logistique",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t3",
+                            "volume_o4":"65",
+                            "volume_o9":"65",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#5B7774",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1100",
+                            "index":"0",
+                            "name":"Consommation énergétique<br>de la chaîne logistique",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t3",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#5B7774",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Flux de marchandises",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t4",
+                            "volume_o4":"100",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#8965AA",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Franprix entre en Seine",
+                    "text": {"time":"200", "content":"Le Groupe Casino via son enseigne Franprix s’est engagé dans un mode de livraison inédit dans le secteur de la distribution alimentaire pour livrer par voie fluviale une centaine de magasins en plein cœur de Paris. Chaque jour ce sont 20 km parcourus du port de Bonneuil-sur-Marne (94) au Port de la Bourdonnais (Paris 7ème) et 26 containers transportés. Sobre sur le plan énergétique (une consommation trois fois moindre qu’un poids lourd sur une distance comparable) et vertueux en matière d’émissions de gaz à effet de serre (2 à 4 fois moins d’émissions de CO<sub>2</sub>), <b>ce transport fluvial permet d’éviter 3 874 camions, soit l’équivalent de 450 000 kms.</b><br><br><em>Porteur de projet : <a href = \"http://www.franprix.fr/qui-sommes-nous/franprix-en-seine/\" target = \"_blank\">Groupe Casino et Franprix</a></em>"},
+                    "flows": [{"vl":["1000"], "hl":[], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Franprix entre en Seine",
+                    "text": {"time":"200", "content":"Paris importe plus de 4 millions de tonnes de produits agricoles et alimentaires ce qui représente plus du quart des importations de marchandises. La route constitue le mode d’acheminement le plus largement utilisé avec 90% des flux de marchandises et on estime que 20% des véhicules en circulation dans Paris sont dédiés au transport de marchandises. L’amélioration de la logistique de ces marchandises représente donc des enjeux environnementaux importants pour réduire la pollution atmosphérique, le bruit et les émissions de gaz à effet de serre."},
+                    "flows": [{"vl":["1100"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Franprix entre en Seine",
+                    "text": {"time":"200", "content":"Le Groupe Casino via son enseigne Franprix s’est engagé dans un mode de livraison inédit dans le secteur de la distribution alimentaire pour livrer par voie fluviale une centaine de magasins en plein cœur de Paris. Chaque jour ce sont 20 km parcourus du port de Bonneuil-sur-Marne (94) au Port de la Bourdonnais (Paris 7ème) et 26 containers transportés. Sobre sur le plan énergétique (une consommation trois fois moindre qu’un poids lourd sur une distance comparable) et vertueux en matière d’émissions de gaz à effet de serre (2 à 4 fois moins d’émissions de CO<sub>2</sub>), <b>ce transport fluvial permet d’éviter 3 874 camions, soit l’équivalent de 450 000 kms.</b><br><br><em>Porteur de projet : <a href = \"http://www.franprix.fr/qui-sommes-nous/franprix-en-seine/\" target = \"_blank\">Groupe Casino et Franprix</a></em>"},
+                    "flows": [{"vl":["1000"], "hl":["1100"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"disappear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [ {
+                    "subtitle":"Franprix entre en Seine",
+                    "text": {"time":"200", "content":"Le Groupe Casino via son enseigne Franprix s’est engagé dans un mode de livraison inédit dans le secteur de la distribution alimentaire pour livrer par voie fluviale une centaine de magasins en plein cœur de Paris. Chaque jour ce sont 20 km parcourus du port de Bonneuil-sur-Marne (94) au Port de la Bourdonnais (Paris 7ème) et 26 containers transportés. Sobre sur le plan énergétique (une consommation trois fois moindre qu’un poids lourd sur une distance comparable) et vertueux en matière d’émissions de gaz à effet de serre (2 à 4 fois moins d’émissions de CO<sub>2</sub>), ce transport fluvial permet d’éviter 3 874 camions, soit l’équivalent de 450 000 kms.<br><br><em>Porteur de projet : <a href = \"http://www.franprix.fr/qui-sommes-nous/franprix-en-seine/\" target = \"_blank\">Groupe Casino et Franprix</a></em>"},
+                    "flows": [{"vl":["1000"], "hl":["1100"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"disappear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Franprix entre en Seine",
+                    "text": {"time":"200", "content":"Paris importe plus de 4 millions de tonnes de produits agricoles et alimentaires ce qui représente plus du quart des importations de marchandises. La route constitue le mode d’acheminement le plus largement utilisé avec 90% des flux de marchandises et on estime que 20% des véhicules en circulation dans Paris sont dédiés au transport de marchandises. L’amélioration de la logistique de ces marchandises représente donc des enjeux environnementaux importants pour réduire la pollution atmosphérique, le bruit et les émissions de gaz à effet de serre."},
+                    "flows": [{"vl":["1100"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }
+                ]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

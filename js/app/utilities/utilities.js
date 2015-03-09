@@ -91,11 +91,22 @@ var utils = (function() {
     return result;
   }
 
+  function formatString(s) {
+    return s.toLowerCase()
+            .replace(/[èéêë]/g, "e")
+            .replace(/[ç]/g, "c")
+            .replace(/[àâä]/g, "a")
+            .replace(/[ïî]/g, "i")
+            .replace(/[ûùü]/g, "u")
+            .replace(/[ôöó]/g, "o");
+  }
+
   return {getWindowSize:getWindowSize,
           darkenColor:darkenColor,
           formatVolume:formatVolume,
           constrainNumber:constrainNumber,
-          mergeSort:mergeSort}
+          mergeSort:mergeSort,
+          formatString:formatString}
 
 })()
 
