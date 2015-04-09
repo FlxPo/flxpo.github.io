@@ -238,6 +238,27 @@
 	"z":4,
 	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
 	"data_url":"data/territories/reservearts_view_en.json"
+},
+{
+	"id":"p34",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/infiltrations_view_en.json"
+},
+{
+	"id":"p35",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/parisplage_view_en.json"
+},
+{
+	"id":"p36",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/chaleurfoyer_view_en.json"
 }
 ],
 

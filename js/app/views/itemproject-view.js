@@ -15,6 +15,10 @@ app.ItemProjectView = Backbone.View.extend({
 
 	initialize:function() {
 		this.rendered = true;
+		this.hasLogo = true;
+		if (this.model.get("logo") == "amu") { this.model.set("logourl", "data/graphics/logoamusmall.png"); }
+		else if (this.model.get("logo") == "adpd") { this.model.set("logourl", "data/graphics/adpd.png"); }
+		else { this.model.set("logourl", ""); this.hasLogo = false }
 	},
 
 	render:function() {
@@ -55,13 +59,13 @@ app.ItemProjectView = Backbone.View.extend({
 
 	focus:function() {
 		this.$el.addClass("item-focused");
-		this.model.get("amu") && this.$logocontainer.show();
+		this.hasLogo && this.$logocontainer.show();
 		return this;
 	},
 
 	unfocus:function() {
 		this.$el.removeClass("item-focused");
-		this.model.get("amu") && this.$logocontainer.hide();
+		this.hasLogo && this.$logocontainer.hide();
 	},
 
 	clk:function() {

@@ -23,7 +23,7 @@
                         "imgurl":"data/graphics/items/thumb_centrerecyclage.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.52",
                         "y":"0"
@@ -36,7 +36,7 @@
                         "imgurl":"data/graphics/items/thumb_centrerecyclage.png",
 						"territory":"t2",
 						"type":"global",
-                        "amu":false,
+                        "logo":"none",
                         "render":false,
 						"x":"0.1",
 						"y":"0.1"
@@ -49,7 +49,7 @@
                         "imgurl":"data/graphics/items/thumb_constructionbatiment_multiple.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.5",
                         "y":"0.5"
@@ -62,7 +62,7 @@
                         "imgurl":"data/graphics/items/thumb_deconstructionbatiment_multiple.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":true,
+                        "logo":"amu",
                         "render":true,
                         "x":"0.77",
                         "y":"0.41"
@@ -75,7 +75,7 @@
                         "imgurl":"data/graphics/items/thumb_rue_avaloir.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.3",
                         "y":"0.65"
@@ -88,7 +88,7 @@
                         "imgurl":"data/graphics/items/thumb_fontaine.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.35",
                         "y":"0.35"
@@ -101,7 +101,7 @@
                         "imgurl":"data/graphics/items/thumb_fleuve.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.5",
                         "y":"0.5"
@@ -114,7 +114,7 @@
                         "imgurl":"data/graphics/items/thumb_agriculture_urbaine.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.7",
                         "y":"0.6"
@@ -127,7 +127,7 @@
                         "imgurl":"data/graphics/items/thumb_plateformeweb.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
@@ -140,7 +140,7 @@
                         "imgurl":"data/graphics/items/thumb_centrerecyclage.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":true,
+                        "logo":"amu",
                         "render":true,
                         "x":"0.49",
                         "y":"0.47"
@@ -153,7 +153,7 @@
                         "imgurl":"data/graphics/items/thumb_traiteur.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
@@ -166,7 +166,7 @@
                         "imgurl":"data/graphics/items/thumb_usinemethanisation.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
@@ -179,7 +179,7 @@
                         "imgurl":"data/graphics/items/thumb_usinemethanisation.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
@@ -192,7 +192,7 @@
                         "imgurl":"data/graphics/items/thumb_microbrasserie.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
@@ -205,7 +205,7 @@
                         "imgurl":"data/graphics/items/thumb_voitures.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":true,
+                        "logo":"amu",
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
@@ -218,7 +218,7 @@
                         "imgurl":"data/graphics/items/thumb_cimetiere.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":false,
+                        "logo":"none",
                         "render":false,
                         "x":"0.5",
                         "y":"0.65"
@@ -231,7 +231,7 @@
                         "imgurl":"data/graphics/items/thumb_espaces_verts_chantier.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"none",
                         "render":true,
                         "x":"0.115",
                         "y":"0.67"
@@ -244,7 +244,7 @@
                         "imgurl":"data/graphics/items/thumb_administration.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"none",
                         "render":true,
                         "x":"0.63",
                         "y":"0.83"
@@ -257,7 +257,7 @@
                         "imgurl":"data/graphics/items/thumb_espacesverts_elagage.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"none",
                         "render":true,
                         "x":"0.91",
                         "y":"0.77"
@@ -270,7 +270,7 @@
                         "imgurl":"data/graphics/items/thumb_fleuve.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"none",
                         "render":true,
                         "x":"0.68",
                         "y":"0.24"
@@ -283,7 +283,7 @@
                         "imgurl":"data/graphics/items/thumb_tente_glaneur.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"none",
                         "render":true,
                         "x":"0.66",
                         "y":"0.26"
@@ -296,7 +296,7 @@
                         "imgurl":"data/graphics/items/thumb_immeuble_compost_tout.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.68",
                         "y":"0.71"
@@ -309,7 +309,7 @@
                         "imgurl":"data/graphics/items/thumb_fabricant_bio_diesel.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.75",
                         "y":"1"
@@ -322,7 +322,7 @@
                         "imgurl":"data/graphics/items/thumb_demenagement.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.55",
                         "y":"0.21"
@@ -335,7 +335,7 @@
                         "imgurl":"data/graphics/items/thumb_atelier.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.74",
                         "y":"0.67"
@@ -348,7 +348,7 @@
                         "imgurl":"data/graphics/items/thumb_atelier.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.73",
                         "y":"0.46"
@@ -361,7 +361,7 @@
                         "imgurl":"data/graphics/items/thumb_ecole_echangeur.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"none",
                         "render":true,
                         "x":"0.72",
                         "y":"0.8"
@@ -374,7 +374,7 @@
                         "imgurl":"data/graphics/items/thumb_espacesverts_broyeursapin.png",
                         "territory":"t2",
                         "type":"global",
-                        "amu":false,
+                        "logo":"none",
                         "render":true,
                         "x":"0.73",
                         "y":"0.46"
@@ -387,7 +387,7 @@
                         "imgurl":"data/graphics/items/thumb_livraison_bateau.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.315",
                         "y":"0.52"
@@ -400,7 +400,7 @@
                         "imgurl":"data/graphics/items/thumb_atelier_avec_personne.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.4",
                         "y":"0.75"
@@ -413,10 +413,49 @@
                         "imgurl":"data/graphics/items/thumb_atelier_reservedesarts.png",
                         "territory":"t2",
                         "type":"local",
-                        "amu":false,
+                        "logo":"adpd",
                         "render":true,
                         "x":"0.34",
                         "y":"0.86"
+                    },
+                    {
+                        "id":"p34",
+                        "view":"paves",
+                        "name":"Expérimentation d'infiltrations",
+                        "category":[0, 4],
+                        "imgurl":"data/graphics/items/thumb_espacespublics_infiltrations.png",
+                        "territory":"t2",
+                        "type":"local",
+                        "logo":"none",
+                        "render":true,
+                        "x":"0.26",
+                        "y":"0.73"
+                    },
+                    {
+                        "id":"p35",
+                        "view":"paves",
+                        "name":"Paris Plages",
+                        "category":[0, 4],
+                        "imgurl":"data/graphics/items/thumb_parisplage.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "logo":"none",
+                        "render":true,
+                        "x":"0.34",
+                        "y":"0.86"
+                    },
+                    {
+                        "id":"p36",
+                        "view":"paves",
+                        "name":"Récupération de chaleur au foyer Chevaleret",
+                        "category":[0, 4],
+                        "imgurl":"data/graphics/items/thumb_immeuble_recuperationchaleur.png",
+                        "territory":"t2",
+                        "type":"local",
+                        "logo":"none",
+                        "render":true,
+                        "x":"0.59",
+                        "y":"0.78"
                     }],
 
 
