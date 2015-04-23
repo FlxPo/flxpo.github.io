@@ -41,6 +41,7 @@ app.ItemView = Backbone.View.extend({
 		} else {
 
 			self.parent.parent.$itemcontainer.prepend( self.render().el );
+			options.complete();
 
 		}
 	},

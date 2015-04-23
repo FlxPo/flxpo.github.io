@@ -60,7 +60,7 @@ app.TerritoryView = Backbone.View.extend({
 
 		this.items_number--;
 
-		if (this.items_number == 2) {
+		if (this.items_number == 0) {
 			this.projects_views && this.$projectcontainer.append( this.projects_views.render().el );
 
 			Backbone.trigger("stories:go", {id:0});
