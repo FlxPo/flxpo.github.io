@@ -80,6 +80,7 @@ app.ItemView = Backbone.View.extend({
 	},
 
 	renderContent:function() {
+		this.$el.css("z-index", this.model.get("z"));
 		this.$el.append( this.template() );
 		return this;
 	},

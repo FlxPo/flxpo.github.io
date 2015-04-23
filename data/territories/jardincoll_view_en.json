@@ -33,7 +33,8 @@
                         "x":"0.5*w",
                         "y":"0.35*h",
                         "scale":"0.19",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "z":1
                     },
 					{
                         "id":"t2",
@@ -47,7 +48,8 @@
                         "x":"0.5*w",
                         "y":"0.35*h",
                         "scale":"0.19",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "z":0
                     }
                     ],
 

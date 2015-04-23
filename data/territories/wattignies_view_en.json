@@ -35,7 +35,8 @@
 						"y":"0.3*h",
 						"scale":"0.22",
                         "force_w_scale":true,
-                        "solution":true
+                        "solution":true,
+                        "z":1
 					},
                     {
                         "id":"t3",
@@ -49,7 +50,8 @@
                         "x":"0.5*w",
                         "y":"0.3*h",
                         "scale":"0.22",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "z":0
                     }],
 
 	"flows": 		[{

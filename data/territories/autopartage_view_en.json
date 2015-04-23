@@ -35,7 +35,8 @@
                         "x":"0.3*w",
                         "y":"0.2*h",
                         "scale":"0.16",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "z":1
                     },
 					{
                         "id":"t2",
@@ -49,7 +50,8 @@
 						"x":"0.3*w",
 						"y":"0.2*h",
 						"scale":"0.16",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "z":0
 					},
                     {
                         "id":"t5",
@@ -62,7 +64,8 @@
                         "x":"0.3*w",
                         "y":"0.5*h",
                         "scale":"0.15",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "z":1
                     },
                     {
                         "id":"t3",
@@ -76,7 +79,8 @@
                         "x":"0.3*w",
                         "y":"0.5*h",
                         "scale":"0.15",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "z":0
                     },
                     {
                         "id":"t4",
@@ -91,7 +95,8 @@
                         "y":"0.365*h",
                         "scale":"0.16",
                         "force_w_scale":true,
-                        "solution":true
+                        "solution":true,
+                        "z":0
                     }],
 
 	"flows": 		[
