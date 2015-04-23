@@ -28,6 +28,7 @@ app.TerritoryView = Backbone.View.extend({
 				// Load Items
 				var items = new Backbone.Collection(data.items);
 				self.items_views = new app.ItemsView( {parent:self, collection:items} );
+				self.items_number = items.length;
 
 				// Load flows
 				var flows = new Backbone.Collection(data.flows, {model:app.Flow});
@@ -49,38 +50,34 @@ app.TerritoryView = Backbone.View.extend({
 
 			}
 
-		})
-
-		// When rendering, Wait for items to be loaded before computing flow paths
-		this.listenTo(Backbone, "items:loaded", function() {
-
-			var self = this;
-
-			_.defer(function() {
-
-				_.delay(function() {
-
-					self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
-
-					Backbone.trigger("stories:go", {id:0});
-
-					if (self.intro) {
-						var iv = new app.IntroView();
-						$("body").append( iv.render().el );
-						iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
-						self.iv = iv;
-					}
-
-					self.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
-					self.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
-					self.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
-					$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
-
-				}, 50);
-
-			})
-
 		});
+
+		this.listenTo(Backbone, "item:loaded", this.itemsCountDown);
+
+	},
+
+	itemsCountDown:function() {
+
+		this.items_number--;
+
+		if (this.items_number == 2) {
+			this.projects_views && this.$projectcontainer.append( this.projects_views.render().el );
+
+			Backbone.trigger("stories:go", {id:0});
+
+			if (this.intro) {
+				var iv = new app.IntroView();
+				$("body").append( iv.render().el );
+				iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
+				this.iv = iv;
+			}
+
+			this.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
+			this.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
+			this.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
+			$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+		}
+
 
 	},
 

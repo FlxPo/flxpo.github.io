@@ -2585,7 +2585,10 @@ app.ItemView = Backbone.View.extend({
 					self.model.set(data);
 					_.bind(self.createCanvas, self)(data);
 					self.parent.parent.$itemcontainer.prepend( self.render().el );
-					_.defer(options.complete);
+				},
+
+				complete:function() {
+					options.complete();
 				}
 
 			});
@@ -2894,7 +2897,7 @@ app.ItemsView = Backbone.View.extend({
 		var len = this.collection.length;
 		this.collection.each(function(item, index) {
 
-			var complete = index === (len - 1) ? function() {Backbone.trigger("items:loaded")} : function() {};
+			var complete = function() {Backbone.trigger("item:loaded")};
 			this.views_collection.add({ id:item.get("id"), model:item, parent:this, complete:complete} );
 
 		}, this);
@@ -3865,6 +3868,7 @@ app.TerritoryView = Backbone.View.extend({
 				// Load Items
 				var items = new Backbone.Collection(data.items);
 				self.items_views = new app.ItemsView( {parent:self, collection:items} );
+				self.items_number = items.length;
 
 				// Load flows
 				var flows = new Backbone.Collection(data.flows, {model:app.Flow});
@@ -3886,38 +3890,34 @@ app.TerritoryView = Backbone.View.extend({
 
 			}
 
-		})
-
-		// When rendering, Wait for items to be loaded before computing flow paths
-		this.listenTo(Backbone, "items:loaded", function() {
-
-			var self = this;
-
-			_.defer(function() {
-
-				_.delay(function() {
-
-					self.projects_views && self.$projectcontainer.append( self.projects_views.render().el );
-
-					Backbone.trigger("stories:go", {id:0});
-
-					if (self.intro) {
-						var iv = new app.IntroView();
-						$("body").append( iv.render().el );
-						iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
-						self.iv = iv;
-					}
-
-					self.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
-					self.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
-					self.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
-					$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
-
-				}, 50);
-
-			})
-
 		});
+
+		this.listenTo(Backbone, "item:loaded", this.itemsCountDown);
+
+	},
+
+	itemsCountDown:function() {
+
+		this.items_number--;
+
+		if (this.items_number == 2) {
+			this.projects_views && this.$projectcontainer.append( this.projects_views.render().el );
+
+			Backbone.trigger("stories:go", {id:0});
+
+			if (this.intro) {
+				var iv = new app.IntroView();
+				$("body").append( iv.render().el );
+				iv.$back.velocity({opacity:0.6}, {duration:300, delay:750});
+				this.iv = iv;
+			}
+
+			this.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
+			this.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
+			this.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
+			$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+		}
+
 
 	},
 

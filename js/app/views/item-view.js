@@ -30,7 +30,10 @@ app.ItemView = Backbone.View.extend({
 					self.model.set(data);
 					_.bind(self.createCanvas, self)(data);
 					self.parent.parent.$itemcontainer.prepend( self.render().el );
-					_.defer(options.complete);
+				},
+
+				complete:function() {
+					options.complete();
 				}
 
 			});

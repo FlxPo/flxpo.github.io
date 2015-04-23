@@ -16,7 +16,7 @@ app.ItemsView = Backbone.View.extend({
 		var len = this.collection.length;
 		this.collection.each(function(item, index) {
 
-			var complete = index === (len - 1) ? function() {Backbone.trigger("items:loaded")} : function() {};
+			var complete = function() {Backbone.trigger("item:loaded")};
 			this.views_collection.add({ id:item.get("id"), model:item, parent:this, complete:complete} );
 
 		}, this);
