@@ -196,7 +196,7 @@ app.Router = Backbone.Router.extend({
     // Validate projects route parameters
     } else if (view === "project") {
 
-      var max_id = 37;
+      var max_id = 38;
       var ids = [];
       for (var i = 0; i<max_id; i++) {ids[i] = i;}
       var valid_ids = ids.map(function(id) {return "p"+id})

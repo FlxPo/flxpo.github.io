@@ -214,7 +214,7 @@
                         "id":"p15",
                         "view":"paves",
                         "name":"Recyclage des produits de déconstruction des cimetières parisiens",
-                        "category":[0, 4],
+                        "category":[0, 6],
                         "imgurl":"data/graphics/items/thumb_cimetiere.png",
                         "territory":"t2",
                         "type":"global",
@@ -367,6 +367,19 @@
                         "y":"0.8"
                     },
                     {
+                        "id":"p27",
+                        "view":"paves",
+                        "name":"Compostage collectif à Paris",
+                        "category":[0, 5],
+                        "imgurl":"data/graphics/items/thumb_immeuble_compost_tout.png",
+                        "territory":"t2",
+                        "type":"global",
+                        "logo":"none",
+                        "render":false,
+                        "x":"0.59",
+                        "y":"0.78"
+                    },
+                    {
                         "id":"p28",
                         "view":"paves",
                         "name":"Une seconde vie<br>pour les sapins",
@@ -422,7 +435,7 @@
                         "id":"p34",
                         "view":"paves",
                         "name":"Expérimentation d'infiltrations",
-                        "category":[0, 4],
+                        "category":[0, 2],
                         "imgurl":"data/graphics/items/thumb_espacespublics_infiltrations.png",
                         "territory":"t2",
                         "type":"local",
@@ -448,7 +461,7 @@
                         "id":"p36",
                         "view":"paves",
                         "name":"Récupération de chaleur au foyer Chevaleret",
-                        "category":[0, 4],
+                        "category":[0, 3],
                         "imgurl":"data/graphics/items/thumb_immeuble_recuperationchaleur.png",
                         "territory":"t2",
                         "type":"local",
@@ -456,7 +469,8 @@
                         "render":true,
                         "x":"0.59",
                         "y":"0.78"
-                    }],
+                    }
+                    ],
 
 
     "stories": {

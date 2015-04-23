@@ -259,6 +259,13 @@
 	"z":4,
 	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
 	"data_url":"data/territories/chaleurfoyer_view_en.json"
+},
+{
+	"id":"p27",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/compostage_collectif_view_en.json"
 }
 ],
 
