@@ -98,7 +98,7 @@
 	"flows": 		[{
                             "id":"1400",
                             "index":"0",
-                            "name":"Bio-déchets",
+                            "name":"Biodéchets",
                             "type":"input",
                             "from":"t2",
                             "to":"t4",
@@ -174,7 +174,7 @@
                         {
                             "id":"1000",
                             "index":"0",
-                            "name":"Bio-déchets",
+                            "name":"Biodéchets",
                             "type":"input",
                             "from":"t2",
                             "to":"t1",
@@ -199,7 +199,7 @@
             "steps" :
                 [{
                     "subtitle":"Expérimentation de la valorisation des déchets organiques de cantine<br>en énergie renouvelable et fertilisant",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de valorisation des déchets organiques en milieu urbain, porté par Love Your Waste pourra être expérimenté pendant 2 ans sur un ensemble de restaurants collectifs municipaux (Caisse des écoles d’un arrondissement par exemple). Il propose <strong>une collecte des bio-déchets alimentaires pour une valorisation en usine de méthanisation</strong> permettant de générer du biogaz réinjecté dans le réseau de gaz de ville et de produire un bio-fertilisant utilisable dans les espaces verts.<br><br><em>Porteur de projet : <a href = \"http://www.loveyourwaste.com/\" target = \"_blank\">Love Your Waste</a></em>"},
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de valorisation des déchets organiques en milieu urbain, porté par Love Your Waste pourra être expérimenté pendant 2 ans sur un ensemble de restaurants collectifs municipaux (Caisse des écoles d’un arrondissement par exemple). Il propose <strong>une collecte des biodéchets alimentaires pour une valorisation en usine de méthanisation</strong> permettant de générer du biogaz réinjecté dans le réseau de gaz de ville et de produire un bio-fertilisant utilisable dans les espaces verts.<br><br><em>Porteur de projet : <a href = \"http://www.loveyourwaste.com/\" target = \"_blank\">Love Your Waste</a></em>"},
                     "flows": [{"vl":["1400", "1100","1200","1500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
@@ -211,7 +211,7 @@
                 },
                 {
                     "subtitle":"Expérimentation de la valorisation des déchets organiques de cantine<br>en énergie renouvelable et fertilisant",
-                    "text": {"time":"200", "content":"Près de 30 millions de repas sont servis par an dans les structures de restauration collective municipale et départementale (crèches, écoles, restaurants administratifs, maisons de retraite et établissements sociaux).  Les structures de la Mairie de Paris commandent ainsi chaque année 3 500 tonnes de fruits, 4 000 tonnes de légumes, 3 900 tonnes de produits laitiers etc. Malgré les efforts menés pour réduire le gaspillage alimentaire, environ 37% de l’alimentation servie est finalement évacuée sous forme de bio-déchets (restes de cuisine, repas non consommés, restes de plateaux). Collectés avec le reste des déchets, ces bio-déchets partent actuellement en incinération."},
+                    "text": {"time":"200", "content":"Près de 30 millions de repas sont servis par an dans les structures de restauration collective municipale et départementale (crèches, écoles, restaurants administratifs, maisons de retraite et établissements sociaux).  Les structures de la Mairie de Paris commandent ainsi chaque année 3 500 tonnes de fruits, 4 000 tonnes de légumes, 3 900 tonnes de produits laitiers etc. Malgré les efforts menés pour réduire le gaspillage alimentaire, environ 37% de l’alimentation servie est finalement évacuée sous forme de biodéchets (restes de cuisine, repas non consommés, restes de plateaux). Collectés avec le reste des déchets, ces biodéchets partent actuellement en incinération."},
                     "flows": [{"vl":["1000"], "hl":["1400", "1100","1200","1500"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
@@ -222,7 +222,7 @@
                 },
                 {
                     "subtitle":"Expérimentation de la valorisation des déchets organiques de cantine<br>en énergie renouvelable et fertilisant",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de valorisation des déchets organiques en milieu urbain, porté par Love Your Waste pourra être expérimenté pendant 2 ans sur un ensemble de restaurants collectifs municipaux (Caisse des écoles d’un arrondissement par exemple). Il propose <strong>une collecte des bio-déchets alimentaires pour une valorisation en usine de méthanisation</strong> permettant de générer du biogaz réinjecté dans le réseau de gaz de ville et de produire un bio-fertilisant utilisable dans les espaces verts.<br><br><em>Porteur de projet : <a href = \"http://www.loveyourwaste.com/\" target = \"_blank\">Love Your Waste</a></em>"},
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de valorisation des déchets organiques en milieu urbain, porté par Love Your Waste pourra être expérimenté pendant 2 ans sur un ensemble de restaurants collectifs municipaux (Caisse des écoles d’un arrondissement par exemple). Il propose <strong>une collecte des biodéchets alimentaires pour une valorisation en usine de méthanisation</strong> permettant de générer du biogaz réinjecté dans le réseau de gaz de ville et de produire un bio-fertilisant utilisable dans les espaces verts.<br><br><em>Porteur de projet : <a href = \"http://www.loveyourwaste.com/\" target = \"_blank\">Love Your Waste</a></em>"},
                     "flows": [{"vl":["1400", "1100","1200","1500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0},
@@ -234,7 +234,7 @@
             "b_steps" :
                 [{
                     "subtitle":"Expérimentation de la valorisation des déchets organiques de cantine<br>en énergie renouvelable et fertilisant",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de valorisation des déchets organiques en milieu urbain, porté par Love Your Waste pourra être expérimenté pendant 2 ans sur un ensemble de restaurants collectifs municipaux (Caisse des écoles d’un arrondissement par exemple). Il propose <strong>une collecte des bio-déchets alimentaires pour une valorisation en usine de méthanisation</strong> permettant de générer du biogaz réinjecté dans le réseau de gaz de ville et de produire un bio-fertilisant utilisable dans les espaces verts.<br><br><em>Porteur de projet : <a href = \"http://www.loveyourwaste.com/\" target = \"_blank\">Love Your Waste</a></em>"},
+                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet de valorisation des déchets organiques en milieu urbain, porté par Love Your Waste pourra être expérimenté pendant 2 ans sur un ensemble de restaurants collectifs municipaux (Caisse des écoles d’un arrondissement par exemple). Il propose <strong>une collecte des biodéchets alimentaires pour une valorisation en usine de méthanisation</strong> permettant de générer du biogaz réinjecté dans le réseau de gaz de ville et de produire un bio-fertilisant utilisable dans les espaces verts.<br><br><em>Porteur de projet : <a href = \"http://www.loveyourwaste.com/\" target = \"_blank\">Love Your Waste</a></em>"},
                     "flows": [{"vl":["1400", "1100","1200","1500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0},
@@ -245,7 +245,7 @@
                 },
                 {
                     "subtitle":"Expérimentation de la valorisation des déchets organiques de cantine<br>en énergie renouvelable et fertilisant",
-                    "text": {"time":"200", "content":"Près de 30 millions de repas sont servis par an dans les structures de restauration collective municipale et départementale (crèches, écoles, restaurants administratifs, maisons de retraite et établissements sociaux).  Les structures de la Mairie de Paris commandent ainsi chaque année 3 500 tonnes de fruits, 4 000 tonnes de légumes, 3 900 tonnes de produits laitiers etc. Malgré les efforts menés pour réduire le gaspillage alimentaire, environ 37% de l’alimentation servie est finalement évacuée sous forme de bio-déchets (restes de cuisine, repas non consommés, restes de plateaux). Collectés avec le reste des déchets, ces bio-déchets partent actuellement en incinération."},
+                    "text": {"time":"200", "content":"Près de 30 millions de repas sont servis par an dans les structures de restauration collective municipale et départementale (crèches, écoles, restaurants administratifs, maisons de retraite et établissements sociaux).  Les structures de la Mairie de Paris commandent ainsi chaque année 3 500 tonnes de fruits, 4 000 tonnes de légumes, 3 900 tonnes de produits laitiers etc. Malgré les efforts menés pour réduire le gaspillage alimentaire, environ 37% de l’alimentation servie est finalement évacuée sous forme de biodéchets (restes de cuisine, repas non consommés, restes de plateaux). Collectés avec le reste des déchets, ces biodéchets partent actuellement en incinération."},
                     "flows": [{"vl":["1000"], "hl":["1400", "1100","1200","1500"], "year":"o9", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},

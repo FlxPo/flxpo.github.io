@@ -35,10 +35,11 @@ module.exports = function(grunt) {
 
     cssmin: {
       my_target: {
-        files: {'build/app-metab-syle.css': ['build/app-metab-syle.min.css']}
+        files: {'build/app-metab-syle.min.css': ['build/app-metab-syle.css']}
       }
     }
 
+    
 
   });
 
@@ -46,6 +47,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
   grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);

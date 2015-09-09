@@ -1,0 +1,167 @@
+{
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"Chantiers de construction",
+						"geom":"data/graphics/geom_constructionbatiment_multiple.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.35",
+						"x":"0.3*w",
+						"y":"0.33*h",
+						"scale":"0.18",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Chantiers de déconstruction",
+                        "geom":"data/graphics/geom_deconstructionbatiment_multiple.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.45*w",
+                        "y":"0.2*h",
+                        "scale":"0.18",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"ActLab",
+                        "solution":true,
+                        "geom":"data/graphics/geom_actlab.json",
+                        "fax":"0",
+                        "fay":"0.25",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0.7*w",
+                        "y":"0.33*h",
+                        "scale":"0.16",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "name":"Matériaux de<br>construction",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#6B5D70",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "name":"Déchets du BTP",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#6B5D70",
+                            "color2":"#b7b1ba",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2100",
+                            "name":"Déchets du BTP",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t4",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#6B5D70",
+                            "color2":"#b7b1ba",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3000",
+                            "name":"Matériaux de<br>chantier valorisés",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t2",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "color":"#709E42",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Actlab, laboratoire du réemploi pour le BTP",
+                    "text": {"time":"200", "content":"Actlab est le laboratoire manifeste du réemploi de Bellastock. Installé sur le chantier de la ZAC de l’Ecoquartier fluvial de L’Ile-Saint-Denis, il expérimente in situ des prototypes d'aménagement à partir de matériaux issus de chantiers locaux et accompagne les chantiers de déconstruction des entrepôts du Printemps. Bellastock pilote également le projet REPAR* dont l’objectif est de produire un guide pour intégrer des matériaux de seconde vie dans les projets d'architecture ainsi qu'un catalogue présentant les solutions techniques générales et les démarches de caractérisation.<br><br><span style = \"font-size:12px\">*lauréat de l’appel à projets de l’ADEME déchet du BTP, en partenariat avec Encore Heureux et le CSTB</span><br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/category/projet-fr/actlab/\" target = \"_blank\">Bellastock</a></em>"},
+                    "flows": [{"vl":["1000", "2000", "3000", "2100"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Actlab, laboratoire du réemploi pour le BTP",
+                    "text": {"time":"200", "content":"En France, les activités de construction, de réhabilitation et de démolition produisent 73% des déchets, soit 260 millions de tonnes par an (Futuribles, « Economie Circulaire, le BTP doit faire sa révolution », septembre 2014). Le BTP génère à lui seul, en Ile-de-France, 30 millions de tonnes de déchets par an, ce qui représente plus de 5 fois la production de déchets ménagers."},
+                    "flows": [{"vl":["1000","2000"], "hl":["3000", "2100"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Actlab, laboratoire du réemploi pour le BTP",
+                    "text": {"time":"200", "content":"Actlab est le laboratoire manifeste du réemploi de Bellastock. Installé sur le chantier de la ZAC de l’Ecoquartier fluvial de L’Ile-Saint-Denis, il expérimente in situ des prototypes d'aménagement à partir de matériaux issus de chantiers locaux et accompagne les chantiers de déconstruction des entrepôts du Printemps. Bellastock pilote également le projet REPAR* dont l’objectif est de produire un guide pour intégrer des matériaux de seconde vie dans les projets d'architecture ainsi qu'un catalogue présentant les solutions techniques générales et les démarches de caractérisation.<br><br><span style = \"font-size:12px\">*lauréat de l’appel à projets de l’ADEME déchet du BTP, en partenariat avec Encore Heureux et le CSTB</span><br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/category/projet-fr/actlab/\" target = \"_blank\">Bellastock</a></em>"},
+                    "flows": [{"vl":["1000", "2000", "3000", "2100"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Actlab, laboratoire du réemploi pour le BTP",
+                    "text": {"time":"200", "content":"Actlab est le laboratoire manifeste du réemploi de Bellastock. Installé sur le chantier de la ZAC de l’Ecoquartier fluvial de L’Ile-Saint-Denis, il expérimente in situ des prototypes d'aménagement à partir de matériaux issus de chantiers locaux et accompagne les chantiers de déconstruction des entrepôts du Printemps. Bellastock pilote également le projet REPAR* dont l’objectif est de produire un guide pour intégrer des matériaux de seconde vie dans les projets d'architecture ainsi qu'un catalogue présentant les solutions techniques générales et les démarches de caractérisation.<br><br><span style = \"font-size:12px\">*lauréat de l’appel à projets de l’ADEME déchet du BTP, en partenariat avec Encore Heureux et le CSTB</span><br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/category/projet-fr/actlab/\" target = \"_blank\">Bellastock</a></em>"},
+                    "flows": [{"vl":["1000", "2000", "3000","2100"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Actlab, laboratoire du réemploi pour le BTP",
+                    "text": {"time":"200", "content":"En France, les activités de construction, de réhabilitation et de démolition produisent 73% des déchets, soit 260 millions de tonnes par an (Futuribles, « Economie Circulaire, le BTP doit faire sa révolution », septembre 2014). Le BTP génère à lui seul, en Ile-de-France, 30 millions de tonnes de déchets par an, ce qui représente plus de 5 fois la production de déchets ménagers."},
+                    "flows": [{"vl":["1000","2000"], "hl":["3000","2100"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }]
+    }
+         }
+  

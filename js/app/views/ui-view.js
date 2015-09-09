@@ -11,7 +11,9 @@ app.UIView = Backbone.View.extend({
     "click #about_b": "about"
   },
 
-  initialize:function(options) {
+  initialize:function(parent, options) {
+
+    this.parent = parent;
 
     this.buttons = {};
 
@@ -28,14 +30,19 @@ app.UIView = Backbone.View.extend({
 
     this.renderScale();
 
+    $("#share").on("click", _.bind(this.popShare, this));
+    $("#expand").on("click", _.bind(this.expandFlows, this));
+    $("#contract").on("click", _.bind(this.contractFlows, this));
+    $("#about_b").on("click", _.bind(this.about, this));
+
     _.bindAll(this, "about", "unloadAbout", "demo", "unloadDemo");
-    
+
   },
 
   renderScale:function() {
-      var paper = Raphael($("#fs_container div")[0], 100, 200);
-      var scale_icon = paper.path();
-      this.Rscale = scale_icon;
+    var paper = Raphael($("#fs_container div")[0], 100, 200);
+    var scale_icon = paper.path();
+    this.Rscale = scale_icon;
   },
 
   updateScale:function(args) {
@@ -44,83 +51,126 @@ app.UIView = Backbone.View.extend({
       var vscale = Math.round(0.0001 * 80/args.scale) / 0.0001;
       var hscale = vscale*args.scale;
 
-    if (hscale < 2) {
+      if (hscale < 2) {
 
-      $("#fs_container").hide();
-      $("#fs_text").hide();
+        $("#fs_container").hide();
+        $("#fs_text").hide();
 
-    } else if (!args.virtual) {
+      } else if (!args.virtual) {
 
-      $("#legend").velocity("fadeIn", {duration:200, display:"block", delay:1000});
+        $("#legend").velocity("fadeIn", {duration:200, display:"block", delay:1000});
 
-      $("#fs_container").show();
-      $("#fs_text").show();
-      $("#fs_container div").css({height:hscale + 10})
-      this.Rscale.attr({path:["M",30,hscale+5,"H",25,"V",5,"H",30], "stroke-width":3, "stroke":"#ccc"});
-      $("#legend #fs_text p").html(utils.formatVolume(vscale, " ") + " " + args.unit);
-  
-    }
+        $("#fs_container").show();
+        $("#fs_text").show();
+        $("#fs_container div").css({height:hscale + 10})
+        this.Rscale.attr({path:["M",30,hscale+5,"H",25,"V",5,"H",30], "stroke-width":3, "stroke":"#ccc"});
+        $("#legend #fs_text p").html(utils.formatVolume(vscale, " ") + " " + args.unit);
 
-  },
+      }
 
-  addButton:function(button) {
-    if ($(button.get("el")).length > 0) {
-      this.buttons[button.get("id")] = new app.ButtonView( {model:button, el:$(button.get("el"))} );
-    }
-  },
+    },
 
-  showButtons:function(args, delay) {
+    addButton:function(button) {
+      if ($(button.get("el")).length > 0) {
+        this.buttons[button.get("id")] = new app.ButtonView( {model:button, el:$(button.get("el"))} );
+      }
+    },
 
-    var d = delay || 0;
+    showButtons:function(next, delay) {
 
-    $("#legend").velocity("fadeOut", {duration:200});
+      args = next.model ? next.model.get("ui_elements") : next;
 
-    _.each(this.buttons, function(value) {
-      var sc = value.model.get("show_class");
-       value.$el.velocity("fadeOut", {duration:200})
-    })
+      var d = delay || 0;
 
-    this.p_showed_buttons = this.showed_buttons;
-    this.showed_buttons = args;
+      $("#legend").velocity("fadeOut", {duration:200});
 
-    var len = args.length;
-    while(len--) {
-      var bv = this.buttons[args[len]];
-      var sc = bv.model.get("show_class");
-      this.buttons[args[len]].$el.velocity("fadeIn", {display:sc, duration:200, delay:d})
-      // this.buttons[args[len]].$el.addClass(sc);
-    }
-  },
+      // Hide every button
+      _.each(this.buttons, function(value) {
+        var sc = value.model.get("show_class");
+        value.$el.velocity("fadeOut", {duration:200})
+      })
 
-  clickRadio:function(args) {
-    var radio = this.buttons[args.id].model.get("radio"), len = radio.length;
-    while(len--) {
-      var id = radio[len];
-      this.buttons[id].unclick();
-    }
-  },
+      // Reset the zoom
+      next.$itemcontainer && next.$itemcontainer.panzoom("destroy");
+      $("#zoom").find(".zoom-range").off();
+      $("#zoom").find(".zoom-range").val(50);
 
-  updateButtons:function(args) {
-    var state = args.state;
-    state.rootState === "p" && this.buttons[state.rootState].clk({silent:true});
-    state.territoryState !== null && state.rootState !== "p" && this.buttons[state.territoryState].clk({silent:true});
-    state.typeState !== null && this.buttons[state.typeState].clk({silent:true});
-    state.timeState !== null && this.toggleTime(state);
-  },
+      this.p_showed_buttons = this.showed_buttons;
+      this.showed_buttons = args;
 
-  popShare:function() {
+      var len = args.length;
+
+      while(len--) {
+        var bv = this.buttons[args[len]];
+        var sc = bv.model.get("show_class");
+        this.buttons[args[len]].$el.velocity("fadeIn", {display:sc, duration:200, delay:d});
+
+        if (args[len] == "zoom") {
+
+          var pz = next.$itemcontainer.panzoom();
+          var self = this;
+          self.startZoom = $("#zoom").find(".zoom-range").val();
+
+          $("#zoom").find(".zoom-range").on("mousedown", function( e ) {
+            self.startZoom = this.value*1;
+          })
+
+          $("#zoom").find(".zoom-range").on("mouseup", function( e ) {
+
+            var delta = self.startZoom - this.value;
+            self.startZoom = this.value;
+            var zoomOut = (delta > 0);
+
+            lpw = $("#leftpanel").width()
+            ws = utils.getWindowSize();
+            ws = {clientX: (lpw*0.5+ws.w*0.5), clientY:ws.h*0.5};
+
+            pz.panzoom("zoom", zoomOut, {
+              increment:Math.abs(delta)/100,
+              animate:true,
+              focal:ws
+            });
+
+            mat = pz.panzoom("getMatrix").input;
+            Backbone.trigger("items:updatePositions", {mat:mat, ws:ws});
+            Backbone.trigger("projects:updatePositions", {mat:mat, ws:ws});
+
+          })
+        } 
+      }
+
+      //$("#topright").velocity("fadeIn", {duration:350});
+    },
+
+    clickRadio:function(args) {
+      var radio = this.buttons[args.id].model.get("radio"), len = radio.length;
+      while(len--) {
+        var id = radio[len];
+        this.buttons[id].unclick();
+      }
+    },
+
+    updateButtons:function(args) {
+      var state = args.state;
+      state.rootState === "p" && this.buttons[state.rootState].clk({silent:true});
+      state.territoryState !== null && state.rootState !== "p" && this.buttons[state.territoryState].clk({silent:true});
+      state.typeState !== null && this.buttons[state.typeState].clk({silent:true});
+      state.timeState !== null && this.toggleTime(state);
+    },
+
+    popShare:function() {
       var w = window.screen.availWidth;
       var h = window.screen.availHeight;
       window.open("html/share.html",'popUpWindow',"height=100,width=400,left="+ w/2 +",top="+ h/2 +",resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=no")
-  },
+    },
 
-  toggleTime:function(state) {
+    toggleTime:function(state) {
 
-    var $el = this.buttons["time"].$el;
-    var $toggle = $el.find(".toggle");
-    var $label = $el.find(".toggle span");
+      var $el = this.buttons["time"].$el;
+      var $toggle = $el.find(".toggle");
+      var $label = $el.find(".toggle span");
 
-    $("#trend_legend").removeClass("show_h");
+      $("#trend_legend").removeClass("show_h");
 
     // Target state : 2012/Tendances ?
     if (state.timeState === "2") {
@@ -139,8 +189,8 @@ app.UIView = Backbone.View.extend({
       }
 
     // Else move toggle on the left and hide legend
-    } else {
-      $toggle.removeClass("toggle-right");
+  } else {
+    $toggle.removeClass("toggle-right");
 
       // Change span content and display legend if needed
       if (state.typeState === "matter") {
@@ -178,11 +228,11 @@ app.UIView = Backbone.View.extend({
 
     // Create the view
     this.about_view = new app.AboutView();
-    this.$el.first().prepend(this.about_view.render().el);
+    this.$el.first().append(this.about_view.render().el);
 
     // Bind the close call to the x button
-    this.$el.undelegate("#about_b", "click");
-    this.$el.delegate("#about_b", "click", this.unloadAbout);
+    $("#about_b").off("click");
+    $("#about_b").on("click", _.bind(this.unloadAbout, this));
 
   },
 
@@ -197,8 +247,8 @@ app.UIView = Backbone.View.extend({
     $("html, body").scrollTop(0);
     $("body").removeClass("scrollable");
 
-    this.$el.undelegate("#about_b", "click");
-    this.$el.delegate("#about_b", "click", this.about);
+    $("#about_b").off("click");
+    $("#about_b").on("click", _.bind(this.about, this));
 
   },
 

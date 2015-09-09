@@ -77,7 +77,7 @@
                         },
                         {
                             "id":"3000",
-                            "name":"Bio-déchets compostés",
+                            "name":"Biodéchets compostés",
                             "type":"recyclage",
                             "from":"t2",
                             "to":"t2",

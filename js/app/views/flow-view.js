@@ -4,7 +4,7 @@ app.FlowView = Backbone.View.extend({
 
 	className:"flow",
 
-	template: _.template( $('#flow-template').html() ),
+	template: _.template( '<div class = "pulse"></div></div>' ),
 
 	initialize: function(options) {
 
@@ -237,10 +237,10 @@ app.FlowView = Backbone.View.extend({
 		var target_x = (this.xfrom + this.xto)/2;
 		var target_y = this.midY;
 
-		var k = Math.floor(this.pulsePath.length/2-10);
+		var k = Math.floor(this.pulsePath.length/3);
 		var d1 = 2000;
 		var d2 = 1000;
-
+		
 		while (d2 < d1) {
 			k++;
 			d1 = d2;
@@ -282,7 +282,7 @@ app.FlowView = Backbone.View.extend({
 		// TO DO : path to points function
 		var path = this.flowpath,
 			pupath = [],
-			step = 10,
+			step = 5,
 			len = path.getTotalLength(),
 			l = 0;
 
@@ -342,7 +342,7 @@ app.FlowView = Backbone.View.extend({
 			this.$pulse.velocity( "stop", true )
 		}
 
-		var seq = sequenceGenerator( {element:this.$pulse, path:pupath, duration:pupath.length*40, increment:5, complete:restart} );
+		var seq = sequenceGenerator( {element:this.$pulse, path:pupath, duration:pupath.length*20, increment:5, complete:restart} );
 		$.Velocity.RunSequence(seq);
 
 		this.pulsing = true;

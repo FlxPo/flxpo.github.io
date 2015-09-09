@@ -4,6 +4,10 @@
 	right:1em;
 	padding:1em;
 	z-index :10;
+	border-radius: 32px;
+	height:350px;
+	/*background-color: rgba(255,255,255,0.5);*/
+	/*opacity: 0;*/
 }
 
 #topright ul {
@@ -20,7 +24,6 @@
 	-webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
-    behavior: url(./style/pie/PIE.htc);
 	margin-bottom:4px;
 	cursor: pointer;
 }
@@ -33,7 +36,9 @@
 	width:12em;
 	margin-top: 1em;
 	margin-left: -16.5em;
+	/*float:right;*/
 	text-align: right;
+	/*background-color: rgba(255,255,255,0.9)*/
 }
 
 .terri-clicked span {
@@ -60,7 +65,6 @@
 	-webkit-border-radius: 0.75em;
     -moz-border-radius: 0.75em;
     border-radius: 0.75em;
-    behavior: url(./style/pie/PIE.htc);
 	text-align: left;
 }
 
@@ -71,7 +75,6 @@
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
-    behavior: url(./style/pie/PIE.htc);
     width:1.2em;
     height:1.2em;
     border:1px solid #aaa;
@@ -110,7 +113,6 @@
 	-webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
-    behavior: url(./style/pie/PIE.htc);
 	cursor: pointer;
 }
 

@@ -1,0 +1,152 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Ligne de tramway T3",
+                        "geom":"data/graphics/geom_tramway.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"0.8",
+                        "ih":"0.6",
+                        "x":"0.5*w",
+                        "y":"0.3*h",
+                        "scale":"0.2",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Eau du réseau",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"100",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#27CCE2",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Eaux d'echaure",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#0D3549",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Eau récupérée",
+                            "type":"recyclage",
+                            "from":"t2",
+                            "to":"t2",
+                            "volume_o4":"80",
+                            "volume_o9":"80",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#4AA1AF",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Valorisation des eaux d’exhaure",
+                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 8 millions de m3 d’eaux d’exhaure. Ces eaux d’infiltration, de qualité satisfaisante, sont dirigées vers le réseau d’assainissement. Depuis quelques années elles sont utilisées pour le lavage des rames de métro de la ligne 8. En 2012, dans le cadre du prolongement du tramway T3, la RATP a mis en place un système permettant également de les  récupérer pour l’arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Valorisation des eaux d’exhaure",
+                    "text": {"time":"200", "content":"La Ville de Paris s’est fixé pour objectif d’optimiser la valorisation des ressources en eau brute (eaux d’exhaure, eaux de pluie, …) pour l’alimentation de son réseau d’eau non potable mais aussi pour limiter l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement."},
+                    "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Valorisation des eaux d’exhaure",
+                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 8 millions de m3 d’eaux d’exhaure. Ces eaux d’infiltration, de qualité satisfaisante, sont dirigées vers le réseau d’assainissement. Depuis quelques années elles sont utilisées pour le lavage des rames de métro de la ligne 8. En 2012, dans le cadre du prolongement du tramway T3, la RATP a mis en place un système permettant également de les  récupérer pour l’arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Valorisation des eaux d’exhaure",
+                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 8 millions de m3 d’eaux d’exhaure. Ces eaux d’infiltration, de qualité satisfaisante, sont dirigées vers le réseau d’assainissement. Depuis quelques années elles sont utilisées pour le lavage des rames de métro de la ligne 8. En 2012, dans le cadre du prolongement du tramway T3, la RATP a mis en place un système permettant également de les  récupérer pour l’arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Valorisation des eaux d’exhaure",
+                    "text": {"time":"200", "content":"La Ville de Paris s’est fixé pour objectif d’optimiser la valorisation des ressources en eau brute (eaux d’exhaure, eaux de pluie, …) pour l’alimentation de son réseau d’eau non potable mais aussi pour limiter l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement."},
+                    "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

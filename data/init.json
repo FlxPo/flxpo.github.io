@@ -5,7 +5,7 @@
 	"id":"projects",
 	"title": "PROJECTS Page",
 	"z":3,
-	"ui_elements":["p", "paris", "pc", "idf", "about", "share"],
+	"ui_elements":["p", "paris", "pc", "idf", "about", "share", "zoom"],
 	"data_url":"data/territories/projects_view_en.json"
 },
 {
@@ -121,13 +121,6 @@
 	"data_url":"data/territories/zebu_view_en.json"
 },
 {
-	"id":"p14",
-	"title": "Paves Page",
-	"z":4,
-	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
-	"data_url":"data/territories/autopartage_view_en.json"
-},
-{
 	"id":"p15",
 	"title": "Paves Page",
 	"z":4,
@@ -212,11 +205,32 @@
 	"data_url":"data/territories/wattignies_view_en.json"
 },
 {
+	"id":"p27",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/compostage_collectif_view_en.json"
+},
+{
 	"id":"p28",
 	"title": "Paves Page",
 	"z":4,
 	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
 	"data_url":"data/territories/sapins_view_en.json"
+},
+{
+	"id":"p29",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/gestioneauclichybat_view_en.json"
+},
+{
+	"id":"p30",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/gestioneauraisonnee_view_en.json"
 },
 {
 	"id":"p31",
@@ -261,11 +275,88 @@
 	"data_url":"data/territories/chaleurfoyer_view_en.json"
 },
 {
-	"id":"p27",
+	"id":"p37",
 	"title": "Paves Page",
 	"z":4,
 	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
-	"data_url":"data/territories/compostage_collectif_view_en.json"
+	"data_url":"data/territories/moulinot_view_en.json"
+},
+{
+	"id":"p38",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/poussettesimone_view_en.json"
+},
+{
+	"id":"p39",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/oureparer_view_en.json"
+},
+{
+	"id":"p40",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/emmausdefi_view_en.json"
+},
+{
+	"id":"p41",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/upcycle_view_en.json"
+},
+{
+	"id":"p42",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/mutum_view_en.json"
+},
+{
+	"id":"p43",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/cd94_view_en.json"
+},
+{
+	"id":"p44",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/ecosysemmaus_view_en.json"
+},
+{
+	"id":"p45",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/ratprelais_view_en.json"
+},
+{
+	"id":"p46",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/ratpeaux_view_en.json"
+},
+{
+	"id":"p47",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/bellastockactlab_view_en.json"
+},
+{
+	"id":"p48",
+	"title": "Paves Page",
+	"z":4,
+	"ui_elements":["p", "paris", "pc", "idf","about", "share"],
+	"data_url":"data/territories/repaircafe_view_en.json"
 }
 ],
 
@@ -522,6 +613,13 @@
 		"bg-col-c":"",
 		"show_class":"inline-block",
 		"bang":true
+	},
+	{
+		"el":"#zoom",
+		"id":"zoom",
+		"change": "",
+		"show_class":"block",
+		"bang":false
 	}
 ]
 

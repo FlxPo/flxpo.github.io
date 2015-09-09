@@ -38,7 +38,7 @@ app.Router = Backbone.Router.extend({
       clearTimeout(doit);
       doit = setTimeout(function() {
         self.reload();
-      }, 500);
+      }, 200);
     }
   },
 
@@ -196,12 +196,14 @@ app.Router = Backbone.Router.extend({
     // Validate projects route parameters
     } else if (view === "project") {
 
-      var max_id = 38;
+      var max_id = 49;
       var ids = [];
       for (var i = 0; i<max_id; i++) {ids[i] = i;}
       var valid_ids = ids.map(function(id) {return "p"+id})
 
-      return _.indexOf(valid_ids, args.id) !==-1;
+      if (args.id == "p14") return false;
+
+      return _.indexOf(valid_ids, args.id) !== -1;
 
     }
 
@@ -275,7 +277,11 @@ app.Router = Backbone.Router.extend({
 
   project:function(id) {
     var args = {id:id};
-    this.validateRoute("project", args) && this.loadView("project", args); // TODO : handle false
+    if (this.validateRoute("project", args)) {
+      this.loadView("project", args);
+    } else {
+      this.go("#p");
+    }
   }
 
 });

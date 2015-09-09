@@ -4,7 +4,14 @@ app.TerritoryView = Backbone.View.extend({
 
 	id:"territory",
 
-	template: _.template( $('#territory-template').html() ),
+	template: _.template('\
+		<div id = "leftpanel"></div>\
+		<div id = "flowcontainer" class = "hidden"></div>\
+  		<div id = "itemcontainer"><div id = "items"></div></div>\
+  		<div id = "projectcontainer"></div>\
+  		<div id = "popcontainer"></div>\
+  		<div id = "storycontainer"></div>\
+	'),
 
 	initialize:function(options) {
 
@@ -53,7 +60,12 @@ app.TerritoryView = Backbone.View.extend({
 		});
 
 		this.listenTo(Backbone, "item:loaded", this.itemsCountDown);
+		this.listenTo(Backbone, "territory:updateProjects", this.updateProjects);
 
+	},
+
+	updateProjects:function() {
+		this.projects_views && this.$projectcontainer.append( this.projects_views.el );
 	},
 
 	itemsCountDown:function() {
@@ -61,6 +73,7 @@ app.TerritoryView = Backbone.View.extend({
 		this.items_number--;
 
 		if (this.items_number == 0) {
+
 			this.projects_views && this.$projectcontainer.append( this.projects_views.render().el );
 
 			Backbone.trigger("stories:go", {id:0});
@@ -72,10 +85,10 @@ app.TerritoryView = Backbone.View.extend({
 				this.iv = iv;
 			}
 
-			this.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
-			this.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
-			this.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
-			$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+			this.$storycontainer.velocity("fadeIn", {duration:300, delay:200});
+			this.$flowcontainer.velocity("fadeIn", {duration:300, delay:200});
+			this.$popcontainer.velocity("fadeIn", {duration:300, delay:200});
+			$("#flowscale").velocity("fadeIn", {duration:300, delay:200});
 		}
 
 
@@ -88,7 +101,9 @@ app.TerritoryView = Backbone.View.extend({
 		this.adjustVertically(options);
 
 		this.$el.html( this.template() );
+
 		this.$itemcontainer = this.$el.find("#itemcontainer");
+		this.$items = this.$el.find("#items");
 		this.$flowcontainer = this.$el.find("#flowcontainer");
 		this.$projectcontainer = this.$el.find("#projectcontainer");
 		this.$storycontainer = this.$el.find("#storycontainer");
@@ -96,8 +111,6 @@ app.TerritoryView = Backbone.View.extend({
 
 		this.items_views.render();
 		this.$storycontainer.append( this.stories_views.render().el );
-
-
 
 		return this;
 	},
@@ -120,6 +133,9 @@ app.TerritoryView = Backbone.View.extend({
 
 		// items:animate listener
 		this.items_views.stopListening();
+
+		// Zoom handler
+		if(this.$itemcontainer.panzoom()) {this.$itemcontainer.panzoom("destroy")}
 
 		// flows:children flows:parent flows:changeYear flows:nav listeners
 		this.flows_views.stopListening();

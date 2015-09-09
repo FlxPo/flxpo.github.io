@@ -15,7 +15,6 @@ app.TerritoriesView = Backbone.View.extend({
   },
 
   close:function() {
-    console.log(this.previousView)
   	 this.previousView.close();
   	 this.previousView.remove();
   }

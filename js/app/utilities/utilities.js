@@ -101,12 +101,25 @@ var utils = (function() {
             .replace(/[ôöó]/g, "o");
   }
 
+  function debounce(func, interval) {
+    var lastCall = -1;
+    return function() {
+        clearTimeout(lastCall);
+        var args = arguments;
+        var self = this;
+        lastCall = setTimeout(function() {
+            func.apply(self, args);
+        }, interval);
+    };
+  }
+
   return {getWindowSize:getWindowSize,
           darkenColor:darkenColor,
           formatVolume:formatVolume,
           constrainNumber:constrainNumber,
           mergeSort:mergeSort,
-          formatString:formatString}
+          formatString:formatString,
+          debounce:debounce}
 
 })()
 

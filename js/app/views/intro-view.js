@@ -8,7 +8,14 @@ app.IntroView = Backbone.View.extend({
 		"click":"close"
 	},
 
-	template: _.template( $('#intro-template').html() ),
+	template: _.template('\
+		<div id = "intro_back"></div>\
+    	<div id = "top_left" class = "intro_box"><p><div class = "arrow-up"></div><%=topleft%></p></div>\
+    	<div id = "top_right1" class = "intro_box"><div class = "arrow-right"></div><p><%=topright1%></p></div>\
+    	<div id = "top_right2" class = "intro_box"><div class = "arrow-right"></div><p><%=topright2%></p></div>\
+    	<div id = "top_right3" class = "intro_box"><div class = "arrow-right"></div><p><%=topright3%></p></div>\
+    	<div id = "bottom" class = "intro_box"><div class = "arrow-down"></div><p><%=bottom%></p></div>\
+	'),
 
 	initialize:function() {
 

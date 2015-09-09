@@ -1,0 +1,198 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.35*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Consommateurs",
+                        "geom":"data/graphics/geom_groupepersonne2.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.25*w",
+                        "y":"0.3*h",
+                        "scale":"0.15",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Point de collecte<br>événementiel",
+                        "geom":"data/graphics/geom_collecte_exterieur.json",
+                        "fax":"0",
+                        "fay":"0.25",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.5*w",
+                        "y":"0.275*h",
+                        "scale":"0.15",
+                        "force_w_scale":true,
+                        "solution":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Centre de réutilisation",
+                        "geom":"data/graphics/geom_atelier_avec personne.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.75*w",
+                        "y":"0.3*h",
+                        "scale":"0.15",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"100",
+                            "index":"0",
+                            "name":"Produits de<br>consommation",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#8965AA",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Déchets<br>(appareils électriques)",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Déchets<br>(appareils électriques)",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3000",
+                            "index":"0",
+                            "name":"Déchets collectés<br>(appareils électriques)",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t4",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"5000",
+                            "index":"0",
+                            "name":"Appareils électriques<br>réemployés",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t2",
+                            "volume_o4":"500",
+                            "volume_o9":"500",
+                            "unit":"t / an",
+                            "color":"#93C893",
+                            "virtual":true
+                        },
+                        {
+                            "id":"4000",
+                            "index":"0",
+                            "name":"Appareils électriques<br>recyclés",
+                            "type":"input",
+                            "from":"t4",
+                            "to":"t1",
+                            "volume_o4":"500",
+                            "volume_o9":"500",
+                            "unit":"t / an",
+                            "color":"#93C893",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Collecte solidaire de quartier d’appareils électriques",
+                    "text": {"time":"200", "content":"A l’initiative d’Eco-systèmes et en partenariat avec Emmaüs France et le soutien des collectivités, des points de collecte solidaire ont été déployés dans les villes du Grand Paris. Ces opérations mensuelles ou bimestrielles, organisées le samedi matin, permettent aux habitants (1 500 personnes en moyenne par mois en Ile-de-France en 2014) de donner leurs anciens appareils électriques en état de marche ou hors d’usage en vue de leur réemploi ou à défaut de leur recyclage. Les équipes présentes proposent également une collecte à domicile.<br><br><em>Porteurs de projet : <a href = \"http://www.eco-systemes.fr/\" target = \"_blank\">Eco-Systèmes</a> et <a href = \"http://emmaus-france.org/\" target = \"_blank\">Emmaüs France</a></em>"},
+                    "flows": [{"vl":["2000","3000","100","4000","5000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Collecte solidaire de quartier d’appareils électriques",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par les municipalités. Concernant les déchets d’équipements électriques et électroniques, les collectes en Ile-de-France ont permis de remettre à la filière de recyclage 3,5 kg/habitant, contre 7,4 kg/habitant au niveau national.<br><br><span style = \"font-size:12px\">*Source Eco-systèmes</span>"},
+                    "flows": [{"vl":["1000","100"], "hl":["2000","3000","4000","5000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Collecte solidaire de quartier d’appareils électriques",
+                    "text": {"time":"200", "content":"A l’initiative d’Eco-systèmes et en partenariat avec Emmaüs France et le soutien des collectivités, des points de collecte solidaire ont été déployés dans les villes du Grand Paris. Ces opérations mensuelles ou bimestrielles, organisées le samedi matin, permettent aux habitants (1 500 personnes en moyenne par mois en Ile-de-France en 2014) de donner leurs anciens appareils électriques en état de marche ou hors d’usage en vue de leur réemploi ou à défaut de leur recyclage. Les équipes présentes proposent également une collecte à domicile.<br><br><em>Porteurs de projet : <a href = \"http://www.eco-systemes.fr/\" target = \"_blank\">Eco-Systèmes</a> et <a href = \"http://emmaus-france.org/\" target = \"_blank\">Emmaüs France</a></em>"},
+                    "flows": [{"vl":["2000","3000","4000","5000","100"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}]
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Collecte solidaire de quartier d’appareils électriques",
+                    "text": {"time":"200", "content":"A l’initiative d’Eco-systèmes et en partenariat avec Emmaüs France et le soutien des collectivités, des points de collecte solidaire ont été déployés dans les villes du Grand Paris. Ces opérations mensuelles ou bimestrielles, organisées le samedi matin, permettent aux habitants (1 500 personnes en moyenne par mois en Ile-de-France en 2014) de donner leurs anciens appareils électriques en état de marche ou hors d’usage en vue de leur réemploi ou à défaut de leur recyclage. Les équipes présentes proposent également une collecte à domicile.<br><br><em>Porteurs de projet : <a href = \"http://www.eco-systemes.fr/\" target = \"_blank\">Eco-Systèmes</a> et <a href = \"http://emmaus-france.org/\" target = \"_blank\">Emmaüs France</a></em>"},
+                    "flows": [{"vl":["2000","3000","100","4000","5000"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Collecte solidaire de quartier d’appareils électriques",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par les municipalités. Concernant les déchets d’équipements électriques et électroniques, les collectes en Ile-de-France ont permis de remettre à la filière de recyclage 3,5 kg/habitant, contre 7,4 kg/habitant au niveau national.<br><br><span style = \"font-size:12px\">*Source Eco-systèmes</span>"},
+                    "flows": [{"vl":["1000","100"], "hl":["2000","3000","4000","5000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}]
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

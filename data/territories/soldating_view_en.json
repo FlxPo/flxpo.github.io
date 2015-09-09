@@ -134,8 +134,10 @@
                 [{
                     "subtitle":"Expérimentation d’échanges de terres inertes entre chantiers",
                     "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet SOLDATING, développé par la société HESUS, pourra être expérimenté pendant 2 ans sur les nombreux chantiers d’aménagement et de construction de la Mairie de Paris. Ce projet  propose une plateforme web et mobile permettant une mise en relation des acteurs des chantiers et une traçabilité des terres.<br><br>Cette plateforme de géo-localisation des chantiers émetteurs et des chantiers récepteurs permet la valorisation inter-chantiers des terres non polluées. Elle permettra de minimiser à la fois les apports extérieurs et l’envoi de terres inertes en centres de stockage. <b>On estime que la diminution de ces flux pourrait générer une réduction de 50 % des coûts liés à la gestion des terres inertes.</b><br><br><em>Porteur de projet : <a href = \"http://www.hesus.eu/\" target = \"_blank\">HESUS</a></em>"},
-                    "flows": [{"vl":["3000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
-                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "flows": [{"vl":["1000", "2000", "3000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
                 },

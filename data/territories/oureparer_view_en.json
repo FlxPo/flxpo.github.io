@@ -1,0 +1,170 @@
+{
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"Habitants",
+						"geom":"data/graphics/geom_groupepersonne2.json",
+                        "fax":"0",
+                        "fay":"0.1",
+                        "iw":"1",
+                        "ih":"0.5",
+						"x":"0.3*w",
+						"y":"0.4*h",
+						"scale":"0.18",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Réparateurs",
+                        "geom":"data/graphics/geom_reparateur.json",
+                        "fax":"0",
+                        "fay":"0.1",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.7*w",
+                        "y":"0.41*h",
+                        "scale":"0.18",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Plateforme Web",
+                        "solution":true,
+                        "geom":"data/graphics/geom_plateformeweb.json",
+                        "fax":"0",
+                        "fay":"0",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0.5*w",
+                        "y":"0.19*h",
+                        "scale":"0.15",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "name":"Produits de<br>consommation",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#8965AA",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "name":"Objets jetés",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#6B5D70",
+                            "color2":"#b7b1ba",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3000",
+                            "name":"Objets réparés",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t2",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#709E42",
+                            "virtual":true
+                        },
+                        {
+                            "id":"4000",
+                            "name":"Objets à réparer",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "color":"#939393",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"La plateforme de la réparation",
+                    "text": {"time":"200", "content":"Oureparer.com, plateforme web de la réparation, permet gratuitement de comparer et trouver le bon réparateur, au meilleur prix, près de chez soi, pour faire réparer tous ses objets. En plus de simplifier la réparation des objets du quotidien, elle permet de fédérer et défendre les intérêts des acteurs de la réparation pour restructurer le marché.<br><br><em>Porteur de projet : <a href = \"http://www.oureparer.com\" target = \"_blank\">Où Réparer</a></em>"},
+                    "flows": [{"vl":["1000", "3000","4000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"La plateforme de la réparation",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par la municipalité. 87&nbsp 405 tonnes de déchets occasionnels et encombrants ont été collectées en 2013 à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants, ce qui représente 38,4 kg par habitant."},
+                    "flows": [{"vl":["1000", "2000"], "hl":["3000", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"La plateforme de la réparation",
+                    "text": {"time":"200", "content":"Oureparer.com, plateforme web de la réparation, permet gratuitement de comparer et trouver le bon réparateur, au meilleur prix, près de chez soi, pour faire réparer tous ses objets. En plus de simplifier la réparation des objets du quotidien, elle permet de fédérer et défendre les intérêts des acteurs de la réparation pour restructurer le marché.<br><br><em>Porteur de projet : <a href = \"http://www.oureparer.com\" target = \"_blank\">Où Réparer</a></em>"},
+                    "flows": [{"vl":["1000", "4000", "3000"], "hl":["2000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"La plateforme de la réparation",
+                    "text": {"time":"200", "content":"Oureparer.com, plateforme web de la réparation, permet gratuitement de comparer et trouver le bon réparateur, au meilleur prix, près de chez soi, pour faire réparer tous ses objets. En plus de simplifier la réparation des objets du quotidien, elle permet de fédérer et défendre les intérêts des acteurs de la réparation pour restructurer le marché.<br><br><em>Porteur de projet : <a href = \"http://www.oureparer.com\" target = \"_blank\">Où Réparer</a></em>"},
+                    "flows": [{"vl":["1000", "3000","4000"], "hl":["2000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"La plateforme de la réparation",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par la municipalité. 87&nbsp 405 tonnes de déchets occasionnels et encombrants ont été collectées en 2013 à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants, ce qui représente 38,4 kg par habitant."},
+                    "flows": [{"vl":["1000", "2000"], "hl":["3000", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }]
+    }
+         }
+  

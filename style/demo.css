@@ -23,7 +23,6 @@
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
 	border-radius: 16px;
-	behavior: url(./style/pie/PIE.htc);
 }
 
 #close_demo {

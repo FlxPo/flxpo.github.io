@@ -1,0 +1,153 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Habitants",
+                        "geom":"data/graphics/geom_groupepersonne2.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.35*w",
+                        "y":"0.275*h",
+                        "scale":"0.18",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Repair Cafés",
+                        "geom":"data/graphics/geom_atelier_avec personne.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.65*w",
+                        "y":"0.45*h",
+                        "scale":"0.18",
+                        "force_w_scale":true,
+                        "solution":true
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Objets jetés",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Produits de<br>consommation",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#8965AA",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Objets à réparer",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3000",
+                            "index":"0",
+                            "name":"Objets réparés",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t2",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#9ADB28",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Ateliers de réparation collaboratifs",
+                    "text": {"time":"200", "content":"Les Repair Cafés sont des événements où des bénévoles aident les Parisiens ou leur apprennent à réparer les petits objets du quotidien. Ce sont également des lieux d’information et de conseil sur les filières du réemploi et du recyclage des objets qui n'ont pas pu être réparés. L'association organise environ 20 Repair Cafés par an, soit la réparation de 1,5 tonne d’objets (78kg d'objets par atelier) et un volume de déchets évités estimé à 1 tonne par an dont 800kg de déchets d’équipements électriques et électroniques (DEEE).<br><br><em>Porteur de projet : <a href = \"http://repaircafeparis.fr/\" target = \"_blank\">Repair Café Paris</a></em>"},
+                    "flows": [{"vl":["1000","500", "2000","3000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Ateliers de réparation collaboratifs",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par la municipalité. 87&nbsp405 tonnes de déchets occasionnels et encombrants ont été collectées en 2013 à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants, ce qui représente 38,4 kg par habitant."},
+                    "flows": [{"vl":["1000", "500"], "hl":["2000","3000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Ateliers de réparation collaboratifs",
+                    "text": {"time":"200", "content":"Les Repair Cafés sont des événements où des bénévoles aident les Parisiens ou leur apprennent à réparer les petits objets du quotidien. Ce sont également des lieux d’information et de conseil sur les filières du réemploi et du recyclage des objets qui n'ont pas pu être réparés. L'association organise environ 20 Repair Cafés par an, soit la réparation de 1,5 tonne d’objets (78kg d'objets par atelier) et un volume de déchets évités estimé à 1 tonne par an dont 800kg de déchets d’équipements électriques et électroniques (DEEE).<br><br><em>Porteur de projet : <a href = \"http://repaircafeparis.fr/\" target = \"_blank\">Repair Café Paris</a></em>"},
+                    "flows": [{"vl":["1000","500", "2000","3000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}]
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Ateliers de réparation collaboratifs",
+                    "text": {"time":"200", "content":"Les Repair Cafés sont des événements où des bénévoles aident les Parisiens ou leur apprennent à réparer les petits objets du quotidien. Ce sont également des lieux d’information et de conseil sur les filières du réemploi et du recyclage des objets qui n'ont pas pu être réparés. L'association organise environ 20 Repair Cafés par an, soit la réparation de 1,5 tonne d’objets (78kg d'objets par atelier) et un volume de déchets évités estimé à 1 tonne par an dont 800kg de déchets d’équipements électriques et électroniques (DEEE).<br><br><em>Porteur de projet : <a href = \"http://repaircafeparis.fr/\" target = \"_blank\">Repair Café Paris</a></em>"},
+                    "flows": [{"vl":["1000","500", "2000","3000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Ateliers de réparation collaboratifs",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par la municipalité. 87&nbsp405 tonnes de déchets occasionnels et encombrants ont été collectées en 2013 à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants, ce qui représente 38,4 kg par habitant."},
+                    "flows": [{"vl":["1000", "500"], "hl":["2000","3000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}]
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

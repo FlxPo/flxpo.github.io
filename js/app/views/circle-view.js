@@ -2,7 +2,7 @@ var app = app || {};
 
 app.CircleView = Backbone.View.extend({
 
-	template: _.template( $('#flow-template').html() ),
+	template: _.template( '<div class = "pulse"></div></div>' ),
 
 	initialize:function(options) {
 		this.paper = options.paper;

@@ -7,6 +7,7 @@ app.AppView = Backbone.View.extend({
   initialize:function() {
 
     this.router = new app.Router();
+    this.startZoom = 0;
 
     var self = this;
     // Load init resource data
@@ -18,7 +19,7 @@ app.AppView = Backbone.View.extend({
 
       success:function(data) {
         // Loads UI
-        self.ui = new app.UIView({init:data.ui});
+        self.ui = new app.UIView(self, {init:data.ui});
         // Loads territories
         self.territories = new app.TerritoriesView({init:data.navigation});
         // Loads router
@@ -40,9 +41,9 @@ app.AppView = Backbone.View.extend({
 
       // Get the direction of the transition upward / downward / still
       var dz = previous
-               && !_.isUndefined(previous.model.get("z"))
-               && !_.isUndefined(next.model.get("z")) ?
-               previous.model.get("z") - next.model.get("z") : 0;
+      && !_.isUndefined(previous.model.get("z"))
+      && !_.isUndefined(next.model.get("z")) ?
+      previous.model.get("z") - next.model.get("z") : 0;
 
       // Render the view in memory, positioned offscreen upward or downward
       next.render( {dz:dz} );
@@ -68,13 +69,13 @@ app.AppView = Backbone.View.extend({
       }
 
       // Load/unload ui elements
-      var d = previous === null ? 300 : 1250;
-      this.ui.showButtons(next.model.get("ui_elements"), 1250);
+      var d = previous === null ? 300 : 1000;
+      this.ui.showButtons(next, 1000);
 
-	},
+    },
 
-  stopListeningPrevious:function() {
-    if (this.currentPage) {
+    stopListeningPrevious:function() {
+      if (this.currentPage) {
         this.currentPage.stopListening();
 
         if (this.currentPage.items_views) {
@@ -86,7 +87,7 @@ app.AppView = Backbone.View.extend({
         if (this.projects_views) {
           this.currentPage.projects_views.stopListening();
         }
+      }
     }
-  }
 
-});
+  });

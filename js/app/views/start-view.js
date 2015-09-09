@@ -4,7 +4,23 @@ app.StartView = Backbone.View.extend({
 
 	id:"start",
 
-	template: _.template( $('#start-template').html() ),
+	template: _.template('\
+  		<div id = "warning"><p><%= warningText %></p></div>\
+		<div id = "backstart">\
+			<div id = "rstart"></div>\
+			<div id = "tstart">\
+      			<h1><%= startTitle %></h1>\
+      			<p><%= startText %></p>\
+      			<div id = "launch"><p>Explorer</p></div>\
+      			<div id = "demo"><p>Démo</p></div>\
+    		</div>\
+		</div>\
+    	<div id = "foot_logos">\
+      		<ul>\
+        		<li><a href = "http://www.paris.fr/" target="_blank"><img src = "./data/graphics/logo-mdp.gif"/></a></li>\
+      		</ul>\
+    	</div>\
+	'),
 
 	events: {
 		"click #launch": "launch",

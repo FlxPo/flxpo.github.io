@@ -4,7 +4,22 @@ app.DemoView = Backbone.View.extend({
 
 	id:"video_container",
 
-	template: _.template( $('#demo-template').html() ),
+	template: _.template('\
+		<div id="close_demo">\
+    		<span>X</span>\
+  		</div>\
+  		<div class="wrapper hidden">\
+    		<video controls id="offline_video">\
+      			<source src="data/video/demo.mp4"></source>\
+   			</video>\
+  		</div>\
+  		<iframe id = "video"\
+          class = ""\
+          src="//www.youtube.com/embed/35oqKJgJbaE"\
+          frameborder="0"\
+          allowfullscreen>\
+  		</iframe>\
+	'),
 
 	events: {
 		"click #close_demo": "UIclose"

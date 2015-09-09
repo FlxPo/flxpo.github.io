@@ -4,7 +4,21 @@ app.FlowTipView = Backbone.View.extend({
 
 	className: "flowtip",
 
-	template: _.template( $('#flowtip-template').html() ),
+	template: _.template('\
+		<div class = "pulse"></div>\
+      	<div class = "dot"></div>\
+      	<div class = "mousebox"></div>\
+      	<div class = "tip border-tip">\
+        	<h3><%= name %></h3>\
+        	<ul class = "label">\
+          		<li><p class = "volume"></p> <p class = "unit"><%= unit %></p></li>\
+          		<li id = "ungroup" class = "popbutton"><span>Détail du flux</span></li>\
+          		<li id = "group" class = "popbutton"><span>Retour en arrière</span></li>\
+        	</ul>\
+        	<b class="border-notch notch"></b>\
+        	<b class="notch"></b>\
+    	</div>\
+	'),
 
 	events: {
 		"mouseover": "over",
@@ -109,7 +123,7 @@ app.FlowTipView = Backbone.View.extend({
 			this.$el.html( this.template( this.content ) );
 
 			// Append the trends icons if needed
-			if (this.parent.model.get("nature") === "matter") {
+/*			if (this.parent.model.get("nature") === "matter") {
 				var trend = parseInt(this.parent.model.get("trend"));
 				var html = ""
 				if (trend === 0) {
@@ -124,7 +138,7 @@ app.FlowTipView = Backbone.View.extend({
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend minus\"></div>" + "<div id = \"tr2\" class = \"trend minus\"></div></div>"
 				}
 				this.$trend = $(html).appendTo(this.$el);
-      		}
+      		}*/
 
 		}
 		return this;

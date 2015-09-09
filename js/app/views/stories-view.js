@@ -4,7 +4,17 @@ app.StoriesView = Backbone.View.extend({
 
 	id:"footer",
 
-	template: _.template( $('#story-template').html() ),
+	template: _.template('\
+		<div id = "nav"><ul></ul></div>\
+    	<div id = "title"><h2></h2><p></p></div>\
+    	<div id = "story">\
+      		<ul>\
+        		<li id = "previous" class = "s_button"><span>Info précédente</span></li>\
+        		<li id = "next" class = "s_button"><span>Plus d‘infos</span></li>\
+        		<li id = "tcontainer"><p id = "s_text"></p></li>\
+      		</ul>\
+    	</div>\
+	'),
 
 	events: {
 		"click #previous":"previous",
@@ -20,6 +30,8 @@ app.StoriesView = Backbone.View.extend({
 
 		this.i = -1;
 		this.s = 0;
+
+		//$('body').keyup(_.bind(utils.debounce(this.arrowKeyPressed, 150), this));
 
 	},
 
@@ -183,6 +195,15 @@ nextStep:function(args) {
 
 	next:function() {
 		this.nextStep( {dir:1} );
+	},
+
+	arrowKeyPressed:function(e) {
+		var code = e.keyCode;
+		if (code == 39 && $("#next").css("display") !== "none") {
+			this.next();
+		} else if (code == 37 && $("#previous").css("display") !== "none") {
+			this.previous();
+		}
 	}
 
 });

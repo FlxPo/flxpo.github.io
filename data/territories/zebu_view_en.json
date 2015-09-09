@@ -98,7 +98,7 @@
 	"flows": 		[{
                             "id":"1400",
                             "index":"0",
-                            "name":"Bio-déchets",
+                            "name":"Biodéchets",
                             "type":"input",
                             "from":"t2",
                             "to":"t4",
@@ -174,7 +174,7 @@
                         {
                             "id":"1000",
                             "index":"0",
-                            "name":"Bio-déchets",
+                            "name":"Biodéchets",
                             "type":"input",
                             "from":"t2",
                             "to":"t1",

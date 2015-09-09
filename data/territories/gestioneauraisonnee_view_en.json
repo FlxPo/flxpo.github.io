@@ -1,0 +1,173 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Espaces verts",
+                        "geom":"data/graphics/geom_espacesverts_fontaine.json",
+                        "fax":"0",
+                        "fay":"0.25",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.5*w",
+                        "y":"0.3*h",
+                        "scale":"0.2",
+                        "force_w_scale":true,
+                        "solution":false,
+                        "z":0
+                    },
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Espaces verts",
+                        "geom":"data/graphics/geom_espacesverts_fontaine.json",
+                        "fax":"0",
+                        "fay":"0.25",
+                        "iw":"1",
+                        "ih":"0.6",
+                        "x":"0.5*w",
+                        "y":"0.3*h",
+                        "scale":"0.2",
+                        "force_w_scale":true,
+                        "solution":true,
+                        "z":1
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Eau du réseau",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t3",
+                            "volume_o4":"100",
+                            "volume_o9":"40",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#27CCE2",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Eaux de ruissellement",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"80",
+                            "volume_o9":"20",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#0D3549",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Eaux de ruissellement<br>récupérées",
+                            "type":"recyclage",
+                            "from":"t3",
+                            "to":"t3",
+                            "volume_o4":"60",
+                            "volume_o9":"60",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#4AA1AF",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Gestion raisonnée de l'eau dans les espaces verts",
+                    "text": {"time":"200", "content":"L’installation de compteurs divisionnaires, le suivi télérelevé des consommations, la Méthode d’Irrigation Raisonnée (MIR), la réfection des étanchéités des fontaines, ont permis une meilleure réactivité face aux fuites, une meilleure connaissance des répartitions des usages de l’eau et un contrôle des volumes d’eau réellement apportés aux végétaux. Cette gestion raisonnée de l’eau initiée en 2009 a permis une baisse des consommations (non attribuée au paramètre climatique) d’environ 6%. Le bilan technique et économique étant positif, la ville de Paris souhaite les étendre à davantage de jardins mais aussi poursuivre l’effort de conversion des jardins à l’eau non potable.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Gestion raisonnée de l'eau dans les espaces verts",
+                    "text": {"time":"200", "content":"La gestion raisonnée de l’eau dans les parcs et jardins parisiens concerne les consommations d’eau. L’entretien des jardins (arrosage) représente 60% de ces consommations alors que celui des fontaines d’ornement, 20%. La Ville de Paris s’est fixé pour objectif de limiter ces consommations en adaptant les usages au plus près des besoins des plantes et en améliorant la recherche des fuites, l’automatisation des systèmes d’arrosage et le contrôle des consommations."},
+                    "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":0}, "time":0},
+                                    {"target":"t2", "action":"appear", "parms":{"time":0}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Gestion raisonnée de l'eau dans les espaces verts",
+                    "text": {"time":"200", "content":"L’installation de compteurs divisionnaires, le suivi télérelevé des consommations, la Méthode d’Irrigation Raisonnée (MIR), la réfection des étanchéités des fontaines, ont permis une meilleure réactivité face aux fuites, une meilleure connaissance des répartitions des usages de l’eau et un contrôle des volumes d’eau réellement apportés aux végétaux. Cette gestion raisonnée de l’eau initiée en 2009 a permis une baisse des consommations (non attribuée au paramètre climatique) d’environ 6%. Le bilan technique et économique étant positif, la ville de Paris souhaite les étendre à davantage de jardins mais aussi poursuivre l’effort de conversion des jardins à l’eau non potable.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":0}, "time":0},
+                                    {"target":"t2", "action":"disappear", "parms":{"time":0}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Gestion raisonnée de l'eau dans les espaces verts",
+                    "text": {"time":"200", "content":"L’installation de compteurs divisionnaires, le suivi télérelevé des consommations, la Méthode d’Irrigation Raisonnée (MIR), la réfection des étanchéités des fontaines, ont permis une meilleure réactivité face aux fuites, une meilleure connaissance des répartitions des usages de l’eau et un contrôle des volumes d’eau réellement apportés aux végétaux. Cette gestion raisonnée de l’eau initiée en 2009 a permis une baisse des consommations (non attribuée au paramètre climatique) d’environ 6%. Le bilan technique et économique étant positif, la ville de Paris souhaite les étendre à davantage de jardins mais aussi poursuivre l’effort de conversion des jardins à l’eau non potable.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":0}, "time":0},
+                                    {"target":"t2", "action":"disappear", "parms":{"time":0}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Gestion raisonnée de l'eau dans les espaces verts",
+                    "text": {"time":"200", "content":"La gestion raisonnée de l’eau dans les parcs et jardins parisiens concerne les consommations d’eau. L’entretien des jardins (arrosage) représente 60% de ces consommations alors que celui des fontaines d’ornement, 20%. La Ville de Paris s’est fixé pour objectif de limiter ces consommations en adaptant les usages au plus près des besoins des plantes et en améliorant la recherche des fuites, l’automatisation des systèmes d’arrosage et le contrôle des consommations."},
+                    "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":0}, "time":0},
+                                    {"target":"t2", "action":"appear", "parms":{"time":0}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

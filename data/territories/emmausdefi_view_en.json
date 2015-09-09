@@ -1,0 +1,189 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.375*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.5*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Habitants",
+                        "geom":"data/graphics/geom_groupepersonne2.json",
+                        "fax":"0",
+                        "fay":"0.1",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.25*w",
+                        "y":"0.4*h",
+                        "scale":"0.15",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Amistocks",
+                        "geom":"data/graphics/geom_collecte_interieur.json",
+                        "fax":"0",
+                        "fay":"0.2",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.5*w",
+                        "y":"0.4*h",
+                        "scale":"0.15",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Plateforme Web",
+                        "solution":true,
+                        "geom":"data/graphics/geom_plateformeweb.json",
+                        "fax":"0",
+                        "fay":"0",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0.375*w",
+                        "y":"0.15*h",
+                        "scale":"0.15",
+                        "force_w_scale":true
+                    },
+                    {
+                        "id":"t5",
+                        "name":"t5",
+                        "label":"Personnes en difficulté",
+                        "geom":"data/graphics/geom_groupepersonne2.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0.75*w",
+                        "y":"0.45*h",
+                        "scale":"0.15",
+                        "force_w_scale":true
+                    }],
+
+	"flows": 		[{
+                            "id":"100",
+                            "name":"Produits de<br>consommation",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "color":"#8965AA",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Objets donnés",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t3",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1100",
+                            "index":"0",
+                            "name":"Objets jetés",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3000",
+                            "index":"0",
+                            "name":"Objets valorisés<br>et réemployés",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t5",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#93C893",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Les dons de l’insertion",
+                    "text": {"time":"200", "content":"En plus de reposer sur un chantier d’insertion pour son activité de valorisation et de réemploi, notamment dans ses deux boutiques parisiennes, Emmaüs Défi innove avec le réseau d'Amistocks et la Banque Solidaire de l’Équipement (BSE). La plateforme web facilite le don d’objets par la prise de rendez-vous en ligne et la géo-localisation des Amistocks, points de dépôts bénévoles.  Grâce aux invendus d’entreprises, la BSE permet d’équiper les familles, qui après de nombreuses années en hébergements d’urgence, bénéficient d’un logement social.<br><br><em>Porteur de projet : <a href = \"http://www.emmaus-defi.org/\" target = \"_blank\">Emmaüs Défi</a></em>"},
+                    "flows": [{"vl":["1000","3000","100"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t5", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Les dons de l’insertion",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par la municipalité. 87&nbsp 405 tonnes de déchets occasionnels et encombrants ont été collectées en 2013 à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants, ce qui représente 38,4 kg par habitant."},
+                    "flows": [{"vl":["1100", "100"], "hl":["1000","3000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t5", "action":"disappear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Les dons de l’insertion",
+                    "text": {"time":"200", "content":"En plus de reposer sur un chantier d’insertion pour son activité de valorisation et de réemploi, notamment dans ses deux boutiques parisiennes, Emmaüs Défi innove avec le réseau d'Amistocks et la Banque Solidaire de l’Équipement (BSE). La plateforme web facilite le don d’objets par la prise de rendez-vous en ligne et la géo-localisation des Amistocks, points de dépôts bénévoles.  Grâce aux invendus d’entreprises, la BSE permet d’équiper les familles, qui après de nombreuses années en hébergements d’urgence, bénéficient d’un logement social.<br><br><em>Porteur de projet : <a href = \"http://www.emmaus-defi.org/\" target = \"_blank\">Emmaüs Défi</a></em>"},
+                    "flows": [{"vl":["1000","3000","100"], "hl":["1100"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t5", "action":"appear", "parms":{"time":300}, "time":0}]
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Les dons de l’insertion",
+                    "text": {"time":"200", "content":"En plus de reposer sur un chantier d’insertion pour son activité de valorisation et de réemploi, notamment dans ses deux boutiques parisiennes, Emmaüs Défi innove avec le réseau d'Amistocks et la Banque Solidaire de l’Équipement (BSE). La plateforme web facilite le don d’objets par la prise de rendez-vous en ligne et la géo-localisation des Amistocks, points de dépôts bénévoles.  Grâce aux invendus d’entreprises, la BSE permet d’équiper les familles, qui après de nombreuses années en hébergements d’urgence, bénéficient d’un logement social.<br><br><em>Porteur de projet : <a href = \"http://www.emmaus-defi.org/\" target = \"_blank\">Emmaüs Défi</a></em>"},
+                    "flows": [{"vl":["1000","3000","100"], "hl":["1100"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t5", "action":"appear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Les dons de l’insertion",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par la municipalité. 87&nbsp 405 tonnes de déchets occasionnels et encombrants ont été collectées en 2013 à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants, ce qui représente 38,4 kg par habitant."},
+                    "flows": [{"vl":["1100", "100"], "hl":["1000","3000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t5", "action":"disappear", "parms":{"time":300}, "time":0}]
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

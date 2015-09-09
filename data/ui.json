@@ -250,6 +250,13 @@
 		"bg-col-c":"",
 		"show_class":"show_h",
 		"bang":true
+	},
+	{
+		"el":"#zoom",
+		"id":"zoom",
+		"change": "",
+		"show_class":"show_h",
+		"bang":false
 	}
 ]
 

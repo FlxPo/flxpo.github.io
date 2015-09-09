@@ -159,11 +159,13 @@ app.FlowsView = Backbone.View.extend({
 	unloadFlows:function(hl_models) {
 		var items_views = this.items_views.views_collection;
 		var self = this;
+
 		// Dispatch the flows in the items views
 		_.each(hl_models, function(flow) {
 			// Inputs Outputs
 			var ifrom_id = flow.get("from"), ito_id = flow.get("to");
 			var f_id = flow.get("id");
+
 			flow.get("type") !== "extraction" && items_views.get(ito_id).input.remove(f_id);
 			flow.get("type") !== "waste" && items_views.get(ifrom_id).output.remove(f_id);
 			flow.get("type") === "recyclage" && items_views.get(ifrom_id).recyclage.remove(f_id);
@@ -340,7 +342,7 @@ app.FlowsView = Backbone.View.extend({
 			r = +(b_id > a_id);
 		}
 
-		console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
+		// console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
 		return r;
 
 	},
@@ -379,7 +381,7 @@ app.FlowsView = Backbone.View.extend({
 			r = (b_id < a_id);
 		}
 
-		console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
+		// console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
 		return r;
 	},
 

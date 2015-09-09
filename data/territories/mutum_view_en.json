@@ -1,0 +1,143 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Consommateurs",
+                        "geom":"data/graphics/geom_groupepersonne2.json",
+                        "fax":"0",
+                        "fay":"0.1",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"0.4*w",
+                        "y":"0.41*h",
+                        "scale":"0.18",
+                        "force_w_scale":true,
+                        "z":1
+                    },
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Plateforme Web",
+                        "solution":true,
+                        "geom":"data/graphics/geom_plateformeweb.json",
+                        "fax":"0",
+                        "fay":"0",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.6*w",
+                        "y":"0.19*h",
+                        "scale":"0.15",
+                        "force_w_scale":true,
+                        "solution":true,
+                        "z":0
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Produits de<br>consommation",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t2",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#8965AA",
+                            "virtual":true
+                        },
+                        {
+                            "id":"1100",
+                            "index":"0",
+                            "name":"Objets jetés",
+                            "type":"input",
+                            "from":"t2",
+                            "to":"t1",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Objets prêtés",
+                            "type":"recyclage",
+                            "from":"t2",
+                            "to":"t2",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#7FB57F",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"La plateforme de prêt et d’emprunt",
+                    "text": {"time":"200", "content":"Mutum est une plateforme de prêt et d’emprunt d’objets entre voisins. Le principe en est simple, plus l’utilisateur inscrit d’objets à prêter sur la plateforme, plus il gagne de points (les mutum) et plus il peut emprunter. Les mutum donnent une nouvelle valeur à l’objet, une valeur d’utilisation. L’objectif est ainsi de qualifier l’objet tout au long de sa vie et d’optimiser ses usages, sa revalorisation, tout en sensibilisant les usagers de manière ludique.<br><br><em>Porteur de projet : <a href = \"http://www.mutum.fr/\" target = \"_blank\">Mutum</a></em>"},
+                    "flows": [{"vl":["2000","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"La plateforme de prêt et d’emprunt",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par la municipalité. 87&nbsp405 tonnes de déchets occasionnels et encombrants ont été collectées en 2013 à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants, ce qui représente 38,4 kg par habitant."},
+                    "flows": [{"vl":["1000"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"La plateforme de prêt et d’emprunt",
+                    "text": {"time":"200", "content":"Mutum est une plateforme de prêt et d’emprunt d’objets entre voisins. Le principe en est simple, plus l’utilisateur inscrit d’objets à prêter sur la plateforme, plus il gagne de points (les mutum) et plus il peut emprunter. Les mutum donnent une nouvelle valeur à l’objet, une valeur d’utilisation. L’objectif est ainsi de qualifier l’objet tout au long de sa vie et d’optimiser ses usages, sa revalorisation, tout en sensibilisant les usagers de manière ludique.<br><br><em>Porteur de projet : <a href = \"http://www.mutum.fr/\" target = \"_blank\">Mutum</a></em>"},
+                    "flows": [{"vl":["2000","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}]
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"La plateforme de prêt et d’emprunt",
+                    "text": {"time":"200", "content":"Mutum est une plateforme de prêt et d’emprunt d’objets entre voisins. Le principe en est simple, plus l’utilisateur inscrit d’objets à prêter sur la plateforme, plus il gagne de points (les mutum) et plus il peut emprunter. Les mutum donnent une nouvelle valeur à l’objet, une valeur d’utilisation. L’objectif est ainsi de qualifier l’objet tout au long de sa vie et d’optimiser ses usages, sa revalorisation, tout en sensibilisant les usagers de manière ludique.<br><br><em>Porteur de projet : <a href = \"http://www.mutum.fr/\" target = \"_blank\">Mutum</a></em>"},
+                    "flows": [{"vl":["2000","1000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"La plateforme de prêt et d’emprunt",
+                    "text": {"time":"200", "content":"La réparation et la réutilisation participent à l’allongement de la durée de vie des produits de grande consommation et permettent de détourner une partie du flux de déchets ou d’encombrants qui doivent être collectés par la municipalité. 87&nbsp405 tonnes de déchets occasionnels et encombrants ont été collectées en 2013 à Paris sur la voie publique ou en centre de valorisation et d’apport des encombrants, ce qui représente 38,4 kg par habitant."},
+                    "flows": [{"vl":["1000"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}]
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

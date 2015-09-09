@@ -3,9 +3,11 @@ var app = app || {};
 app.ItemView = Backbone.View.extend({
 
 	className:"item",
-	template: _.template( $('#item-template').html() ),
+	template: _.template( '<p class = "label hidden"></p>' ),
 
 	initialize:function(options) {
+
+		this.listenTo(Backbone, "items:updatePositions", this.updatePositions);
 
 		this.parent = options.parent;
 
@@ -29,7 +31,7 @@ app.ItemView = Backbone.View.extend({
 				success:function(data) {
 					self.model.set(data);
 					_.bind(self.createCanvas, self)(data);
-					self.parent.parent.$itemcontainer.prepend( self.render().el );
+					self.parent.parent.$itemcontainer.children(":first").prepend( self.render().el );
 				},
 
 				complete:function() {
@@ -40,10 +42,35 @@ app.ItemView = Backbone.View.extend({
 
 		} else {
 
-			self.parent.parent.$itemcontainer.prepend( self.render().el );
+			self.parent.parent.$itemcontainer.children(":first").prepend( self.render().el );
 			options.complete();
 
 		}
+	},
+
+	updatePositions:function(args) {
+		var regex = /[+-]?\d+(\.\d+)?/g;
+		var floats = args.mat.match(regex).map(function(v) { return parseFloat(v); });
+
+		this.w = this.wBase * floats[0];
+		this.h = this.hBase * floats[0];
+
+		ws = args.ws;
+
+		var z = this.parent.parent.projects_views.previous_zoom;
+
+		var x_rp = parseFloat($("#rightpanel").css("left"));
+		var x_focal = this.X - ws.clientX + x_rp;
+		var x_scaled = x_focal*floats[0]/z
+		var x_translated = x_scaled + ws.clientX - x_rp;
+
+		var y_rp = parseFloat($("#rightpanel").css("top"));
+		var y_focal = this.Y - ws.clientY + y_rp;
+		var y_scaled = y_focal*floats[0]/z
+		var y_translated = y_scaled + ws.clientY - y_rp;
+
+		this.X = x_translated;
+		this.Y = y_translated;
 	},
 
 	createCanvas:function(data) {
@@ -62,12 +89,14 @@ app.ItemView = Backbone.View.extend({
 		var h_mod = data.height*scaling*scaling ;
 
 		// Create the canvas
-		this.r = Raphael(this.$el[0], w_mod+5, h_mod+5);
+		this.r = Raphael(this.$el[0], w_mod, h_mod);
 		$("svg", this.$el).css({position:"absolute"});
 
 		this.scaling = scaling;
 		this.w = w_mod * parseFloat(this.model.get("iw"));
 		this.h = h_mod * parseFloat(this.model.get("ih"));
+		this.wBase = this.w;
+		this.hBase = this.h;
 
 		this.model.set("w_mod", w_mod);
 		this.model.set("h_mod", h_mod);
@@ -125,9 +154,11 @@ app.ItemView = Backbone.View.extend({
 
 		this.X = eval(m.get("x"));
 		this.Y = eval(m.get("y"));
+		this.Xbase = this.X;
+		this.Ybase = this.Y;
 
-		this.fax = this.X+ (m.get("fax")*m.get("w_mod") || 0);
-		this.fay = this.Y+ (m.get("fay")*m.get("h_mod") || 0);
+		this.fax = this.X + (m.get("fax")*m.get("w_mod") || 0);
+		this.fay = this.Y + (m.get("fay")*m.get("h_mod") || 0);
 
 		return this;
 

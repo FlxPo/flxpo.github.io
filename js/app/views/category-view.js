@@ -11,7 +11,7 @@ app.CategoryView = Backbone.View.extend({
 		"click":"clk"
 	},
 
-	template: _.template( $('#category-template').html() ),
+	template: _.template( '<span></span>' ),
 
 	initialize:function(options) {
 		if (options.clicked) {

@@ -1,0 +1,191 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "fax":"",
+                        "fay":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.45*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+						"name":"t2",
+                        "label":"Espaces verts",
+						"geom":"data/graphics/geom_espacesverts.json",
+                        "fax":"0",
+                        "fay":"0.4",
+                        "iw":"1",
+                        "ih":"0.6",
+						"x":"0.5*w",
+						"y":"0.35*h",
+						"scale":"0.2",
+                        "force_w_scale":true,
+                        "z":1
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Jardin biotope",
+                        "geom":"data/graphics/geom_jardin_biotop.json",
+                        "fax":"0",
+                        "fay":"0.3",
+                        "iw":"0.8",
+                        "ih":"0.4",
+                        "x":"0.5*w",
+                        "y":"0.3*h",
+                        "scale":"0.2",
+                        "force_w_scale":true,
+                        "solution":true,
+                        "z":0
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Eau non potable",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t3",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#07AAAA",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"700",
+                            "index":"0",
+                            "name":"Eau du réseau",
+                            "type":"input",
+                            "from":"t0",
+                            "to":"t3",
+                            "volume_o4":"100",
+                            "volume_o9":"100",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#03D9EF",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"500",
+                            "index":"0",
+                            "name":"Eaux de ruissellement",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"80",
+                            "volume_o9":"10",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#0D3549",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        },
+                        {
+                            "id":"2000",
+                            "index":"0",
+                            "name":"Eaux de ruissellement<br>récupérées",
+                            "type":"recyclage",
+                            "from":"t3",
+                            "to":"t3",
+                            "volume_o4":"50",
+                            "volume_o9":"50",
+                            "trend":"-1",
+                            "unit":"t / an",
+                            "color":"#4AA1AF",
+                            "color2":"#b7b1ba",
+                            "level":"0",
+                            "parent":"",
+                            "children":"",
+                            "siblings":"",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Gestion de l'eau parc Clichy Batignolles",
+                    "text": {"time":"200", "content":"Dans ce jardin, aucun écoulement n’est dirigé vers les égouts. Les eaux de pluie ruissellent dans des rigoles et un fossé humide jusqu’à une cuve souterraine qui alimente le bassin biotope où des plantes aquatiques permettent un filtrage naturel de l’eau. L’eau de pluie récupérée couvre ainsi 40 % des besoins en arrosage. Le complément est assuré par le réseau d’eau non potable. En cas de période de longue sécheresse, une éolienne permet de pomper l’eau du bassin pour assurer la survie des plantes du fossé humide.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Gestion de l'eau parc Clichy Batignolles",
+                    "text": {"time":"200", "content":"La Ville de Paris s’est fixé pour objectif de limiter ces rejets au milieu naturel, de limiter l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement et de favoriser l’infiltration ou la réutilisation des eaux de surface. La gestion raisonnée de l’eau dans les parcs et jardins vise également à limiter les consommations (Méthode d’Irrigation Raisonnée, recherche des fuites et contrôle des consommations) et à privilégier l’arrosage à l’eau de pluie et à l’eau non potable."},
+                    "flows": [{"vl":["1000", "700", "500"], "hl":["2000", "1000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t2", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Gestion de l'eau parc Clichy Batignolles",
+                    "text": {"time":"200", "content":"Dans ce jardin, aucun écoulement n’est dirigé vers les égouts. Les eaux de pluie ruissellent dans des rigoles et un fossé humide jusqu’à une cuve souterraine qui alimente le bassin biotope où des plantes aquatiques permettent un filtrage naturel de l’eau. L’eau de pluie récupérée couvre ainsi 40 % des besoins en arrosage. Le complément est assuré par le réseau d’eau non potable. En cas de période de longue sécheresse, une éolienne permet de pomper l’eau du bassin pour assurer la survie des plantes du fossé humide.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":["700"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Gestion de l'eau parc Clichy Batignolles",
+                    "text": {"time":"200", "content":"Dans ce jardin, aucun écoulement n’est dirigé vers les égouts. Les eaux de pluie ruissellent dans des rigoles et un fossé humide jusqu’à une cuve souterraine qui alimente le bassin biotope où des plantes aquatiques permettent un filtrage naturel de l’eau. L’eau de pluie récupérée couvre ainsi 40 % des besoins en arrosage. Le complément est assuré par le réseau d’eau non potable. En cas de période de longue sécheresse, une éolienne permet de pomper l’eau du bassin pour assurer la survie des plantes du fossé humide.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "flows": [{"vl":["500","1000", "2000"], "hl":["700"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                },
+                {
+                    "subtitle":"Gestion de l'eau parc Clichy Batignolles",
+                    "text": {"time":"200", "content":"La Ville de Paris s’est fixé pour objectif de limiter ces rejets au milieu naturel, de limiter l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement et de favoriser l’infiltration ou la réutilisation des eaux de surface. La gestion raisonnée de l’eau dans les parcs et jardins vise également à limiter les consommations (Méthode d’Irrigation Raisonnée, recherche des fuites et contrôle des consommations) et à privilégier l’arrosage à l’eau de pluie et à l’eau non potable."},
+                    "flows": [{"vl":["1000", "700", "500"], "hl":["2000", "1000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t2", "action":"appear", "parms":{"time":300}, "time":0}],
+                    "ui":{"show":[], "hide":[]},
+                    "functions":""
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

@@ -31,8 +31,6 @@
   	-webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
-    behavior: url(./style/pie/PIE.htc);
-  	behavior: url(./style/pie/PIE.htc);
 
 	cursor: pointer;
 
@@ -69,7 +67,6 @@
 	height:40px;
 	border-radius: 100%;
 	cursor: pointer;
-	behavior: url(./style/pie/PIE.htc);
 	font-family: "Lobster";
 	font-size: 18px;
 }
@@ -159,7 +156,6 @@ a:visited {
 	vertical-align: middle;
 	border-radius: 100%;
 	cursor: pointer;
-	behavior: url(./style/pie/PIE.htc);
 	display:none;
 }
 

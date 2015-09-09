@@ -9,7 +9,13 @@ app.NavView = Backbone.View.extend({
 		"click":"clk"
 	},
 
-	template: _.template( $('#nav-template').html() ),
+	template: _.template('\
+		<div class="tip border-tip">\
+      		<h3><%=title%></h3>\
+      		<b class="border-notch notch"></b>\
+      		<b class="notch"></b>\
+    	</div>\
+	'),
 
 	initialize:function() {
 		_.bindAll(this, "renderClean")

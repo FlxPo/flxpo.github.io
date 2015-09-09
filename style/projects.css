@@ -2,39 +2,31 @@
 	position:absolute;
 	top:0;
 	opacity:0;
-/*	left:-33%;
-	width:33%;*/
 	height:100%;
 	background-color: #FAFAFA;
-	/*padding:16px;*/
 	border-right:1px solid #ddd;
-
 	text-align: center;
+	z-index: 100;
 }
 
 @media all and (min-width: 1280px) {
-
 #leftpanel {
 	width:540px;
 }
-
 }
 
 @media all and (max-width: 1279px) and (min-width: 800px) {
-
 #leftpanel {
 	width:370px;
+	/*display: none;*/
 }
-
 }
 
 @media all and (max-width: 799px) {
-
 #leftpanel {
 	text-align: center;
 	width:200px;
 }
-
 }
 
 .category-over {
@@ -228,6 +220,9 @@
 
 
 #rightpanel {
+	position:absolute;
+	top:0;
+	left:0;
 	width:100%;
 }
 
@@ -267,7 +262,6 @@
 	-webkit-border-radius: 32px;
     -moz-border-radius: 32px;
     border-radius: 32px;
-    behavior: url(./style/pie/PIE.htc);
 
 	background-color: #fff;
 	border:2px solid #fff;
@@ -286,6 +280,7 @@
 }
 
 .itemproject .text {
+	z-index:3;
 	position:relative;
 	background-color: rgba(255, 255, 255, 0.6);
 	padding-bottom: 6px;
@@ -321,19 +316,24 @@
 .itemproject .logocontainer {
 	position:absolute;
 	width:150px;
-	height:150px
+	height:150px;
 }
 
 .itemproject .logocontainer > img {
-	position:absolute;
+	position: relative;
+	display:block;
+	z-index: 1;
+	margin-left: auto;
+	margin-right: auto;
+	margin: 0 auto;
 	width:75px;
-	margin-left: -37.5px;
 	margin-top:55px;
 }
 
 
 .itemproject .logocontainer .mask {
 	position: absolute;
+	z-index: 0;
 	width:150px;
 	height:150px;
 	background-color: #fff;
@@ -372,6 +372,7 @@
 	width:40px;
 	height:40px;
 	top:-40px;
+	opacity: 0.9;
 }
 
 .global {
@@ -386,4 +387,5 @@
 
 .popproject .tip {
 	font-size:18px;
+	z-index: 100;
 }

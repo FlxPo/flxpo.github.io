@@ -156,7 +156,7 @@ app.Router = Backbone.Router.extend({
       clearTimeout(doit);
       doit = setTimeout(function() {
         self.reload();
-      }, 500);
+      }, 200);
     }
   },
 
@@ -314,12 +314,14 @@ app.Router = Backbone.Router.extend({
     // Validate projects route parameters
     } else if (view === "project") {
 
-      var max_id = 38;
+      var max_id = 49;
       var ids = [];
       for (var i = 0; i<max_id; i++) {ids[i] = i;}
       var valid_ids = ids.map(function(id) {return "p"+id})
 
-      return _.indexOf(valid_ids, args.id) !==-1;
+      if (args.id == "p14") return false;
+
+      return _.indexOf(valid_ids, args.id) !== -1;
 
     }
 
@@ -393,7 +395,11 @@ app.Router = Backbone.Router.extend({
 
   project:function(id) {
     var args = {id:id};
-    this.validateRoute("project", args) && this.loadView("project", args); // TODO : handle false
+    if (this.validateRoute("project", args)) {
+      this.loadView("project", args);
+    } else {
+      this.go("#p");
+    }
   }
 
 });
@@ -671,12 +677,25 @@ var utils = (function() {
             .replace(/[ôöó]/g, "o");
   }
 
+  function debounce(func, interval) {
+    var lastCall = -1;
+    return function() {
+        clearTimeout(lastCall);
+        var args = arguments;
+        var self = this;
+        lastCall = setTimeout(function() {
+            func.apply(self, args);
+        }, interval);
+    };
+  }
+
   return {getWindowSize:getWindowSize,
           darkenColor:darkenColor,
           formatVolume:formatVolume,
           constrainNumber:constrainNumber,
           mergeSort:mergeSort,
-          formatString:formatString}
+          formatString:formatString,
+          debounce:debounce}
 
 })()
 
@@ -696,7 +715,42 @@ app.AboutView = Backbone.View.extend({
 
 	id:"about",
 
-	template: _.template( $('#about-template').html() ),
+	template: _.template('\
+		<div id = "info_back"></div>\
+  		<div>\
+			<div id = "info_content">\
+				<ul id = "info_header">\
+        			<li><h2>Informations sur cette visualisation</h2></li>\
+        			<li id = "launch"><p>Intro</p></li>\
+        			<li id = "demo"><p>Démo</p></li>\
+      			</ul>\
+      			<ul id = "info_main">\
+      				<li>Les données sur les flux d’énergies et d’eaux sont celles de la Ville de Paris.</li>\
+      				<br>\
+      				<li>La nomenclature des flux et les données utilisées pour cette infographie sont adaptées du rapport de Sabine Barles, professeure d’urbanisme à l’université Paris 1 Panthéon-Sorbonne (UMR Géographie-Cités) : <a href = "data/pdf/Barles-EI-Paris.pdf" target = "_blank">« Mesurer la performance écologique des villes et des territoires : le métabolisme de Paris et de l’Île-de-France »</a></li>\
+      				<br>\
+      				<li>Les tendances relatives à l’évolution des flux de matières ont été évaluées avec l’aide de Laurent Georgeault doctorant de l’université Paris 1 et chargé de mission à l’Institut de l’économie circulaire.</li>\
+    			</ul>\
+    			<p>Pour plus d’information, voir aussi :</p>\
+    			<ul>\
+      				<li class = "refs">BARLES, S. <a href = "http://www.developpementdurable.revues.org/10090" target = "_blank">« L’écologie territoriale et les enjeux de la dématérialisation des sociétés : l’apport de l’analyse des flux de matières »</a>, Développement durable des territoires 5(1), 2014.</li>\
+      				<br>\
+      				<li class = "refs">REPELLIN, P., DURET, B., BARLES, S. <a href = "http://www.statistiques.developpement-durable.gouv.fr/publications/p/2101/1161/comptabilite-flux-matieres-regions-departements-guide.html" target = "_blank">Comptabilité des flux de matières dans les régions et les départements.</a> Guide méthodologique. La Défense : Ministère de l’Écologie, du Développement durable et de l’Énergie – CGDD (coll. « Repères »), 2014.</li>\
+    			</ul>\
+    			<ul id = "credits">\
+      				<li>\
+        				<h3>Maîtrise d’ouvrage :</h3>\
+        				<p>Agence d’écologie urbaine – Mairie de Paris<br>(contact : <a href ="mailto:entreprisesresponsables@paris.fr">entreprisesresponsables@paris.fr</a>)<br></p>\
+        				<a href ="http://www.paris.fr/" target = "_blank"><img src = "./data/graphics/logo-mdp.gif"/></a>\
+      				</li>\
+      				<li>\
+        				<h3>Conception :</h3>\
+        				<p>Elioth<br>(contact : <a href ="mailto:elioth@elioth.fr">elioth@elioth.fr</a>)</p><a href ="http://elioth.com/" target = "_blank"><img src = "./data/graphics/logo-elioth.png"/></a>\
+      				</li>\
+      			</ul>\
+  			</div>\
+ 		</div>\
+	'),
 
 	events: {
 		"click #launch": "intro",
@@ -759,6 +813,7 @@ app.AboutView = Backbone.View.extend({
 
 	// Removes all elements of the view
 	close:function() {
+
 		this.stopListening();
 
 		clearInterval(this.clockAddCircle);
@@ -820,6 +875,7 @@ app.AppView = Backbone.View.extend({
   initialize:function() {
 
     this.router = new app.Router();
+    this.startZoom = 0;
 
     var self = this;
     // Load init resource data
@@ -831,7 +887,7 @@ app.AppView = Backbone.View.extend({
 
       success:function(data) {
         // Loads UI
-        self.ui = new app.UIView({init:data.ui});
+        self.ui = new app.UIView(self, {init:data.ui});
         // Loads territories
         self.territories = new app.TerritoriesView({init:data.navigation});
         // Loads router
@@ -853,9 +909,9 @@ app.AppView = Backbone.View.extend({
 
       // Get the direction of the transition upward / downward / still
       var dz = previous
-               && !_.isUndefined(previous.model.get("z"))
-               && !_.isUndefined(next.model.get("z")) ?
-               previous.model.get("z") - next.model.get("z") : 0;
+      && !_.isUndefined(previous.model.get("z"))
+      && !_.isUndefined(next.model.get("z")) ?
+      previous.model.get("z") - next.model.get("z") : 0;
 
       // Render the view in memory, positioned offscreen upward or downward
       next.render( {dz:dz} );
@@ -881,13 +937,13 @@ app.AppView = Backbone.View.extend({
       }
 
       // Load/unload ui elements
-      var d = previous === null ? 300 : 1250;
-      this.ui.showButtons(next.model.get("ui_elements"), 1250);
+      var d = previous === null ? 300 : 1000;
+      this.ui.showButtons(next, 1000);
 
-	},
+    },
 
-  stopListeningPrevious:function() {
-    if (this.currentPage) {
+    stopListeningPrevious:function() {
+      if (this.currentPage) {
         this.currentPage.stopListening();
 
         if (this.currentPage.items_views) {
@@ -899,10 +955,10 @@ app.AppView = Backbone.View.extend({
         if (this.projects_views) {
           this.currentPage.projects_views.stopListening();
         }
+      }
     }
-  }
 
-});
+  });
 var app = app || {};
 
 app.ButtonView = Backbone.View.extend({
@@ -970,6 +1026,7 @@ app.ButtonView = Backbone.View.extend({
 
 		// Trigger the event attached to the button
 		(!options.silent && this.model.get("change")) && Backbone.trigger("route:buildGo", {change:this.model.get("change"), id:this.model.get("id")});
+
 	},
 
 	unclick:function() {
@@ -1048,7 +1105,7 @@ app.CategoryView = Backbone.View.extend({
 		"click":"clk"
 	},
 
-	template: _.template( $('#category-template').html() ),
+	template: _.template( '<span></span>' ),
 
 	initialize:function(options) {
 		if (options.clicked) {
@@ -1106,7 +1163,7 @@ var app = app || {};
 
 app.CircleView = Backbone.View.extend({
 
-	template: _.template( $('#flow-template').html() ),
+	template: _.template( '<div class = "pulse"></div></div>' ),
 
 	initialize:function(options) {
 		this.paper = options.paper;
@@ -1245,7 +1302,22 @@ app.DemoView = Backbone.View.extend({
 
 	id:"video_container",
 
-	template: _.template( $('#demo-template').html() ),
+	template: _.template('\
+		<div id="close_demo">\
+    		<span>X</span>\
+  		</div>\
+  		<div class="wrapper hidden">\
+    		<video controls id="offline_video">\
+      			<source src="data/video/demo.mp4"></source>\
+   			</video>\
+  		</div>\
+  		<iframe id = "video"\
+          class = ""\
+          src="//www.youtube.com/embed/35oqKJgJbaE"\
+          frameborder="0"\
+          allowfullscreen>\
+  		</iframe>\
+	'),
 
 	events: {
 		"click #close_demo": "UIclose"
@@ -1277,7 +1349,7 @@ app.FlowView = Backbone.View.extend({
 
 	className:"flow",
 
-	template: _.template( $('#flow-template').html() ),
+	template: _.template( '<div class = "pulse"></div></div>' ),
 
 	initialize: function(options) {
 
@@ -1510,10 +1582,10 @@ app.FlowView = Backbone.View.extend({
 		var target_x = (this.xfrom + this.xto)/2;
 		var target_y = this.midY;
 
-		var k = Math.floor(this.pulsePath.length/2-10);
+		var k = Math.floor(this.pulsePath.length/3);
 		var d1 = 2000;
 		var d2 = 1000;
-
+		
 		while (d2 < d1) {
 			k++;
 			d1 = d2;
@@ -1555,7 +1627,7 @@ app.FlowView = Backbone.View.extend({
 		// TO DO : path to points function
 		var path = this.flowpath,
 			pupath = [],
-			step = 10,
+			step = 5,
 			len = path.getTotalLength(),
 			l = 0;
 
@@ -1615,7 +1687,7 @@ app.FlowView = Backbone.View.extend({
 			this.$pulse.velocity( "stop", true )
 		}
 
-		var seq = sequenceGenerator( {element:this.$pulse, path:pupath, duration:pupath.length*40, increment:5, complete:restart} );
+		var seq = sequenceGenerator( {element:this.$pulse, path:pupath, duration:pupath.length*20, increment:5, complete:restart} );
 		$.Velocity.RunSequence(seq);
 
 		this.pulsing = true;
@@ -1812,11 +1884,13 @@ app.FlowsView = Backbone.View.extend({
 	unloadFlows:function(hl_models) {
 		var items_views = this.items_views.views_collection;
 		var self = this;
+
 		// Dispatch the flows in the items views
 		_.each(hl_models, function(flow) {
 			// Inputs Outputs
 			var ifrom_id = flow.get("from"), ito_id = flow.get("to");
 			var f_id = flow.get("id");
+
 			flow.get("type") !== "extraction" && items_views.get(ito_id).input.remove(f_id);
 			flow.get("type") !== "waste" && items_views.get(ifrom_id).output.remove(f_id);
 			flow.get("type") === "recyclage" && items_views.get(ifrom_id).recyclage.remove(f_id);
@@ -1993,7 +2067,7 @@ app.FlowsView = Backbone.View.extend({
 			r = +(b_id > a_id);
 		}
 
-		console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
+		// console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
 		return r;
 
 	},
@@ -2032,7 +2106,7 @@ app.FlowsView = Backbone.View.extend({
 			r = (b_id < a_id);
 		}
 
-		console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
+		// console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
 		return r;
 	},
 
@@ -2227,7 +2301,21 @@ app.FlowTipView = Backbone.View.extend({
 
 	className: "flowtip",
 
-	template: _.template( $('#flowtip-template').html() ),
+	template: _.template('\
+		<div class = "pulse"></div>\
+      	<div class = "dot"></div>\
+      	<div class = "mousebox"></div>\
+      	<div class = "tip border-tip">\
+        	<h3><%= name %></h3>\
+        	<ul class = "label">\
+          		<li><p class = "volume"></p> <p class = "unit"><%= unit %></p></li>\
+          		<li id = "ungroup" class = "popbutton"><span>Détail du flux</span></li>\
+          		<li id = "group" class = "popbutton"><span>Retour en arrière</span></li>\
+        	</ul>\
+        	<b class="border-notch notch"></b>\
+        	<b class="notch"></b>\
+    	</div>\
+	'),
 
 	events: {
 		"mouseover": "over",
@@ -2332,7 +2420,7 @@ app.FlowTipView = Backbone.View.extend({
 			this.$el.html( this.template( this.content ) );
 
 			// Append the trends icons if needed
-			if (this.parent.model.get("nature") === "matter") {
+/*			if (this.parent.model.get("nature") === "matter") {
 				var trend = parseInt(this.parent.model.get("trend"));
 				var html = ""
 				if (trend === 0) {
@@ -2347,7 +2435,7 @@ app.FlowTipView = Backbone.View.extend({
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend minus\"></div>" + "<div id = \"tr2\" class = \"trend minus\"></div></div>"
 				}
 				this.$trend = $(html).appendTo(this.$el);
-      		}
+      		}*/
 
 		}
 		return this;
@@ -2497,7 +2585,14 @@ app.IntroView = Backbone.View.extend({
 		"click":"close"
 	},
 
-	template: _.template( $('#intro-template').html() ),
+	template: _.template('\
+		<div id = "intro_back"></div>\
+    	<div id = "top_left" class = "intro_box"><p><div class = "arrow-up"></div><%=topleft%></p></div>\
+    	<div id = "top_right1" class = "intro_box"><div class = "arrow-right"></div><p><%=topright1%></p></div>\
+    	<div id = "top_right2" class = "intro_box"><div class = "arrow-right"></div><p><%=topright2%></p></div>\
+    	<div id = "top_right3" class = "intro_box"><div class = "arrow-right"></div><p><%=topright3%></p></div>\
+    	<div id = "bottom" class = "intro_box"><div class = "arrow-down"></div><p><%=bottom%></p></div>\
+	'),
 
 	initialize:function() {
 
@@ -2558,9 +2653,11 @@ var app = app || {};
 app.ItemView = Backbone.View.extend({
 
 	className:"item",
-	template: _.template( $('#item-template').html() ),
+	template: _.template( '<p class = "label hidden"></p>' ),
 
 	initialize:function(options) {
+
+		this.listenTo(Backbone, "items:updatePositions", this.updatePositions);
 
 		this.parent = options.parent;
 
@@ -2584,7 +2681,7 @@ app.ItemView = Backbone.View.extend({
 				success:function(data) {
 					self.model.set(data);
 					_.bind(self.createCanvas, self)(data);
-					self.parent.parent.$itemcontainer.prepend( self.render().el );
+					self.parent.parent.$itemcontainer.children(":first").prepend( self.render().el );
 				},
 
 				complete:function() {
@@ -2595,10 +2692,35 @@ app.ItemView = Backbone.View.extend({
 
 		} else {
 
-			self.parent.parent.$itemcontainer.prepend( self.render().el );
+			self.parent.parent.$itemcontainer.children(":first").prepend( self.render().el );
 			options.complete();
 
 		}
+	},
+
+	updatePositions:function(args) {
+		var regex = /[+-]?\d+(\.\d+)?/g;
+		var floats = args.mat.match(regex).map(function(v) { return parseFloat(v); });
+
+		this.w = this.wBase * floats[0];
+		this.h = this.hBase * floats[0];
+
+		ws = args.ws;
+
+		var z = this.parent.parent.projects_views.previous_zoom;
+
+		var x_rp = parseFloat($("#rightpanel").css("left"));
+		var x_focal = this.X - ws.clientX + x_rp;
+		var x_scaled = x_focal*floats[0]/z
+		var x_translated = x_scaled + ws.clientX - x_rp;
+
+		var y_rp = parseFloat($("#rightpanel").css("top"));
+		var y_focal = this.Y - ws.clientY + y_rp;
+		var y_scaled = y_focal*floats[0]/z
+		var y_translated = y_scaled + ws.clientY - y_rp;
+
+		this.X = x_translated;
+		this.Y = y_translated;
 	},
 
 	createCanvas:function(data) {
@@ -2617,12 +2739,14 @@ app.ItemView = Backbone.View.extend({
 		var h_mod = data.height*scaling*scaling ;
 
 		// Create the canvas
-		this.r = Raphael(this.$el[0], w_mod+5, h_mod+5);
+		this.r = Raphael(this.$el[0], w_mod, h_mod);
 		$("svg", this.$el).css({position:"absolute"});
 
 		this.scaling = scaling;
 		this.w = w_mod * parseFloat(this.model.get("iw"));
 		this.h = h_mod * parseFloat(this.model.get("ih"));
+		this.wBase = this.w;
+		this.hBase = this.h;
 
 		this.model.set("w_mod", w_mod);
 		this.model.set("h_mod", h_mod);
@@ -2680,9 +2804,11 @@ app.ItemView = Backbone.View.extend({
 
 		this.X = eval(m.get("x"));
 		this.Y = eval(m.get("y"));
+		this.Xbase = this.X;
+		this.Ybase = this.Y;
 
-		this.fax = this.X+ (m.get("fax")*m.get("w_mod") || 0);
-		this.fay = this.Y+ (m.get("fay")*m.get("h_mod") || 0);
+		this.fax = this.X + (m.get("fax")*m.get("w_mod") || 0);
+		this.fay = this.Y + (m.get("fay")*m.get("h_mod") || 0);
 
 		return this;
 
@@ -2807,13 +2933,29 @@ app.ItemProjectView = Backbone.View.extend({
 	tagName:"li",
 	className:"itemproject",
 
-	events:{
-		"mouseenter":"over",
-		"mouseleave":"out",
-		"click":"clk"
+	events: function() {
+
+		var events_hash = {};
+		if (this.to_render) {
+			_.extend(events_hash, {"mouseenter":"over",
+									"mouseleave":"out",
+									"click":"clk"});
+		}
+		return events_hash;
 	},
 
-	template: _.template( $('#itemproject-template').html() ),
+	template: _.template('\
+		<div class = "content">\
+      		<div class = "gcontainer"><img class = "graphics" src=<%=imgurl%>></div>\
+      		<div class = "logocontainer hidden">\
+        	<div class = "mask"></div>\
+        		<img src=<%=logourl%>>\
+      		</div>\
+      		<div class = "text">\
+        		<h3 class = "name"><%=name%></h3>\
+      		<div>\
+    	</div>\
+	'),
 
 	initialize:function() {
 		this.rendered = true;
@@ -2821,12 +2963,18 @@ app.ItemProjectView = Backbone.View.extend({
 		if (this.model.get("logo") == "amu") { this.model.set("logourl", "data/graphics/logoamusmall.png"); }
 		else if (this.model.get("logo") == "adpd") { this.model.set("logourl", "data/graphics/adpd.png"); }
 		else { this.model.set("logourl", ""); this.hasLogo = false }
+
+		var global_ids = ["paris", "grandparis", "valdemarne", "px"];
+		this.to_render = true;
+		if(global_ids.indexOf(this.model.get("id")) > -1) {
+			this.to_render = false;
+		}
 	},
 
 	render:function() {
-		this.renderContent()
-			.cacheComponents()
-			return this;
+			this.renderContent()
+				.cacheComponents()
+		return this;
 	},
 
 	cacheComponents:function() {
@@ -2861,18 +3009,19 @@ app.ItemProjectView = Backbone.View.extend({
 
 	focus:function() {
 		this.$el.addClass("item-focused");
-		this.hasLogo && this.$logocontainer.show();
+		this.to_render && this.hasLogo && this.$logocontainer.show();
 		return this;
 	},
 
 	unfocus:function() {
 		this.$el.removeClass("item-focused");
-		this.hasLogo && this.$logocontainer.hide();
+		this.to_render && this.hasLogo && this.$logocontainer.hide();
 	},
 
 	clk:function() {
 		var id = this.model.get("id");
-		id !== "p0" && Backbone.trigger("route:buildGo", {change:"project", id:id});
+		var global_ids = ["paris", "grandparis", "valdemarne", "px"];
+		(global_ids.indexOf(this.model.get("id")) < 0)  && Backbone.trigger("route:buildGo", {change:"project", id:id});
 	},
 
 	close:function() {
@@ -2931,7 +3080,13 @@ app.NavView = Backbone.View.extend({
 		"click":"clk"
 	},
 
-	template: _.template( $('#nav-template').html() ),
+	template: _.template('\
+		<div class="tip border-tip">\
+      		<h3><%=title%></h3>\
+      		<b class="border-notch notch"></b>\
+      		<b class="notch"></b>\
+    	</div>\
+	'),
 
 	initialize:function() {
 		_.bindAll(this, "renderClean")
@@ -2972,7 +3127,15 @@ app.PopProjectView = Backbone.View.extend({
 		"mouseleave":"out"
 	},
 
-	template: _.template( $('#popproject-template').html() ),
+	template: _.template('\
+		<div class="tip border-tip">\
+			<div id = "mousebox"></div>\
+			<p><%=name%></p>\
+			<b class="border-notch notch"></b>\
+			<b class="notch"></b>\
+		</div>\
+		<div id = "pin"></div>\
+	'),
 
 	initialize:function(options) {
 		_.bindAll(this, "renderClean")
@@ -2983,8 +3146,8 @@ app.PopProjectView = Backbone.View.extend({
 
 	render:function() {
 		this.renderContent()
-			.cacheComponents()
-			return this;
+		.cacheComponents()
+		return this;
 	},
 
 	cacheComponents:function() {
@@ -3000,12 +3163,11 @@ app.PopProjectView = Backbone.View.extend({
 	},
 
 	renderGeometry:function() {
-		var b_id = "pin" + this.model.get("type");
-		if (this.model.get("id") === "p0") {
-			this.pin_b = new app.ButtonView( {model:app.instance.ui.b_collection.get(b_id), el:this.$pin} );
-		} else if (this.model.get("type") === "local") {
-			this.pin_b = new app.ButtonView( {model:app.instance.ui.b_collection.get(b_id), el:this.$pin} );
-		}
+
+		var type = this.model.get("type") === "local" ? "local" : "global";
+		var b_id = "pin" + type;
+		this.pin_b = new app.ButtonView( {model:app.instance.ui.b_collection.get(b_id), el:this.$pin} );
+
 		return this;
 	},
 
@@ -3014,16 +3176,30 @@ app.PopProjectView = Backbone.View.extend({
 		var yt = this.item.Y;
 		var wt = this.item.w;
 		var ht = this.item.h;
-		var x = xt + wt * (parseFloat(this.model.get("x")) - 0.5);
-		var y = yt + ht * (parseFloat(this.model.get("y")) - 0.5);
+		var wb = this.item.wBase;
+		var hb = this.item.hBase;
+		var s = this.item.scaling;
+
+		var is_gp = this.item.model.get("geom");
+
+		if (is_gp == "data/graphics/geom_grandparis.json") {
+			var x = xt - wt/2 + 1*1069 * (parseFloat(this.model.get("x"))) * s*s * wt/wb + 344*s*s * wt/wb;
+			var y = yt - ht/2 + 1*393 * (parseFloat(this.model.get("y"))) * s*s * ht/hb + 389*s*s * wt/wb;
+		} else {
+			var x = xt + wt*(parseFloat(this.model.get("x")) - 0.5);
+			var y = yt + ht*(parseFloat(this.model.get("y")) - 0.5);
+		}
+
+
 		this.y = y;
+		this.x = x;
 		this.$el.css( {top:y, left:x} );
 	},
 
 	renderClean:function() {
 
 		this.renderGeometry()
-			.correctPosition();
+		.correctPosition();
 
 		var w = this.$tip.width(), h = this.$tip.height();
 		var offy = this.model.get("type") === "local" ? 60 : 40;
@@ -3052,16 +3228,16 @@ app.PopProjectView = Backbone.View.extend({
 
 	over:function() {
 		Backbone.trigger("projects:focus", {id:this.id, freezePop:true});
-		(this.id === "p0" || this.id === "px") && this.$tip.addClass("show_h");
+		(this.id.length > 3 || this.id === "px") && this.$tip.addClass("show_h");
 	},
 
 	out:function() {
 		Backbone.trigger("projects:unfocus", {id:this.id});
-		(this.id === "p0" || this.id === "px") && this.$tip.removeClass("show_h");
+		(this.id.length > 3 || this.id === "px") && this.$tip.removeClass("show_h");
 	},
 
 	focus:function() {
-		this.$el.velocity( {top:"+=10"}, {duration:300, loop:true} );
+		this.$el.velocity( {top:"-=10"}, {duration:300, loop:true} );
 		return this;
 	},
 
@@ -3072,6 +3248,10 @@ app.PopProjectView = Backbone.View.extend({
 	close:function() {
 		this.stopListening();
 		this.pin_b && this.pin_b.remove();
+	},
+
+	zOrder:function(z) {
+		this.$el.css({"z-index":z});
 	}
 
 });
@@ -3079,13 +3259,35 @@ var app = app || {};
 
 app.ProjectsView = Backbone.View.extend({
 
-	template: _.template( $('#project-template').html() ),
+	template: _.template('\
+  		<div id = "leftpanel">\
+			<div id = "header">\
+      			<div class="form-group">\
+        			<input type="text" class="form-control" placeholder="Recherche..."/>\
+      			</div>\
+            	<i class="icon-search form-control-feedback"></i>\
+      			<div id = "categorylist">\
+        			<ul></ul>\
+      			</div>\
+      			<div id = "categoryname">\
+        			<p></p>\
+      			</div>\
+      			<p id = "search_info"></p>\
+    		</div>\
+    		<div id = "content">\
+      			<ul id = "itemlist"></ul>\
+    		</div>\
+  		</div>\
+  		<div id = "rightpanel"></div>\
+	'),
 
 	events: {
 		"keyup .form-control": "textSearch"
 	},
 
 	initialize:function(options) {
+
+		this.parent = options.parent;
 
 		this.items_views = options.items_views.views_collection;
 
@@ -3104,11 +3306,15 @@ app.ProjectsView = Backbone.View.extend({
 		// Listen for events of pins and items
 		this.listenTo(Backbone, "projects:focus", this.focusProject);
 		this.listenTo(Backbone, "projects:unfocus", this.unfocusProject);
+		this.listenTo(Backbone, "projects:updatePositions", this.updateProjectsPositions);
 
 		// Listen for events of category buttons
 		this.listenTo(Backbone, "categories:focus", this.focusCategory);
 		this.listenTo(Backbone, "categories:unfocus", this.unfocusCategory);
 		this.listenTo(Backbone, "categories:clk", this.clkCategory);
+
+		// Listen for panzoom events
+		this.listenTo(Backbone, "map:pan", this.panMap);
 
 		// Store name of projects for text search
 		this.user_input = "";
@@ -3126,16 +3332,18 @@ app.ProjectsView = Backbone.View.extend({
 
 		// Keep the panel hidden ?
 		this.showpanel = options.showpanel;
+		this.allow_pan = true;
 
 	},
 
 	render:function() {
 		this.renderContent()
-			.cacheComponents()
-			.renderCategories()
-			.renderPops()
-			.renderItems()
-			.slidePanel();
+		.cacheComponents()
+		.renderCategories()
+		.renderPops()
+		.renderItems()
+		.attachPan()
+		.slidePanel();
 		return this;
 	},
 
@@ -3163,7 +3371,158 @@ app.ProjectsView = Backbone.View.extend({
 		return this;
 	},
 
+	attachPan:function() {
+
+      	// Set up panzoom
+      	// var pz = this.parent.$itemcontainer.panzoom();
+      	this.parent.$itemcontainer.panzoom( "option", "increment", 0.2 );
+      	this.pan_limits = [-0.5,0.5,-0.75,0.75];
+      	this.parent.$itemcontainer.panzoom( "option", "limits", this.pan_limits );
+
+      	// When the user pans the map, move the projects pins container
+      	this.parent.$itemcontainer.on("panzoomstart", _.bind(this.storeTransform, this));
+      	this.parent.$itemcontainer.on("panzoompan", _.bind(this.panMap, this));
+      	this.parent.$itemcontainer.on("panzoomend", _.bind(this.endPan, this));
+      	this.parent.$itemcontainer.on("panzoomzoom", _.bind(this.panMapAfterZoom, this));
+      	// this.parent.$el.on("mousewheel.focal", _.bind(this.wheelZoom, this));
+
+      	this.offsetX = 0;
+      	this.offsetY = 0;
+
+      	this.startX = 0;
+      	this.startY = 0;
+
+      	this.previous_zoom = 1;
+      	this.next_zoom = 1;
+
+      	return this;
+      },
+
+      panMap:function(e, pz, x, y) {
+
+		// Gets and sets the offset
+		function panPanel($el, pz, x, y) {
+
+			var w = $("#itemcontainer").width(),
+				h = $("#itemcontainer").height();
+
+			var xl = this.pan_limits[0]*w,
+				xr = this.pan_limits[1]*w,
+				yt = this.pan_limits[2]*h,
+				yb = this.pan_limits[3]*h;
+
+
+			if (y < yt) {
+				$el.css("top", yt);
+			} else if (y > yb) {
+				$el.css("top", yb);
+			} else {
+				$el.css("top", y + 1*(this.startY - this.offsetY));
+			}
+
+			if (x < xl) {
+				$el.css("left", xl);
+			} else if (x > xr) {
+				$el.css("left", xr);
+			} else {
+				$el.css("left", x + 1*(this.startX - this.offsetX));
+			}
+		}
+
+		function disablePan() {
+			this.allow_pan = false;
+		}
+
+		// If the mouse points inside the map container, move it
+		// if (this.allow_pan) {
+
+			// Set the listeners to catch the moment when the mouse leaves the map container
+			// this.$leftpanel.one("mouseover", _.bind(disablePan, this));
+			// $("#territory").one("mouseleave", _.bind(disablePan, this));
+			_.bind(panPanel, this)(this.$rightpanel, pz, x, y);
+			// _.bind(this.endPan,this)(pz);
+
+		// } else {
+
+		// 	_.bind(panPanel,this)(this.$rightpanel, pz, x, y);
+		// 	_.bind(this.endPan,this)(pz);
+		// 	this.allow_pan = true;
+		// 	return;
+		// }
+
+	},
+
+	endPan:function(e, pz) {
+		// this.$leftpanel.off("mouseover");
+		// $("#territory").off("mouseleave");
+		this.offsetX = parseFloat(this.$rightpanel.css("left"));
+		this.offsetY = parseFloat(this.$rightpanel.css("top"));
+	},
+
+	storeTransform:function(e, pz) {
+		var z = pz.getMatrix()[0]
+		this.previous_zoom = z;
+		this.offsetX = pz.getMatrix()[4];
+		this.offsetY = pz.getMatrix()[5];
+		this.startX = parseFloat(this.$rightpanel.css("left"));
+		this.startY = parseFloat(this.$rightpanel.css("top"));
+	},
+
+	panMapAfterZoom:function(e, pz, x, y) {
+		var z = parseFloat(pz.getMatrix()[0]);
+		this.previous_zoom = this.next_zoom;
+		if (Math.abs(z - this.previous_zoom) > 0.001) {this.next_zoom = z;}
+	},
+
+	updateProjectsPositions:function() {
+		this.renderPops();
+		Backbone.trigger("territory:updateProjects");
+	},
+
+	wheelZoom:function(e) {
+
+		e.preventDefault();
+		var delta = e.deltaY || e.originalEvent.wheelDelta;
+		var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+
+		var next_zoom = this.previous_zoom + delta/100*2;
+		$("#zoom").find(".zoom-range").val(next_zoom*100-50);
+
+		this.parent.$itemcontainer.panzoom("zoom", zoomOut, {
+			increment:Math.abs(delta)/100*2,
+			animate:false,
+			focal:e
+		});
+
+		mat = this.parent.$itemcontainer.panzoom("getMatrix").input;
+		var ws = {clientX:e.clientX, clientY:e.clientY};
+
+		var pz = this.parent.$itemcontainer.panzoom("instance");
+
+		_.bind(this.reloadPins(e, pz, mat, ws, zoomOut), this)();
+
+
+	},
+
+	reloadPins:function(e, pz, mat, ws, zoomOut) {
+		var self = this;
+		var doit;
+		return function() {
+			clearTimeout(self.doit);
+			console.log("clear and reset timer")
+
+			self.panMapAfterZoom(e, pz);
+			self.doit = setTimeout(function() {
+				console.log("reload")
+				Backbone.trigger("items:updatePositions", {mat:mat, ws:ws, z:zoomOut});
+				Backbone.trigger("projects:updatePositions", {mat:mat, ws:ws, z:zoomOut});
+			}, 200);
+		};
+	},
+
 	renderPops:function() {
+
+		// Render each project pin
 		this.collection.each(function(project, index) {
 			if (project.get("render")) {
 				var ppv = this.ppv_collection.add( {id:project.get("id"), model:project, item:this.items_views.get(project.get("territory"))} );
@@ -3171,19 +3530,46 @@ app.ProjectsView = Backbone.View.extend({
 				_.defer(ppv.renderClean);
 			}
 		}, this);
+
+		// Stack them from front to bottom to avoid unwanted overlap
+		var self = this;
+		_.defer(function() {
+
+			function ySort(a, b) {
+				var a_type = a.model.get("type"),
+					b_type = b.model.get("type");
+
+				if (a_type === b_type) {
+					return (a.y - b.y)
+				} else if (b_type == "global") {
+					return -1
+				} else {
+					return 1
+				}
+			}
+
+			var fs = self.ppv_collection.models;
+			fs.sort(ySort);
+			var len = fs.length;
+			while(len--) {
+				self.ppv_collection.get(fs[len].id).zOrder(len);
+			}
+
+		})
+
 		return this;
 	},
 
 	renderCategories:function() {
 
 		var categoriesData = [
-			{"icon": "icon-tous", "color":"#9e9e9", "label": "Tous les projets"},
-			{"icon": "icon-nouveauxmodels", "color":"#b4b3b3", "label": "Nouveaux modèles économiques"},
-			{"icon": "icon-eau", "color":"#99d2e9", "label": "Gestion durable de l'eau"},
-			{"icon": "icon-energies", "color":"#fcea27", "label": "Récupération et valorisation énergétique"},
-			{"icon": "icon-matieres", "color":"#cbbc9f", "label": "Réemploi et réutilisation matières"},
-			{"icon": "icon-dechetsverts", "color":"#cbbc9f", "label": "Valorisation bio-déchets et agriculture urbaine"},
-			{"icon": "icon-chantier", "color":"#9cc876", "label": "Recyclage et valorisation des déchets de chantier"}
+		{"icon": "icon-tous", "color":"#9e9e9", "label": "Tous les projets"},
+		{"icon": "icon-nouveauxmodels", "color":"#b4b3b3", "label": "Nouveaux modèles économiques"},
+		{"icon": "icon-eau", "color":"#99d2e9", "label": "Gestion durable de l'eau"},
+		{"icon": "icon-energies", "color":"#fcea27", "label": "Récupération et valorisation énergétique"},
+		{"icon": "icon-matieres", "color":"#cbbc9f", "label": "Réemploi et réutilisation matières"},
+		{"icon": "icon-dechetsverts", "color":"#cbbc9f", "label": "Valorisation biodéchets et agriculture urbaine"},
+		{"icon": "icon-chantier", "color":"#9cc876", "label": "Recyclage et valorisation des déchets de chantier"}
 		];
 
 		_.each(categoriesData, function(category, index) {
@@ -3197,9 +3583,11 @@ app.ProjectsView = Backbone.View.extend({
 
 	renderItems:function() {
 
+		var global_ids = ["paris", "grandparis", "valdemarne", "px"];
+
 		this.collection.each(function(project, index) {
-			if (project.get("id") !== "p0" && project.get("id") !== "px") {
-				var ipv = this.ipv_collection.add( {id:project.get("id"), model:project} );
+			var ipv = this.ipv_collection.add( {id:project.get("id"), model:project} );
+			if (global_ids.indexOf(project.get("id")) < 0) {
 				this.$list.append( ipv.render().el );
 			}
 		}, this);
@@ -3251,7 +3639,6 @@ app.ProjectsView = Backbone.View.extend({
 		var projects_to_show = _.select(this.ipv_collection.models, function(project) {
 			return (_.indexOf(ids_to_show, project.id) > -1);
 		});
-
 
 		// Write search info box
 		if (this.user_input.length > 2) {
@@ -3349,7 +3736,9 @@ app.ProjectsView = Backbone.View.extend({
 
 	focusProject:function(args) {
 
-		if (args.id !== "p0" && args.id !== "px") {
+		var global_ids = ["paris", "grandparis", "valdemarne", "px"];
+
+		if (global_ids.indexOf(args.id) < 0) {
 
 			var ipv = this.ipv_collection.get(args.id);
 
@@ -3363,18 +3752,19 @@ app.ProjectsView = Backbone.View.extend({
 				if (!args.freezePop) this.focused_pop = this.ppv_collection.get(args.id).focus();
 			} else {
 				// Focus the floating global element
-				this.focused_id = "p0";
-				if (!args.freezePop) this.focused_pop = this.ppv_collection.get("p0").focus();
+				var coverage = ipv.model.get("coverage")
+				this.focused_id = coverage;
+				if (!args.freezePop) this.focused_pop = this.ppv_collection.get(coverage).focus();
 			}
 
 			this.focused_item = ipv.focus();
 			if (args.freezePop) this.focused_item.$el.velocity( "scroll", {container:this.$list, duration:1000, offset:-64, "easing":"easeInOut"});
 		}
 
-		else if (args.id === "p0") {
+		else if (args.id !== "px") {
 
 			var projects_to_focus = _.select(this.ipv_collection.models, function(project) {
-				return (project.model.get("type") === "global");
+				return (project.model.get("type") === "global" && project.model.get("coverage") === args.id);
 			});
 
 			this.focused_items = {};
@@ -3391,7 +3781,9 @@ app.ProjectsView = Backbone.View.extend({
 
 	unfocusProject:function(args) {
 
-		if (args.id !== "p0") {
+		var global_ids = ["paris", "grandparis", "valdemarne", "px"];
+
+		if (global_ids.indexOf(args.id) < 0) {
 			// Unfocus previously focused element
 			this.focused_pop && this.focused_pop.unfocus();
 			this.focused_item && this.focused_item.unfocus();
@@ -3413,11 +3805,24 @@ app.ProjectsView = Backbone.View.extend({
 			ppv.close();
 			ppv.remove();
 		});
+
 		_.each(this.ipv_collection.models, function(ipv) {
 			ipv.close();
 			ipv.remove();
 		});
+
 		this.stopListening();
+	},
+
+	updatePops:function() {
+		this.$leftpanel.velocity("stop");
+		this.focused_item && this.focused_item.$el.velocity("stop");
+		this.focused_pop && this.focused_pop.$el.velocity("stop");
+
+		_.each(this.ppv_collection.models, function(ppv) {
+			ppv.close();
+			ppv.remove();
+		});
 	}
 
 });
@@ -3508,7 +3913,23 @@ app.StartView = Backbone.View.extend({
 
 	id:"start",
 
-	template: _.template( $('#start-template').html() ),
+	template: _.template('\
+  		<div id = "warning"><p><%= warningText %></p></div>\
+		<div id = "backstart">\
+			<div id = "rstart"></div>\
+			<div id = "tstart">\
+      			<h1><%= startTitle %></h1>\
+      			<p><%= startText %></p>\
+      			<div id = "launch"><p>Explorer</p></div>\
+      			<div id = "demo"><p>Démo</p></div>\
+    		</div>\
+		</div>\
+    	<div id = "foot_logos">\
+      		<ul>\
+        		<li><a href = "http://www.paris.fr/" target="_blank"><img src = "./data/graphics/logo-mdp.gif"/></a></li>\
+      		</ul>\
+    	</div>\
+	'),
 
 	events: {
 		"click #launch": "launch",
@@ -3633,7 +4054,17 @@ app.StoriesView = Backbone.View.extend({
 
 	id:"footer",
 
-	template: _.template( $('#story-template').html() ),
+	template: _.template('\
+		<div id = "nav"><ul></ul></div>\
+    	<div id = "title"><h2></h2><p></p></div>\
+    	<div id = "story">\
+      		<ul>\
+        		<li id = "previous" class = "s_button"><span>Info précédente</span></li>\
+        		<li id = "next" class = "s_button"><span>Plus d‘infos</span></li>\
+        		<li id = "tcontainer"><p id = "s_text"></p></li>\
+      		</ul>\
+    	</div>\
+	'),
 
 	events: {
 		"click #previous":"previous",
@@ -3649,6 +4080,8 @@ app.StoriesView = Backbone.View.extend({
 
 		this.i = -1;
 		this.s = 0;
+
+		//$('body').keyup(_.bind(utils.debounce(this.arrowKeyPressed, 150), this));
 
 	},
 
@@ -3812,6 +4245,15 @@ nextStep:function(args) {
 
 	next:function() {
 		this.nextStep( {dir:1} );
+	},
+
+	arrowKeyPressed:function(e) {
+		var code = e.keyCode;
+		if (code == 39 && $("#next").css("display") !== "none") {
+			this.next();
+		} else if (code == 37 && $("#previous").css("display") !== "none") {
+			this.previous();
+		}
 	}
 
 });
@@ -3832,7 +4274,6 @@ app.TerritoriesView = Backbone.View.extend({
   },
 
   close:function() {
-    console.log(this.previousView)
   	 this.previousView.close();
   	 this.previousView.remove();
   }
@@ -3845,7 +4286,14 @@ app.TerritoryView = Backbone.View.extend({
 
 	id:"territory",
 
-	template: _.template( $('#territory-template').html() ),
+	template: _.template('\
+		<div id = "leftpanel"></div>\
+		<div id = "flowcontainer" class = "hidden"></div>\
+  		<div id = "itemcontainer"><div id = "items"></div></div>\
+  		<div id = "projectcontainer"></div>\
+  		<div id = "popcontainer"></div>\
+  		<div id = "storycontainer"></div>\
+	'),
 
 	initialize:function(options) {
 
@@ -3894,7 +4342,12 @@ app.TerritoryView = Backbone.View.extend({
 		});
 
 		this.listenTo(Backbone, "item:loaded", this.itemsCountDown);
+		this.listenTo(Backbone, "territory:updateProjects", this.updateProjects);
 
+	},
+
+	updateProjects:function() {
+		this.projects_views && this.$projectcontainer.append( this.projects_views.el );
 	},
 
 	itemsCountDown:function() {
@@ -3902,6 +4355,7 @@ app.TerritoryView = Backbone.View.extend({
 		this.items_number--;
 
 		if (this.items_number == 0) {
+
 			this.projects_views && this.$projectcontainer.append( this.projects_views.render().el );
 
 			Backbone.trigger("stories:go", {id:0});
@@ -3913,10 +4367,10 @@ app.TerritoryView = Backbone.View.extend({
 				this.iv = iv;
 			}
 
-			this.$storycontainer.velocity("fadeIn", {duration:300, delay:250});
-			this.$flowcontainer.velocity("fadeIn", {duration:300, delay:250});
-			this.$popcontainer.velocity("fadeIn", {duration:300, delay:250});
-			$("#flowscale").velocity("fadeIn", {duration:300, delay:250});
+			this.$storycontainer.velocity("fadeIn", {duration:300, delay:200});
+			this.$flowcontainer.velocity("fadeIn", {duration:300, delay:200});
+			this.$popcontainer.velocity("fadeIn", {duration:300, delay:200});
+			$("#flowscale").velocity("fadeIn", {duration:300, delay:200});
 		}
 
 
@@ -3929,7 +4383,9 @@ app.TerritoryView = Backbone.View.extend({
 		this.adjustVertically(options);
 
 		this.$el.html( this.template() );
+
 		this.$itemcontainer = this.$el.find("#itemcontainer");
+		this.$items = this.$el.find("#items");
 		this.$flowcontainer = this.$el.find("#flowcontainer");
 		this.$projectcontainer = this.$el.find("#projectcontainer");
 		this.$storycontainer = this.$el.find("#storycontainer");
@@ -3937,8 +4393,6 @@ app.TerritoryView = Backbone.View.extend({
 
 		this.items_views.render();
 		this.$storycontainer.append( this.stories_views.render().el );
-
-
 
 		return this;
 	},
@@ -3961,6 +4415,9 @@ app.TerritoryView = Backbone.View.extend({
 
 		// items:animate listener
 		this.items_views.stopListening();
+
+		// Zoom handler
+		if(this.$itemcontainer.panzoom()) {this.$itemcontainer.panzoom("destroy")}
 
 		// flows:children flows:parent flows:changeYear flows:nav listeners
 		this.flows_views.stopListening();
@@ -4044,7 +4501,9 @@ app.UIView = Backbone.View.extend({
     "click #about_b": "about"
   },
 
-  initialize:function(options) {
+  initialize:function(parent, options) {
+
+    this.parent = parent;
 
     this.buttons = {};
 
@@ -4061,14 +4520,19 @@ app.UIView = Backbone.View.extend({
 
     this.renderScale();
 
+    $("#share").on("click", _.bind(this.popShare, this));
+    $("#expand").on("click", _.bind(this.expandFlows, this));
+    $("#contract").on("click", _.bind(this.contractFlows, this));
+    $("#about_b").on("click", _.bind(this.about, this));
+
     _.bindAll(this, "about", "unloadAbout", "demo", "unloadDemo");
-    
+
   },
 
   renderScale:function() {
-      var paper = Raphael($("#fs_container div")[0], 100, 200);
-      var scale_icon = paper.path();
-      this.Rscale = scale_icon;
+    var paper = Raphael($("#fs_container div")[0], 100, 200);
+    var scale_icon = paper.path();
+    this.Rscale = scale_icon;
   },
 
   updateScale:function(args) {
@@ -4077,83 +4541,126 @@ app.UIView = Backbone.View.extend({
       var vscale = Math.round(0.0001 * 80/args.scale) / 0.0001;
       var hscale = vscale*args.scale;
 
-    if (hscale < 2) {
+      if (hscale < 2) {
 
-      $("#fs_container").hide();
-      $("#fs_text").hide();
+        $("#fs_container").hide();
+        $("#fs_text").hide();
 
-    } else if (!args.virtual) {
+      } else if (!args.virtual) {
 
-      $("#legend").velocity("fadeIn", {duration:200, display:"block", delay:1000});
+        $("#legend").velocity("fadeIn", {duration:200, display:"block", delay:1000});
 
-      $("#fs_container").show();
-      $("#fs_text").show();
-      $("#fs_container div").css({height:hscale + 10})
-      this.Rscale.attr({path:["M",30,hscale+5,"H",25,"V",5,"H",30], "stroke-width":3, "stroke":"#ccc"});
-      $("#legend #fs_text p").html(utils.formatVolume(vscale, " ") + " " + args.unit);
-  
-    }
+        $("#fs_container").show();
+        $("#fs_text").show();
+        $("#fs_container div").css({height:hscale + 10})
+        this.Rscale.attr({path:["M",30,hscale+5,"H",25,"V",5,"H",30], "stroke-width":3, "stroke":"#ccc"});
+        $("#legend #fs_text p").html(utils.formatVolume(vscale, " ") + " " + args.unit);
 
-  },
+      }
 
-  addButton:function(button) {
-    if ($(button.get("el")).length > 0) {
-      this.buttons[button.get("id")] = new app.ButtonView( {model:button, el:$(button.get("el"))} );
-    }
-  },
+    },
 
-  showButtons:function(args, delay) {
+    addButton:function(button) {
+      if ($(button.get("el")).length > 0) {
+        this.buttons[button.get("id")] = new app.ButtonView( {model:button, el:$(button.get("el"))} );
+      }
+    },
 
-    var d = delay || 0;
+    showButtons:function(next, delay) {
 
-    $("#legend").velocity("fadeOut", {duration:200});
+      args = next.model ? next.model.get("ui_elements") : next;
 
-    _.each(this.buttons, function(value) {
-      var sc = value.model.get("show_class");
-       value.$el.velocity("fadeOut", {duration:200})
-    })
+      var d = delay || 0;
 
-    this.p_showed_buttons = this.showed_buttons;
-    this.showed_buttons = args;
+      $("#legend").velocity("fadeOut", {duration:200});
 
-    var len = args.length;
-    while(len--) {
-      var bv = this.buttons[args[len]];
-      var sc = bv.model.get("show_class");
-      this.buttons[args[len]].$el.velocity("fadeIn", {display:sc, duration:200, delay:d})
-      // this.buttons[args[len]].$el.addClass(sc);
-    }
-  },
+      // Hide every button
+      _.each(this.buttons, function(value) {
+        var sc = value.model.get("show_class");
+        value.$el.velocity("fadeOut", {duration:200})
+      })
 
-  clickRadio:function(args) {
-    var radio = this.buttons[args.id].model.get("radio"), len = radio.length;
-    while(len--) {
-      var id = radio[len];
-      this.buttons[id].unclick();
-    }
-  },
+      // Reset the zoom
+      next.$itemcontainer && next.$itemcontainer.panzoom("destroy");
+      $("#zoom").find(".zoom-range").off();
+      $("#zoom").find(".zoom-range").val(50);
 
-  updateButtons:function(args) {
-    var state = args.state;
-    state.rootState === "p" && this.buttons[state.rootState].clk({silent:true});
-    state.territoryState !== null && state.rootState !== "p" && this.buttons[state.territoryState].clk({silent:true});
-    state.typeState !== null && this.buttons[state.typeState].clk({silent:true});
-    state.timeState !== null && this.toggleTime(state);
-  },
+      this.p_showed_buttons = this.showed_buttons;
+      this.showed_buttons = args;
 
-  popShare:function() {
+      var len = args.length;
+
+      while(len--) {
+        var bv = this.buttons[args[len]];
+        var sc = bv.model.get("show_class");
+        this.buttons[args[len]].$el.velocity("fadeIn", {display:sc, duration:200, delay:d});
+
+        if (args[len] == "zoom") {
+
+          var pz = next.$itemcontainer.panzoom();
+          var self = this;
+          self.startZoom = $("#zoom").find(".zoom-range").val();
+
+          $("#zoom").find(".zoom-range").on("mousedown", function( e ) {
+            self.startZoom = this.value*1;
+          })
+
+          $("#zoom").find(".zoom-range").on("mouseup", function( e ) {
+
+            var delta = self.startZoom - this.value;
+            self.startZoom = this.value;
+            var zoomOut = (delta > 0);
+
+            lpw = $("#leftpanel").width()
+            ws = utils.getWindowSize();
+            ws = {clientX: (lpw*0.5+ws.w*0.5), clientY:ws.h*0.5};
+
+            pz.panzoom("zoom", zoomOut, {
+              increment:Math.abs(delta)/100,
+              animate:true,
+              focal:ws
+            });
+
+            mat = pz.panzoom("getMatrix").input;
+            Backbone.trigger("items:updatePositions", {mat:mat, ws:ws});
+            Backbone.trigger("projects:updatePositions", {mat:mat, ws:ws});
+
+          })
+        } 
+      }
+
+      //$("#topright").velocity("fadeIn", {duration:350});
+    },
+
+    clickRadio:function(args) {
+      var radio = this.buttons[args.id].model.get("radio"), len = radio.length;
+      while(len--) {
+        var id = radio[len];
+        this.buttons[id].unclick();
+      }
+    },
+
+    updateButtons:function(args) {
+      var state = args.state;
+      state.rootState === "p" && this.buttons[state.rootState].clk({silent:true});
+      state.territoryState !== null && state.rootState !== "p" && this.buttons[state.territoryState].clk({silent:true});
+      state.typeState !== null && this.buttons[state.typeState].clk({silent:true});
+      state.timeState !== null && this.toggleTime(state);
+    },
+
+    popShare:function() {
       var w = window.screen.availWidth;
       var h = window.screen.availHeight;
       window.open("html/share.html",'popUpWindow',"height=100,width=400,left="+ w/2 +",top="+ h/2 +",resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=no")
-  },
+    },
 
-  toggleTime:function(state) {
+    toggleTime:function(state) {
 
-    var $el = this.buttons["time"].$el;
-    var $toggle = $el.find(".toggle");
-    var $label = $el.find(".toggle span");
+      var $el = this.buttons["time"].$el;
+      var $toggle = $el.find(".toggle");
+      var $label = $el.find(".toggle span");
 
-    $("#trend_legend").removeClass("show_h");
+      $("#trend_legend").removeClass("show_h");
 
     // Target state : 2012/Tendances ?
     if (state.timeState === "2") {
@@ -4172,8 +4679,8 @@ app.UIView = Backbone.View.extend({
       }
 
     // Else move toggle on the left and hide legend
-    } else {
-      $toggle.removeClass("toggle-right");
+  } else {
+    $toggle.removeClass("toggle-right");
 
       // Change span content and display legend if needed
       if (state.typeState === "matter") {
@@ -4211,11 +4718,11 @@ app.UIView = Backbone.View.extend({
 
     // Create the view
     this.about_view = new app.AboutView();
-    this.$el.first().prepend(this.about_view.render().el);
+    this.$el.first().append(this.about_view.render().el);
 
     // Bind the close call to the x button
-    this.$el.undelegate("#about_b", "click");
-    this.$el.delegate("#about_b", "click", this.unloadAbout);
+    $("#about_b").off("click");
+    $("#about_b").on("click", _.bind(this.unloadAbout, this));
 
   },
 
@@ -4230,8 +4737,8 @@ app.UIView = Backbone.View.extend({
     $("html, body").scrollTop(0);
     $("body").removeClass("scrollable");
 
-    this.$el.undelegate("#about_b", "click");
-    this.$el.delegate("#about_b", "click", this.about);
+    $("#about_b").off("click");
+    $("#about_b").on("click", _.bind(this.about, this));
 
   },
 

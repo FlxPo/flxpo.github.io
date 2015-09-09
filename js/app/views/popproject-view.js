@@ -10,7 +10,15 @@ app.PopProjectView = Backbone.View.extend({
 		"mouseleave":"out"
 	},
 
-	template: _.template( $('#popproject-template').html() ),
+	template: _.template('\
+		<div class="tip border-tip">\
+			<div id = "mousebox"></div>\
+			<p><%=name%></p>\
+			<b class="border-notch notch"></b>\
+			<b class="notch"></b>\
+		</div>\
+		<div id = "pin"></div>\
+	'),
 
 	initialize:function(options) {
 		_.bindAll(this, "renderClean")
@@ -21,8 +29,8 @@ app.PopProjectView = Backbone.View.extend({
 
 	render:function() {
 		this.renderContent()
-			.cacheComponents()
-			return this;
+		.cacheComponents()
+		return this;
 	},
 
 	cacheComponents:function() {
@@ -38,12 +46,11 @@ app.PopProjectView = Backbone.View.extend({
 	},
 
 	renderGeometry:function() {
-		var b_id = "pin" + this.model.get("type");
-		if (this.model.get("id") === "p0") {
-			this.pin_b = new app.ButtonView( {model:app.instance.ui.b_collection.get(b_id), el:this.$pin} );
-		} else if (this.model.get("type") === "local") {
-			this.pin_b = new app.ButtonView( {model:app.instance.ui.b_collection.get(b_id), el:this.$pin} );
-		}
+
+		var type = this.model.get("type") === "local" ? "local" : "global";
+		var b_id = "pin" + type;
+		this.pin_b = new app.ButtonView( {model:app.instance.ui.b_collection.get(b_id), el:this.$pin} );
+
 		return this;
 	},
 
@@ -52,16 +59,30 @@ app.PopProjectView = Backbone.View.extend({
 		var yt = this.item.Y;
 		var wt = this.item.w;
 		var ht = this.item.h;
-		var x = xt + wt * (parseFloat(this.model.get("x")) - 0.5);
-		var y = yt + ht * (parseFloat(this.model.get("y")) - 0.5);
+		var wb = this.item.wBase;
+		var hb = this.item.hBase;
+		var s = this.item.scaling;
+
+		var is_gp = this.item.model.get("geom");
+
+		if (is_gp == "data/graphics/geom_grandparis.json") {
+			var x = xt - wt/2 + 1*1069 * (parseFloat(this.model.get("x"))) * s*s * wt/wb + 344*s*s * wt/wb;
+			var y = yt - ht/2 + 1*393 * (parseFloat(this.model.get("y"))) * s*s * ht/hb + 389*s*s * wt/wb;
+		} else {
+			var x = xt + wt*(parseFloat(this.model.get("x")) - 0.5);
+			var y = yt + ht*(parseFloat(this.model.get("y")) - 0.5);
+		}
+
+
 		this.y = y;
+		this.x = x;
 		this.$el.css( {top:y, left:x} );
 	},
 
 	renderClean:function() {
 
 		this.renderGeometry()
-			.correctPosition();
+		.correctPosition();
 
 		var w = this.$tip.width(), h = this.$tip.height();
 		var offy = this.model.get("type") === "local" ? 60 : 40;
@@ -90,16 +111,16 @@ app.PopProjectView = Backbone.View.extend({
 
 	over:function() {
 		Backbone.trigger("projects:focus", {id:this.id, freezePop:true});
-		(this.id === "p0" || this.id === "px") && this.$tip.addClass("show_h");
+		(this.id.length > 3 || this.id === "px") && this.$tip.addClass("show_h");
 	},
 
 	out:function() {
 		Backbone.trigger("projects:unfocus", {id:this.id});
-		(this.id === "p0" || this.id === "px") && this.$tip.removeClass("show_h");
+		(this.id.length > 3 || this.id === "px") && this.$tip.removeClass("show_h");
 	},
 
 	focus:function() {
-		this.$el.velocity( {top:"+=10"}, {duration:300, loop:true} );
+		this.$el.velocity( {top:"-=10"}, {duration:300, loop:true} );
 		return this;
 	},
 
@@ -110,6 +131,10 @@ app.PopProjectView = Backbone.View.extend({
 	close:function() {
 		this.stopListening();
 		this.pin_b && this.pin_b.remove();
+	},
+
+	zOrder:function(z) {
+		this.$el.css({"z-index":z});
 	}
 
 });

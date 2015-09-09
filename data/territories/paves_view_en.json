@@ -124,7 +124,7 @@
                 [{
                     "subtitle":"Entretien et aménagement de la voirie parisienne",
                     "text": {"time":"200", "content":"15 000 tonnes de granit sont posées annuellement sur 450 chantiers d’amélioration de la voirie parisienne. Le granit «neuf » utilisé provient de Bretagne, du Tarn ou d’Espagne.<br><br>Plus de 2,5 millions de tonnes de granit sont en place sur la voirie. Pour l’entretien ou des aménagements, une partie est déconstruite chaque année. En l’absence de recyclage, les pavés et matériaux usagés seraient évacués sous forme de déchets."},
-                    "flows": [{"vl":["3100", "2001", "4000"], "hl":"[]", "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "flows": [{"vl":["3100", "2001", "4000"], "hl":"[]", "popups":["3100", "2001", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
