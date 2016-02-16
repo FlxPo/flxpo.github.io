@@ -45,7 +45,15 @@ app.TerritoryView = Backbone.View.extend({
 				if (data.projects) {
 					var projects = new Backbone.Collection(data.projects);
 					var showpanel = (self.model.get("id") === "projects");
-					self.projects_views = new app.ProjectsView( {parent:self, collection:projects, items_views:self.items_views, showpanel:showpanel} );
+
+					var p = {parent:self,
+							 collection:projects,
+							 items_views:self.items_views,
+							 showpanel:showpanel,
+							 focus_on_project:options.focus_on_project,
+							 categoryState:options.categoryState};
+
+					self.projects_views = new app.ProjectsView(p);
 				}
 
 				// Load stories
@@ -178,14 +186,20 @@ app.TerritoryView = Backbone.View.extend({
 			// self.$flowcontainer.velocity("fadeIn", {duration:300});
 		}
 
+		this.$itemcontainer.velocity("fadeIn", {duration:300});
+		// this.$storycontainer.velocity("fadeIn", {duration:300});
+		// this.$flowcontainer.velocity("fadeIn", {duration:300});
+		// this.$popcontainer.velocity("fadeIn", {duration:300});
+
 		this.$el.velocity( {top:"0%"}, {duration:1000, complete:callback} );
 	},
 
 	transitionOut:function(options) {
 
-		this.$storycontainer.velocity("fadeOut", {duration:300});
-		this.$flowcontainer.velocity("fadeOut", {duration:300});
-		this.$popcontainer.velocity("fadeOut", {duration:300});
+		this.$itemcontainer.velocity("fadeOut", {duration:300, delay:300});
+		this.$storycontainer.velocity("fadeOut", {duration:300, delay:300});
+		this.$flowcontainer.velocity("fadeOut", {duration:300, delay:300});
+		this.$popcontainer.velocity("fadeOut", {duration:300, delay:300});
 
 		if (this.projects_views) {
 			this.projects_views.exitPanel();

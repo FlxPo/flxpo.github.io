@@ -108,8 +108,8 @@
 
 .ce_button {
 	display: none;
-	width:32px;
-	height:32px;
+	width:48px;
+	height:48px;
 	-webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
@@ -130,10 +130,12 @@
 	position:absolute;
 	color: #000;
 	width:12em;
-	margin-top: 0.25em;
-	margin-left: -15.5em;
+	margin-top: 1em;
+	margin-left: -16.5em;
 	text-align: right;
 }
+
+
 
 .ce_button:hover > span {
 	display:inline;

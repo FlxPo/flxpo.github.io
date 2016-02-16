@@ -79,6 +79,7 @@ app.UIView = Backbone.View.extend({
     showButtons:function(next, delay) {
 
       args = next.model ? next.model.get("ui_elements") : next;
+      next = next.model ? next : this.parent.currentPage;
 
       var d = delay || 0;
 

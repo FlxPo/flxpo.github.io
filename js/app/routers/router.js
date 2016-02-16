@@ -1,28 +1,60 @@
 var app = app || {};
 
 app.Router = Backbone.Router.extend({
-  
+
   routes: {
     "": "start",
     "about": "about",
-    "p": "projects",
-    "p/:id": "project",
     "t/:id/:type/:time": "territory",
-    "p/:id" : "project"
+    "p" : "projects",
+    "p/:category" : "projects",
+    "p/:category/:id": "project"
   },
 
-  initialize:function() {
+  initialize:function(options) {
 
     this.listenTo(Backbone, "route:go", this.go);
     this.listenTo(Backbone, "route:forceState", this.forceState);
     this.listenTo(Backbone, "route:buildGo", this.buildGo);
+    this.listenTo(Backbone, "categories:clk", this.updateCategoryState);
 
     this.state = {
       rootState:null,
+      categoryState:null,
       territoryState:null,
       typeState:null,
-      timeState:null
+      timeState:null,
+      next:null
     }
+
+    this.categoriesData = [
+    {"icon": "icon-tous", "color":"#9e9e9", "label": "Tous les projets", "state":"tous_projets"},
+    {"icon": "icon-nouveauxmodels", "color":"#b4b3b3", "label": "Nouveaux modèles économiques", "state":"nouveaux_modeles_economiques"},
+    {"icon": "icon-eau", "color":"#99d2e9", "label": "Gestion durable de l'eau", "state":"gestion_durable_eau"},
+    {"icon": "icon-energies", "color":"#fcea27", "label": "Récupération et valorisation énergétique", "state":"recuperation_valorisation_energetique"},
+    {"icon": "icon-matieres", "color":"#cbbc9f", "label": "Réemploi et réutilisation matières", "state": "reemploi_reutilisation_matieres"},
+    {"icon": "icon-dechetsverts", "color":"#cbbc9f", "label": "Valorisation biodéchets et agriculture urbaine", "state":"valorisation_biodechets_agriculture_urbaine"},
+    {"icon": "icon-chantier", "color":"#9cc876", "label": "Recyclage et valorisation des déchets de chantier", "state": "recyclage_valorisation_dechets_chantier"}
+    ];
+
+    var cat_dict = {};
+    _.each(this.categoriesData, function(c) {cat_dict[c.state] = []})
+
+    _.each(options.init, function(project) {
+      var id = project.id;
+      if (["paris", "pc", "projects", "idf"].indexOf(id) == -1) {
+        var cat_index = project.category;
+        var states = [];
+        _.each(cat_index, function(index) {
+          states.push(this.categoriesData[index].state);
+        }, this)
+        _.each(states, function(state) {
+          cat_dict[state].push(id)
+        });
+      }
+    }, this)
+
+    this.cat_dict = cat_dict;
 
     this.previous_state = _.clone(this.state);
 
@@ -30,6 +62,7 @@ app.Router = Backbone.Router.extend({
     _.bindAll(this, "reload");
 
   },
+
 
   reloadView:function() {
     var self = this;
@@ -46,14 +79,22 @@ app.Router = Backbone.Router.extend({
     if (this.state.rootState !== null && this.state.rootState !== "p") {
 
       if(args.state.rootState) this.state.rootState = args.state.rootState;
+      if(args.state.categoryState) this.state.categoryState = null;
       if(args.state.territoryState) this.state.territoryState = args.state.territoryState;
       if(args.state.typeState) this.state.typeState = args.state.typeState;
       if(args.state.timeState) this.state.timeState = args.state.timeState;
+
+      this.state.categoryState = null;
 
       Backbone.trigger("ui:route", {state:this.state});
       this.navigate(this.stateToRoute(this.state));
 
     }
+  },
+
+  updateCategoryState:function(args) {
+    this.state.categoryState = args.state;
+    this.navigate(this.stateToRoute(this.state));
   },
 
   go:function(route) {
@@ -91,19 +132,20 @@ app.Router = Backbone.Router.extend({
       territory:function(args) {
         args.state.rootState = "t";
         args.state.territoryState = args.id;
-
         if (args.id === "paris") {
           args.state.typeState = args.state.typeState || "matter";
         } else {
           args.state.typeState = "matter";
         }
-
+        args.state.categoryState = null;
         args.state.timeState = args.state.timeState || 1;
+        console.log(args.state)
         return(self.stateToRoute(args.state));
       },
       type:function(args) {
         args.state.rootState = args.state.rootState || "t";
         args.state.territoryState = args.state.territoryState || "paris";
+        args.state.categoryState = null;
         args.state.typeState = args.id;
         args.state.timeState = args.state.timeState || 1;
         return(self.stateToRoute(args.state));
@@ -111,12 +153,29 @@ app.Router = Backbone.Router.extend({
       project:function(args) {
         args.state.rootState = "p";
         args.state.territoryState = args.id;
+
+        if (args.next) {
+
+          var c = args.previous_state.categoryState;
+          var ts = args.previous_state.territoryState;
+          var i = self.cat_dict[c].indexOf(ts);
+
+          if (args.next == 1) {
+            if (i == self.cat_dict[c].length -1) {args.state.territoryState = self.cat_dict[c][0];}
+            else {args.state.territoryState = self.cat_dict[c][i+1];}
+          } else {
+            if (i == 0) {args.state.territoryState = self.cat_dict[c][self.cat_dict[c].length-1];}
+            else {args.state.territoryState = self.cat_dict[c][i-1];}
+          }
+        }
         args.state.typeState = null;
         args.state.timeState = null;
+
         return(self.stateToRoute(args.state));
       },
       time:function(args) {
         args.state.rootState = args.state.rootState || "t";
+        args.state.categoryState = null;
         args.state.territoryState = args.state.territoryState || "paris";
         args.state.typeState = args.state.typeState || "matter";
         args.state.timeState = args.state.timeState === "1" ? "2" : "1";
@@ -125,11 +184,11 @@ app.Router = Backbone.Router.extend({
     };
 
     var s = _.clone(this.state);
+    this.previous_state = s;
 
     // Build the route and update the state
-    var route = routeBuilders[target_state.change]( {state:this.state, previous_state:this.previous_state, id:target_state.id} );
-    this.previous_state = s;
-    
+    var route = routeBuilders[target_state.change]( {state:this.state, previous_state:this.previous_state, id:target_state.id, next:target_state.next} );
+
     this.go(route);
   },
 
@@ -152,8 +211,9 @@ app.Router = Backbone.Router.extend({
         app.instance.goto(av);
       },
       projects:function(args) {
-        var pv = new app.TerritoryView( {model:app.instance.territories.territories.get(projects), time:"1", type:"matter", goto:_.bind(app.instance.goto, app.instance)} )
+        var pv = new app.TerritoryView( {model:app.instance.territories.territories.get(projects), time:"1", type:"matter", goto:_.bind(app.instance.goto, app.instance), focus_on_project: self.state.territoryState, categoryState:self.state.categoryState} )
         self.state.rootState = "p";
+        self.state.categoryState = args.categoryState;
         self.state.territoryState = null;
         self.state.typeState = null;
         self.state.timeState = null;
@@ -165,11 +225,17 @@ app.Router = Backbone.Router.extend({
         self.state.territoryState = args.id;
         self.state.typeState = args.type;
         self.state.timeState = args.time;
+        self.state.categoryState = null;
+        console.log(self.state)
       },
       project:function(args) {
         app.instance.stopListeningPrevious();
         var tv = new app.TerritoryView( {model:app.instance.territories.territories.get(args.id), time:1, type:"matter", goto:_.bind(app.instance.goto, app.instance)} )
-        // TerritoryView( {id:args.id, time:1, type:"matter"} )
+        self.state.rootState = "p";
+        self.state.categoryState = args.categoryState;
+        self.state.territoryState = args.id;
+        self.state.typeState = null;
+        self.state.timeState = null;
       }
     }
 
@@ -190,52 +256,66 @@ app.Router = Backbone.Router.extend({
       var valid_times = ["1","2"];
 
       return _.indexOf(valid_territories, args.id) !== -1 &&
-             _.indexOf(valid_types, args.type) !== -1 &&
-             _.indexOf(valid_times, args.time) !== -1;
+      _.indexOf(valid_types, args.type) !== -1 &&
+      _.indexOf(valid_times, args.time) !== -1;
 
     // Validate projects route parameters
-    } else if (view === "project") {
+  } else if (view === "project") {
 
-      var max_id = 49;
-      var ids = [];
-      for (var i = 0; i<max_id; i++) {ids[i] = i;}
+    var max_id = 49;
+    var ids = [];
+    for (var i = 0; i<max_id; i++) {ids[i] = i;}
       var valid_ids = ids.map(function(id) {return "p"+id})
 
-      if (args.id == "p14") return false;
+    this.project_ids = valid_ids;
+    this.project_ids.splice(14, 1);
+    this.project_ids.splice(0, 1);
 
-      return _.indexOf(valid_ids, args.id) !== -1;
+    if (args.id == "p14") return false;
 
-    }
+    return _.indexOf(valid_ids, args.id) !== -1;
 
-  },
+  }
 
-  start: function() {
-    this.loadView("start");
-  },
+},
 
-  about: function() {
-    this.loadView("about");
-  },
+start: function() {
+  this.loadView("start");
+},
 
-  projects: function() {
-    this.loadView("projects");
-  },
+about: function() {
+  this.loadView("about");
+},
 
-  territory: function(id, type, time) {
-    var args = {id:id, type:type, time:time};
-    var p_state = this.previous_state;
+projects: function(category) {
+  console.log(category)
+  if (category === null) {category = "tous_projets"}
+  args = {categoryState:category}
+  this.loadView("projects", args);
+},
 
-    var fired = false;
+category:function(category) {
+
+},
+
+territory: function(id, type, time) {
+
+  var args = {id:id, type:type, time:time};
+  var p_state = this.previous_state;
+
+  console.log(args)
+
+  var fired = false;
 
     // Catch a first_pass on Paris for intro
     var intro = false;
     // if (!this.intro && id === "paris" && type === "matter" && time === "1") {
-    if (this.previous_state.rootState === "start" || this.force_intro) {
-      this.intro = true;
-      this.force_intro = false;
-      intro = true;
-    }
-    
+      if (this.previous_state.rootState === "start" || this.force_intro) {
+        this.intro = true;
+        this.force_intro = false;
+        intro = true;
+      }
+
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {
       var diff_args = {d_id: args.id === p_state.territoryState,
@@ -273,16 +353,17 @@ app.Router = Backbone.Router.extend({
 
         // Backbone.trigger("ui:route", {state:_.clone(this.state)});
       }
-  },
+    },
 
-  project:function(id) {
-    var args = {id:id};
-    if (this.validateRoute("project", args)) {
-      this.loadView("project", args);
-    } else {
-      this.go("#p");
+    project:function(category, id) {
+      var args = {categoryState:category, id:id};
+      if (this.validateRoute("project", args)) {
+        this.loadView("project", args);
+      } else {
+        console.log("go")
+        this.go("#p/tous_projets");
+      }
     }
-  }
 
-});
+  });
 

@@ -6,7 +6,7 @@ app.AppView = Backbone.View.extend({
 
   initialize:function() {
 
-    this.router = new app.Router();
+    
     this.startZoom = 0;
 
     var self = this;
@@ -23,6 +23,7 @@ app.AppView = Backbone.View.extend({
         // Loads territories
         self.territories = new app.TerritoriesView({init:data.navigation});
         // Loads router
+        this.router = new app.Router({init:data.navigation});
         Backbone.history.start();
       }
 
@@ -65,12 +66,16 @@ app.AppView = Backbone.View.extend({
         _.delay(function() {
           previous.transitionOut( {dz:dz, callback:destroyPrevious(previous)} );
           next.transitionIn( {dz:dz});
-        }, 500);
+        }, 400);
+      } else {
+        _.delay(function() {
+          next.transitionIn( {dz:dz});
+        }, 400);
       }
 
       // Load/unload ui elements
-      var d = previous === null ? 300 : 1000;
-      this.ui.showButtons(next, 1000);
+      var d = previous === null ? 200 : 800;
+      this.ui.showButtons(next, 800);
 
     },
 

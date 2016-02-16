@@ -196,6 +196,34 @@
 		"bang":true
 	},
 	{
+		"el":"#next_project",
+		"id":"next_project",
+		"change": "project",
+		"geometry":[{"type":"path","fill":"none","stroke":"#444","stroke-width":"2","path":"M3 1.5 L9 7.5 L3 12.5"}],
+		"width":10,
+		"height":14,
+		"scale":0.6,
+		"bg-col-n":"#eee",
+		"bg-col-a":"#ddd",
+		"bg-col-c":"#aaa",
+		"show_class":"show_h",
+		"bang":true
+	},
+	{
+		"el":"#previous_project",
+		"id":"previous_project",
+		"change": "project",
+		"geometry":[{"type":"path","fill":"none","stroke":"#444","stroke-width":"2","path":"M3 1.5 L9 7.5 L3 12.5"}],
+		"width":10,
+		"height":14,
+		"scale":0.6,
+		"bg-col-n":"#eee",
+		"bg-col-a":"#ddd",
+		"bg-col-c":"#aaa",
+		"show_class":"show_h",
+		"bang":true
+	},
+	{
 		"el":"#group",
 		"id":"group",
 		"change": "",

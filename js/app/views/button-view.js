@@ -64,7 +64,7 @@ app.ButtonView = Backbone.View.extend({
 		}
 
 		// Trigger the event attached to the button
-		(!options.silent && this.model.get("change")) && Backbone.trigger("route:buildGo", {change:this.model.get("change"), id:this.model.get("id")});
+		(!options.silent && this.model.get("change")) && Backbone.trigger("route:buildGo", {change:this.model.get("change"), id:this.model.get("id"), next:this.model.get("next")});
 
 	},
 

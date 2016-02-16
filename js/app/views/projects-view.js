@@ -3,26 +3,26 @@ var app = app || {};
 app.ProjectsView = Backbone.View.extend({
 
 	template: _.template('\
-  		<div id = "leftpanel">\
-			<div id = "header">\
-      			<div class="form-group">\
-        			<input type="text" class="form-control" placeholder="Recherche..."/>\
-      			</div>\
-            	<i class="icon-search form-control-feedback"></i>\
-      			<div id = "categorylist">\
-        			<ul></ul>\
-      			</div>\
-      			<div id = "categoryname">\
-        			<p></p>\
-      			</div>\
-      			<p id = "search_info"></p>\
-    		</div>\
-    		<div id = "content">\
-      			<ul id = "itemlist"></ul>\
-    		</div>\
-  		</div>\
-  		<div id = "rightpanel"></div>\
-	'),
+		<div id = "leftpanel">\
+		<div id = "header">\
+		<div class="form-group">\
+		<input type="text" class="form-control" placeholder="Recherche..."/>\
+		</div>\
+		<i class="icon-search form-control-feedback"></i>\
+		<div id = "categorylist">\
+		<ul></ul>\
+		</div>\
+		<div id = "categoryname">\
+		<p></p>\
+		</div>\
+		<p id = "search_info"></p>\
+		</div>\
+		<div id = "content">\
+		<ul id = "itemlist"></ul>\
+		</div>\
+		</div>\
+		<div id = "rightpanel"></div>\
+		'),
 
 	events: {
 		"keyup .form-control": "textSearch"
@@ -68,14 +68,35 @@ app.ProjectsView = Backbone.View.extend({
 			this.projects_names[index] = utils.formatString( project.get("name") );
 		}, this);
 
+		// Categories
+		this.categoriesData = [
+		{"icon": "icon-tous", "color":"#9e9e9", "label": "Tous les projets", "state":"tous_projets"},
+		{"icon": "icon-nouveauxmodels", "color":"#b4b3b3", "label": "Nouveaux modèles économiques", "state":"nouveaux_modeles_economiques"},
+		{"icon": "icon-eau", "color":"#99d2e9", "label": "Gestion durable de l'eau", "state":"gestion_durable_eau"},
+		{"icon": "icon-energies", "color":"#fcea27", "label": "Récupération et valorisation énergétique", "state":"recuperation_valorisation_energetique"},
+		{"icon": "icon-matieres", "color":"#cbbc9f", "label": "Réemploi et réutilisation matières", "state": "reemploi_reutilisation_matieres"},
+		{"icon": "icon-dechetsverts", "color":"#cbbc9f", "label": "Valorisation biodéchets et agriculture urbaine", "state":"valorisation_biodechets_agriculture_urbaine"},
+		{"icon": "icon-chantier", "color":"#9cc876", "label": "Recyclage et valorisation des déchets de chantier", "state": "recyclage_valorisation_dechets_chantier"}
+		];
+
+		this.clicked_cat = "Tous les projets";
+		this.clicked_cat_id = 0;
+
+		if (options.categoryState) {
+			this.clicked_cat_id = _.findIndex(this.categoriesData, function(cat) { return cat.state == options.categoryState });
+			this.clicked_cat = this.categoriesData[this.clicked_cat_id].label
+		}
+		
+
 		this.cat_matchs = _.clone(this.projects_ids);
 		this.search_matchs = _.clone(this.projects_ids);
-		this.clicked_cat_id = 0;
-		this.clicked_cat = "Tous les projets";
 
 		// Keep the panel hidden ?
 		this.showpanel = options.showpanel;
 		this.allow_pan = true;
+
+		// Focus on project ?
+		this.focus_on_project = options.focus_on_project;
 
 	},
 
@@ -86,12 +107,23 @@ app.ProjectsView = Backbone.View.extend({
 		.renderPops()
 		.renderItems()
 		.attachPan()
-		.slidePanel();
+		.slidePanel()
+		.focusOnProject();
 		return this;
 	},
 
 	slidePanel:function() {
-		this.showpanel && this.$leftpanel.velocity({opacity:1}, {duration:300, delay:1000, easing:"easeOut"})
+		this.showpanel && this.$leftpanel.velocity({opacity:1}, {duration:200, delay:800, easing:"easeOut"})
+		return this;
+	},
+
+	focusOnProject:function() {
+		if (this.focus_on_project) {
+			var ipv = this.ipv_collection.get(this.focus_on_project);
+			this.focused_item = ipv.focus();
+			this.focused_item.$el.velocity( "scroll", {container:this.$list, duration:0, offset:-64, "easing":"easeInOut"});
+		}
+		return this;
 	},
 
 	exitPanel:function() {
@@ -147,12 +179,12 @@ app.ProjectsView = Backbone.View.extend({
 		function panPanel($el, pz, x, y) {
 
 			var w = $("#itemcontainer").width(),
-				h = $("#itemcontainer").height();
+			h = $("#itemcontainer").height();
 
 			var xl = this.pan_limits[0]*w,
-				xr = this.pan_limits[1]*w,
-				yt = this.pan_limits[2]*h,
-				yb = this.pan_limits[3]*h;
+			xr = this.pan_limits[1]*w,
+			yt = this.pan_limits[2]*h,
+			yb = this.pan_limits[3]*h;
 
 
 			if (y < yt) {
@@ -252,11 +284,8 @@ app.ProjectsView = Backbone.View.extend({
 		var doit;
 		return function() {
 			clearTimeout(self.doit);
-			console.log("clear and reset timer")
-
 			self.panMapAfterZoom(e, pz);
 			self.doit = setTimeout(function() {
-				console.log("reload")
 				Backbone.trigger("items:updatePositions", {mat:mat, ws:ws, z:zoomOut});
 				Backbone.trigger("projects:updatePositions", {mat:mat, ws:ws, z:zoomOut});
 			}, 200);
@@ -280,7 +309,7 @@ app.ProjectsView = Backbone.View.extend({
 
 			function ySort(a, b) {
 				var a_type = a.model.get("type"),
-					b_type = b.model.get("type");
+				b_type = b.model.get("type");
 
 				if (a_type === b_type) {
 					return (a.y - b.y)
@@ -303,20 +332,10 @@ app.ProjectsView = Backbone.View.extend({
 		return this;
 	},
 
-	renderCategories:function() {
+	renderCategories:function(args) {
 
-		var categoriesData = [
-		{"icon": "icon-tous", "color":"#9e9e9", "label": "Tous les projets"},
-		{"icon": "icon-nouveauxmodels", "color":"#b4b3b3", "label": "Nouveaux modèles économiques"},
-		{"icon": "icon-eau", "color":"#99d2e9", "label": "Gestion durable de l'eau"},
-		{"icon": "icon-energies", "color":"#fcea27", "label": "Récupération et valorisation énergétique"},
-		{"icon": "icon-matieres", "color":"#cbbc9f", "label": "Réemploi et réutilisation matières"},
-		{"icon": "icon-dechetsverts", "color":"#cbbc9f", "label": "Valorisation biodéchets et agriculture urbaine"},
-		{"icon": "icon-chantier", "color":"#9cc876", "label": "Recyclage et valorisation des déchets de chantier"}
-		];
-
-		_.each(categoriesData, function(category, index) {
-			var clk = index == 0 ? true : false;
+		_.each(this.categoriesData, function(category, index) {
+			var clk = index == this.clicked_cat_id ? true : false;
 			var cv = this.cat_collection.add( {id:index, model:category, clicked:clk} );
 			this.$categorylist.append( cv.render().el );
 		}, this);
@@ -331,9 +350,13 @@ app.ProjectsView = Backbone.View.extend({
 		this.collection.each(function(project, index) {
 			var ipv = this.ipv_collection.add( {id:project.get("id"), model:project} );
 			if (global_ids.indexOf(project.get("id")) < 0) {
-				this.$list.append( ipv.render().el );
+				var it = ipv.render();
+				this.$list.append( it.el );
+				it.$el.velocity( "scroll", {container:this.$list, duration:0, offset:-64, "easing":"easeInOut"});
 			}
 		}, this);
+
+		 this.filterItemsByCat(this.clicked_cat_id);
 
 		return this;
 	},
@@ -536,6 +559,7 @@ app.ProjectsView = Backbone.View.extend({
 				focused_item.unfocus();
 			})
 		}
+
 	},
 
 	close:function() {

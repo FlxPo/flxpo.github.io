@@ -52,7 +52,7 @@ app.CategoryView = Backbone.View.extend({
 
 	clk:function(options) {
 		this.clicked = true;
-		Backbone.trigger("categories:clk", {id:this.id, label:this.model["label"], options:options});
+		Backbone.trigger("categories:clk", {id:this.id, label:this.model["label"],  state: this.model["state"], options:options});
 	},
 
 	unclk:function() {
