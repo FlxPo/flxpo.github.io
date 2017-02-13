@@ -47,7 +47,8 @@
                         "x":"0.55*w",
                         "y":"0.425*h",
                         "scale":"0.18",
-                        "force_w_scale":true
+                        "force_w_scale":true,
+                        "solution":true
                     }],
 
 	"flows": 		[{
@@ -101,8 +102,8 @@
             "display_dot":false,       
             "steps" :
                 [{
-                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
-                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession ou provenant de la démolition de chaussée sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne <strong>entre 2&nbsp400 et 3&nbsp500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "subtitle":"Recyclage des produits de déconstruction des cimetières parisiens",
+                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne entre <strong>2 400 et 3 500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
                     "flows": [{"vl":["1000", "2000", "3000", "4000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -110,7 +111,7 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
+                    "subtitle":"Recyclage des produits de déconstruction des cimetières parisiens",
                     "text": {"time":"200", "content":"Bien que la production de granulats à partir de matériaux recyclés ait tendance à augmenter,  elle reste faible : seulement 6,5 % de la production française en 2010 soit  17 millions de tonnes sur les 365 millions de tonnes produits en France.<br><br><span style = \"font-size:12px\">*SOeS, d'après Unicem</span>"},
                     "flows": [{"vl":["1000", "2000"], "hl":["3000", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
@@ -118,8 +119,8 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
-                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession ou provenant de la démolition de chaussée sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne <strong>entre 2&nbsp400 et 3&nbsp500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "subtitle":"Recyclage des produits de déconstruction des cimetières parisiens",
+                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne entre <strong>2 400 et 3 500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
                     "flows": [{"vl":["1000", "2000", "3000", "4000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -128,8 +129,8 @@
                 }],       
             "b_steps" :
                 [{
-                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
-                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession ou provenant de la démolition de chaussée sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne <strong>entre 2&nbsp400 et 3&nbsp500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
+                    "subtitle":"Recyclage des produits de déconstruction des cimetières parisiens",
+                    "text": {"time":"200", "content":"Les matériaux issus du démontage des monuments funéraires en reprise de concession sont regroupés sur des aires de stockage dans les cimetières de Pantin et de Thiais où ils sont concassés en différentes granulométries. Chaque site produit ainsi en moyenne entre <strong>2 400 et 3 500 tonnes de graves par an qui sont utilisées pour la constitution ou reconstitution de voies piétonnes et routières</strong> gérées par la Direction des Espaces Verts et de l’Environnement.<br><br><em>Porteur de projet : <a href = \"http://www.paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement - Mairie de Paris</a></em>"},
                     "flows": [{"vl":["1000", "2000", "3000", "4000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -137,7 +138,7 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Une seconde vie pour les monuments funéraires<br>et produits de démolition de chaussée des cimetières parisiens",
+                    "subtitle":"Recyclage des produits de déconstruction des cimetières parisiens",
                     "text": {"time":"200", "content":"Bien que la production de granulats à partir de matériaux recyclés ait tendance à augmenter,  elle reste faible : seulement 6,5 % de la production française en 2010 soit  17 millions de tonnes sur les 365 millions de tonnes produits en France.<br><br><span style = \"font-size:12px\">*SOeS, d'après Unicem</span>"},
                     "flows": [{"vl":["1000", "2000"], "hl":["3000", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],

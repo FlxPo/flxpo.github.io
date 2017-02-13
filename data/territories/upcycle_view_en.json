@@ -32,7 +32,7 @@
                         "fay":"0.22",
                         "iw":"0.8",
                         "ih":"0.6",
-                        "x":"0.175*w",
+                        "x":"0.2*w",
                         "y":"0.35*h",
                         "scale":"0.15",
                         "force_w_scale":true
@@ -40,31 +40,32 @@
                     {
                         "id":"t3",
                         "name":"t3",
-                        "label":"Port de Bonneuil",
-                        "geom":"data/graphics/geom_port_champignons.json",
+                        "label":"Recyclerie",
+                        "geom":"data/graphics/geom_centrerecyclage.json",
                         "fax":"0",
                         "fay":"0.15",
                         "iw":"0.9",
                         "ih":"0.6",
-                        "x":"0.375*w",
-                        "y":"0.3*h",
-                        "scale":"0.15",
-                        "force_w_scale":true
-                    },
-                    {
-                        "id":"t4",
-                        "name":"t4",
-                        "label":"Caves du marché<br>de Rungis",
-                        "geom":"data/graphics/geom_rungis_champignons.json",
-                        "fax":"0",
-                        "fay":"0.15",
-                        "iw":"0.9",
-                        "ih":"0.6",
-                        "x":"0.575*w",
+                        "x":"0.4*w",
                         "y":"0.35*h",
                         "scale":"0.15",
                         "force_w_scale":true,
                         "solution":true
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "label":"Marché<br>de Rungis",
+                        "geom":"data/graphics/geom_rungis.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"0.9",
+                        "ih":"0.6",
+                        "x":"0.6*w",
+                        "y":"0.48*h",
+                        "scale":"0.14",
+                        "force_w_scale":true,
+                        "z":2
                     },
                     {
                         "id":"t5",
@@ -75,10 +76,11 @@
                         "fay":"0.15",
                         "iw":"0.8",
                         "ih":"0.6",
-                        "x":"0.75*w",
-                        "y":"0.2*h",
-                        "scale":"0.15",
-                        "force_w_scale":true
+                        "x":"0.76*w",
+                        "y":"0.37*h",
+                        "scale":"0.13",
+                        "force_w_scale":true,
+                        "z":1
                     },
                     {
                         "id":"t6",
@@ -89,10 +91,11 @@
                         "fay":"0.25",
                         "iw":"0.8",
                         "ih":"0.6",
-                        "x":"0.8*w",
-                        "y":"0.45*h",
-                        "scale":"0.15",
-                        "force_w_scale":true
+                        "x":"0.82*w",
+                        "y":"0.15*h",
+                        "scale":"0.13",
+                        "force_w_scale":true,
+                        "z":0
                     }],
 
 	"flows": 		[
@@ -129,8 +132,8 @@
                             "type":"input",
                             "from":"t2",
                             "to":"t1",
-                            "volume_o4":"1000",
-                            "volume_o9":"1000",
+                            "volume_o4":"1500",
+                            "volume_o9":"1500",
                             "unit":"t / an",
                             "color":"#A8A8A8",
                             "virtual":true
@@ -142,8 +145,8 @@
                             "type":"input",
                             "from":"t2",
                             "to":"t3",
-                            "volume_o4":"1000",
-                            "volume_o9":"1000",
+                            "volume_o4":"1500",
+                            "volume_o9":"1500",
                             "unit":"t / an",
                             "color":"#A8A8A8",
                             "virtual":true
@@ -151,12 +154,25 @@
                         {
                             "id":"4000",
                             "index":"0",
-                            "name":"Substrats de culture",
+                            "name":"Pleurotes",
                             "type":"input",
                             "from":"t3",
                             "to":"t4",
-                            "volume_o4":"1000",
-                            "volume_o9":"1000",
+                            "volume_o4":"500",
+                            "volume_o9":"500",
+                            "unit":"t / an",
+                            "color":"#93C893",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3500",
+                            "index":"0",
+                            "name":"Kits de production",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t5",
+                            "volume_o4":"500",
+                            "volume_o9":"500",
                             "unit":"t / an",
                             "color":"#93C893",
                             "virtual":true
@@ -164,22 +180,9 @@
                         {
                             "id":"3000",
                             "index":"0",
-                            "name":"Substrats de culture",
-                            "type":"input",
-                            "from":"t3",
-                            "to":"t5",
-                            "volume_o4":"333",
-                            "volume_o9":"333",
-                            "unit":"t / an",
-                            "color":"#93C893",
-                            "virtual":true
-                        },
-                        {
-                            "id":"5000",
-                            "index":"0",
                             "name":"Substrat technique",
                             "type":"input",
-                            "from":"t4",
+                            "from":"t3",
                             "to":"t6",
                             "volume_o4":"500",
                             "volume_o9":"500",
@@ -209,8 +212,8 @@
             "steps" :
                 [{
                     "subtitle":"Transformation de marc de café en substrat de culture",
-                    "text": {"time":"200", "content":"La récupération de 2 à 6 tonnes de marc de café par semaine permet de produire, avec la participation de l’association Atelier Sans Frontière, des sacs de substrat pour cultiver des pleurotes Monte Cristo dans une cave située sous le marché de Rungis et pour proposer aux particuliers un kit de production : la Boite à Champignons. 200 à 500 kg de pleurotes par semaine sont commercialisés aux restaurants gastronomiques franciliens sur place à Rungis, ainsi que des substrats techniques (valorisation du substrat après récolte) aux professionnels pour l’agriculture urbaine ou la restauration des sols.<br><br><em>Porteur de projet : <a href = \"http://upcycle.org/\" target = \"_blank\">UpCycle</a></em>"},
-                    "flows": [{"vl":["100","2000","3000","4000","5000","6000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "text": {"time":"200", "content":"La récupération de 5 tonnes de marc de café par semaine permet de produire, avec la participation de l’association EAA78, des sacs de substrat pour cultiver des pleurotes Monte Cristo sur un site de production de 1000 m2 à Saint-Nom-La-Bretèche, et pour proposer aux particuliers un kit de production : La Boîte à Champignons. <strong>200 à 500 kg de pleurotes par semaine sont commercialisés aux restaurants gastronomiques franciliens sur le marché de Rungis</strong>, ainsi que des substrats techniques (valorisation du substrat après récolte) aux professionnels pour l’agriculture urbaine ou la restauration des sols.<br><br><em>Porteur de projet : <a href = \"https://www.laboiteachampignons.com/accueil/decouvrir-boite-a-champignons\" target = \"_blank\">UpCycle</a> et <a href = \"https://www.laboiteachampignons.com/accueil/decouvrir-boite-a-champignons\" target = \"_blank\">La Boîte à Champignons</a></em>"},
+                    "flows": [{"vl":["100","2000","3000","4000","3500","6000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0},
@@ -220,7 +223,7 @@
                 {
                     "subtitle":"Transformation de marc de café en substrat de culture",
                     "text": {"time":"200", "content":"La production de marc de café est estimée à 100&nbsp000 tonnes par an en France, dont 100&nbsp000 tonnes par la restauration hors domicile*. Ce « déchet » rentre dans la catégorie des biodéchets que les producteurs ont l’obligation de valoriser, en fonction du tonnage produit, depuis la Directive Biodéchets du 1er janvier 2012. En 2016, 95% des restaurateurs seront concernés par cette obligation (production supérieure à 10 tonnes par an).<br><br><span style = \"font-size:12px\">*UpCycle</span>"},
-                    "flows": [{"vl":["1100", "100"], "hl":["2000","3000","4000","5000","6000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "flows": [{"vl":["1100", "100"], "hl":["2000","3000","4000","3500","6000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t5", "action":"disappear", "parms":{"time":300}, "time":0},
@@ -228,8 +231,8 @@
                 },
                 {
                     "subtitle":"Transformation de marc de café en substrat de culture",
-                    "text": {"time":"200", "content":"La récupération de 2 à 6 tonnes de marc de café par semaine permet de produire, avec la participation de l’association Atelier Sans Frontière, des sacs de substrat pour cultiver des pleurotes Monte Cristo dans une cave située sous le marché de Rungis et pour proposer aux particuliers un kit de production : la Boite à Champignons. 200 à 500 kg de pleurotes par semaine sont commercialisés aux restaurants gastronomiques franciliens sur place à Rungis, ainsi que des substrats techniques (valorisation du substrat après récolte) aux professionnels pour l’agriculture urbaine ou la restauration des sols.<br><br><em>Porteur de projet : <a href = \"http://upcycle.org/\" target = \"_blank\">UpCycle</a></em>"},
-                    "flows": [{"vl":["2000","3000","100","4000","5000","6000"], "hl":["1100"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "text": {"time":"200", "content":"La récupération de 5 tonnes de marc de café par semaine permet de produire, avec la participation de l’association EAA78, des sacs de substrat pour cultiver des pleurotes Monte Cristo sur un site de production de 1000 m2 à Saint-Nom-La-Bretèche, et pour proposer aux particuliers un kit de production : La Boîte à Champignons. <strong>200 à 500 kg de pleurotes par semaine sont commercialisés aux restaurants gastronomiques franciliens sur le marché de Rungis</strong>, ainsi que des substrats techniques (valorisation du substrat après récolte) aux professionnels pour l’agriculture urbaine ou la restauration des sols.<br><br><em>Porteur de projet : <a href = \"https://www.laboiteachampignons.com/accueil/decouvrir-boite-a-champignons\" target = \"_blank\">UpCycle</a> et <a href = \"https://www.laboiteachampignons.com/accueil/decouvrir-boite-a-champignons\" target = \"_blank\">La Boîte à Champignons</a></em>"},
+                    "flows": [{"vl":["2000","3000","100","4000","3500","6000"], "hl":["1100"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t5", "action":"appear", "parms":{"time":300}, "time":0},
@@ -238,8 +241,8 @@
             "b_steps" :
                 [{
                     "subtitle":"Transformation de marc de café en substrat de culture",
-                    "text": {"time":"200", "content":"La récupération de 2 à 6 tonnes de marc de café par semaine permet de produire, avec la participation de l’association Atelier Sans Frontière, des sacs de substrat pour cultiver des pleurotes Monte Cristo dans une cave située sous le marché de Rungis et pour proposer aux particuliers un kit de production : la Boite à Champignons. 200 à 500 kg de pleurotes par semaine sont commercialisés aux restaurants gastronomiques franciliens sur place à Rungis, ainsi que des substrats techniques (valorisation du substrat après récolte) aux professionnels pour l’agriculture urbaine ou la restauration des sols.<br><br><em>Porteur de projet : <a href = \"http://upcycle.org/\" target = \"_blank\">UpCycle</a></em>"},
-                    "flows": [{"vl":["100","2000","3000","4000","5000","6000"], "hl":["1100"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "text": {"time":"200", "content":"La récupération de 5 tonnes de marc de café par semaine permet de produire, avec la participation de l’association EAA78, des sacs de substrat pour cultiver des pleurotes Monte Cristo sur un site de production de 1000 m2 à Saint-Nom-La-Bretèche, et pour proposer aux particuliers un kit de production : La Boîte à Champignons. <strong>200 à 500 kg de pleurotes par semaine sont commercialisés aux restaurants gastronomiques franciliens sur le marché de Rungis</strong>, ainsi que des substrats techniques (valorisation du substrat après récolte) aux professionnels pour l’agriculture urbaine ou la restauration des sols.<br><br><em>Porteur de projet : <a href = \"https://www.laboiteachampignons.com/accueil/decouvrir-boite-a-champignons\" target = \"_blank\">UpCycle</a> et <a href = \"https://www.laboiteachampignons.com/accueil/decouvrir-boite-a-champignons\" target = \"_blank\">La Boîte à Champignons</a></em>"},
+                    "flows": [{"vl":["100","2000","3000","4000","3500","6000"], "hl":["1100"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
@@ -249,7 +252,7 @@
                 {
                     "subtitle":"Transformation de marc de café en substrat de culture",
                     "text": {"time":"200", "content":"La production de marc de café est estimée à 100&nbsp000 tonnes par an en France, dont 100&nbsp000 tonnes par la restauration hors domicile*. Ce « déchet » rentre dans la catégorie des biodéchets que les producteurs ont l’obligation de valoriser, en fonction du tonnage produit, depuis la Directive Biodéchets du 1er janvier 2012. En 2016, 95% des restaurateurs seront concernés par cette obligation (production supérieure à 10 tonnes par an).<br><br><span style = \"font-size:12px\">*UpCycle</span>"},
-                    "flows": [{"vl":["1100", "100"], "hl":["2000","3000","4000","5000","6000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
+                    "flows": [{"vl":["1100", "100"], "hl":["2000","3000","4000","3500","6000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
                                     {"target":"t5", "action":"disappear", "parms":{"time":300}, "time":0},

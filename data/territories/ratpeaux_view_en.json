@@ -30,8 +30,8 @@
                         "geom":"data/graphics/geom_tramway.json",
                         "fax":"0",
                         "fay":"0.15",
-                        "iw":"0.8",
-                        "ih":"0.6",
+                        "iw":"1",
+                        "ih":"1",
                         "x":"0.5*w",
                         "y":"0.3*h",
                         "scale":"0.2",
@@ -105,7 +105,7 @@
             "steps" :
                 [{
                     "subtitle":"Valorisation des eaux d’exhaure",
-                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 8 millions de m3 d’eaux d’exhaure. Ces eaux d’infiltration, de qualité satisfaisante, sont dirigées vers le réseau d’assainissement. Depuis quelques années elles sont utilisées pour le lavage des rames de métro de la ligne 8. En 2012, dans le cadre du prolongement du tramway T3, la RATP a mis en place un système permettant également de les  récupérer pour l’arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
+                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 7 millions de m3 d’eaux d’exhaure. Régulièrement analysées par un laboratoire accrédité, ces eaux d’infiltration sont en grande partie dirigées vers le réseau d’assainissement. Pour réduire ces volumes déversés, diverses actions ont  été entreprises pour les réutiliser comme une ressource alternative à l’usage d'eau potable, même si, compte tenu des particularités des ouvrages et infrastructures de la RATP, les possibilités de réutilisation en interne restent limitées. Cela concerne le lavage des rames de métro de la ligne 8 et en 2012, dans le cadre du prolongement du tramway T3, la mise en place d'un système d'arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
                     "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -113,7 +113,7 @@
                 },
                 {
                     "subtitle":"Valorisation des eaux d’exhaure",
-                    "text": {"time":"200", "content":"La Ville de Paris s’est fixé pour objectif d’optimiser la valorisation des ressources en eau brute (eaux d’exhaure, eaux de pluie, …) pour l’alimentation de son réseau d’eau non potable mais aussi pour limiter l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement."},
+                    "text": {"time":"200", "content":"La Ville de Paris s’est fixé pour objectif d’optimiser la valorisation des ressources en eau brute (eaux d’exhaure, eaux de pluie, …) pour l’alimentation de son réseau d’eau non potable mais aussi pour limiter l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement. Ainsi, la RATP a signé en 2016 une convention de partenariat avec Eau de Paris de manière à identifier les points de raccordement potentiels entre les eaux d’exhaure et le réseau d’eau non potable."},
                     "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[],
                     "ui":{"show":[], "hide":[]},
@@ -121,7 +121,7 @@
                 },
                 {
                     "subtitle":"Valorisation des eaux d’exhaure",
-                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 8 millions de m3 d’eaux d’exhaure. Ces eaux d’infiltration, de qualité satisfaisante, sont dirigées vers le réseau d’assainissement. Depuis quelques années elles sont utilisées pour le lavage des rames de métro de la ligne 8. En 2012, dans le cadre du prolongement du tramway T3, la RATP a mis en place un système permettant également de les  récupérer pour l’arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
+                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 7 millions de m3 d’eaux d’exhaure. Régulièrement analysées par un laboratoire accrédité, ces eaux d’infiltration sont en grande partie dirigées vers le réseau d’assainissement. Pour réduire ces volumes déversés, diverses actions ont  été entreprises pour les réutiliser comme une ressource alternative à l’usage d'eau potable, même si, compte tenu des particularités des ouvrages et infrastructures de la RATP, les possibilités de réutilisation en interne restent limitées. Cela concerne le lavage des rames de métro de la ligne 8 et en 2012, dans le cadre du prolongement du tramway T3, la mise en place d'un système d'arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
                     "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[],
                     "ui":{"show":[], "hide":[]},
@@ -130,7 +130,7 @@
             "b_steps" :
                 [{
                     "subtitle":"Valorisation des eaux d’exhaure",
-                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 8 millions de m3 d’eaux d’exhaure. Ces eaux d’infiltration, de qualité satisfaisante, sont dirigées vers le réseau d’assainissement. Depuis quelques années elles sont utilisées pour le lavage des rames de métro de la ligne 8. En 2012, dans le cadre du prolongement du tramway T3, la RATP a mis en place un système permettant également de les  récupérer pour l’arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
+                    "text": {"time":"200", "content":"La RATP collecte chaque année près de 7 millions de m3 d’eaux d’exhaure. Régulièrement analysées par un laboratoire accrédité, ces eaux d’infiltration sont en grande partie dirigées vers le réseau d’assainissement. Pour réduire ces volumes déversés, diverses actions ont  été entreprises pour les réutiliser comme une ressource alternative à l’usage d'eau potable, même si, compte tenu des particularités des ouvrages et infrastructures de la RATP, les possibilités de réutilisation en interne restent limitées. Cela concerne le lavage des rames de métro de la ligne 8 et en 2012, dans le cadre du prolongement du tramway T3, la mise en place d'un système d'arrosage de la plateforme engazonnée du tramway.<br><br><em>Porteur de projet : <a href = \"http://www.ratp.fr/\" target = \"_blank\">RATP</a></em>"},
                     "flows": [{"vl":["500","1000", "2000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -138,7 +138,7 @@
                 },
                 {
                     "subtitle":"Valorisation des eaux d’exhaure",
-                    "text": {"time":"200", "content":"La Ville de Paris s’est fixé pour objectif d’optimiser la valorisation des ressources en eau brute (eaux d’exhaure, eaux de pluie, …) pour l’alimentation de son réseau d’eau non potable mais aussi pour limiter l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement."},
+                    "text": {"time":"200", "content":"La Ville de Paris s’est fixé pour objectif d’optimiser la valorisation des ressources en eau brute (eaux d’exhaure, eaux de pluie, …) pour l’alimentation de son réseau d’eau non potable mais aussi pour limiter l’apport d’eaux de ruissellement à son réseau (unitaire) d’assainissement. Ainsi, la RATP a signé en 2016 une convention de partenariat avec Eau de Paris de manière à identifier les points de raccordement potentiels entre les eaux d’exhaure et le réseau d’eau non potable."},
                     "flows": [{"vl":["1000", "500"], "hl":["2000"], "year":"o4", "anim":false, "fp":true, "scaling":false, "time":0}],
                     "territories":[],
                     "ui":{"show":[], "hide":[]},

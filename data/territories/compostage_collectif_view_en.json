@@ -95,7 +95,7 @@
             "steps" :
                 [{
                     "subtitle":"Compostage collectif à Paris",
-                    "text": {"time":"200", "content":"La Mairie de Paris accompagne les habitants et les établissements publics, notamment les écoles, dans la démarche de compostage ou lombricompostage collectif. 250 immeubles ou établissements compostent en 2014. En moyenne, <b>chaque site permet de détourner une tonne de déchets ménagers par an.</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Mairie de Paris</a></em>"},
+                    "text": {"time":"200", "content":"La Mairie de Paris encourage le compostage collectif sous toutes ses formes. On comptabilise 422 sites de compostage domestique en pied d’immeuble (dont 222 dans l’habitat collectif et 200 dans des sites publics), qui permettent chacun en moyenne de détourner une tonne de déchets ménagers par an et 6 composteurs de quartier, Le compostage de proximité à Paris a un potentiel de développement encore important.</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Mairie de Paris</a></em>"},
                     "flows": [{"vl":["1000","3000"], "hl":[], "year":"09", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}]
@@ -108,7 +108,7 @@
                 },
                 {
                     "subtitle":"Compostage collectif à Paris",
-                    "text": {"time":"200", "content":"La Mairie de Paris accompagne les habitants et les établissements publics, notamment les écoles, dans la démarche de compostage ou lombricompostage collectif. 250 immeubles ou établissements compostent en 2014. En moyenne, <b>chaque site permet de détourner une tonne de déchets ménagers par an.</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Mairie de Paris</a></em>"},
+                    "text": {"time":"200", "content":"La Mairie de Paris encourage le compostage collectif sous toutes ses formes. On comptabilise 422 sites de compostage domestique en pied d’immeuble (dont 222 dans l’habitat collectif et 200 dans des sites publics), qui permettent chacun en moyenne de détourner une tonne de déchets ménagers par an et 6 composteurs de quartier, Le compostage de proximité à Paris a un potentiel de développement encore important.</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Mairie de Paris</a></em>"},
                     "flows": [{"vl":["1000","3000"], "hl":["2000"], "year":"09", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}]
@@ -116,7 +116,7 @@
             "b_steps" :
                 [{
                     "subtitle":"Compostage collectif à Paris",
-                    "text": {"time":"200", "content":"La Mairie de Paris accompagne les habitants et les établissements publics, notamment les écoles, dans la démarche de compostage ou lombricompostage collectif. 250 immeubles ou établissements compostent en 2014. En moyenne, <b>chaque site permet de détourner une tonne de déchets ménagers par an.</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Mairie de Paris</a></em>"},
+                    "text": {"time":"200", "content":"La Mairie de Paris encourage le compostage collectif sous toutes ses formes. On comptabilise 422 sites de compostage domestique en pied d’immeuble (dont 222 dans l’habitat collectif et 200 dans des sites publics), qui permettent chacun en moyenne de détourner une tonne de déchets ménagers par an et 6 composteurs de quartier, Le compostage de proximité à Paris a un potentiel de développement encore important.</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction de la Propreté et de l’Eau – Mairie de Paris</a></em>"},
                     "flows": [{"vl":["1000","3000"], "hl":[], "year":"09", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}]

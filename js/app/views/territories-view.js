@@ -3,7 +3,13 @@ var app = app || {};
 app.TerritoriesView = Backbone.View.extend({
 
   initialize:function(options) {
-    this.territories = new Backbone.Collection();//new app.TerritoryCollection();
+    this.territories = new Backbone.Collection();
+
+    // Filter out hidden projects
+    // var init = _.filter(options.init, function(i) {
+    //   return i.hidden !== true;
+    // });
+
     this.territories.add(options.init);
     this.currentView = null;
   },

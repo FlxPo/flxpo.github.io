@@ -133,8 +133,8 @@
             "display_dot":false,       
             "steps" :
                 [{
-                    "subtitle":"Seconde vie pour les sapins",
-                    "text": {"time":"200", "content":"Les sapins (sans décoration, non floqués et sans sac), sont déposés par le public dans une centaine de points d'apport volontaire situés dans les jardins de Paris. Ces sapins sont transformés en broyat qui est utilisé soit comme paillage directement répandu sur les massifs des jardins parisiens, soit comme composant pour la fabrication de compost. Ces opérations ont lieu directement sur site pour limiter les transports. Les excédants de broyat ne pouvant pas être utilisés sur place sont utilisés sur d’autres sites ou pour la réalisation d’allées piétonnes.<b> 54 236 sapins ont été récoltés début 2015. Ils ont été transformés en 870 m3 de paillis (62 sapins collectés permettent de fournir environ 1 m3 de broyat).</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement – Mairie de Paris</a></em>"},
+                    "subtitle":"Valorisation des sapins de Noël",
+                    "text": {"time":"200", "content":"Les sapins (sans décoration, non floqués et sans sac), sont déposés par le public dans une centaine de points d'apport volontaire situés dans les jardins de Paris. Ces sapins sont transformés en broyat qui est utilisé soit comme paillage directement répandu sur les massifs des jardins parisiens, soit comme composant pour la fabrication de compost. Ces opérations ont lieu directement sur site pour limiter les transports. Les excédants de broyat ne pouvant pas être utilisés sur place sont utilisés sur d’autres sites ou pour la réalisation d’allées piétonnes. <strong>69 500 sapins ont été collectés début 2016. Ils ont été transformés en 1120 m3 de broyat (62 sapins collectés permettent de fournir environ 1 m3 de broyat).</strong><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement – Mairie de Paris</a></em>"},
                     "flows": [{"vl":["1500", "500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -142,7 +142,7 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Seconde vie pour les sapins",
+                    "subtitle":"Valorisation des sapins de Noël",
                     "text": {"time":"200", "content":"Choisir un sapin naturel, qui plus est issu d'une production agricole locale et raisonnée,  a des effets positifs sur l‘environnement, notamment parce que, lors de sa croissance, le futur sapin de Noël contribue à séquestrer du CO<sub>2</sub>. Mais qu’en est-il de sa fin de vie ? Chaque année, les nombreux sapins jetés sur la voie publique doivent être incinérés au même titre que les ordures ménagères, ce qui a un coût tant financier qu’environnemental. C’est pourquoi la municipalité s’est fixé pour objectif de significativement accroître le nombre de sapins recyclés en adaptant le dispositif de récupération pour minimiser le transport et met en place au plus près des Parisiens des points de recyclage où sont broyés les sapins."},
                     "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},
@@ -151,8 +151,8 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Seconde vie pour les sapins",
-                    "text": {"time":"200", "content":"Les sapins (sans décoration, non floqués et sans sac), sont déposés par le public dans une centaine de points d'apport volontaire situés dans les jardins de Paris. Ces sapins sont transformés en broyat qui est utilisé soit comme paillage directement répandu sur les massifs des jardins parisiens, soit comme composant pour la fabrication de compost. Ces opérations ont lieu directement sur site pour limiter les transports. Les excédants de broyat ne pouvant pas être utilisés sur place sont utilisés sur d’autres sites ou pour la réalisation d’allées piétonnes.<b> 54 236 sapins ont été récoltés début 2015. Ils ont été transformés en 870 m3 de paillis (62 sapins collectés permettent de fournir environ 1 m3 de broyat).</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement – Mairie de Paris</a></em>"},
+                    "subtitle":"Valorisation des sapins de Noël",
+                    "text": {"time":"200", "content":"Les sapins (sans décoration, non floqués et sans sac), sont déposés par le public dans une centaine de points d'apport volontaire situés dans les jardins de Paris. Ces sapins sont transformés en broyat qui est utilisé soit comme paillage directement répandu sur les massifs des jardins parisiens, soit comme composant pour la fabrication de compost. Ces opérations ont lieu directement sur site pour limiter les transports. Les excédants de broyat ne pouvant pas être utilisés sur place sont utilisés sur d’autres sites ou pour la réalisation d’allées piétonnes. <strong>69 500 sapins ont été collectés début 2016. Ils ont été transformés en 1120 m3 de broyat (62 sapins collectés permettent de fournir environ 1 m3 de broyat).</strong><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement – Mairie de Paris</a></em>"},
                     "flows": [{"vl":["500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
                                     {"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0}],
@@ -162,7 +162,7 @@
             "b_steps" :
                 [
                 {
-                    "subtitle":"Seconde vie pour les sapins",
+                    "subtitle":"Valorisation des sapins de Noël",
                     "text": {"time":"200", "content":"Les sapins (sans décoration, non floqués et sans sac), sont déposés par le public dans une centaine de points d'apport volontaire situés dans les jardins de Paris. Ces sapins sont transformés en broyat qui est utilisé soit comme paillage directement répandu sur les massifs des jardins parisiens, soit comme composant pour la fabrication de compost. Ces opérations ont lieu directement sur site pour limiter les transports. Les excédants de broyat ne pouvant pas être utilisés sur place sont utilisés sur d’autres sites ou pour la réalisation d’allées piétonnes. <b>54 236 sapins ont été récoltés début 2015. Ils ont été transformés en 870 m3 de paillis (62 sapins collectés permettent de fournir environ 1 m3 de broyat).</b><br><br><em>Porteur de projet : <a href = \"http://paris.fr/\" target = \"_blank\">Direction des Espaces Verts et de l’Environnement – Mairie de Paris</a></em>"},
                     "flows": [{"vl":["500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0},
@@ -171,7 +171,7 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Seconde vie pour les sapins",
+                    "subtitle":"Valorisation des sapins de Noël",
                     "text": {"time":"200", "content":"Choisir un sapin naturel, qui plus est issu d'une production agricole locale et raisonnée,  a des effets positifs sur l‘environnement, notamment parce que, lors de sa croissance, le futur sapin de Noël contribue à séquestrer du CO<sub>2</sub>. Mais qu’en est-il de sa fin de vie ? Chaque année, les nombreux sapins jetés sur la voie publique doivent être incinérés au même titre que les ordures ménagères, ce qui a un coût tant financier qu’environnemental. C’est pourquoi la municipalité s’est fixé pour objectif de significativement accroître le nombre de sapins recyclés en adaptant le dispositif de récupération pour minimiser le transport et met en place au plus près des Parisiens des points de recyclage où sont broyés les sapins."},
                     "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0},

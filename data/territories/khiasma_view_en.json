@@ -40,8 +40,8 @@
                     {
                         "id":"t3",
                         "name":"t3",
-                        "label":"Création d'un<br>kiosque en bois",
-                        "geom":"data/graphics/geom_kiosque.json",
+                        "label":"Cabane Fleury",
+                        "geom":"data/graphics/geom_cabane-fleury.json",
                         "fax":"0",
                         "fay":"0.2",
                         "iw":"1",
@@ -99,8 +99,8 @@
             "display_dot":false,       
             "steps" :
                 [{
-                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet MYTHOLOGIES, porté par les associations BELLASTOCK et KHIASMA, pourra être expérimenté pendant 2 ans sur un quartier parisien (probablement le quartier des Fougères dans le 19ème arrondissement).<br><br>Ce projet propose une micro-architecture réalisée à partir du réemploi de matériaux de construction et permet d’accueillir des activités socio-culturelles à destination des habitants d’un quartier. <strong>Il permettra de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction tout en tissant un lien social entre les habitants et les acteurs locaux.</strong><br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a> et <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a></em>"},
+                    "subtitle":"Réemploi des matériaux de chantiers de déconstruction ",
+                    "text": {"time":"200", "content":"La Cabane Fleury est un projet porté par trois associations : Bellastock, Khiasma, et Pépins production, qui ont choisi de mettre en commun leurs savoir-faire pour développer un équipement partagé au sein d’un parc urbain parisien. Il s’agit d’une microarchitecture expérimentale qui permet de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction et qui est dédiée à deux activités principales: une pépinière de quartier et un espace de convivialité et de citoyenneté pour les habitants du quartier.<br><br><em>Porteurs de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a>, <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a> et <a href = \"https://www.pepinsproduction.fr/\" target = \"_blank\">Pépins Productions</a></em>"},
                     "flows": [{"vl":["500"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
                                     {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
@@ -108,7 +108,7 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
+                    "subtitle":"Réemploi des matériaux de chantiers de déconstruction ",
                     "text": {"time":"200", "content":"L’Ile-de-France génère 30* millions de tonnes de déchets par an pour le BTP, ce qui représente plus de 5 fois la production de déchets ménagers. Sur ces 30 millions de tonnes, seuls 23% sont recyclés.<br><br>Les chantiers de déconstruction représentent donc un  potentiel de récupération qui pourrait être exploité plus largement.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
                     "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],
@@ -116,8 +116,8 @@
                     "functions":""
                 },
                 {
-                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet MYTHOLOGIES, porté par les associations BELLASTOCK et KHIASMA, pourra être expérimenté pendant 2 ans sur un quartier parisien (probablement le quartier des Fougères dans le 19ème arrondissement).<br><br>Ce projet propose une micro-architecture réalisée à partir du réemploi de matériaux de construction et permet d’accueillir des activités socio-culturelles à destination des habitants d’un quartier. <strong>Il permettra de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction tout en tissant un lien social entre les habitants et les acteurs locaux.</strong><br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a> et <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a></em>"},
+                    "subtitle":"Réemploi des matériaux de chantiers de déconstruction ",
+                    "text": {"time":"200", "content":"La Cabane Fleury est un projet porté par trois associations : Bellastock, Khiasma, et Pépins production, qui ont choisi de mettre en commun leurs savoir-faire pour développer un équipement partagé au sein d’un parc urbain parisien. Il s’agit d’une microarchitecture expérimentale qui permet de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction et qui est dédiée à deux activités principales: une pépinière de quartier et un espace de convivialité et de citoyenneté pour les habitants du quartier.<br><br><em>Porteurs de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a>, <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a> et <a href = \"https://www.pepinsproduction.fr/\" target = \"_blank\">Pépins Productions</a></em>"},
                     "flows": [{"vl":["500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
@@ -125,15 +125,15 @@
                 }],       
             "b_steps" :
                 [{
-                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
-                    "text": {"time":"200", "content":"Dans le cadre de l’appel à projets « amélioration du métabolisme urbain » lancé par la Mairie de Paris en partenariat avec Paris Région Lab, le projet MYTHOLOGIES, porté par les associations BELLASTOCK et KHIASMA, pourra être expérimenté pendant 2 ans sur un quartier parisien (probablement le quartier des Fougères dans le 19ème arrondissement).<br><br>Ce projet propose une micro-architecture réalisée à partir du réemploi de matériaux de construction et permet d’accueillir des activités socio-culturelles à destination des habitants d’un quartier. <strong>Il permettra de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction tout en tissant un lien social entre les habitants et les acteurs locaux.</strong><br><br><em>Porteur de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a> et <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a></em>"},
+                    "subtitle":"Réemploi des matériaux de chantiers de déconstruction ",
+                    "text": {"time":"200", "content":"La Cabane Fleury est un projet porté par trois associations : Bellastock, Khiasma, et Pépins production, qui ont choisi de mettre en commun leurs savoir-faire pour développer un équipement partagé au sein d’un parc urbain parisien. Il s’agit d’une microarchitecture expérimentale qui permet de mieux identifier les filières de réemploi possibles des matériaux des chantiers de déconstruction et qui est dédiée à deux activités principales: une pépinière de quartier et un espace de convivialité et de citoyenneté pour les habitants du quartier.<br><br><em>Porteurs de projet : <a href = \"http://www.bellastock.com/\" target = \"_blank\">Bellastock</a>, <a href = \"http://www.khiasma.net/\" target = \"_blank\">Khiasma</a> et <a href = \"https://www.pepinsproduction.fr/\" target = \"_blank\">Pépins Productions</a></em>"},
                     "flows": [{"vl":["500"], "hl":["1000"], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
-                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "territories":[{"target":"t3", "action":"appear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
                 },
                 {
-                    "subtitle":"Expérimentation de filières de réemploi des matériaux des chantiers de déconstruction",
+                    "subtitle":"Réemploi des matériaux de chantiers de déconstruction ",
                     "text": {"time":"200", "content":"L’Ile-de-France génère 30* millions de tonnes de déchets par an pour le BTP, ce qui représente plus de 5 fois la production de déchets ménagers. Sur ces 30 millions de tonnes, seuls 23% sont recyclés.<br><br>Les chantiers de déconstruction représentent donc un  potentiel de récupération qui pourrait être exploité plus largement.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
                     "flows": [{"vl":["1000"], "hl":["500"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
                     "territories":[{"target":"t3", "action":"disappear", "parms":{"time":300}, "time":0}],

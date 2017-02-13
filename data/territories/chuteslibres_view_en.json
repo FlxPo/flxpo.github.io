@@ -1,0 +1,146 @@
+{
+	"ui_elements":{},
+	"scale":"w/2000",
+	"items": [{
+                        "id":"t0",
+                        "name":"t0",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"-10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+                    {
+                        "id":"t1",
+                        "name":"t1",
+                        "f_anchor_x":"",
+                        "f_anchor_y":"",
+                        "iw":"1",
+                        "ih":"1",
+                        "x":"w+10",
+                        "y":"0.4*h",
+                        "scale":"1"
+                    },
+					{
+                        "id":"t2",
+                        "name":"t2",
+                        "label":"Habitants",
+                        "geom":"data/graphics/geom_groupepersonne2.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.4",
+                        "x":"0.65*w",
+                        "y":"0.45*h",
+                        "scale":"0.17",
+                        "force_w_scale":true
+					},
+                    {
+                        "id":"t3",
+                        "name":"t3",
+                        "label":"Ateliers Chutes Libres",
+                        "geom":"data/graphics/geom_exposition.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.35*w",
+                        "y":"0.25*h",
+                        "scale":"0.18",
+                        "force_w_scale":true,
+                        "z":0
+                    },
+                    {
+                        "id":"t4",
+                        "name":"t4",
+                        "geom":"data/graphics/geom_exposition-atelier-01.json",
+                        "fax":"0",
+                        "fay":"0.15",
+                        "iw":"1",
+                        "ih":"0.5",
+                        "x":"0.35*w",
+                        "y":"0.25*h",
+                        "scale":"0.18",
+                        "force_w_scale":true,
+                        "solution":true,
+                        "z":1
+                    }],
+
+	"flows": 		[{
+                            "id":"1000",
+                            "index":"0",
+                            "name":"Chutes de bois",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t1",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#A8A8A8",
+                            "virtual":true
+                        },
+                        {
+                            "id":"3000",
+                            "index":"0",
+                            "name":"Mobilier recréé",
+                            "type":"input",
+                            "from":"t3",
+                            "to":"t2",
+                            "volume_o4":"1000",
+                            "volume_o9":"1000",
+                            "unit":"t / an",
+                            "color":"#9ADB28",
+                            "virtual":true
+                        }],
+
+    "stories": {
+        "matter":[{
+            "title":"",
+            "subtitle":"",
+            "display_dot":false,       
+            "steps" :
+                [{
+                    "subtitle":"Ateliers chutes libres",
+                    "text": {"time":"200", "content":" Les Ateliers Chutes Libres sont des ateliers de construction ouverts à tous, chaque participant peut venir, le temps de l’atelier, fabriquer son objet en utilisant les chutes de bois présentes sur le lieu d’accueil. La matière pourra être découpée, percée, assemblée, poncée pour donner vie à de nouveaux objets. En s’inspirant des formes proposées par les designers du collectif Prémices ou en la créant soi-même, chaque participant peut ensuite repartir avec sa lampe, son tabouret ou son étagère… Les Ateliers Chutes Libres sont ainsi l’occasion d’expérimenter concrètement le réemploi !<br><br><em>Porteur de projet : <a href = \"http://www.atelierschuteslibres.com/\" target = \"_blank\">Prémices and co.</a></em>"},
+                    "flows": [{"vl":["1000","3000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t3", "action":"appear", "parms":{"time":100}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}]
+                },
+                {
+                    "subtitle":"Ateliers chutes libres",
+                    "text": {"time":"200", "content":"Les secteurs d’activités de l’industrie, du commerce et des services (hors BTP et agriculture) génèrent 6 millions de tonnes de déchets non dangereux par an en Ile-de-France* (soit un peu plus que les déchets ménagers et assimilés : 5.7 millions de tonnes). Hormis les déchets triés à la source et pour lesquels des filières de traitement existent (papiers, cartons, verre, palettes, caisses, …), beaucoup de déchets se retrouvent en mélange et ne possèdent pas de filière de valorisation ou de réutilisation.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
+                    "flows": [{"vl":["1000"], "hl":["3000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Ateliers chutes libres",
+                    "text": {"time":"200", "content":" Les Ateliers Chutes Libres sont des ateliers de construction ouverts à tous, chaque participant peut venir, le temps de l’atelier, fabriquer son objet en utilisant les chutes de bois présentes sur le lieu d’accueil. La matière pourra être découpée, percée, assemblée, poncée pour donner vie à de nouveaux objets. En s’inspirant des formes proposées par les designers du collectif Prémices ou en la créant soi-même, chaque participant peut ensuite repartir avec sa lampe, son tabouret ou son étagère… Les Ateliers Chutes Libres sont ainsi l’occasion d’expérimenter concrètement le réemploi !<br><br><em>Porteur de projet : <a href = \"http://www.atelierschuteslibres.com/\" target = \"_blank\">Prémices and co.</a></em>"},
+                    "flows": [{"vl":["1000", "3000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}]
+                }],       
+            "b_steps" :
+                [{
+                    "subtitle":"Ateliers chutes libres",
+                    "text": {"time":"200", "content":" Les Ateliers Chutes Libres sont des ateliers de construction ouverts à tous, chaque participant peut venir, le temps de l’atelier, fabriquer son objet en utilisant les chutes de bois présentes sur le lieu d’accueil. La matière pourra être découpée, percée, assemblée, poncée pour donner vie à de nouveaux objets. En s’inspirant des formes proposées par les designers du collectif Prémices ou en la créant soi-même, chaque participant peut ensuite repartir avec sa lampe, son tabouret ou son étagère… Les Ateliers Chutes Libres sont ainsi l’occasion d’expérimenter concrètement le réemploi !<br><br><em>Porteur de projet : <a href = \"http://www.atelierschuteslibres.com/\" target = \"_blank\">Prémices and co.</a></em>"},
+                    "flows": [{"vl":["1000", "3000"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"appear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}]
+                },
+                {
+                    "subtitle":"Ateliers chutes libres",
+                    "text": {"time":"200", "content":"Les secteurs d’activités de l’industrie, du commerce et des services (hors BTP et agriculture) génèrent 6 millions de tonnes de déchets non dangereux par an en Ile-de-France* (soit un peu plus que les déchets ménagers et assimilés : 5.7 millions de tonnes). Hormis les déchets triés à la source et pour lesquels des filières de traitement existent (papiers, cartons, verre, palettes, caisses, …), beaucoup de déchets se retrouvent en mélange et ne possèdent pas de filière de valorisation ou de réutilisation.<br><br><span style = \"font-size:12px\">* ORDIF : tableau de bord des déchets franciliens, éd. 2014</span>"},
+                    "flows": [{"vl":["1000"], "hl":["3000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
+                    "territories":[{"target":"t2", "action":"disappear", "parms":{"time":300}, "time":0},
+                                    {"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}]
+                }]
+        }],
+        "energy":[],
+        "water":[]
+    }
+         }
+  

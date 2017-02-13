@@ -139,7 +139,7 @@ app.Router = Backbone.Router.extend({
         }
         args.state.categoryState = null;
         args.state.timeState = args.state.timeState || 1;
-        console.log(args.state)
+        //console.log(args.state)
         return(self.stateToRoute(args.state));
       },
       type:function(args) {
@@ -226,7 +226,7 @@ app.Router = Backbone.Router.extend({
         self.state.typeState = args.type;
         self.state.timeState = args.time;
         self.state.categoryState = null;
-        console.log(self.state)
+        //console.log(self.state)
       },
       project:function(args) {
         app.instance.stopListeningPrevious();
@@ -262,16 +262,25 @@ app.Router = Backbone.Router.extend({
     // Validate projects route parameters
   } else if (view === "project") {
 
-    var max_id = 49;
+    var max_id = 55;
     var ids = [];
-    for (var i = 0; i<max_id; i++) {ids[i] = i;}
-      var valid_ids = ids.map(function(id) {return "p"+id})
+    var hidden_projects = [0, 7, 9, 11, 14]
+
+    for (var i = 0; i<max_id; i++) {
+      if (_.indexOf(hidden_projects, i) == -1) {
+        ids.push(i);        
+      }
+    }
+
+    var valid_ids = ids.map(function(id) {return "p"+id})
 
     this.project_ids = valid_ids;
-    this.project_ids.splice(14, 1);
-    this.project_ids.splice(0, 1);
+    // this.project_ids.splice(14, 1);
+    // this.project_ids.splice(0, 1);
 
-    if (args.id == "p14") return false;
+    // if (args.id == "p14") return false;
+
+    console.log(valid_ids)
 
     return _.indexOf(valid_ids, args.id) !== -1;
 
@@ -288,7 +297,7 @@ about: function() {
 },
 
 projects: function(category) {
-  console.log(category)
+  //console.log(category)
   if (category === null) {category = "tous_projets"}
   args = {categoryState:category}
   this.loadView("projects", args);
@@ -303,7 +312,7 @@ territory: function(id, type, time) {
   var args = {id:id, type:type, time:time};
   var p_state = this.previous_state;
 
-  console.log(args)
+  //console.log(args)
 
   var fired = false;
 
@@ -360,7 +369,7 @@ territory: function(id, type, time) {
       if (this.validateRoute("project", args)) {
         this.loadView("project", args);
       } else {
-        console.log("go")
+        //console.log("go")
         this.go("#p/tous_projets");
       }
     }

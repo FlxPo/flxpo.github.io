@@ -43,7 +43,13 @@ app.TerritoryView = Backbone.View.extend({
 
 				// Load projects
 				if (data.projects) {
-					var projects = new Backbone.Collection(data.projects);
+
+					//Filter out hidden projects
+    				var ps = _.filter(data.projects, function(p) {
+      					return p.hidden !== true;
+    				});
+
+					var projects = new Backbone.Collection(ps);
 					var showpanel = (self.model.get("id") === "projects");
 
 					var p = {parent:self,
