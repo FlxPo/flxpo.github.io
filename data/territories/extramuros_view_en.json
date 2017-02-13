@@ -95,7 +95,7 @@
                         {
                             "id":"1100",
                             "index":"0",
-                            "name":"Autres déchets encombrants",
+                            "name":"Déchets encombrants",
                             "type":"input",
                             "from":"t2",
                             "to":"t1",
@@ -121,7 +121,7 @@
                         {
                             "id":"10100",
                             "index":"0",
-                            "name":"Autres déchets encombrants",
+                            "name":"Déchets encombrants",
                             "type":"input",
                             "from":"t5",
                             "to":"t1",
