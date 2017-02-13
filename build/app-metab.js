@@ -2515,7 +2515,7 @@ app.FlowTipView = Backbone.View.extend({
 			this.$el.html( this.template( this.content ) );
 
 			// Append the trends icons if needed
-/*			if (this.parent.model.get("nature") === "matter") {
+			if (this.parent.model.get("nature") === "matter") {
 				var trend = parseInt(this.parent.model.get("trend"));
 				var html = ""
 				if (trend === 0) {
@@ -2530,7 +2530,7 @@ app.FlowTipView = Backbone.View.extend({
 					html = "<div id = \"trend\" class = \"hidden\"><div id = \"tr1\" class = \"trend minus\"></div>" + "<div id = \"tr2\" class = \"trend minus\"></div></div>"
 				}
 				this.$trend = $(html).appendTo(this.$el);
-      		}*/
+      		}
 
 		}
 		return this;
