@@ -140,7 +140,6 @@ app.AboutView = Backbone.View.extend({
 	intro:function() {
 		app.instance.ui.unloadAbout();
 		var r = app.instance.router;
-		console.log(r.state.rootState)
 		if (r.state.rootState != "t") {
 			app.instance.router.force_intro = true;
 			app.instance.router.go("t/paris/matter/1");

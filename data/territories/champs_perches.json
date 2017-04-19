@@ -219,7 +219,7 @@
                     "subtitle":"Les champs perchés",
                     "text": {"time":"200", "content":"Les techniques de production hors-sol sont des réponses aux problématiques liées à la végétalisation des toitures et terrasses des villes car plus légères. Associées à des pratiques responsables pour la production, le gestion de l’eau ou des déchets, elles participent à la résilience et la durabilité des milieux urbains en captant le carbone atmosphérique, rafraîchissant l’air ambiant, valorisant les eaux de pluies et stimulant la biodiversité. Cette agriculture urbaine introduit de plus la logique des circuits courts qui rapproche les producteurs des consommateurs."},
                     "flows": [{"vl":["1900", "3100", "2500"], "hl":["2000", "3000", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
-                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":100}, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
                 },
@@ -227,7 +227,7 @@
                     "subtitle":"Les champs perchés",
                     "text": {"time":"200", "content":"<b>Paris sous les fraises</b> s’inscrit dans une démarche de développement de la biodiversité, de réduction des déchets et de valorisation des ressources avec ses 1200 m² de cultures maraîchères sans pesticides sur le toit des Galeries Lafayette. 21 000 plantes y sont cultivées en permaculture verticale pour une production de 1,8 T de produits frais. 300 m3 d’eau de pluies sont valorisés et 13 tonnes de carbone sont captés chaque année. Cueillis à maturité les productions sont distribuées sous la marque « Les champs perchés » à des restaurateurs, les Galeries Lafayette Gourmet et en partenariats saisonniers avec des startups telles que les confitures parisiennes.<br><br><em>Porteur de projet : <a href = \"http://www.souslesfraises.com/\" target = \"_blank\">Sous Les Fraises</a> et <a href = \"http://jardinerlaville.fr/\" target = \"_blank\">l’AFCH (Association Française de Culture Hors-Sol)</a></em>"},
                     "flows": [{"vl":["2500", "2000", "3000", "4000", "1900", "3100"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
-                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
                 }],       
@@ -236,7 +236,7 @@
                     "subtitle":"Les champs perchés",
                     "text": {"time":"200", "content":"<b>Paris sous les fraises</b> s’inscrit dans une démarche de développement de la biodiversité, de réduction des déchets et de valorisation des ressources avec ses 1200 m² de cultures maraîchères sans pesticides sur le toit des Galeries Lafayette. 21 000 plantes y sont cultivées en permaculture verticale pour une production de 1,8 T de produits frais. 300 m3 d’eau de pluies sont valorisés et 13 tonnes de carbone sont captés chaque année. Cueillis à maturité les productions sont distribuées sous la marque « Les champs perchés » à des restaurateurs, les Galeries Lafayette Gourmet et en partenariats saisonniers avec des startups telles que les confitures parisiennes.<br><br><em>Porteur de projet : <a href = \"http://www.souslesfraises.com/\" target = \"_blank\">Sous Les Fraises</a> et <a href = \"http://jardinerlaville.fr/\" target = \"_blank\">l’AFCH (Association Française de Culture Hors-Sol)</a></em>"},
                     "flows": [{"vl":["2500", "2000", "3000", "4000", "1900", "3100"], "hl":[], "year":"o9", "anim":false, "fp":true, "scaling":true, "time":0}],
-                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":100}, "time":0}],
+                    "territories":[{"target":"t4", "action":"appear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
                 },
@@ -244,7 +244,7 @@
                     "subtitle":"Les champs perchés",
                     "text": {"time":"200", "content":"Les techniques de production hors-sol sont des réponses aux problématiques liées à la végétalisation des toitures et terrasses des villes car plus légères. Associées à des pratiques responsables pour la production, le gestion de l’eau ou des déchets, elles participent à la résilience et la durabilité des milieux urbains en captant le carbone atmosphérique, rafraîchissant l’air ambiant, valorisant les eaux de pluies et stimulant la biodiversité. Cette agriculture urbaine introduit de plus la logique des circuits courts qui rapproche les producteurs des consommateurs."},
                     "flows": [{"vl":["1900", "3100", "2500"], "hl":["2000", "3000", "4000"], "year":"o4", "anim":false, "fp":true, "scaling":true, "time":0}],
-                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":100}, "time":0}],
+                    "territories":[{"target":"t4", "action":"disappear", "parms":{"time":300}, "time":0}],
                     "ui":{"show":[], "hide":[]},
                     "functions":""
                 }]

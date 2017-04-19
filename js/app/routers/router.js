@@ -139,7 +139,6 @@ app.Router = Backbone.Router.extend({
         }
         args.state.categoryState = null;
         args.state.timeState = args.state.timeState || 1;
-        //console.log(args.state)
         return(self.stateToRoute(args.state));
       },
       type:function(args) {
@@ -226,7 +225,6 @@ app.Router = Backbone.Router.extend({
         self.state.typeState = args.type;
         self.state.timeState = args.time;
         self.state.categoryState = null;
-        //console.log(self.state)
       },
       project:function(args) {
         app.instance.stopListeningPrevious();
@@ -273,14 +271,7 @@ app.Router = Backbone.Router.extend({
     }
 
     var valid_ids = ids.map(function(id) {return "p"+id})
-
     this.project_ids = valid_ids;
-    // this.project_ids.splice(14, 1);
-    // this.project_ids.splice(0, 1);
-
-    // if (args.id == "p14") return false;
-
-    console.log(valid_ids)
 
     return _.indexOf(valid_ids, args.id) !== -1;
 
@@ -297,7 +288,6 @@ about: function() {
 },
 
 projects: function(category) {
-  //console.log(category)
   if (category === null) {category = "tous_projets"}
   args = {categoryState:category}
   this.loadView("projects", args);
@@ -311,8 +301,6 @@ territory: function(id, type, time) {
 
   var args = {id:id, type:type, time:time};
   var p_state = this.previous_state;
-
-  //console.log(args)
 
   var fired = false;
 
@@ -359,8 +347,6 @@ territory: function(id, type, time) {
         this.state.territoryState = id;
         this.state.typeState = type;
         this.state.timeState = time;
-
-        // Backbone.trigger("ui:route", {state:_.clone(this.state)});
       }
     },
 
@@ -369,7 +355,6 @@ territory: function(id, type, time) {
       if (this.validateRoute("project", args)) {
         this.loadView("project", args);
       } else {
-        //console.log("go")
         this.go("#p/tous_projets");
       }
     }

@@ -262,11 +262,8 @@ app.FlowsView = Backbone.View.extend({
 				flows = _.filter(flows, function(flow) {return (_.indexOf(vl, flow.id) > -1)});
 
 				// Sorting
-				// type === "input" ? utils.mergeSort(flows, _.bind(self.masterInputSort, self)) : utils.mergeSort(flows, _.bind(self.masterOutputSort, self));
-				
 				flows = utils.mergeSort(flows, _.bind(self.idSort, self));
 				flows = utils.mergeSort(flows, _.bind(self.volumeSort, self));
-				// console.log(flows)
 
 				// Offseting
 				var sum = 0;
@@ -342,7 +339,6 @@ app.FlowsView = Backbone.View.extend({
 			r = +(b_id > a_id);
 		}
 
-		// console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
 		return r;
 
 	},
@@ -381,7 +377,6 @@ app.FlowsView = Backbone.View.extend({
 			r = (b_id < a_id);
 		}
 
-		// console.log(b_id + " " + b_type + " " + a_id + " " + a_type + " " + r);
 		return r;
 	},
 
