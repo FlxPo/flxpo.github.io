@@ -289,7 +289,7 @@ about: function() {
 
 projects: function(category) {
   if (category === null) {category = "tous_projets"}
-  args = {categoryState:category}
+    args = {categoryState:category}
   this.loadView("projects", args);
 },
 
@@ -307,11 +307,11 @@ territory: function(id, type, time) {
     // Catch a first_pass on Paris for intro
     var intro = false;
     // if (!this.intro && id === "paris" && type === "matter" && time === "1") {
-      if (this.previous_state.rootState === "start" || this.force_intro) {
+    if (this.previous_state.rootState === "start" || this.force_intro) {
         this.intro = true;
         this.force_intro = false;
         intro = true;
-      }
+    }
 
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {

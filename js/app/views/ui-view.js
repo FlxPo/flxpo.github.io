@@ -171,7 +171,7 @@ app.UIView = Backbone.View.extend({
       var $toggle = $el.find(".toggle");
       var $label = $el.find(".toggle span");
 
-      $("#trend_legend").removeClass("show_h");
+      // $("#trend_legend").removeClass("show_h");
 
     // Target state : 2012/Tendances ?
     if (state.timeState === "2") {
@@ -181,12 +181,12 @@ app.UIView = Backbone.View.extend({
 
       // Change span content and display legend if needed
       if (state.typeState === "matter") {
-        $label.html("Tendances");
-        $("#trend_legend").addClass("show_h");
+        $label.html("2014");
+        // $("#trend_legend").addClass("show_h");
       } else if (state.typeState === "energy") {
-        $label.html("2009");
+        $label.html("2014");
       } else {
-        $label.html("2012");
+        $label.html("2015");
       }
 
     // Else move toggle on the left and hide legend

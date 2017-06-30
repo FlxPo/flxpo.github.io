@@ -60,7 +60,9 @@
 .slider {
 	display:none;
 	width:3em;
-	height:1.75em;
+	height:1.6em;
+	margin-top:1em;
+	margin-bottom: 2em;
 	background-color:#eee;
 	-webkit-border-radius: 0.75em;
     -moz-border-radius: 0.75em;
@@ -70,7 +72,8 @@
 
 .toggle {
 	display:inline-block;
-    margin:0.2em;
+	margin-top: 0.2em;
+    margin-left:0.3em;
     background-color:#ccc;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
@@ -90,6 +93,18 @@
 	font-size: 0.9em;
 	margin-left: -50%;
 	margin-top:1.75em;
+}
+
+#time_2003 {
+	display:none;
+}
+
+#time_2003 .fixed_year span {
+	display: inherit;
+	font-family: "Lobster";
+	font-size: 1em;
+	text-align: center;
+	margin-top: 1em;
 }
 
 #time:hover {
@@ -130,8 +145,8 @@
 	position:absolute;
 	color: #000;
 	width:12em;
-	margin-top: 1em;
-	margin-left: -16.5em;
+	margin-top: 0.5em;
+	margin-left: -15.5em;
 	text-align: right;
 }
 

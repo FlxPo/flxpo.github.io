@@ -407,7 +407,7 @@ about: function() {
 
 projects: function(category) {
   if (category === null) {category = "tous_projets"}
-  args = {categoryState:category}
+    args = {categoryState:category}
   this.loadView("projects", args);
 },
 
@@ -425,11 +425,11 @@ territory: function(id, type, time) {
     // Catch a first_pass on Paris for intro
     var intro = false;
     // if (!this.intro && id === "paris" && type === "matter" && time === "1") {
-      if (this.previous_state.rootState === "start" || this.force_intro) {
+    if (this.previous_state.rootState === "start" || this.force_intro) {
         this.intro = true;
         this.force_intro = false;
         intro = true;
-      }
+    }
 
     // Catch a time change route
     if (p_state && p_state.rootState !== null) {
@@ -965,7 +965,7 @@ app.AppView = Backbone.View.extend({
         // Loads territories
         self.territories = new app.TerritoriesView({init:data.navigation});
         // Loads router
-        this.router = new app.Router({init:data.navigation});
+        self.router = new app.Router({init:data.navigation});
         Backbone.history.start();
       }
 
@@ -2565,6 +2565,7 @@ app.FlowTipView = Backbone.View.extend({
 	},
 
 	correctPosition: function() {
+
 		var w = this.$tip.width(), h = this.$tip.height();
 		var vol = this.vol_c;
 		this.$tip.css({ top: -h  + vol*0.25 - 25, left: -w*0.5 + vol/2 -10 });
@@ -2586,6 +2587,7 @@ app.FlowTipView = Backbone.View.extend({
 	},
 
 	renderTrend:function(mt) {
+
 		if (this.$trend) {
 
 			var self = this;
@@ -2598,7 +2600,7 @@ app.FlowTipView = Backbone.View.extend({
 				// Show the trend icons and animate them
 				seq.push({ elements: this.$el, properties: { opacity: 0 }, options: { duration: 100, complete:function() {label.addClass("hidden"); self.correctPosition();} } });
 				seq.push({ elements: this.$el, properties: { opacity: 1 }, options: { duration: 100, complete:function() {trend.addClass("show_v")} } });
-				seq.push({ elements: this.$trend, properties: { "top":"+=10" }, options: { loop:true} });
+				seq.push({ elements: this.$trend, properties: { "top":"+=10" }, options: { loop:true } });
 
 			} else {
 
@@ -4785,7 +4787,7 @@ app.UIView = Backbone.View.extend({
       var $toggle = $el.find(".toggle");
       var $label = $el.find(".toggle span");
 
-      $("#trend_legend").removeClass("show_h");
+      // $("#trend_legend").removeClass("show_h");
 
     // Target state : 2012/Tendances ?
     if (state.timeState === "2") {
@@ -4795,12 +4797,12 @@ app.UIView = Backbone.View.extend({
 
       // Change span content and display legend if needed
       if (state.typeState === "matter") {
-        $label.html("Tendances");
-        $("#trend_legend").addClass("show_h");
+        $label.html("2014");
+        // $("#trend_legend").addClass("show_h");
       } else if (state.typeState === "energy") {
-        $label.html("2009");
+        $label.html("2014");
       } else {
-        $label.html("2012");
+        $label.html("2015");
       }
 
     // Else move toggle on the left and hide legend

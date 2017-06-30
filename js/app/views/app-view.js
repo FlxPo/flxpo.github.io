@@ -23,7 +23,7 @@ app.AppView = Backbone.View.extend({
         // Loads territories
         self.territories = new app.TerritoriesView({init:data.navigation});
         // Loads router
-        this.router = new app.Router({init:data.navigation});
+        self.router = new app.Router({init:data.navigation});
         Backbone.history.start();
       }
 

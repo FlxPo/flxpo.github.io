@@ -194,6 +194,7 @@ app.FlowTipView = Backbone.View.extend({
 	},
 
 	correctPosition: function() {
+
 		var w = this.$tip.width(), h = this.$tip.height();
 		var vol = this.vol_c;
 		this.$tip.css({ top: -h  + vol*0.25 - 25, left: -w*0.5 + vol/2 -10 });
@@ -215,6 +216,7 @@ app.FlowTipView = Backbone.View.extend({
 	},
 
 	renderTrend:function(mt) {
+
 		if (this.$trend) {
 
 			var self = this;
@@ -227,7 +229,7 @@ app.FlowTipView = Backbone.View.extend({
 				// Show the trend icons and animate them
 				seq.push({ elements: this.$el, properties: { opacity: 0 }, options: { duration: 100, complete:function() {label.addClass("hidden"); self.correctPosition();} } });
 				seq.push({ elements: this.$el, properties: { opacity: 1 }, options: { duration: 100, complete:function() {trend.addClass("show_v")} } });
-				seq.push({ elements: this.$trend, properties: { "top":"+=10" }, options: { loop:true} });
+				seq.push({ elements: this.$trend, properties: { "top":"+=10" }, options: { loop:true } });
 
 			} else {
 
